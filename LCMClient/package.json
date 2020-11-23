@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "gulp": "4.0.2",
+    "gulp-postcss": "9.0.0",
+    "precss": "4.0.0",
+    "tailwindcss": "2.0.1",
+    "autoprefixer": "10.0.2",
+    "postcss": "8.1.8"
+  }
+}

@@ -1,0 +1,23 @@
+﻿@page "/dialogplay"
+
+@using LCMClient.Helpers
+@using LCMClient.Pages.Playground
+
+@inject IJSRuntime jsRuntime
+@inject IDialogService Dialog
+
+<h3 class="mb-6">Dialog Play</h3>
+
+
+<MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="OpenClodebuttonDialog">With Close Button</MudButton>
+
+
+@code {
+    async Task OpenClodebuttonDialog()
+    {
+        var Options = new DialogOptions() { CloseButton = true };
+        var Parameters = new DialogParameters();
+        Parameters.Add("Message", "This dialog has a close button that is set either globally or per dialog.");
+        var userSelect = Dialog.Show<DialogoptionExample>("With close button", Parameters, Options);
+    }
+}

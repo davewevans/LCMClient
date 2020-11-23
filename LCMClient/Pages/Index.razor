@@ -1,0 +1,12 @@
+﻿@page "/"
+@page "/index"
+
+<AuthorizeView Roles="Admin">
+    <Authorized>
+        You are authorized!
+    </Authorized>
+    <NotAuthorized>
+        Sorry, Dude. You're not authorized. :(
+    </NotAuthorized>
+</AuthorizeView>
+
