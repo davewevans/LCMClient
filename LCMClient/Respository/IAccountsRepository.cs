@@ -1,5 +1,6 @@
-﻿using LCMClient.Auth;
-using LCMClient.DTOs;
+﻿using LCMClient.Features.Admin.DTOs;
+using LCMClient.Features.Admin.Models;
+using LCMClient.Features.Auth.Models;
 using LCMClient.Helpers;
 using System.Threading.Tasks;
 

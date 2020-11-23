@@ -21,7 +21,7 @@
       "url": "_content\/MatBlazor\/dist\/matBlazor.js"
     },
     {
-      "hash": "sha256-A1UV4c1+VDf5UoE+FdlFmgQaN131Cm0aN1gleI8NZjs=",
+      "hash": "sha256-yLGFP6\/XeYAqsbyvvElu6wqiDYyudXq5StaLzEYSz7Q=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -825,11 +825,11 @@
       "url": "_framework\/dotnet.5.0.0.js"
     },
     {
-      "hash": "sha256-liPvd9uzumzAMdQt9ZtBNCOMM9fvfLqiw2fC8TKUm+4=",
+      "hash": "sha256-wVpJb6ZKbX38ktxhBnHiszQq6qyJ1wgN5wTmYCaPR58=",
       "url": "_framework\/LCMClient.dll"
     },
     {
-      "hash": "sha256-4QFby6i4zHbYo7euKAkXgaiy50pZkMXmrZmSFf3n3go=",
+      "hash": "sha256-qELzeeun3hjo7IN9FAKPAB99eFzZEAog5iMS\/rUJ0pg=",
       "url": "_framework\/LCMClient.pdb"
     },
     {
@@ -1729,5 +1729,5 @@
       "url": "sample-data\/weather.json"
     }
   ],
-  "version": "DEaHXaXp"
+  "version": "hKqJkhdR"
 };

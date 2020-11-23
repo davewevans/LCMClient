@@ -6,8 +6,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Auth\**" />
+    <Compile Remove="Pages\Admin\**" />
+    <Compile Remove="Pages\Auth\**" />
+    <Content Remove="Auth\**" />
+    <Content Remove="Pages\Admin\**" />
+    <Content Remove="Pages\Auth\**" />
+    <EmbeddedResource Remove="Auth\**" />
+    <EmbeddedResource Remove="Pages\Admin\**" />
+    <EmbeddedResource Remove="Pages\Auth\**" />
+    <None Remove="Auth\**" />
+    <None Remove="Pages\Admin\**" />
+    <None Remove="Pages\Auth\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="package-lock.json" />
     <Content Remove="package.json" />
+    <Content Remove="Pages\Authentication.razor" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,12 +41,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Auth\DTOs\" />
     <Folder Include="Features\Guardians\" />
     <Folder Include="Features\Dashboard\" />
-    <Folder Include="Features\Admin\" />
-    <Folder Include="Features\Auth\" />
     <Folder Include="Features\Playground\" />
-    <Folder Include="Features\Shared\" />
     <Folder Include="Features\Sponsors\" />
     <Folder Include="Features\Orphans\" />
     <Folder Include="wwwroot\images\" />

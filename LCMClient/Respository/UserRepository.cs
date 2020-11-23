@@ -1,10 +1,11 @@
-﻿using LCMClient.Auth;
-using LCMClient.DTOs;
+﻿using LCMClient.Features.Admin.DTOs;
 using LCMClient.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LCMClient.Features.Admin.Models;
+using LCMClient.Features.Shared;
 
 namespace LCMClient.Respository
 {

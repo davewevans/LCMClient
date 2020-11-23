@@ -8,13 +8,14 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using LCMClient.Respository;
-using LCMClient.Auth;
 using Microsoft.AspNetCore.Components.Authorization;
 using LCMClient.Helpers;
 using MudBlazor;
 using MudBlazor.Services;
 using MatBlazor;
 using Blazored.LocalStorage;
+using LCMClient.Features.Auth;
+using LCMClient.Features.Auth.Models;
 
 namespace LCMClient
 {
