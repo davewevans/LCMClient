@@ -91,27 +91,20 @@ using LCMClient.Shared;
 #nullable disable
 #nullable restore
 #line 12 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
-using LCMClient.Respository;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 13 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using MudBlazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+#line 13 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using MudBlazor.Dialog;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 15 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+#line 14 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using MatBlazor;
 
 #line default
@@ -144,7 +137,7 @@ using LCMClient.Pages.Playground;
        
     async Task OpenClodebuttonDialog()
     {
-        var Options = new DialogOptions() { CloseButton = true };
+        var Options = new MudBlazor.Dialog.DialogOptions() { CloseButton = true };
         var Parameters = new DialogParameters();
         Parameters.Add("Message", "This dialog has a close button that is set either globally or per dialog.");
         var userSelect = Dialog.Show<DialogoptionExample>("With close button", Parameters, Options);

@@ -1,0 +1,24 @@
+﻿<svg class="@_height @_width flex-no-shrink fill-current" version="1.1" x="0px" y="0px" viewBox="0 0 20.333 28.225" style="enable-background:new 0 0 20.333 27;" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4.333,22v4c0,0.553,0.447,1,1,1h3c0.553,0,1-0.447,1-1v-4h4v-0.624l-0.165-0.31c-0.376-0.394-0.648-0.886-0.766-1.437   l-3.069-5.755v-3.03l3,5.195V16c0-0.976,0.476-1.836,1.199-2.384c-0.119-0.353-0.199-0.724-0.199-1.116   c0-0.212,0.026-0.417,0.062-0.618L10.237,6.41C9.411,7.375,8.2,8,6.833,8c-1.426,0-2.684-0.68-3.51-1.718   C2.733,6.63,2.333,7.266,2.333,8v7c0,0.571,0.242,1.084,0.627,1.448L0,22H4.333z" fill="currentColor" />
+    <circle cx="6.833" cy="3.5" r="3.5" fill="currentColor" />
+    <path d="M16.833,16c-1.173,0-2.207-0.585-2.843-1.474c-0.401,0.366-0.657,0.888-0.657,1.474v2v1c0,0.738,0.404,1.376,1,1.723V26   c0,0.553,0.447,1,1,1h3c0.553,0,1-0.447,1-1v-5.277c0.596-0.347,1-0.984,1-1.723v-1v-2c0-0.586-0.256-1.107-0.657-1.474   C19.04,15.415,18.006,16,16.833,16z" fill="currentColor" />
+    <circle cx="16.833" cy="12.5" r="2.5" fill="currentColor" />
+</svg>
+
+
+@code {
+    [Parameter]
+    public int Width { get; set; } = 6;
+
+    [Parameter]
+    public int Height { get; set; } = 6;
+
+    private string _width = "w-6";
+    private string _height = "h-6";
+
+    protected override void OnInitialized()
+    {
+        _width = $"w-{Width}";
+        _height = $"h-{Height}";
+    }
+}

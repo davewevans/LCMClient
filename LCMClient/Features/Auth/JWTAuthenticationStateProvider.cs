@@ -1,4 +1,6 @@
-﻿using LCMClient.Respository;
+﻿using LCMClient.Features.Auth.Models;
+using LCMClient.Features.Shared.Repository;
+using LCMClient.Helpers;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
 using System;
@@ -7,10 +9,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Claims;
-using System.Threading.Tasks;
-using LCMClient.Helpers;
 using System.Text.Json;
-using LCMClient.Features.Auth.Models;
+using System.Threading.Tasks;
 
 namespace LCMClient.Features.Auth
 {

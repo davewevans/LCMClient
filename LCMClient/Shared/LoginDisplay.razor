@@ -6,11 +6,12 @@
 
 <AuthorizeView>
     <Authorized>
-        @context.User.Identity.Name
-        <button class="nav-link btn btn-link" @onclick="BeginSignOut">Log out</button>
+        <MudIcon Icon="@Icons.Material.Person" />
+        <span class="mr-6 ml-2">@context.User.Identity.Name</span>
+        <button class="text-gray-100" @onclick="BeginSignOut">Log out</button>
     </Authorized>
     <NotAuthorized>
-        <button class="nav-link btn btn-link" @onclick="Login">Log in</button>
+        <button class="text-gray-100" @onclick="Login">Log in</button>
     </NotAuthorized>
 </AuthorizeView>
 

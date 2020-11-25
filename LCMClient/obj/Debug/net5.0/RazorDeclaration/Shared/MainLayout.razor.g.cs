@@ -91,28 +91,35 @@ using LCMClient.Shared;
 #nullable disable
 #nullable restore
 #line 12 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
-using LCMClient.Respository;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 13 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using MudBlazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+#line 13 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using MudBlazor.Dialog;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 15 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+#line 14 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using MatBlazor;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Shared\MainLayout.razor"
+using LCMClient.Helpers;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Shared\MainLayout.razor"
+using MudBlazor.Theme.Defaults;
 
 #line default
 #line hidden
@@ -124,6 +131,49 @@ using MatBlazor;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 40 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Shared\MainLayout.razor"
+       
+
+    bool open = true;
+    bool clipped = false;
+
+    int counter = 0;
+
+    private void ToggleDrawer()
+    {
+        open = !open;
+    }
+
+    [CascadingParameter] protected Task<AuthenticationState> AuthState { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        var user = (await AuthState).User;
+        if (!user.Identity.IsAuthenticated)
+        {
+            navigationManager.NavigateTo("/login");
+        }
+    }
+
+
+    MudTheme CustomMudTheme = new MudTheme
+    {
+        Palette = new Palette()
+        {
+            Primary = Colors.Blue.Darken4,
+            Secondary = Colors.Orange.Darken1,
+            Tertiary = Colors.Blue.Accent1,
+        }
+    };
+
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime jsRuntime { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

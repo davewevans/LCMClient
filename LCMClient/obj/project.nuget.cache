@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7mQR30hxILTPw+Y7tk0XU3AuGoLvkH8MQ6zvhUd0FDdEe/OF7AGhAmYks4e4TF4tkQ3JULGX56wQSdKiSMG4fw==",
+  "dgSpecHash": "lEPes/pQRUDUM2e7MfH4ZFYliEenhJQjt/d33id/4uPfPMYXUIdo5QsG3BnclSfS3TId5RDkiz2tt0YAeKBwFw==",
   "success": true,
   "projectFilePath": "C:\\Users\\davew\\OneDrive\\Documents\\GitHub\\LCMClient\\LCMClient\\LCMClient.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\5.0.0\\microsoft.aspnetcore.components.webassembly.authentication.5.0.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.devserver\\5.0.0\\microsoft.aspnetcore.components.webassembly.devserver.5.0.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.aspnetcore.metadata\\5.0.0\\microsoft.aspnetcore.metadata.5.0.0.nupkg.sha512",
+    "C:\\Users\\davew\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.extensions.configuration.binder\\5.0.0\\microsoft.extensions.configuration.binder.5.0.0.nupkg.sha512",
@@ -33,7 +34,11 @@
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.jsinterop\\5.0.0\\microsoft.jsinterop.5.0.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.jsinterop.webassembly\\5.0.0\\microsoft.jsinterop.webassembly.5.0.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\mudblazor\\1.1.3\\mudblazor.1.1.3.nupkg.sha512",
+    "C:\\Users\\davew\\.nuget\\packages\\polly\\7.2.1\\polly.7.2.1.nupkg.sha512",
+    "C:\\Users\\davew\\.nuget\\packages\\polly.extensions.http\\3.0.0\\polly.extensions.http.3.0.0.nupkg.sha512",
+    "C:\\Users\\davew\\.nuget\\packages\\radzen.blazor\\2.17.10\\radzen.blazor.2.17.10.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\system.io.pipelines\\5.0.0\\system.io.pipelines.5.0.0.nupkg.sha512",
+    "C:\\Users\\davew\\.nuget\\packages\\system.linq.dynamic.core\\1.2.2\\system.linq.dynamic.core.1.2.2.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\system.net.http.json\\5.0.0\\system.net.http.json.5.0.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.netcore.app.runtime.browser-wasm\\5.0.0\\microsoft.netcore.app.runtime.browser-wasm.5.0.0.nupkg.sha512"
   ],

@@ -21,9 +21,31 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Helpers\HttpService.cs" />
+    <Compile Remove="Helpers\IHttpService.cs" />
+    <Compile Remove="Respository\AcademicRepository.cs" />
+    <Compile Remove="Respository\Contracts\IAcademicRepository.cs" />
+    <Compile Remove="Respository\Contracts\IGuardianRepository.cs" />
+    <Compile Remove="Respository\Contracts\INarrationRepository.cs" />
+    <Compile Remove="Respository\Contracts\IOrphanRepository.cs" />
+    <Compile Remove="Respository\Contracts\IOrphanSponsorRepository.cs" />
+    <Compile Remove="Respository\Contracts\IPDFRepository.cs" />
+    <Compile Remove="Respository\Contracts\IPictureRepository.cs" />
+    <Compile Remove="Respository\Contracts\ISponsorRepository.cs" />
+    <Compile Remove="Respository\GuardianRepository.cs" />
+    <Compile Remove="Respository\NarrationRepository.cs" />
+    <Compile Remove="Respository\OrphanRepository.cs" />
+    <Compile Remove="Respository\OrphanSponsorRepository.cs" />
+    <Compile Remove="Respository\PDFRepository.cs" />
+    <Compile Remove="Respository\PictureRepository.cs" />
+    <Compile Remove="Respository\SponsorRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="package-lock.json" />
     <Content Remove="package.json" />
     <Content Remove="Pages\Authentication.razor" />
+    <Content Remove="Pages\Index.razor" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +55,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.0" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="5.0.0" />
     <PackageReference Include="MudBlazor" Version="1.1.3" />
+    <PackageReference Include="Polly" Version="7.2.1" />
+    <PackageReference Include="Polly.Extensions.Http" Version="3.0.0" />
+    <PackageReference Include="Radzen.Blazor" Version="2.17.10" />
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
   </ItemGroup>
 
@@ -41,13 +66,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Auth\DTOs\" />
-    <Folder Include="Features\Guardians\" />
-    <Folder Include="Features\Dashboard\" />
-    <Folder Include="Features\Playground\" />
-    <Folder Include="Features\Sponsors\" />
-    <Folder Include="Features\Orphans\" />
+    <Folder Include="Features\Guardians\Models\" />
+    <Folder Include="Features\Orphans\Models\" />
+    <Folder Include="Contracts\" />
+    <Folder Include="Features\Sponsors\Models\" />
+    <Folder Include="Respository\Contracts\" />
     <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\svg\" />
   </ItemGroup>
 
 </Project>

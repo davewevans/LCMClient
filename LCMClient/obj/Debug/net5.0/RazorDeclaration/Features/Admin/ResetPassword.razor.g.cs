@@ -91,27 +91,20 @@ using LCMClient.Shared;
 #nullable disable
 #nullable restore
 #line 12 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
-using LCMClient.Respository;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 13 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using MudBlazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+#line 13 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using MudBlazor.Dialog;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 15 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+#line 14 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using MatBlazor;
 
 #line default
@@ -119,13 +112,20 @@ using MatBlazor;
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\ResetPassword.razor"
-using LCMClient.Features.Admin.DTOs;
+using LCMClient.Features.Admin.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\ResetPassword.razor"
+#line 4 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\ResetPassword.razor"
+using LCMClient.Features.Shared.Repository;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\ResetPassword.razor"
            [Authorize(Roles = "Admin")]
 
 #line default
@@ -140,15 +140,15 @@ using LCMClient.Features.Admin.DTOs;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 70 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\ResetPassword.razor"
+#line 71 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\ResetPassword.razor"
        
 
     [Parameter]
     public string UserId { get; set; }
 
-    private UserDTO user { get; set; }
+    private UserModel user { get; set; }
 
-    private PasswordResetDTO passwordResetDTO = new PasswordResetDTO();
+    private PasswordResetModel passwordResetDTO = new PasswordResetModel();
 
     protected override async Task OnInitializedAsync()
     {

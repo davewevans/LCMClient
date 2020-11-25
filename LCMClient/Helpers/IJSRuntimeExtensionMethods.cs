@@ -1,4 +1,5 @@
-﻿using Microsoft.JSInterop;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using System.Threading.Tasks;
 
 namespace LCMClient.Helpers
@@ -31,6 +32,21 @@ namespace LCMClient.Helpers
         public static async Task ConsoleLog(this IJSRuntime js, string message)
         {
             await js.InvokeVoidAsync("console.log", message);
+        }
+
+        public static async ValueTask FocusInput(this IJSRuntime js, string id)
+        {
+            await js.InvokeVoidAsync("focusInput", id);
+        }
+
+        public static async ValueTask ShowAlert(this IJSRuntime js, string message)
+        {
+            await js.InvokeVoidAsync("showAlert", message);
+        }
+
+        public static ValueTask FocusAsync(this IJSRuntime jsRuntime, ElementReference elementReference)
+        {
+            return jsRuntime.InvokeVoidAsync("BlazorFocusElement", elementReference);
         }
     }
 }

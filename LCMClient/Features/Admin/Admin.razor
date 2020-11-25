@@ -1,7 +1,7 @@
 ﻿@page "/admin"
 
 @using LCMClient.Features.Auth
-
+@using LCMClient.Features.Shared.Repository
 
 @inject IAccountsRepository accountsRepository
 @inject IUserRepository userRepository
@@ -10,20 +10,29 @@
 @inject IJSRuntime jsRuntime
 @attribute [Authorize(Roles = "Admin")]
 
-<h3 class="text-2xl mb-6">Administration</h3>
+<div class="m-8">
+    <div class="flex justify-between">
+        <div class="flex ml-6">
+            <div class="mr-2">
+                <AdminSVG Width="8" Height="8" />
+            </div>
+            <div><h3 class="text-2xl mb-6">Administration</h3></div>
+        </div>
+        <div class="mb-10 mr-10">
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       StartIcon="@Icons.Material.Add"
+                       @onclick="CreateNewUserClickHandler">
+                Create New User
+            </MudButton>
+        </div>
+    </div>
 
 
-<div class="flex justify-end mb-10 mr-10">
-    <MudButton Variant="Variant.Filled"
-               Color="Color.Primary"
-               StartIcon="@Icons.Material.Add"
-               @onclick="CreateNewUserClickHandler">
-        Create New User
-    </MudButton>
+
+    <IndexUsers />
 </div>
 
-
-<IndexUsers />
 
 
 @code {

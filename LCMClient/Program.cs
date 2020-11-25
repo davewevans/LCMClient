@@ -1,21 +1,19 @@
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using LCMClient.Respository;
-using Microsoft.AspNetCore.Components.Authorization;
-using LCMClient.Helpers;
-using MudBlazor;
-using MudBlazor.Services;
-using MatBlazor;
 using Blazored.LocalStorage;
 using LCMClient.Features.Auth;
 using LCMClient.Features.Auth.Models;
+using LCMClient.Features.Dashboard;
+using LCMClient.Features.Shared.Repository;
+using LCMClient.Services;
+using MatBlazor;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using MudBlazor;
+using MudBlazor.Services;
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace LCMClient
 {
@@ -49,6 +47,7 @@ namespace LCMClient
             services.AddScoped<IHttpService, HttpService>();
             services.AddScoped<IAccountsRepository, AccountsRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IDashboardRepository, DashboardRepository>();
 
             services.AddScoped<JWTAuthenticationStateProvider>();
             services.AddScoped<AuthenticationStateProvider, JWTAuthenticationStateProvider>(

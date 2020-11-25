@@ -2,8 +2,7 @@
 
 @using LCMClient.Features.Auth
 @using LCMClient.Features.Admin.Models
-@using LCMClient.Features.Admin.DTOs
-@using LCMClient.Helpers
+@using LCMClient.Features.Shared.Repository
 
 @inject IAccountsRepository accountsRepository
 @inject IUserRepository userRepository
@@ -12,13 +11,13 @@
 @inject IJSRuntime jsRuntime
 @attribute [Authorize(Roles = "Admin")]
 
-<div class="mb-16">
+<div class="mb-16 m-8">
     <EditForm Model="userInfo" OnValidSubmit="EditUserHandler">
         <DataAnnotationsValidator />
 
 
         <MudCard Class="my-mud-card-form">
-            <MudCardHeader Style="background-color:lightskyblue;">
+            <MudCardHeader Class="my-mud-card-header">
                 <CardHeaderContent>
                     <MudText Typo="Typo.h6">Edit User</MudText>
                 </CardHeaderContent>
@@ -76,8 +75,8 @@
 @code {
     [Parameter] public string UserId { get; set; }
 
-    private UserEdit userInfo = new UserEdit();
-    private UserDTO user = new UserDTO();
+    private UserEditModel userInfo = new UserEditModel();
+    private UserModel user = new UserModel();
     private List<string> roles = new List<string>();
 
     protected override async Task OnInitializedAsync()

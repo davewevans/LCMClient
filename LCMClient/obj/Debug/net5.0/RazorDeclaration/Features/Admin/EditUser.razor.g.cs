@@ -91,27 +91,20 @@ using LCMClient.Shared;
 #nullable disable
 #nullable restore
 #line 12 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
-using LCMClient.Respository;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 13 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using MudBlazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+#line 13 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using MudBlazor.Dialog;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 15 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+#line 14 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using MatBlazor;
 
 #line default
@@ -133,20 +126,13 @@ using LCMClient.Features.Admin.Models;
 #nullable disable
 #nullable restore
 #line 5 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\EditUser.razor"
-using LCMClient.Features.Admin.DTOs;
+using LCMClient.Features.Shared.Repository;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\EditUser.razor"
-using LCMClient.Helpers;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 13 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\EditUser.razor"
+#line 12 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\EditUser.razor"
            [Authorize(Roles = "Admin")]
 
 #line default
@@ -161,12 +147,12 @@ using LCMClient.Helpers;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 76 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\EditUser.razor"
+#line 75 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\EditUser.razor"
        
     [Parameter] public string UserId { get; set; }
 
-    private UserEdit userInfo = new UserEdit();
-    private UserDTO user = new UserDTO();
+    private UserEditModel userInfo = new UserEditModel();
+    private UserModel user = new UserModel();
     private List<string> roles = new List<string>();
 
     protected override async Task OnInitializedAsync()

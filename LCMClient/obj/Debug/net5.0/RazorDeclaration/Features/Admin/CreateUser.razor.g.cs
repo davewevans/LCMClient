@@ -91,27 +91,20 @@ using LCMClient.Shared;
 #nullable disable
 #nullable restore
 #line 12 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
-using LCMClient.Respository;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 13 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using MudBlazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+#line 13 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using MudBlazor.Dialog;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 15 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+#line 14 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using MatBlazor;
 
 #line default
@@ -132,7 +125,14 @@ using LCMClient.Features.Admin.Models;
 #line hidden
 #nullable disable
 #nullable restore
-#line 13 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\CreateUser.razor"
+#line 5 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\CreateUser.razor"
+using LCMClient.Features.Shared.Repository;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\CreateUser.razor"
            [Authorize(Roles = "Admin")]
 
 #line default
@@ -147,9 +147,9 @@ using LCMClient.Features.Admin.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 88 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\CreateUser.razor"
+#line 89 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\CreateUser.razor"
        
-    private UserCreation userInfo = new UserCreation();
+    private UserCreationModel userInfo = new UserCreationModel();
     private List<string> roles = new List<string>();
 
     private string response = "";

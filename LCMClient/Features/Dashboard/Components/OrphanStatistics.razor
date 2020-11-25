@@ -1,0 +1,79 @@
+﻿@using LCMClient.Features.Dashboard.Models
+
+
+@using Radzen.Blazor
+
+@inject NavigationManager navigationManager
+@inject IDashboardRepository dashboardRepository
+
+
+
+<MudPaper Elevation="3" Class="p-3">
+    <h1>Orphan Statistics</h1>
+    <div>
+        <RadzenChart>
+            <RadzenDonutSeries Data="@dataItmes" CategoryProperty="OrphanState" ValueProperty="Count">            
+                <TitleTemplate>
+                    <div class="rz-donut-content font-semibold">
+                        <div>Orphans</div>
+                    </div>
+                </TitleTemplate>
+            </RadzenDonutSeries>
+        </RadzenChart>
+    </div>
+</MudPaper>
+
+
+
+
+@code {
+
+    private class DataItem
+    {
+        public string OrphanState { get; set; }
+        public double Count { get; set; }
+    }
+
+    DataItem[] dataItmes = new DataItem[] { };
+
+    private OrphanStatisticsModel orphanStatistics = new OrphanStatisticsModel();
+
+    protected override async Task OnInitializedAsync()
+    {
+        orphanStatistics = await dashboardRepository.GetOrphanStatistics();
+
+        // TODO for dev only
+        orphanStatistics.UnknownCount = 24;
+        orphanStatistics.InactiveCount = 99;
+        orphanStatistics.ActiveCount = 234;
+
+        if (orphanStatistics != null)
+        {
+            SetDataItems();
+        }
+
+    }
+    private void SetDataItems()
+    {
+        dataItmes = new DataItem[] {
+        new DataItem
+        {
+            OrphanState = "Active",
+            Count = orphanStatistics.ActiveCount
+            },
+            new DataItem
+            {
+            OrphanState = "Inactive",
+            Count = orphanStatistics.InactiveCount
+            },
+              new DataItem
+            {
+            OrphanState = "Unknown",
+            Count = orphanStatistics.UnknownCount
+            },
+        };
+    }
+
+
+
+}

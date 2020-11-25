@@ -210,13 +210,10 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\LC
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Pages\Counter.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Pages\FetchData.razor.g.cs
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Pages\Foo.razor.g.cs
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Shared\LoginDisplay.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Shared\NavMenu.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Shared\RedirectToLogin.razor.g.cs
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\LCMClient.RazorComponent.output.cache
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\LCMClient.dll
@@ -226,13 +223,10 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\LC
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\App.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Pages\Counter.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Pages\FetchData.razor.g.cs
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Pages\Foo.razor.g.cs
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Shared\LoginDisplay.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Shared\NavMenu.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Shared\RedirectToLogin.razor.g.cs
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Shared\SurveyPrompt.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\build-gz\3Bb9uJXF.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\build-gz\YeDVw9ph.gz
@@ -660,13 +654,11 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMCLient\obj\Debug\net5.0\Ra
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Pages\Playground\DialogoptionExample.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Admin\Admin.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Admin\CreateUser.razor.g.cs
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Admin\DeleteUser.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Admin\EditUser.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Admin\IndexUsers.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Admin\ResetPassword.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Admin\Admin.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Admin\CreateUser.razor.g.cs
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Admin\DeleteUser.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Admin\EditUser.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Admin\IndexUsers.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Admin\ResetPassword.razor.g.cs
@@ -678,3 +670,43 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Ra
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Shared\ConfirmDeleteDialog.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Shared\InputPassword.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Shared\InputPassword.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\wwwroot\_framework\Polly.dll.gz
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\wwwroot\_framework\Polly.Extensions.Http.dll.gz
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\wwwroot\_framework\Polly.dll
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\wwwroot\_framework\Polly.Extensions.Http.dll
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\build-gz\vKZ7xkxB.gz
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\build-gz\skt6rUdm.gz
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Dashboard\Components\Dashboard.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Dashboard\Components\NarrationStatistics.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Dashboard\Components\OrphanStatistics.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Dashboard\Components\TotalCounts.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Dashboard\Components\Dashboard.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Dashboard\Components\NarrationStatistics.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Dashboard\Components\OrphanStatistics.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Dashboard\Components\TotalCounts.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Shared\Header.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout - Copy.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Shared\NavMenu - Copy.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Shared\Header.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Shared\MainLayout - Copy.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Shared\NavMenu - Copy.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Shared\LoremIpsum.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Shared\LoremIpsum.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Shared\SponsorSVG.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Shared\SponsorSVG.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Shared\AdminSVG.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Shared\DashboardSVG.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Shared\GuardianSVG.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Shared\OrphanSVG.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Shared\AdminSVG.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Shared\DashboardSVG.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Shared\GuardianSVG.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Shared\OrphanSVG.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Playground\Radzenplay1.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Playground\Radzenplay1.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\wwwroot\_framework\Radzen.Blazor.dll.gz
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\wwwroot\_framework\System.Linq.Dynamic.Core.dll.gz
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\wwwroot\_framework\Radzen.Blazor.dll
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\wwwroot\_framework\System.Linq.Dynamic.Core.dll
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\build-gz\GJ23eUPz.gz
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\build-gz\1eUm8t1b.gz

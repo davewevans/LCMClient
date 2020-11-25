@@ -91,27 +91,20 @@ using LCMClient.Shared;
 #nullable disable
 #nullable restore
 #line 12 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
-using LCMClient.Respository;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 13 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using MudBlazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+#line 13 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using MudBlazor.Dialog;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 15 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+#line 14 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using MatBlazor;
 
 #line default
@@ -126,27 +119,34 @@ using LCMClient.Features.Auth;
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\IndexUsers.razor"
-using LCMClient.Features.Admin.DTOs;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 3 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\IndexUsers.razor"
 using LCMClient.Features.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\IndexUsers.razor"
+#line 3 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\IndexUsers.razor"
 using LCMClient.Helpers;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\IndexUsers.razor"
+#line 4 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\IndexUsers.razor"
+using LCMClient.Features.Shared.Repository;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\IndexUsers.razor"
+using LCMClient.Features.Admin.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\IndexUsers.razor"
            [Authorize(Roles = "Admin")]
 
 #line default
@@ -160,9 +160,9 @@ using LCMClient.Helpers;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 105 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\IndexUsers.razor"
+#line 106 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\IndexUsers.razor"
        
-    private PaginatedResponse<List<UserDTO>> users = new PaginatedResponse<List<UserDTO>>();
+    private PaginatedResponse<List<UserModel>> users = new PaginatedResponse<List<UserModel>>();
     private bool isLoading = true;
 
     protected override async Task OnInitializedAsync()
@@ -193,7 +193,7 @@ using LCMClient.Helpers;
 
     private async Task<bool> ShowConfirmDeleteDialog()
     {
-        var Options = new DialogOptions() { CloseButton = true };
+        var Options = new MudBlazor.Dialog.DialogOptions() { CloseButton = true };
         var Parameters = new DialogParameters();
         Parameters.Add("Message", "Are you sure you want to delete this user?");
         var userSelect = Dialog.Show<ConfirmDeleteDialog>("Confirm Delete", Parameters, Options);

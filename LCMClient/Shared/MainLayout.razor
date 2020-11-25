@@ -1,19 +1,75 @@
-﻿@inherits LayoutComponentBase
+﻿
+@using LCMClient.Helpers
+@using MudBlazor.Theme.Defaults
 
-    <MudThemeProvider />
-    <MudDialogProvider />
-    <MudSnackbarProvider />
+@inherits LayoutComponentBase
+@inject NavigationManager navigationManager
+@inject IJSRuntime jsRuntime
 
-    <div class="sidebar">
+<MudThemeProvider Theme="CustomMudTheme" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="1" Color="Color.Primary">
+        <MudIconButton Icon="@Icons.Material.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer" />
+        <MudAppBarSpacer />
+        <LoginDisplay />
+    </MudAppBar>
+    <MudDrawer Open="@open" Clipped="@clipped" Elevation="2" Style="background-color:#ffffff;" >
+        <MudDrawerHeader>
+            <!-- Logo top drawer nav-->
+            <div class="flex items-center justify-center mt-2">
+                <div class="flex items-center bg-white">
+                    <img class="" src="images/LMCSMS_Icon_60x60_transparent.png" width="60" height="60" alt="Life for Children Ministry" />
+                    <span class="text-blue-800 text-xl font-semibold mr-2">LCM SMS</span>
+                </div>
+            </div>
+            <!-- / -->
+        </MudDrawerHeader>
         <NavMenu />
-    </div>
-
-    <div class="main">
-        <div class="top-row px-4 auth">
-            <LoginDisplay />
-        </div>
-
-        <div class="content px-4">
+    </MudDrawer>
+    <MudMainContent>
+        <MudContainer Class="pl-0 pr-0">
             @Body
-        </div>
-    </div>
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+
+@code {
+
+    bool open = true;
+    bool clipped = false;
+
+    int counter = 0;
+
+    private void ToggleDrawer()
+    {
+        open = !open;
+    }
+
+    [CascadingParameter] protected Task<AuthenticationState> AuthState { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        var user = (await AuthState).User;
+        if (!user.Identity.IsAuthenticated)
+        {
+            navigationManager.NavigateTo("/login");
+        }
+    }
+
+
+    MudTheme CustomMudTheme = new MudTheme
+    {
+        Palette = new Palette()
+        {
+            Primary = Colors.Blue.Darken4,
+            Secondary = Colors.Orange.Darken1,
+            Tertiary = Colors.Blue.Accent1,
+        }
+    };
+
+}
