@@ -3,5 +3,6 @@
   <ContentRoot BasePath="_content/Microsoft.AspNetCore.Components.WebAssembly.Authentication" Path="C:\Users\davew\.nuget\packages\microsoft.aspnetcore.components.webassembly.authentication\5.0.0\build\..\staticwebassets\" />
   <ContentRoot BasePath="_content/MudBlazor" Path="C:\Users\davew\.nuget\packages\mudblazor\1.1.3\build\..\staticwebassets\" />
   <ContentRoot BasePath="_content/Radzen.Blazor" Path="C:\Users\davew\.nuget\packages\radzen.blazor\2.17.10\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor" Path="C:\Users\davew\.nuget\packages\syncfusion.blazor\18.3.0.52\build\..\staticwebassets\" />
   <ContentRoot BasePath="/" Path="C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\wwwroot\" />
 </StaticWebAssets>

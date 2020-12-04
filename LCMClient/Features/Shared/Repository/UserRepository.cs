@@ -1,4 +1,5 @@
 ﻿using LCMClient.Features.Admin.Models;
+using LCMClient.Features.Shared.Models;
 using LCMClient.Helpers;
 using LCMClient.Services;
 using System;
@@ -10,18 +11,18 @@ namespace LCMClient.Features.Shared.Repository
     public class UserRepository : IUserRepository
     {
         private readonly IHttpService httpService;
-        private readonly string controller = "users";
+        private const string Controller = "users";
         private readonly string url = "";
 
         public UserRepository(IHttpService httpService)
         {
             this.httpService = httpService;
-            this.url = $"{ httpService.BaseUrl }{ controller }";
+            this.url = $"{ httpService.BaseUrl }{ Controller }";
         }
 
-        public async Task<PaginatedResponse<List<UserModel>>> GetUsers(PaginationDTO paginationDTO)
+        public async Task<PaginatedResponse<List<UserModel>>> GetUsers(PaginationModel pagination)
         {
-            return await httpService.GetHelper<List<UserModel>>(url, paginationDTO);
+            return await httpService.GetHelper<List<UserModel>>(url, pagination);
         }
 
 

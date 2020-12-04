@@ -9,13 +9,13 @@ namespace LCMClient.Features.Shared.Repository
     public class AccountsRepository : IAccountsRepository
     {
         private readonly IHttpService httpService;
-        private readonly string controller = "accounts";
+        private const string Controller = "accounts";
         private readonly string url = "";
 
         public AccountsRepository(IHttpService httpService)
         {
             this.httpService = httpService;
-            this.url = $"{ httpService.BaseUrl }{ controller }";
+            this.url = $"{ httpService.BaseUrl }{ Controller }";
         }
 
         public async Task<RegisterResponseWrapper> Register(UserCreationModel userInfo)

@@ -2,6 +2,7 @@ using Blazored.LocalStorage;
 using LCMClient.Features.Auth;
 using LCMClient.Features.Auth.Models;
 using LCMClient.Features.Dashboard;
+using LCMClient.Features.Orphans.Repository;
 using LCMClient.Features.Shared.Repository;
 using LCMClient.Services;
 using MatBlazor;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MudBlazor;
 using MudBlazor.Services;
+using Syncfusion.Blazor;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -20,8 +22,14 @@ namespace LCMClient
     public class Program
     {
         public static async Task Main(string[] args)
-        {
+        {            
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
+
+            // Syncfusion -- register community service license
+            Syncfusion.Licensing.SyncfusionLicenseProvider
+                .RegisterLicense(builder.Configuration["SyncfusionLicense"]);
+
+
             builder.RootComponents.Add<App>("app");
             
             builder.Services.AddScoped(sp => new HttpClient 
@@ -47,7 +55,10 @@ namespace LCMClient
             services.AddScoped<IHttpService, HttpService>();
             services.AddScoped<IAccountsRepository, AccountsRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IOrphanRepository, OrphanRepository>();
             services.AddScoped<IDashboardRepository, DashboardRepository>();
+            services.AddScoped<IPDFRepository, PDFRepository>();
+            services.AddScoped<IPictureRepository, PictureRepository>();
 
             services.AddScoped<JWTAuthenticationStateProvider>();
             services.AddScoped<AuthenticationStateProvider, JWTAuthenticationStateProvider>(
@@ -59,12 +70,13 @@ namespace LCMClient
 
             services.AddScoped<TokenRenewer>();
 
+            // Configure MudBlazor
             services.AddMudBlazorDialog();
             services.AddMudBlazorSnackbar();
             services.AddMudBlazorResizeListener();
 
+            // Configure MatBlazor
             services.AddMatBlazor();
-
             services.AddMatToaster(config =>
             {
                 config.Position = MatToastPosition.TopCenter;
@@ -74,6 +86,9 @@ namespace LCMClient
                 config.MaximumOpacity = 95;
                 config.VisibleStateDuration = 3000;
             });
+
+            // Syncfusion
+            services.AddSyncfusionBlazor();
         }
     }
 }

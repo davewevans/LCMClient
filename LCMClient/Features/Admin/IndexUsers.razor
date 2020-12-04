@@ -2,6 +2,7 @@
 @using LCMClient.Features.Shared
 @using LCMClient.Helpers
 @using LCMClient.Features.Shared.Repository
+@using LCMClient.Features.Shared.Models
 @using LCMClient.Features.Admin.Models
 
 @inject IAccountsRepository accountsRepository
@@ -14,11 +15,13 @@
 
 @attribute [Authorize(Roles = "Admin")]
 
-
-<div class="flex justify-center align-content-center h-full">
-    <MudProgressCircular Color="Color.Primary"
-                         Indeterminate="@isLoading" />
-</div>
+@if (isLoading)
+{
+    <div class="flex justify-center align-content-center h-full">
+            <MudProgressCircular Color="Color.Primary"
+                                 Indeterminate="@isLoading" />
+        </div>
+}
 
 
 @if (users != null && users.Response != null && users?.Response?.Count != 0 && !isLoading)
@@ -109,7 +112,7 @@ else if (users?.Response?.Count == 0)
 
     protected override async Task OnInitializedAsync()
     {
-        var pagination = new PaginationDTO { Page = 1, RecordsPerPage = 50 };
+        var pagination = new PaginationModel { Page = 1, RecordsPerPage = 50 };
         users = await userRepository.GetUsers(pagination);
 
         // await Task.Delay(3000);

@@ -1,0 +1,43 @@
+﻿@page "/guardians"
+
+@attribute [Authorize]
+
+@inject NavigationManager navigationManager
+@inject IJSRuntime jsRuntime
+@inject IDialogService Dialog
+@inject IMatToaster Toaster
+
+<div class="m-10">
+    <div class="flex justify-between mb-4">
+        <div class="flex items-center mb-4">
+            <div class="mr-5 text-blue-800">
+                <GuardianSVG Width="10" Height="10" />
+            </div>
+            <div>
+                <h3 class="text-blue-800 font-semibold text-4xl">Guardians</h3>
+            </div>
+
+        </div>
+        <div class="mr-10">
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       StartIcon="@Icons.Material.Add"
+                       @onclick="CreateNewGuardianEventHandler">
+                Create New Guardian
+            </MudButton>
+        </div>
+    </div>
+    <GuardiansDataGrid />
+</div>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+
+    }
+
+    private void CreateNewGuardianEventHandler()
+    {
+        // navigationManager.NavigateTo("/createNewGuardian");
+    }
+}

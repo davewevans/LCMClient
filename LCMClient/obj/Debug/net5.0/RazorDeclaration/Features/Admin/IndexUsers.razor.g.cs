@@ -111,6 +111,48 @@ using MatBlazor;
 #line hidden
 #nullable disable
 #nullable restore
+#line 15 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+using Syncfusion.Blazor;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 16 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+using Syncfusion.Blazor.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 17 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+using Syncfusion.Blazor.Grids;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 18 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+using Syncfusion.Blazor.Buttons;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 19 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+using Syncfusion.Blazor.DropDowns;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 20 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+using Syncfusion.Blazor.Navigations;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\IndexUsers.razor"
 using LCMClient.Features.Auth;
 
@@ -140,13 +182,20 @@ using LCMClient.Features.Shared.Repository;
 #nullable disable
 #nullable restore
 #line 5 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\IndexUsers.razor"
+using LCMClient.Features.Shared.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\IndexUsers.razor"
 using LCMClient.Features.Admin.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 15 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\IndexUsers.razor"
+#line 16 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\IndexUsers.razor"
            [Authorize(Roles = "Admin")]
 
 #line default
@@ -160,14 +209,14 @@ using LCMClient.Features.Admin.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 106 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\IndexUsers.razor"
+#line 109 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\IndexUsers.razor"
        
     private PaginatedResponse<List<UserModel>> users = new PaginatedResponse<List<UserModel>>();
     private bool isLoading = true;
 
     protected override async Task OnInitializedAsync()
     {
-        var pagination = new PaginationDTO { Page = 1, RecordsPerPage = 50 };
+        var pagination = new PaginationModel { Page = 1, RecordsPerPage = 50 };
         users = await userRepository.GetUsers(pagination);
 
         // await Task.Delay(3000);

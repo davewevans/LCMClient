@@ -1,0 +1,49 @@
+﻿@page "/orphans"
+
+@attribute [Authorize]
+
+@inject NavigationManager navigationManager
+@inject IJSRuntime jsRuntime
+@inject IDialogService Dialog
+@inject IMatToaster Toaster
+
+
+<div class="m-10">
+    <div class="flex justify-between mb-4">
+        <div class="flex items-center mb-4">
+            <div class="mr-5 text-blue-800">
+                <OrphanSVG Width="10" Height="10" />
+            </div>
+            <div>
+                <h3 class="text-blue-800 font-semibold text-4xl">Orphans</h3>
+            </div>
+
+        </div>
+        <div class="mr-10">
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       StartIcon="@Icons.Material.Add"
+                       @onclick="CreateNewOrphanEventHandler">
+                Create New Orphan
+            </MudButton>
+        </div>
+    </div>
+    <OrphansDataGrid />
+</div>
+
+
+
+
+@code {   
+
+    protected override async Task OnInitializedAsync()
+    {
+        // orphans = await orphanRepository.GetAllOrphansAsync();
+    }
+
+    private void CreateNewOrphanEventHandler()
+    {
+        // navigationManager.NavigateTo("/createNewOrphan");
+    }
+
+}

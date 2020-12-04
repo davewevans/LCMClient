@@ -1,4 +1,4 @@
-﻿using LCMClient.Features.Shared;
+﻿using LCMClient.Features.Shared.Models;
 using LCMClient.Services;
 using System;
 using System.Linq;
@@ -19,7 +19,7 @@ namespace LCMClient.Helpers
         }
 
         public static async Task<PaginatedResponse<T>> GetHelper<T>(this IHttpService httpService, string url,
-            PaginationDTO paginationDTO)
+            PaginationModel paginationDTO)
         {
             string newURL = "";
             if (url.Contains("?"))

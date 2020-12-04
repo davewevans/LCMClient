@@ -8,18 +8,18 @@ namespace LCMClient.Features.Dashboard
     public class DashboardRepository : IDashboardRepository
     {
         private readonly IHttpService httpService;
-        private const string controller = "dashboard";
+        private const string Controller = "dashboard";
         private readonly string url = "";
 
         public DashboardRepository(IHttpService httpService)
         {
             this.httpService = httpService;
-            this.url = $"{ httpService.BaseUrl }{ controller }";
+            this.url = $"{ httpService.BaseUrl }{ Controller }";
         }
         
         public async Task<TotalCountsModel> GetTotalCounts()
         {
-            string url = $"{ httpService.BaseUrl }{ controller }/totalCounts";
+            string url = $"{ httpService.BaseUrl }{ Controller }/totalCounts";
             var response = await httpService.Get<TotalCountsModel>(url);
             if (!response.Success)
             {
@@ -30,7 +30,7 @@ namespace LCMClient.Features.Dashboard
 
         public async Task<OrphanStatisticsModel> GetOrphanStatistics()
         {
-            string url = $"{ httpService.BaseUrl }{ controller }/orphanStats";
+            string url = $"{ httpService.BaseUrl }{ Controller }/orphanStats";
             var response = await httpService.Get<OrphanStatisticsModel>(url);
             if (!response.Success)
             {
@@ -41,7 +41,7 @@ namespace LCMClient.Features.Dashboard
         
         public async Task<NarrationStatisticsModel> GetNarrationStatistics()
         {
-            string url = $"{ httpService.BaseUrl }{ controller }/narrationStats";
+            string url = $"{ httpService.BaseUrl }{ Controller }/narrationStats";
             var response = await httpService.Get<NarrationStatisticsModel>(url);
             if (!response.Success)
             {

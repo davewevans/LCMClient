@@ -3,6 +3,7 @@
   <PropertyGroup>
 	 <TargetFramework>net5.0</TargetFramework>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+    <UserSecretsId>b6a525eb-33b8-4afd-9784-f952601d2c52</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,17 +28,11 @@
     <Compile Remove="Respository\Contracts\IAcademicRepository.cs" />
     <Compile Remove="Respository\Contracts\IGuardianRepository.cs" />
     <Compile Remove="Respository\Contracts\INarrationRepository.cs" />
-    <Compile Remove="Respository\Contracts\IOrphanRepository.cs" />
     <Compile Remove="Respository\Contracts\IOrphanSponsorRepository.cs" />
-    <Compile Remove="Respository\Contracts\IPDFRepository.cs" />
-    <Compile Remove="Respository\Contracts\IPictureRepository.cs" />
     <Compile Remove="Respository\Contracts\ISponsorRepository.cs" />
     <Compile Remove="Respository\GuardianRepository.cs" />
     <Compile Remove="Respository\NarrationRepository.cs" />
-    <Compile Remove="Respository\OrphanRepository.cs" />
     <Compile Remove="Respository\OrphanSponsorRepository.cs" />
-    <Compile Remove="Respository\PDFRepository.cs" />
-    <Compile Remove="Respository\PictureRepository.cs" />
     <Compile Remove="Respository\SponsorRepository.cs" />
   </ItemGroup>
 
@@ -58,6 +53,7 @@
     <PackageReference Include="Polly" Version="7.2.1" />
     <PackageReference Include="Polly.Extensions.Http" Version="3.0.0" />
     <PackageReference Include="Radzen.Blazor" Version="2.17.10" />
+    <PackageReference Include="Syncfusion.Blazor" Version="18.3.0.52" />
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
   </ItemGroup>
 
@@ -66,10 +62,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Guardians\Models\" />
-    <Folder Include="Features\Orphans\Models\" />
     <Folder Include="Contracts\" />
-    <Folder Include="Features\Sponsors\Models\" />
     <Folder Include="Respository\Contracts\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />
