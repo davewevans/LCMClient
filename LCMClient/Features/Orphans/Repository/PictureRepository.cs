@@ -1,7 +1,9 @@
 ﻿using LCMClient.Features.Orphans.Models;
+using LCMClient.Features.Orphans.Repository.Contracts;
 using LCMClient.Services;
 using System.IO;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -24,32 +26,33 @@ namespace LCMClient.Features.Orphans.Repository
         }
 
         public async Task<string> UploadImageAsync(PictureCreationModel picCreation, byte[] fileBytes)
-        {        
-            string url = $"{ httpService.BaseUrl }/{ Controller }";
-
+        {   
             await using MemoryStream fileStream = new MemoryStream(fileBytes);
 
             // Create the content
             var content = new MultipartFormDataContent();
-            content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("form-data");
+            content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data");
 
-            var jsonData = JsonSerializer.Serialize<PictureCreationModel>(picCreation, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            content.Add(new StringContent(jsonData, Encoding.UTF8, "application/json"));
-            content.Add(new StreamContent(fileStream, (int)fileStream.Length), "file", picCreation.PictureFileName);
-            
-            //
-            // TODO use http service instead
-            // not working for now; need to figure out why
-            //
-            var response = await httpClient.PostAsync(url, content);
-            // var response = await httpService.Post(url, content);
-            
-            if (!response.IsSuccessStatusCode)
+            var fileStreamContent = new StreamContent(fileStream, (int)fileStream.Length);
+
+            // Set the content type
+            var headerValueContentType = new MediaTypeHeaderValue(picCreation.ContentType);           
+            fileStreamContent.Headers.ContentType = headerValueContentType;
+
+            content.Add(new StringContent(picCreation.Caption ?? string.Empty), "Caption");
+            content.Add(new StringContent(picCreation.OrphanID.ToString()), "OrphanID");
+            content.Add(fileStreamContent, "file", picCreation.PictureFileName);
+
+            string apiActionUrl = picCreation.IsProfilePic ? $"{ url }/uploadProfilePicture" : $"{ url }/uploadPicture";
+
+            var response = await httpService.PostForm(apiActionUrl, content);
+
+            if (!response.Success)
             {
-                return null;
+                // TODO throws 404 exception in browser
+                //throw new ApplicationException(await response.GetBody());
             }
-
-            return await response.Content.ReadAsStringAsync();
+            return await response.HttpResponseMessage.Content.ReadAsStringAsync();
         }
     }
 }

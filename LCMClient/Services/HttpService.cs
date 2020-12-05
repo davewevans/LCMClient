@@ -59,7 +59,7 @@ namespace LCMClient.Services
             return new HttpResponseWrapper<object>(null, response.IsSuccessStatusCode, response);
         }
         
-        public async Task<HttpResponseWrapper<object>> Post<T>(string url, MultipartFormDataContent content)
+        public async Task<HttpResponseWrapper<object>> PostForm(string url, MultipartFormDataContent content)
         {
             var response = await httpClient.PostAsync(url, content);
             return new HttpResponseWrapper<object>(null, response.IsSuccessStatusCode, response);

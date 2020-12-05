@@ -24,19 +24,10 @@
   <ItemGroup>
     <Compile Remove="Helpers\HttpService.cs" />
     <Compile Remove="Helpers\IHttpService.cs" />
-    <Compile Remove="Respository\AcademicRepository.cs" />
-    <Compile Remove="Respository\Contracts\IAcademicRepository.cs" />
-    <Compile Remove="Respository\Contracts\IGuardianRepository.cs" />
-    <Compile Remove="Respository\Contracts\INarrationRepository.cs" />
-    <Compile Remove="Respository\Contracts\IOrphanSponsorRepository.cs" />
-    <Compile Remove="Respository\Contracts\ISponsorRepository.cs" />
-    <Compile Remove="Respository\GuardianRepository.cs" />
-    <Compile Remove="Respository\NarrationRepository.cs" />
-    <Compile Remove="Respository\OrphanSponsorRepository.cs" />
-    <Compile Remove="Respository\SponsorRepository.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Features\Orphans\Components\OrphanDataAdaptor.razor" />
     <Content Remove="package-lock.json" />
     <Content Remove="package.json" />
     <Content Remove="Pages\Authentication.razor" />
@@ -55,6 +46,7 @@
     <PackageReference Include="Radzen.Blazor" Version="2.17.10" />
     <PackageReference Include="Syncfusion.Blazor" Version="18.3.0.52" />
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+    <PackageReference Include="Tewr.Blazor.FileReader" Version="2.1.0.20274" />
   </ItemGroup>
 
   <ItemGroup>
@@ -63,7 +55,6 @@
 
   <ItemGroup>
     <Folder Include="Contracts\" />
-    <Folder Include="Respository\Contracts\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\svg\" />

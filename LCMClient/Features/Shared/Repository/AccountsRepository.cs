@@ -1,5 +1,6 @@
 ﻿using LCMClient.Features.Admin.Models;
 using LCMClient.Features.Auth.Models;
+using LCMClient.Features.Shared.Repository.Contracts;
 using LCMClient.Services;
 using System;
 using System.Threading.Tasks;

@@ -154,7 +154,7 @@ using Syncfusion.Blazor.Navigations;
 #nullable disable
 #nullable restore
 #line 1 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardiansDataGrid.razor"
-using LCMClient.Features.Guardians.Models;
+using LCMClient.Features.Shared.Models;
 
 #line default
 #line hidden

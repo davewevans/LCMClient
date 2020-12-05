@@ -4,7 +4,7 @@
     {
         public string PictureFileName { get; set; }
 
-        public bool SetAsProfilePic { get; set; }
+        public bool IsProfilePic { get; set; }
 
         public string Caption { get; set; }
 

@@ -154,7 +154,7 @@ using Syncfusion.Blazor.Navigations;
 #nullable disable
 #nullable restore
 #line 1 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphansDataGrid.razor"
-using LCMClient.Features.Orphans.Repository;
+using LCMClient.Features.Orphans.Repository.Contracts;
 
 #line default
 #line hidden
@@ -180,9 +180,8 @@ using LCMClient.Features.Orphans.Models;
     private SfGrid<OrphanModel> OrphanDataGrid = new SfGrid<OrphanModel>();
 
     public static string searchTerm = "";
-    public Query Qry = new Query();
 
-    private bool gotData = false;
+    public Query Qry = new Query();
 
     public List<object> ToolbarItems = new List<object> { "ExcelExport", "PdfExport", "Search" };
 
@@ -192,13 +191,10 @@ using LCMClient.Features.Orphans.Models;
 
     private string ProfileBtnContent = "View/Edit";
 
-    private void Navigate(int id)
+    private void NavigateToDetails(int id)
     {
-        // navigationManager.NavigateTo($"/orphandetails/{ id }");
-
-        Console.WriteLine($"orphan id selected: {id}");
+        navigationManager.NavigateTo($"/orphandetails/{ id }");
     }
-
 
     public class StatusOption
     {
@@ -238,7 +234,7 @@ using LCMClient.Features.Orphans.Models;
         }
     }
 
-    public async Task ActionBeginHandler(ActionEventArgs<OrphanModel> args) 
+    public async Task ActionBeginHandler(ActionEventArgs<OrphanModel> args)
     {
         // Add to query string parameters for search and sorting
         if (string.IsNullOrWhiteSpace(args.SearchString)) await OrphanDataGrid.Search("");
@@ -248,16 +244,12 @@ using LCMClient.Features.Orphans.Models;
             Qry.AddParams("ColumnName", args.ColumnName);
 
         Qry.AddParams("SortDirection", args.Direction);
-
-        // Console.WriteLine($"search: { args. }");
-
-
-
     }
 
     public void RecordClickHandler(RecordClickEventArgs<OrphanModel> args)
     {
         // nav to details view 
+        NavigateToDetails(args.RowData.OrphanID);
     }
 
     public void Load(object args)

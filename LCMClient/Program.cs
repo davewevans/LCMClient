@@ -3,6 +3,8 @@ using LCMClient.Features.Auth;
 using LCMClient.Features.Auth.Models;
 using LCMClient.Features.Dashboard;
 using LCMClient.Features.Orphans.Repository;
+using LCMClient.Features.Orphans.Repository.Contracts;
+using LCMClient.Features.Shared.Repository.Contracts;
 using LCMClient.Features.Shared.Repository;
 using LCMClient.Services;
 using MatBlazor;
@@ -16,6 +18,8 @@ using Syncfusion.Blazor;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using LCMClient.Repository;
+using Tewr.Blazor.FileReader;
 
 namespace LCMClient
 {
@@ -59,6 +63,11 @@ namespace LCMClient
             services.AddScoped<IDashboardRepository, DashboardRepository>();
             services.AddScoped<IPDFRepository, PDFRepository>();
             services.AddScoped<IPictureRepository, PictureRepository>();
+            services.AddScoped<IAcademicRepository, AcademicRepository>();
+            services.AddScoped<IGuardianRepository, GuardianRepository>();
+            services.AddScoped<IOrphanSponsorRepository, OrphanSponsorRepository>();
+            services.AddScoped<INarrationRepository, NarrationRepository>();
+
 
             services.AddScoped<JWTAuthenticationStateProvider>();
             services.AddScoped<AuthenticationStateProvider, JWTAuthenticationStateProvider>(
@@ -89,6 +98,9 @@ namespace LCMClient
 
             // Syncfusion
             services.AddSyncfusionBlazor();
+
+            // Terp file reader
+            services.AddFileReaderService(o => o.UseWasmSharedBuffer = true);
         }
     }
 }

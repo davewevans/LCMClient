@@ -175,7 +175,7 @@ using LCMClient.Helpers;
 #nullable disable
 #nullable restore
 #line 4 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\IndexUsers.razor"
-using LCMClient.Features.Shared.Repository;
+using LCMClient.Features.Shared.Repository.Contracts;
 
 #line default
 #line hidden

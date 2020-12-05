@@ -1,4 +1,4 @@
-﻿@using LCMClient.Features.Sponsors.Models
+﻿@using LCMClient.Features.Shared.Models
 
 <SfGrid @ref="SponsorDataGrid"
         TValue="SponsorModel"
@@ -8,6 +8,7 @@
         Query="@Qry"
         Toolbar="@ToolbarItems"
         AllowSelection="true"
+
         AllowReordering="true"
         AllowResizing="true"
         AllowTextWrap="true"

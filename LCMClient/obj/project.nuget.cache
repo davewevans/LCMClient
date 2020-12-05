@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "odrjapqyIhqH78sUgc7Gl2Oi2bQpEJuPoEp/vlONpUWEiuJVhqmVJS4yj9dLXT3C4avW46rkyeV08RgwiHA/SA==",
+  "dgSpecHash": "ZDc7YShdFUalFLBrAeRAWQ8zfyyVEj3BZg2zofwf/fflfwuQEQ7H7qXOW4D1e/XCa8GMcycGZnsvVzstSYX+FA==",
   "success": true,
   "projectFilePath": "C:\\Users\\davew\\OneDrive\\Documents\\GitHub\\LCMClient\\LCMClient\\LCMClient.csproj",
   "expectedPackageFiles": [
@@ -20,6 +20,7 @@
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.aspnetcore.metadata\\5.0.0\\microsoft.aspnetcore.metadata.5.0.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
+    "C:\\Users\\davew\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
@@ -55,6 +56,7 @@
     "C:\\Users\\davew\\.nuget\\packages\\system.linq.dynamic.core\\1.2.2\\system.linq.dynamic.core.1.2.2.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\system.net.http.json\\5.0.0\\system.net.http.json.5.0.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
+    "C:\\Users\\davew\\.nuget\\packages\\tewr.blazor.filereader\\2.1.0.20274\\tewr.blazor.filereader.2.1.0.20274.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.netcore.app.runtime.browser-wasm\\5.0.0\\microsoft.netcore.app.runtime.browser-wasm.5.0.0.nupkg.sha512"
   ],
   "logs": []

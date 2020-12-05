@@ -1,5 +1,5 @@
 ﻿using LCMClient.Features.Auth.Models;
-using LCMClient.Features.Shared.Repository;
+using LCMClient.Features.Shared.Repository.Contracts;
 using LCMClient.Helpers;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;

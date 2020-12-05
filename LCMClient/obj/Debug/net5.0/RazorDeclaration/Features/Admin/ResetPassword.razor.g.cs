@@ -161,7 +161,7 @@ using LCMClient.Features.Admin.Models;
 #nullable disable
 #nullable restore
 #line 4 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\ResetPassword.razor"
-using LCMClient.Features.Shared.Repository;
+using LCMClient.Features.Shared.Repository.Contracts;
 
 #line default
 #line hidden

@@ -1,8 +1,6 @@
 ﻿using LCMClient.Features.Shared.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LCMClient.Features.Orphans.Models
 {
@@ -28,7 +26,9 @@ namespace LCMClient.Features.Orphans.Models
 
         public DateTime EntryDate { get; set; }
 
-        public int? GuardianID { get; set; }   
+        public int? GuardianID { get; set; }
+
+        public string ProfilePicFileName { get; set; }
 
         public string ProfilePicUrl { get; set; }
 

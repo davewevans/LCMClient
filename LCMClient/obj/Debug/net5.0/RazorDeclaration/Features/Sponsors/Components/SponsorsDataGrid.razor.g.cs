@@ -154,7 +154,7 @@ using Syncfusion.Blazor.Navigations;
 #nullable disable
 #nullable restore
 #line 1 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Sponsors\Components\SponsorsDataGrid.razor"
-using LCMClient.Features.Sponsors.Models;
+using LCMClient.Features.Shared.Models;
 
 #line default
 #line hidden
@@ -167,7 +167,7 @@ using LCMClient.Features.Sponsors.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 88 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Sponsors\Components\SponsorsDataGrid.razor"
+#line 89 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Sponsors\Components\SponsorsDataGrid.razor"
        
 
     private SfGrid<SponsorModel> SponsorDataGrid = new SfGrid<SponsorModel>();
