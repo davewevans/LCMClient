@@ -19,8 +19,9 @@ namespace LCMClient.Features.Orphans.Models
         }
         public string BirthdayFormatted => Birthdate?.ToString("MMMM dd");
         public string LCMStatus { get; set; }
-
         public string LCMStatusStyle { get; set; }
         public string ProfileNumber { get; set; }
+        public string Condition { get; set; }
+        public string YearOfAdmission { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿@using LCMClient.Features.Orphans.Enums;
+@using Syncfusion.Blazor.InPlaceEditor
 
 <SfConfirmDeleteDialog @ref="DeleteConfirmationDialog"
                        ConfirmationChanged="OnConfirmDelete"
@@ -64,6 +65,19 @@
                     <div class="flex items-center mb-6">
                         <label class="md:text-2xl font-semibold mr-6">Location</label>
                         <p class="md:text-2xl text-blue-900 font-semibold">@Orphan.Guardian.Location</p>
+                    </div>
+                    <div class="flex items-center mb-6">
+                        <label class="md:text-2xl font-semibold mr-6">Relationship</label>
+                        <p class="md:text-2xl text-blue-900 font-semibold">@Orphan.RelationshipToGuardian</p>
+                        <div class="ml-2">
+                            <SfInPlaceEditor Mode="RenderMode.Inline"
+                                             EditableOn="EditableType.Click"
+                                             Type="Syncfusion.Blazor.InPlaceEditor.InputType.Text"
+                                             @bind-Value="@Orphan.RelationshipToGuardian">
+                                <InPlaceEditorEvents SubmitClick="RelationshipEditHandler" TValue="string"></InPlaceEditorEvents>
+                            </SfInPlaceEditor>
+                        </div>
+                     
                     </div>
                 </div>
 

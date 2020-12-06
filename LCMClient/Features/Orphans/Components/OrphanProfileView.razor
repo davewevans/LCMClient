@@ -27,6 +27,14 @@
             <p class="font-bold text-blue-900">@Orphan.DateOfBirth?.ToString("MM/dd/yyyy")</p>
         </div>
         <div class="flex items-start mb-4">
+            <p class="mr-4">Condition:</p>
+            <p class="font-bold text-blue-900">@Orphan.Condition</p>
+        </div>
+        <div class="flex items-start mb-4">
+            <p class="mr-4">Year of Admission:</p>
+            <p class="font-bold text-blue-900">@Orphan.YearOfAdmission?.ToString("yyyy")</p>
+        </div>
+        <div class="flex items-start mb-4">
             <p class="mr-4">Status:</p>
             <p class="font-bold text-blue-900">@Orphan.LCMStatus</p>
         </div>

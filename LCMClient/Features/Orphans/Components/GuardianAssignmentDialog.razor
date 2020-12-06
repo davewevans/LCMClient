@@ -1,5 +1,6 @@
 ﻿@using Syncfusion.Blazor.Popups
 @using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Inputs
 @using LCMClient.Features.Shared
 @using LCMClient.Features.Shared.Models
 @using LCMClient.Features.Orphans.Models
@@ -28,7 +29,15 @@
 
                         <AutoCompleteFieldSettings Value="NameAndLocation">
                         </AutoCompleteFieldSettings>
-                    </SfAutoComplete>
+                    </SfAutoComplete>  
+                    
+                    <div class="mt-6">
+                        <SfTextBox CssClass="e-outline"
+                                   Placeholder="Relationship to Orphan"
+                                   FloatLabelType="@FloatLabelType.Auto"
+                                   @bind-Value="relationship">
+                        </SfTextBox>
+                    </div>                   
                 }
                 else
                 {
@@ -70,6 +79,8 @@
 @code {
 
     private bool gotData = false;
+
+    private string relationship = "";
 
     protected override async Task OnInitializedAsync()
     {
@@ -123,6 +134,8 @@
         }
 
         await OrphanRepository.PatchOrphanAsync(Orphan.OrphanID, "guardianID", selectedGuardian.GuardianID.ToString());
+        if (!string.IsNullOrWhiteSpace(relationship))
+            await OrphanRepository.PatchOrphanAsync(Orphan.OrphanID, "relationshipToGuardian", relationship);
         IsVisible = false;
         await OnAddNewComplete.InvokeAsync(true);
         StateHasChanged();

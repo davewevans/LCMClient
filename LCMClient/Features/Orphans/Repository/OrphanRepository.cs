@@ -44,10 +44,8 @@ namespace LCMClient.Features.Orphans.Repository
         }
 
         public async Task<GuardianModel> GetOrphanGuardianAsync(int orphanId)
-        {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"{ url }/orphanGuardian/{ orphanId }");
-            
-            var response = await httpService.Get<GuardianModel>(url);
+        {            
+            var response = await httpService.Get<GuardianModel>($"{ url }/orphanGuardian/{ orphanId }");
             if (!response.Success)
             {
                 // TODO throws 404 exception in browser

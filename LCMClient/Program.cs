@@ -88,12 +88,12 @@ namespace LCMClient
             services.AddMatBlazor();
             services.AddMatToaster(config =>
             {
-                config.Position = MatToastPosition.TopCenter;
+                config.Position = MatToastPosition.BottomFullWidth;
                 config.PreventDuplicates = true;
                 config.NewestOnTop = true;
                 config.ShowCloseButton = true;
                 config.MaximumOpacity = 95;
-                config.VisibleStateDuration = 3000;
+                config.VisibleStateDuration = 5000;
             });
 
             // Syncfusion

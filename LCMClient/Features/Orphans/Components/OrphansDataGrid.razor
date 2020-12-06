@@ -113,13 +113,13 @@
             <Template>
                 @{
                     var _orphan = (context as OrphanModel);
-                    if (_orphan?.LCMStatus != null && _orphan.LCMStatus.Equals("Not Active"))
+                    if (_orphan?.LCMStatus != null && _orphan.LCMStatus.ToLower().StartsWith("active"))
                     {
-                        <span class="px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-red-100 text-red-800">@_orphan?.LCMStatus</span>
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">@_orphan?.LCMStatus</span>
                     }
                     else
                     {
-                        <span class="px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800">@_orphan?.LCMStatus</span>
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">@_orphan?.LCMStatus</span>
                     }
                 }
             </Template>

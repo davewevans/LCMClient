@@ -32,6 +32,10 @@ namespace LCMClient.Features.Orphans.Components
                 LCMStatus = Orphan.LCMStatus,
                 ProfileNumber = Orphan.ProfileNumber,
                 GuardianID = Orphan.GuardianID,
+                Location = Orphan.Location,
+                RelationshipToGuardian = Orphan.RelationshipToGuardian,
+                Condition = Orphan.Condition,
+                YearOfAdmission = Orphan.YearOfAdmission
             };
 
             await OrphanRepo.UpdateOrphanAsync(Orphan.OrphanID, orphanEdit);

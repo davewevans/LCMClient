@@ -15,7 +15,17 @@ namespace LCMClient.Features.Orphans.Components
         public EventCallback HandleOrphanEdited { get; set; }
 
         [Inject]
-        public IOrphanRepository OrphanRepository { get; set; }
+        public IOrphanRepository OrphanRepository { get; set; }       
+
+        private object TextModel = new
+        {
+            placeholder = "Relationship"
+        };
+
+        protected override void OnInitialized()
+        {
+            Orphan.RelationshipToGuardian = Orphan.RelationshipToGuardian ?? "";
+        }
 
         protected SfConfirmDeleteDialog DeleteConfirmationDialog { get; set; }
 
@@ -49,12 +59,20 @@ namespace LCMClient.Features.Orphans.Components
             if (deleteConfirmed)
             {
                 await OrphanRepository.PatchOrphanAsync(Orphan.OrphanID, "guardianID");
+                await OrphanRepository.PatchOrphanAsync(Orphan.OrphanID, "relationshipToGuardian");
                 Orphan.Guardian = await OrphanRepository.GetOrphanGuardianAsync(Orphan.OrphanID);
                 StateHasChanged();
 
                 await HandleOrphanEdited.InvokeAsync("");
 
             }
+        }
+
+        protected async Task RelationshipEditHandler()
+        {    
+            await OrphanRepository.PatchOrphanAsync(Orphan.OrphanID, "relationshipToGuardian", Orphan.RelationshipToGuardian);          
+            StateHasChanged();
+            await HandleOrphanEdited.InvokeAsync("");
         }
     }
 }

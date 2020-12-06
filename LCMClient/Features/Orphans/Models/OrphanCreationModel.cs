@@ -10,12 +10,18 @@ namespace LCMClient.Features.Orphans.Models
 
         public string LastName { get; set; } = string.Empty;
 
-        public string Gender { get; set; }
+        public string Gender { get; set; }     
 
         public DateTime? DateOfBirth { get; set; }
 
         public string LCMStatus { get; set; }
 
         public string ProfileNumber { get; set; }
+
+        public string Location { get; set; }
+
+        public DateTime? YearOfAdmission { get; set; }
+
+        public string Condition { get; set; }
     }
 }

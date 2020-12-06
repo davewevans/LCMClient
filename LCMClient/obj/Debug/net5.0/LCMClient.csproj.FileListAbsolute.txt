@@ -807,3 +807,7 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Ra
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Orphans\Components\OrphanProfileView.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Orphans\Components\OrphanPDFUpload.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Orphans\Components\OrphanPDFUpload.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Orphans\Components\OrphanCreate.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Orphans\Components\OrphanCreate.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\scopedcss\Features\Orphans\Components\OrphanDetails.razor.rz.scp.css
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\scopedcss\projectbundle\LCMClient.bundle.scp.css

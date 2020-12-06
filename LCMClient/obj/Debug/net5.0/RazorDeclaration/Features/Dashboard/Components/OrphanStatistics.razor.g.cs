@@ -192,9 +192,9 @@ using Radzen.Blazor;
         orphanStatistics = await dashboardRepository.GetOrphanStatistics();
 
         // TODO for dev only
-        orphanStatistics.UnknownCount = 24;
-        orphanStatistics.InactiveCount = 99;
-        orphanStatistics.ActiveCount = 234;
+        //orphanStatistics.UnknownCount = 24;
+        //orphanStatistics.InactiveCount = 99;
+        //orphanStatistics.ActiveCount = 234;
 
         if (orphanStatistics != null)
         {
@@ -213,6 +213,31 @@ using Radzen.Blazor;
             new DataItem
             {
             OrphanState = "Inactive",
+            Count = orphanStatistics.InactiveCount
+            },
+             new DataItem
+            {
+            OrphanState = "Active-In School",
+            Count = orphanStatistics.InactiveCount
+            },
+              new DataItem
+            {
+            OrphanState = "Active Not In School",
+            Count = orphanStatistics.InactiveCount
+            },
+               new DataItem
+            {
+            OrphanState = "Inactive-Married",
+            Count = orphanStatistics.InactiveCount
+            },
+                new DataItem
+            {
+            OrphanState = "Inactive-Working",
+            Count = orphanStatistics.InactiveCount
+            },
+                 new DataItem
+            {
+            OrphanState = "Inactive-Deceased",
             Count = orphanStatistics.InactiveCount
             },
               new DataItem

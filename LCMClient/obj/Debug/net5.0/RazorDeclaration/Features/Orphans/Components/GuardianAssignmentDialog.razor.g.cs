@@ -161,34 +161,41 @@ using Syncfusion.Blazor.Buttons;
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\GuardianAssignmentDialog.razor"
-using LCMClient.Features.Shared;
+using Syncfusion.Blazor.Inputs;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 4 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\GuardianAssignmentDialog.razor"
-using LCMClient.Features.Shared.Models;
+using LCMClient.Features.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 5 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\GuardianAssignmentDialog.razor"
-using LCMClient.Features.Orphans.Models;
+using LCMClient.Features.Shared.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 6 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\GuardianAssignmentDialog.razor"
-using LCMClient.Features.Orphans.Repository.Contracts;
+using LCMClient.Features.Orphans.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 7 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\GuardianAssignmentDialog.razor"
+using LCMClient.Features.Orphans.Repository.Contracts;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 8 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\GuardianAssignmentDialog.razor"
 using LCMClient.Features.Shared.Repository.Contracts;
 
 #line default
@@ -202,10 +209,12 @@ using LCMClient.Features.Shared.Repository.Contracts;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 70 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\GuardianAssignmentDialog.razor"
+#line 79 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\GuardianAssignmentDialog.razor"
        
 
     private bool gotData = false;
+
+    private string relationship = "";
 
     protected override async Task OnInitializedAsync()
     {
@@ -259,6 +268,8 @@ using LCMClient.Features.Shared.Repository.Contracts;
         }
 
         await OrphanRepository.PatchOrphanAsync(Orphan.OrphanID, "guardianID", selectedGuardian.GuardianID.ToString());
+        if (!string.IsNullOrWhiteSpace(relationship))
+            await OrphanRepository.PatchOrphanAsync(Orphan.OrphanID, "relationshipToGuardian", relationship);
         IsVisible = false;
         await OnAddNewComplete.InvokeAsync(true);
         StateHasChanged();

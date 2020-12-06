@@ -1,6 +1,5 @@
 ﻿using LCMClient.Features.Orphans.Models;
 using LCMClient.Features.Orphans.Repository.Contracts;
-using LCMClient.Features.Shared.Models;
 using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
 

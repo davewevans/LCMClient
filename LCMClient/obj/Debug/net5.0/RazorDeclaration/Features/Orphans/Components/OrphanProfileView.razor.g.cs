@@ -167,7 +167,7 @@ using LCMClient.Features.Orphans.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 43 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanProfileView.razor"
+#line 51 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanProfileView.razor"
        
     [Parameter]
     public OrphanDetailsModel Orphan { get; set; }

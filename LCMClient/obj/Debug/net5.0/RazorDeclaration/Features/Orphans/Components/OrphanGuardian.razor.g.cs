@@ -159,6 +159,13 @@ using LCMClient.Features.Orphans.Enums;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanGuardian.razor"
+using Syncfusion.Blazor.InPlaceEditor;
+
+#line default
+#line hidden
+#nullable disable
     public partial class OrphanGuardian : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
