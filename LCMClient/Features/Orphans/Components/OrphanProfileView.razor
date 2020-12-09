@@ -4,6 +4,13 @@
 <div class="md:flex width-full items-start mb-8">
     <div class="w-1/2">
         <OrphanProfilePhoto Orphan="@Orphan" />
+        <div class="mt-10 flex w-full justify-center">
+            <button @onclick="SwitchToEditViewHandler" class="bg-blue-600 hover:bg-blue-800 text-white font-semibold hover:text-white py-2 px-4 rounded mr-12">
+                <div class="flex items-center">
+                    <i class="fa fa-edit mr-2"></i> Edit Profile Picture
+                </div>
+            </button>
+        </div>
     </div>
     <div class="w-1/2 text-2xl">
         <div class="flex items-start mb-4">
@@ -51,4 +58,12 @@
 @code {
     [Parameter]
     public OrphanDetailsModel Orphan { get; set; }
+
+    [Parameter]
+    public EventCallback HandleToggleEditView { get; set; }
+
+    private async Task SwitchToEditViewHandler()
+    {
+        await HandleToggleEditView.InvokeAsync();
+    }
 } 

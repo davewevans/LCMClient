@@ -1,10 +1,14 @@
 ﻿@using LCMClient.Features.Orphans.Repository.Contracts
 @using LCMClient.Features.Orphans.Models
+@using LCMClient.Services 
 
 @inject IOrphanRepository orphanRepository
 @inject NavigationManager navigationManager
+@inject IHttpService httpService 
 
 
+@if(readyForGrid)
+{
 <SfGrid @ref="OrphanDataGrid"
         TValue="OrphanModel"
         Toolbar="@ToolbarItems"
@@ -34,24 +38,9 @@
                 OnActionBegin="ActionBeginHandler">
     </GridEvents>
 
-    @if (false)
-    {
-        @* ref: 
-            https://blazor.syncfusion.com/documentation/data/how-to/offline-mode/
-            https://blazor.syncfusion.com/documentation/datagrid/how-to/change-datasource-dynamically/
-            
-            
-            *@
-        @*<SfDataManager Adaptor="Adaptors.CustomAdaptor" Offline="true">
-            <OrphanDataAdaptor></OrphanDataAdaptor>
-        </SfDataManager>*@
-    }
-    else
-    {
-        <SfDataManager Url="https://localhost:44352/api/orphans/orphansSFDataGrid"
-                       CrossDomain="true"
-                       Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
-    }
+    <SfDataManager Url="@apiUrl"
+                   CrossDomain="true"
+                   Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
 
     <GridEditSettings AllowAdding="false"
                       AllowEditing="false"
@@ -149,6 +138,13 @@
         </GridColumn>
     </GridColumns>
 </SfGrid>
+}
+else
+{
+    <p>Loading...</p>
+}
+
+
 
 
 
@@ -172,6 +168,10 @@
 
 @code {
 
+    private bool readyForGrid = false;
+
+    private string apiUrl = "";
+
     private SfGrid<OrphanModel> OrphanDataGrid = new SfGrid<OrphanModel>();
 
     public static string searchTerm = "";
@@ -185,6 +185,14 @@
     private int[] PageSizes = { 5, 10, 20, 50, 100 };
 
     private string ProfileBtnContent = "View/Edit";
+
+
+    protected override void OnInitialized()
+    {
+        readyForGrid = false;
+        apiUrl = $"{ httpService.BaseUrl }orphans/orphansSFDataGrid";
+        readyForGrid = true;
+    }
 
     private void NavigateToDetails(int id)
     {

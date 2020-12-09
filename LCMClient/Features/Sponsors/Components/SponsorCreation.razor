@@ -1,0 +1,138 @@
+﻿@page "/sponsorCreation"
+
+@using LCMClient.Features.Sponsors.Models
+@using LCMClient.Features.Shared.Repository.Contracts
+@using MatBlazor;
+
+@inject NavigationManager navigationManager
+@inject ISponsorRepository sponsorRepository
+@inject IMatToaster toaster
+
+@attribute [Authorize]
+
+<EditForm Model="@newSponsor" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <MudCard Class="my-mud-card-form">
+        <MudCardHeader Class="mud-card-header">
+            <CardHeaderContent>
+                <MudText Typo="Typo.h6">Add New Sponsor</MudText>
+            </CardHeaderContent>
+            <CardHeaderActions>
+                <MudIconButton Icon="@Icons.Material.Cancel" Color="Color.Default" OnClick="@OnCancel" />
+            </CardHeaderActions>
+        </MudCardHeader>
+        <MudCardContent>
+
+            <!-- First Name -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="firstName">
+                    First Name
+                </label>
+                <InputText id="firstName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="newSponsor.FirstName" />
+                <ValidationMessage For="@(() => newSponsor.FirstName)" />
+            </div>
+
+            <!-- Last Name -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="lastName">
+                    Last Name
+                </label>
+                <InputText id="lastName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="newSponsor.LastName" />
+                <ValidationMessage For="@(() => newSponsor.LastName)" />
+            </div>
+
+            <!-- Address -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="address">
+                    Address
+                </label>
+                <InputText id="lastName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="newSponsor.Address" />
+                <ValidationMessage For="@(() => newSponsor.Address)" />
+            </div>
+
+            <!-- City -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="city">
+                    City
+                </label>
+                <InputText id="city" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="newSponsor.City" />
+                <ValidationMessage For="@(() => newSponsor.City)" />
+            </div>
+
+            <!-- State/Province -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="state">
+                    State/Province
+                </label>
+                <InputText id="state" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="newSponsor.State" />
+                <ValidationMessage For="@(() => newSponsor.State)" />
+            </div>
+
+            <!-- ZipCode -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="zipcode">
+                    Postal Code
+                </label>
+                <InputText id="zipcode" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="newSponsor.ZipCode" />
+                <ValidationMessage For="@(() => newSponsor.ZipCode)" />
+            </div>
+
+            <!-- Email -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">
+                    Email
+                </label>
+                <InputText id="email" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="newSponsor.Email" />
+                <ValidationMessage For="@(() => newSponsor.Email)" />
+            </div>
+
+            <!-- Phone -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="mainphone">
+                    Phone Number
+                </label>
+                <InputText id="mainphone" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="newSponsor.MainPhone" />
+                <ValidationMessage For="@(() => newSponsor.MainPhone)" />
+            </div>
+
+            <ValidationSummary />
+
+        </MudCardContent>
+        <MudCardActions>
+            <div class="create-button-container">
+                <MudButton Variant="Variant.Filled"
+                           Color="Color.Primary"
+                           Size="Size.Large"
+                           StartIcon="@Icons.Material.Add"
+                           ButtonType="ButtonType.Submit">
+                    Add New Sponsor
+                </MudButton>
+            </div>
+        </MudCardActions>
+    </MudCard>
+</EditForm>
+
+@code {
+
+    private SponsorCreationModel newSponsor = new();
+
+    private async Task HandleValidSubmit()
+    {
+        await sponsorRepository.AddSponsorAsync(newSponsor);
+        toaster.Add("Sponsor added.", MatToastType.Success);
+        navigationManager.NavigateTo("/sponsors");
+    }
+
+    private void OnCancel()
+    {
+        navigationManager.NavigateTo("/sponsors");
+    }
+}

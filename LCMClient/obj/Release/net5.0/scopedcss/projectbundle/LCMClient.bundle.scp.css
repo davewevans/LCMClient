@@ -1,0 +1,24 @@
+@import '';
+
+/* /Features/Orphans/Components/OrphanDetails.razor.rz.scp.css */
+/* /Features/Playground/CSSIsolationPlay.razor.rz.scp.css */
+h1[b-x7w57532va] {
+    color: brown;
+    background-color: aqua;
+}
+
+.foo[b-x7w57532va] {
+    font-weight: 900;
+    color: chocolate;
+    background-color: aquamarine;
+    width: 300px;
+    height: 300px;
+}
+
+
+/* /Features/Playground/SFTabsPlay.razor.rz.scp.css */
+h3[b-97rdrj8ez6] {
+    color:blueviolet;
+    background-color:darkgoldenrod;
+}
+

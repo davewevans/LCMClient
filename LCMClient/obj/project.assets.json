@@ -462,7 +462,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "MudBlazor/1.1.3": {
+      "MudBlazor/1.1.5": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Components": "3.1.8",
@@ -505,28 +505,7 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
-      "Polly/7.2.1": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Polly.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Polly.dll": {}
-        }
-      },
-      "Polly.Extensions.Http/3.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Polly": "7.1.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Polly.Extensions.Http.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Polly.Extensions.Http.dll": {}
-        }
-      },
-      "Radzen.Blazor/2.17.10": {
+      "Radzen.Blazor/2.18.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Components": "5.0.0-rc.2.20475.17",
@@ -1130,7 +1109,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "MudBlazor/1.1.3": {
+      "MudBlazor/1.1.5": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Components": "3.1.8",
@@ -1173,28 +1152,7 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
-      "Polly/7.2.1": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Polly.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Polly.dll": {}
-        }
-      },
-      "Polly.Extensions.Http/3.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Polly": "7.1.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Polly.Extensions.Http.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Polly.Extensions.Http.dll": {}
-        }
-      },
-      "Radzen.Blazor/2.17.10": {
+      "Radzen.Blazor/2.18.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Components": "5.0.0-rc.2.20475.17",
@@ -2073,10 +2031,10 @@
         "runtime.json"
       ]
     },
-    "MudBlazor/1.1.3": {
-      "sha512": "YLpMf38ND8pUTpL76kRn/T7BQqwU0RmHGpLk+q80qIEvBQ3esW9bDTLF5ciFW41dpsiVS20TCSfZO2EROyge+A==",
+    "MudBlazor/1.1.5": {
+      "sha512": "SfxmAKHA9kWKctXKkO9fBDQrdSTDoeKegxnNMO42fV11/0LZCC/9gYKtarzoGC9Qy7lMXtMaxZducX6jZEgAcw==",
       "type": "package",
-      "path": "mudblazor/1.1.3",
+      "path": "mudblazor/1.1.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2085,7 +2043,7 @@
         "buildMultiTargeting/MudBlazor.props",
         "buildTransitive/MudBlazor.props",
         "lib/netstandard2.1/MudBlazor.dll",
-        "mudblazor.1.1.3.nupkg.sha512",
+        "mudblazor.1.1.5.nupkg.sha512",
         "mudblazor.nuspec",
         "staticwebassets/MudBlazor.min.css",
         "staticwebassets/MudBlazor.min.js"
@@ -2260,48 +2218,10 @@
         "newtonsoft.json.nuspec"
       ]
     },
-    "Polly/7.2.1": {
-      "sha512": "Od8SnPlpQr+PuAS0YzY3jgtzaDNknlIuAaldN2VEIyTvm/wCg22C5nUkUV1BEG8rIsub5RFMoV/NEQ0tM/+7Uw==",
+    "Radzen.Blazor/2.18.2": {
+      "sha512": "Ckj9WVglvNdCVlLnTRhEHsCBpkykjqfBWGUmVCusqESte6QwDiV/GG9s/bo486GFl9HDyuIcAay7AVgdasmKYw==",
       "type": "package",
-      "path": "polly/7.2.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net461/Polly.dll",
-        "lib/net461/Polly.pdb",
-        "lib/net461/Polly.xml",
-        "lib/net472/Polly.dll",
-        "lib/net472/Polly.pdb",
-        "lib/net472/Polly.xml",
-        "lib/netstandard1.1/Polly.dll",
-        "lib/netstandard1.1/Polly.pdb",
-        "lib/netstandard1.1/Polly.xml",
-        "lib/netstandard2.0/Polly.dll",
-        "lib/netstandard2.0/Polly.pdb",
-        "lib/netstandard2.0/Polly.xml",
-        "polly.7.2.1.nupkg.sha512",
-        "polly.nuspec"
-      ]
-    },
-    "Polly.Extensions.Http/3.0.0": {
-      "sha512": "drrG+hB3pYFY7w1c3BD+lSGYvH2oIclH8GRSehgfyP5kjnFnHKQuuBhuHLv+PWyFuaTDyk/vfRpnxOzd11+J8g==",
-      "type": "package",
-      "path": "polly.extensions.http/3.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard1.1/Polly.Extensions.Http.dll",
-        "lib/netstandard1.1/Polly.Extensions.Http.xml",
-        "lib/netstandard2.0/Polly.Extensions.Http.dll",
-        "lib/netstandard2.0/Polly.Extensions.Http.xml",
-        "polly.extensions.http.3.0.0.nupkg.sha512",
-        "polly.extensions.http.nuspec"
-      ]
-    },
-    "Radzen.Blazor/2.17.10": {
-      "sha512": "2FWsOIViGHptXf9qflgABgtfYDirXnWucQ6JV9aHB/rl/5n7+PCNen2yVHNT4wjVQ7y3/Bc99bU2wzYFepx1JQ==",
-      "type": "package",
-      "path": "radzen.blazor/2.17.10",
+      "path": "radzen.blazor/2.18.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2313,7 +2233,7 @@
         "icon.png",
         "lib/net5.0/Radzen.Blazor.dll",
         "lib/netstandard2.1/Radzen.Blazor.dll",
-        "radzen.blazor.2.17.10.nupkg.sha512",
+        "radzen.blazor.2.18.2.nupkg.sha512",
         "radzen.blazor.nuspec",
         "staticwebassets/Radzen.Blazor.js",
         "staticwebassets/css/dark-base.css",
@@ -2699,10 +2619,8 @@
       "Microsoft.AspNetCore.Components.WebAssembly >= 5.0.0",
       "Microsoft.AspNetCore.Components.WebAssembly.Authentication >= 5.0.0",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 5.0.0",
-      "MudBlazor >= 1.1.3",
-      "Polly >= 7.2.1",
-      "Polly.Extensions.Http >= 3.0.0",
-      "Radzen.Blazor >= 2.17.10",
+      "MudBlazor >= 1.1.5",
+      "Radzen.Blazor >= 2.18.2",
       "Syncfusion.Blazor >= 18.3.0.52",
       "System.Net.Http.Json >= 5.0.0",
       "Tewr.Blazor.FileReader >= 2.1.0.20274"
@@ -2775,19 +2693,11 @@
           },
           "MudBlazor": {
             "target": "Package",
-            "version": "[1.1.3, )"
-          },
-          "Polly": {
-            "target": "Package",
-            "version": "[7.2.1, )"
-          },
-          "Polly.Extensions.Http": {
-            "target": "Package",
-            "version": "[3.0.0, )"
+            "version": "[1.1.5, )"
           },
           "Radzen.Blazor": {
             "target": "Package",
-            "version": "[2.17.10, )"
+            "version": "[2.18.2, )"
           },
           "Syncfusion.Blazor": {
             "target": "Package",
@@ -2815,7 +2725,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.NETCore.App.Runtime.browser-wasm",
-            "version": "[5.0.0, 5.0.0]"
+            "version": "[5.0.1, 5.0.1]"
           }
         ],
         "frameworkReferences": {
@@ -2823,7 +2733,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

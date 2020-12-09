@@ -6,24 +6,31 @@
 @inject NavigationManager navigationManager
 @inject IDashboardRepository dashboardRepository
 
-
-<MudPaper Elevation="3" Class="p-3">
-    <h1>Narration Statistics</h1>
-    <div class="">
-        <RadzenChart>
-            <RadzenBarSeries Data="@totalData" CategoryProperty="Group" Title="Total" LineType="LineType.Dashed" ValueProperty="Count" />
-            <RadzenBarSeries Data="@last6MonthsData" CategoryProperty="Group" Title="Last 6 Months" ValueProperty="Count" />
-            <RadzenValueAxis>
-                <RadzenGridLines Visible="true" />
-                <RadzenAxisTitle Text="Number of Narrations" />
-            </RadzenValueAxis>
-            <RadzenBarOptions Radius="5" />
-        </RadzenChart>
-    </div>
-</MudPaper>
-
+@if (isLoading)
+{
+    <LoadingAnimation />
+}
+else
+{
+    <MudPaper Elevation="3" Class="p-3">
+        <h1>Narration Statistics</h1>
+        <div class="">
+            <RadzenChart>
+                <RadzenBarSeries Data="@totalData" CategoryProperty="Group" Title="Total" LineType="LineType.Dashed" ValueProperty="Count" />
+                <RadzenBarSeries Data="@last6MonthsData" CategoryProperty="Group" Title="Last 6 Months" ValueProperty="Count" />
+                <RadzenValueAxis>
+                    <RadzenGridLines Visible="true" />
+                    <RadzenAxisTitle Text="Number of Narrations" />
+                </RadzenValueAxis>
+                <RadzenBarOptions Radius="5" />
+            </RadzenChart>
+        </div>
+    </MudPaper>
+}
 
 @code {
+
+    private bool isLoading = true;
 
     class DataItem
     {
@@ -39,17 +46,10 @@
     {
         narrationStatistics = await dashboardRepository.GetNarrationStatistics();
 
-
-        // TODO for dev only
-        narrationStatistics.OrphanNarrationCount = 187;
-        narrationStatistics.GuardianNarrationCount = 122;
-        narrationStatistics.OrphanLast6MoCount = 96;
-        narrationStatistics.GuardianLast6MoCount = 63;
-
-
         if (narrationStatistics != null)
         {
             SetDataItems();
+            isLoading = false;
         }
     }
 
@@ -69,7 +69,7 @@
             },
         };
 
-        last6MonthsData = new DataItem[] 
+        last6MonthsData = new DataItem[]
         {
             new DataItem
             {

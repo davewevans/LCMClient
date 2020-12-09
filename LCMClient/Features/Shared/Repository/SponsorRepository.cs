@@ -22,7 +22,7 @@ namespace LCMClient.Repository
         
         public async Task<List<SponsorModel>> GetSponsorsAsync()
         {
-            string url = $"{ httpService.BaseUrl }/{ Controller }";
+            string url = $"{ httpService.BaseUrl }{ Controller }";
             var response = await httpService.Get<List<SponsorModel>>(url);
             if (!response.Success)
             {
@@ -33,7 +33,7 @@ namespace LCMClient.Repository
 
         public async Task<SponsorModel> GetSponsorAsync(int sponsorId)
         {
-            string url = $"{ httpService.BaseUrl }/{ Controller }/{ sponsorId }";
+            string url = $"{ httpService.BaseUrl }{ Controller }/{ sponsorId }";
             var response = await httpService.Get<SponsorModel>(url);
             if (!response.Success)
             {
@@ -44,7 +44,7 @@ namespace LCMClient.Repository
 
         public async Task AddSponsorAsync(SponsorCreationModel newSponsor)
         {
-            string url = $"{ httpService.BaseUrl }/{ Controller }";
+            string url = $"{ httpService.BaseUrl }{ Controller }";
             var response = await httpService.Post(url, newSponsor);
             if (!response.Success)
             {
@@ -54,7 +54,7 @@ namespace LCMClient.Repository
 
         public async Task UpdateSponsorAsync(int sponsorId, SponsorEditModel sponsorEdit)
         {
-            string url = $"{ httpService.BaseUrl }/{ Controller }/{sponsorId}";
+            string url = $"{ httpService.BaseUrl }{ Controller }/{sponsorId}";
             var response = await httpService.Put(url, sponsorEdit);
             if (!response.Success)
             {
@@ -64,7 +64,7 @@ namespace LCMClient.Repository
 
         public async Task DeleteSponsorAsync(int sponsorId)
         {
-            string url = $"{ httpService.BaseUrl }/{ Controller }/{ sponsorId }";
+            string url = $"{ httpService.BaseUrl }{ Controller }/{ sponsorId }";
             var response = await httpService.Delete(url);
             if (!response.Success)
             {

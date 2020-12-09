@@ -1,6 +1,5 @@
 ﻿
 @using LCMClient.Helpers
-@using MudBlazor.Theme.Defaults
 
 @inherits LayoutComponentBase
 @inject NavigationManager navigationManager
@@ -22,7 +21,7 @@
             <div class="flex items-center justify-center mt-2">
                 <div class="flex items-center bg-white">
                     <img class="" src="images/LMCSMS_Icon_60x60_transparent.png" width="60" height="60" alt="Life for Children Ministry" />
-                    <span class="text-blue-800 text-xl font-semibold mr-2">LCM SMS</span>
+                    <span class="primary-text-color text-xl font-semibold mr-2">LCM SMS</span>
                 </div>
             </div>
             <!-- / -->
@@ -30,8 +29,8 @@
         <NavMenu />
     </MudDrawer>
     <MudMainContent>
-        <MudContainer Class="pl-0 pr-0">        
-                @Body   
+        <MudContainer Class="pl-0 pr-0">
+            @Body
         </MudContainer>
     </MudMainContent>
 </MudLayout>
@@ -66,7 +65,7 @@
     {
         Palette = new Palette()
         {
-            Primary = Colors.Blue.Darken4,
+            Primary = "#00529B",
             Secondary = Colors.Orange.Darken1,
             Tertiary = Colors.Blue.Accent1,
         }

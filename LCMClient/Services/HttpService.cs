@@ -1,6 +1,7 @@
 ﻿using LCMClient.Helpers;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Configuration;
+using System;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -10,31 +11,17 @@ namespace LCMClient.Services
 {
     public class HttpService : IHttpService
     {
-        private readonly HttpClientWithToken httpClientWithToken;
-        private readonly HttpClientWithoutToken httpClientWithoutToken;
-        private readonly HttpClient httpClient;
-        private NavigationManager navigationManager;
-        // private ILocalStorageService localStorageService;
-        private IConfiguration configuration;
+        private readonly HttpClient httpClient; 
         
         private JsonSerializerOptions defaultJsonSerializerOptions =>
             new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
 
-        public HttpService(
-            HttpClient httpClient,
-            NavigationManager navigationManager,
-            // ILocalStorageService localStorageService,
-            IConfiguration configuration
-        )
+        public HttpService(HttpClient httpClient)
         {
             this.httpClient = httpClient;
-            this.navigationManager = navigationManager;
-            // this.localStorageService = localStorageService;
-            this.configuration = configuration;
         }
 
         public string BaseUrl => httpClient?.BaseAddress?.AbsoluteUri;
-
 
         public async Task<HttpResponseWrapper<T>> Get<T>(string url)
         {
@@ -100,13 +87,31 @@ namespace LCMClient.Services
         {
             var responseHTTP = await httpClient.DeleteAsync(url);
             return new HttpResponseWrapper<object>(null, responseHTTP.IsSuccessStatusCode, responseHTTP);
-        }
-        
+        }        
         
         private async Task<T> Deserialize<T>(HttpResponseMessage httpResponse, JsonSerializerOptions options)
         {
             var responseString = await httpResponse.Content.ReadAsStringAsync();
             return JsonSerializer.Deserialize<T>(responseString, options);
+        }
+        
+        public async Task<bool> HasInternetConnection()
+        {
+            // A somewhat naive check for intentet connection but should serve the purpose.
+            // Tries to hit an API endpoint, if it returns a 200 success status code 
+            // then all is good. If not, the client could switch to offline mode. 
+
+            string apiUrl = $"{ httpClient?.BaseAddress?.AbsoluteUri }connectioncheck";
+
+            try
+            {
+                var responseHTTP = await httpClient.GetAsync(apiUrl);
+                return responseHTTP.IsSuccessStatusCode ? true : false;               
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

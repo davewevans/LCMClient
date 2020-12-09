@@ -14,5 +14,6 @@ namespace LCMClient.Services
         Task<HttpResponseWrapper<object>> Put<T>(string url, T data);
         Task<HttpResponseWrapper<object>> Patch(string url, string data);
         Task<HttpResponseWrapper<object>> Delete(string url);
+        Task<bool> HasInternetConnection();
     }
 }

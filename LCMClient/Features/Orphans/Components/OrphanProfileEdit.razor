@@ -52,6 +52,7 @@
                         </label>
                         <div class="relative">
                             <InputSelect id="gender" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="Orphan.Gender">
+                                <option value="">Select Gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </InputSelect>
@@ -71,6 +72,7 @@
                         </label>
                         <div class="relative">
                             <InputSelect id="lcmStatus" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="Orphan.LCMStatus">
+                                <option value="">Select LCM Status</option>
                                 <option value="Active">Active</option>
                                 <option value="Inactive">Inactive</option>
                                 <option value="Active-In School">Active-In School</option>
@@ -126,6 +128,7 @@
                         </label>
                         <div class="relative">
                             <InputSelect id="condition" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="Orphan.Condition">
+                                <option value="">Select Condition</option>
                                 <option value="Active">Total Orphan</option>
                                 <option value="Partial Orphan">Partial Orphan</option>
                                 <option value="Vulnerable">Vulnerable</option>
@@ -146,6 +149,7 @@
                         </label>
                         <div class="relative">
                             <InputSelect id="location" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="Orphan.Location">
+                                <option value="">Select Location</option>
                                 <option value="Wachara">Wachara</option>
                                 <option value="Kisumu">Kisumu</option>
                             </InputSelect>
@@ -159,8 +163,8 @@
                     </div>
                 </div>
 
-                <div class="flex px-3 w-full justify-center">
-                    <button class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded inline-flex items-center justify-center w-20" type="submit"><i class="fa fa-thumbs-up mr-2"></i> Save</button>
+                <div class="flex px-3 mb-6 w-full justify-center">
+                    <button class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded inline-flex items-center justify-center w-32" type="submit"><i class="fa fa-thumbs-up mr-2"></i> Save</button>
                 </div>
 
             </EditForm>

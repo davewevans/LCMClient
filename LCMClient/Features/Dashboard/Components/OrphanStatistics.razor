@@ -7,26 +7,32 @@
 @inject IDashboardRepository dashboardRepository
 
 
-
-<MudPaper Elevation="3" Class="p-3">
-    <h1>Orphan Statistics</h1>
-    <div>
-        <RadzenChart>
-            <RadzenDonutSeries Data="@dataItmes" CategoryProperty="OrphanState" ValueProperty="Count">            
-                <TitleTemplate>
-                    <div class="rz-donut-content font-semibold">
-                        <div>Orphans</div>
-                    </div>
-                </TitleTemplate>
-            </RadzenDonutSeries>
-        </RadzenChart>
-    </div>
-</MudPaper>
-
+@if (isLoading)
+{
+<LoadingAnimation />
+}
+else
+{
+    <MudPaper Elevation="3" Class="p-3">
+        <h1>Orphan Statistics</h1>
+        <div>
+            <RadzenChart>
+                <RadzenDonutSeries Data="@dataItmes" CategoryProperty="OrphanState" ValueProperty="Count">
+                    <TitleTemplate>
+                        <div class="rz-donut-content font-semibold">
+                            <div>Orphans</div>
+                        </div>
+                    </TitleTemplate>
+                </RadzenDonutSeries>
+            </RadzenChart>
+        </div>
+    </MudPaper>
+}
 
 
 
 @code {
+    private bool isLoading = true;
 
     private class DataItem
     {
@@ -42,14 +48,10 @@
     {
         orphanStatistics = await dashboardRepository.GetOrphanStatistics();
 
-        // TODO for dev only
-        //orphanStatistics.UnknownCount = 24;
-        //orphanStatistics.InactiveCount = 99;
-        //orphanStatistics.ActiveCount = 234;
-
         if (orphanStatistics != null)
         {
             SetDataItems();
+            isLoading = false;
         }
 
     }

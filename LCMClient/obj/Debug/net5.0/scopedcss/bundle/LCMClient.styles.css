@@ -1,50 +1,21 @@
-/* /Features/Orphans/Components/OrphanDetails.razor.rz.scp.css */
-.e-tab .e-tab-header .e-toolbar-item .e-tab-text[b-7osi60inx5],
-.e-tab .e-tab-header .e-toolbar-item .e-tab-wrap .e-tab-icon[b-7osi60inx5] {
-    font-size: 20px;
+/* /Features/Playground/CSSIsolationPlay.razor.rz.scp.css */
+h1[b-x7w57532va] {
+    color: brown;
+    background-color: aqua;
 }
 
-.e-tab .e-tab-header .e-toolbar-item .e-tab-wrap[b-7osi60inx5],
-.e-tab .e-tab-header .e-toolbar-item .e-tab-wrap .e-tab-icon[b-7osi60inx5] {
-    color: #2a4365;
+.foo[b-x7w57532va] {
+    font-weight: 900;
+    color: chocolate;
+    background-color: aquamarine;
+    width: 300px;
+    height: 300px;
 }
 
-/*.e-tab .e-content > .e-item.e-active{ */
-/*        background: antiquewhite; */
-/*    } */
 
-
-.e-content .e-item[b-7osi60inx5] {
-    padding: 10px;
-    text-align: justify;
+/* /Features/Playground/SFTabsPlay.razor.rz.scp.css */
+h3[b-97rdrj8ez6] {
+    color:blueviolet;
+    background-color:darkgoldenrod;
 }
 
-@@media screen and (max-width: 425px) {
-
-
-    .e-tab .e-tab-header .e-toolbar-item .e-tab-text[b-7osi60inx5],
-    .e-tab .e-tab-header .e-toolbar-item .e-tab-wrap .e-tab-icon[b-7osi60inx5] {
-        font-size: 14px;
-    }
-
-    .tab-adaptive[b-7osi60inx5] {
-        overflow: hidden;
-    }
-
-        .tab-adaptive .e-content[b-7osi60inx5] {
-            height: inherit !important;
-        }
-
-        .tab-adaptive .e-item.e-active[b-7osi60inx5] {
-            overflow: scroll;
-        }
-}
-
-.bg-image[b-7osi60inx5] {
-    background-image: url(@bgImageUrl);
-    left: 0;
-    top: 0;
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}

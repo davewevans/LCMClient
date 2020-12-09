@@ -3,7 +3,7 @@
         <h3 class="text-blue-600 text-2xl" font-bold>@Orphan.FirstName's Profile</h3>
     </div>
     <div class="">
-        <button @onclick="ToggleEditMode" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+        <button @onclick="ToggleEditMode" class="bg-blue-600 hover:bg-blue-800 text-white font-semibold hover:text-white py-2 px-4 rounded">
             <div class="flex items-center">
                 <i class="@editViewIcon mr-2"></i> @editViewText
             </div>
@@ -21,6 +21,6 @@
 else
 {
     <div class="mb-20">
-        <OrphanProfileView Orphan="@Orphan" />
+        <OrphanProfileView Orphan="@Orphan" HandleToggleEditView="@ToggleEditMode" />
     </div>
 }

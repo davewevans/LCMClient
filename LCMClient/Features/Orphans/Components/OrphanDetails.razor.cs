@@ -12,9 +12,9 @@ namespace LCMClient.Features.Orphans.Components
     {
         string fullNameStyle = "bg-gray-200 p-2";
         static Random randomizer = new Random();
-        string bgImageUrl = "images/bg-1.jpg";
         string profileBgClass = "bg-gradient-to-r from-orange-400 via-red-500 to-blue-500";
         string[] gradientColors = { "orange", "pink", "red", "green", "yellow", "purple", "blue", "teal", "indigo", "gray" };
+        bool backgroundIsReady = false;
 
         [Inject]
         public IJSRuntime Js { get; set; }
@@ -32,19 +32,21 @@ namespace LCMClient.Features.Orphans.Components
 
         protected ConfirmDelete DeleteConfirmation { get; set; }
 
-
         protected SfConfirmDeleteDialog DeleteConfirmationDialog { get; set; }
 
         public OrphanSummary Summary { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
+            GenerateProfileBackground();
+
             Orphan = await OrphanRepo.GetOrphanDetailsAsync(Id);
             if (Orphan == null) return;
 
-            PopulateSummary();
-            GenerateProfileBackground();
+            PopulateSummary();            
             SetNameBgColorBasedOnGender();
+            backgroundIsReady = true;
+            StateHasChanged(); // Trying to fix bg color gradient not showing intermittently
         }
 
         private void PopulateSummary()
@@ -65,8 +67,8 @@ namespace LCMClient.Features.Orphans.Components
 
         private void GenerateProfileBackground()
         {
-            string randomGradientStyle = $"bg-gradient-to-r from-{gradientColors[randomizer.Next(gradientColors.Length)]}-400 via-{gradientColors[randomizer.Next(gradientColors.Length)]}-500 to-{gradientColors[randomizer.Next(gradientColors.Length)]}-500";
-            profileBgClass = randomGradientStyle;
+            profileBgClass = $"bg-gradient-to-r from-{gradientColors[randomizer.Next(gradientColors.Length)]}-400 via-{gradientColors[randomizer.Next(gradientColors.Length)]}-500 to-{gradientColors[randomizer.Next(gradientColors.Length)]}-500";
+            // Console.WriteLine($"gradient bg: {profileBgClass}");
         }
 
         private void SetNameBgColorBasedOnGender()
@@ -85,6 +87,7 @@ namespace LCMClient.Features.Orphans.Components
 
         protected void OnDeleteClick()
         {
+
             DeleteConfirmationDialog.ShowDialog();
         }
 
@@ -97,12 +100,14 @@ namespace LCMClient.Features.Orphans.Components
             }
         }
 
-        public void HandleOrphanEdited()
+        public async Task HandleOrphanEdited()
         {
-            //StateHasChanged();
+            Orphan = await OrphanRepo.GetOrphanDetailsAsync(Id);
+            if (Orphan == null) return;
             PopulateSummary();
             GenerateProfileBackground();
             SetNameBgColorBasedOnGender();
+            StateHasChanged();
         }
     }
 }

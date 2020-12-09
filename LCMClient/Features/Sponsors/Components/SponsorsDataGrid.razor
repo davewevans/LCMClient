@@ -1,5 +1,10 @@
 ﻿@using LCMClient.Features.Shared.Models
+@using LCMClient.Services
 
+@inject IHttpService httpService
+
+@if (readyForGrid)
+{
 <SfGrid @ref="SponsorDataGrid"
         TValue="SponsorModel"
         AllowPaging="true"
@@ -8,7 +13,6 @@
         Query="@Qry"
         Toolbar="@ToolbarItems"
         AllowSelection="true"
-
         AllowReordering="true"
         AllowResizing="true"
         AllowTextWrap="true"
@@ -30,7 +34,7 @@
                 OnActionBegin="ActionBeginHandler">
     </GridEvents>
 
-    <SfDataManager Url="https://localhost:44352/api/sponsors/sponsorsSFDataGrid"
+    <SfDataManager Url="@apiUrl"
                    CrossDomain="true"
                    Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
 
@@ -84,9 +88,19 @@
 
     </GridColumns>
 </SfGrid>
+}
+else
+{
+    <p>Loading...</p>
+}
+
 
 
 @code {
+
+    private bool readyForGrid = false;
+
+    private string apiUrl = "";
 
     private SfGrid<SponsorModel> SponsorDataGrid = new SfGrid<SponsorModel>();
 
@@ -100,6 +114,13 @@
 
     public int[] PageSizes = { 5, 10, 20, 50, 100 };
     private int pageSize = 20;
+
+    protected override void OnInitialized()
+    {
+        readyForGrid = false;
+        apiUrl = $"{ httpService.BaseUrl }sponsors/sponsorsSFDataGrid";
+        readyForGrid = true;
+    }
 
     public async Task ActionBeginHandler(ActionEventArgs<SponsorModel> args)
     {
@@ -128,7 +149,7 @@
 
     public void RecordClickHandler(RecordClickEventArgs<SponsorModel> args)
     {
-        // nav to details view 
+        // nav to details view
     }
 
     public void Load(object args)

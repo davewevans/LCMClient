@@ -3,19 +3,14 @@
 
 @using Syncfusion.Blazor.Navigations
 
-@if (Orphan == null)
+<SfConfirmDeleteDialog @ref="DeleteConfirmationDialog"
+                       ConfirmationChanged="OnConfirmDelete"
+                       ConfirmationMessage=@($"Are you sure you want to delete \"{Orphan?.FullName}\"")>
+
+</SfConfirmDeleteDialog>
+
+@if (Orphan is not null && backgroundIsReady)
 {
-    <div>Orphan data loading...</div>
-}
-else
-{
-    <SfConfirmDeleteDialog @ref="DeleteConfirmationDialog"
-                           ConfirmationChanged="OnConfirmDelete"
-                           ConfirmationMessage=@($"Are you sure you want to delete \"{Orphan.FullName}\"")>
-
-    </SfConfirmDeleteDialog>
-
-
     <div class="ml-10 mr-10 border-l-2 border-r-2 border-white">
         <div class="@profileBgClass">
             <div class="md:flex items-center w-auto rounded-lg p-6">
@@ -40,24 +35,24 @@ else
     </div>
 
     <!--Orphan Summary-->
-<div class="md:flex mb-6 ml-10 mr-10 p-4 w-auto bg-yellow-200 border-l-2 border-r-2 border-b-2 border-white">
-    <div class="w-1/4">
-        <span class="text-left font-bold">Has Guardian:</span> <span class="@Summary.HasGuardianStyle">@Summary.HasGuardian</span><br>
-        <span class="text-left font-bold">Sponsors:</span> @Summary.NumOfSponsors <br>
+    <div class="md:flex ml-10 mr-10 p-4 w-auto bg-yellow-200 border-l-2 border-r-2 border-b-2 border-white">
+        <div class="w-1/4">
+            <span class="text-left font-bold">Has Guardian:</span> <span class="@Summary.HasGuardianStyle">@Summary.HasGuardian</span><br>
+            <span class="text-left font-bold">Sponsors:</span> @Summary.NumOfSponsors <br>
+        </div>
+        <div class="w-1/4">
+            <span class="text-left font-bold">Age:</span> @Summary.Age <br>
+            <span class="text-left font-bold">Birthday:</span> @Summary.BirthdayFormatted
+        </div>
+        <div class="w-1/4">
+            <span class="text-left font-bold">Condition:</span>@Summary.Condition<br>
+            <span class="text-left font-bold">Year of Admission:</span> @Summary.YearOfAdmission
+        </div>
+        <div class="w-1/4">
+            <span class="text-left font-bold">LCM Status:</span> <span class="@Summary.LCMStatusStyle">@Summary.LCMStatus</span><br>
+            <span class="text-left font-bold">Profile Number:</span> @Summary.ProfileNumber
+        </div>
     </div>
-    <div class="w-1/4">
-        <span class="text-left font-bold">Age:</span> @Summary.Age <br>
-        <span class="text-left font-bold">Birthday:</span> @Summary.BirthdayFormatted
-    </div>
-    <div class="w-1/4">
-        <span class="text-left font-bold">Condition:</span>@Summary.Condition<br>
-        <span class="text-left font-bold">Year of Admission:</span> @Summary.YearOfAdmission
-    </div>
-    <div class="w-1/4">
-        <span class="text-left font-bold">LCM Status:</span> <span class="@Summary.LCMStatusStyle">@Summary.LCMStatus</span><br>
-        <span class="text-left font-bold">Profile Number:</span> @Summary.ProfileNumber
-    </div>
-</div>
 
     <div class="bg-white ml-10 mr-10 mb-10">
         <SfTab CssClass="tab-adaptive"
@@ -124,3 +119,44 @@ else
         </SfTab>
     </div>
 }
+else
+{
+<LoadingAnimation />
+}
+
+
+<style>
+    .e-tab .e-tab-header .e-toolbar-item .e-tab-text,
+    .e-tab .e-tab-header .e-toolbar-item .e-tab-wrap .e-tab-icon {
+        font-size: 18px;
+    }
+
+    .e-tab .e-tab-header .e-toolbar-item .e-tab-wrap,
+    .e-tab .e-tab-header .e-toolbar-item .e-tab-wrap .e-tab-icon {
+        color: #2a4365;
+    }
+
+    .e-content .e-item {
+        padding: 10px;
+        text-align: justify;
+    }
+
+    @@media screen and (max-width: 425px) {
+        .e-tab .e-tab-header .e-toolbar-item .e-tab-text,
+        .e-tab .e-tab-header .e-toolbar-item .e-tab-wrap .e-tab-icon {
+            font-size: 14px;
+        }
+
+        .tab-adaptive {
+            overflow: hidden;
+        }
+
+            .tab-adaptive .e-content {
+                height: inherit !important;
+            }
+
+            .tab-adaptive .e-item.e-active {
+                overflow: scroll;
+            }
+    }
+</style>

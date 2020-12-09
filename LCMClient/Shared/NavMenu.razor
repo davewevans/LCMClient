@@ -57,5 +57,14 @@
             </div>
         </div>
     </MudNavLink>
-
+    <MudNavLink Match="NavLinkMatch.Prefix" Href="@navigationManager.ToAbsoluteUri("checkconnection").AbsoluteUri">
+        <div class="d-flex">
+            <div class="mr-2">
+                <MudIcon Icon="@Icons.Material.NetworkCheck"></MudIcon>
+            </div>
+            <div>
+                <span class="">Check Connection</span>
+            </div>
+        </div>
+    </MudNavLink>
 </MudNavMenu>

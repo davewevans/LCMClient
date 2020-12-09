@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZDc7YShdFUalFLBrAeRAWQ8zfyyVEj3BZg2zofwf/fflfwuQEQ7H7qXOW4D1e/XCa8GMcycGZnsvVzstSYX+FA==",
+  "dgSpecHash": "MArHMqyHD+kW20XSI43/7aINbv/mG31p88SfBG1/el+KfoJ9fx5w9agPfC2ij2TxwBQrXzzOLNMp9zLjjTb+aw==",
   "success": true,
   "projectFilePath": "C:\\Users\\davew\\OneDrive\\Documents\\GitHub\\LCMClient\\LCMClient\\LCMClient.csproj",
   "expectedPackageFiles": [
@@ -41,12 +41,10 @@
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.jsinterop.webassembly\\5.0.0\\microsoft.jsinterop.webassembly.5.0.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\davew\\.nuget\\packages\\mudblazor\\1.1.3\\mudblazor.1.1.3.nupkg.sha512",
+    "C:\\Users\\davew\\.nuget\\packages\\mudblazor\\1.1.5\\mudblazor.1.1.5.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\newtonsoft.json\\12.0.1\\newtonsoft.json.12.0.1.nupkg.sha512",
-    "C:\\Users\\davew\\.nuget\\packages\\polly\\7.2.1\\polly.7.2.1.nupkg.sha512",
-    "C:\\Users\\davew\\.nuget\\packages\\polly.extensions.http\\3.0.0\\polly.extensions.http.3.0.0.nupkg.sha512",
-    "C:\\Users\\davew\\.nuget\\packages\\radzen.blazor\\2.17.10\\radzen.blazor.2.17.10.nupkg.sha512",
+    "C:\\Users\\davew\\.nuget\\packages\\radzen.blazor\\2.18.2\\radzen.blazor.2.18.2.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\syncfusion.blazor\\18.3.0.52\\syncfusion.blazor.18.3.0.52.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\syncfusion.excelexport.net.core\\18.3.0.52\\syncfusion.excelexport.net.core.18.3.0.52.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\syncfusion.licensing\\18.3.0.52\\syncfusion.licensing.18.3.0.52.nupkg.sha512",
@@ -57,7 +55,7 @@
     "C:\\Users\\davew\\.nuget\\packages\\system.net.http.json\\5.0.0\\system.net.http.json.5.0.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\tewr.blazor.filereader\\2.1.0.20274\\tewr.blazor.filereader.2.1.0.20274.nupkg.sha512",
-    "C:\\Users\\davew\\.nuget\\packages\\microsoft.netcore.app.runtime.browser-wasm\\5.0.0\\microsoft.netcore.app.runtime.browser-wasm.5.0.0.nupkg.sha512"
+    "C:\\Users\\davew\\.nuget\\packages\\microsoft.netcore.app.runtime.browser-wasm\\5.0.1\\microsoft.netcore.app.runtime.browser-wasm.5.0.1.nupkg.sha512"
   ],
   "logs": []
 }

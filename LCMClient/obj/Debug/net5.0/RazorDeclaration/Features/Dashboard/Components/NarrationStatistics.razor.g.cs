@@ -91,62 +91,69 @@ using LCMClient.Shared;
 #nullable disable
 #nullable restore
 #line 12 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
-using MudBlazor;
+using LCMClient.Services;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 13 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
-using MudBlazor.Dialog;
+using MudBlazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 14 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
-using MatBlazor;
+using MudBlazor.Dialog;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 15 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
-using Syncfusion.Blazor;
+using MatBlazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 16 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
-using Syncfusion.Blazor.Data;
+using Syncfusion.Blazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 17 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
-using Syncfusion.Blazor.Grids;
+using Syncfusion.Blazor.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 18 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
-using Syncfusion.Blazor.Buttons;
+using Syncfusion.Blazor.Grids;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 19 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
-using Syncfusion.Blazor.DropDowns;
+using Syncfusion.Blazor.Buttons;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 20 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+using Syncfusion.Blazor.DropDowns;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 21 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using Syncfusion.Blazor.Navigations;
 
 #line default
@@ -188,8 +195,10 @@ using System.Globalization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 26 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Dashboard\Components\NarrationStatistics.razor"
+#line 31 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Dashboard\Components\NarrationStatistics.razor"
        
+
+    private bool isLoading = true;
 
     class DataItem
     {
@@ -205,17 +214,10 @@ using System.Globalization;
     {
         narrationStatistics = await dashboardRepository.GetNarrationStatistics();
 
-
-        // TODO for dev only
-        narrationStatistics.OrphanNarrationCount = 187;
-        narrationStatistics.GuardianNarrationCount = 122;
-        narrationStatistics.OrphanLast6MoCount = 96;
-        narrationStatistics.GuardianLast6MoCount = 63;
-
-
         if (narrationStatistics != null)
         {
             SetDataItems();
+            isLoading = false;
         }
     }
 
@@ -235,7 +237,7 @@ using System.Globalization;
             },
         };
 
-        last6MonthsData = new DataItem[] 
+        last6MonthsData = new DataItem[]
         {
             new DataItem
             {

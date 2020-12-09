@@ -65,6 +65,7 @@ namespace LCMClient
             services.AddScoped<IPictureRepository, PictureRepository>();
             services.AddScoped<IAcademicRepository, AcademicRepository>();
             services.AddScoped<IGuardianRepository, GuardianRepository>();
+            services.AddScoped<ISponsorRepository, SponsorRepository>();
             services.AddScoped<IOrphanSponsorRepository, OrphanSponsorRepository>();
             services.AddScoped<INarrationRepository, NarrationRepository>();
 

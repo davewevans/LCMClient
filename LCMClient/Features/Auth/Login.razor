@@ -8,73 +8,89 @@
 @inject NavigationManager navigationManager
 @inject ILoginService loginService
 
+<div class="mt-10 ml-10">
+    <h3 class="font-semibold text-2xl">Login</h3>
+    <br />
 
-<h3 class="font-semibold text-2xl">Login</h3>
-<br />
-
-@if (loginFailed)
-{
-    <h2 class="text-red-600">@responseMessage</h2>
-}
-<br />
-
-<EditForm Model="userInfo" OnValidSubmit="LoginUser">
-    <DataAnnotationsValidator />
-
-    <div class="form-group">
-        <label class="font-semibold">Email:</label>
-        <div>
-            <InputText class="form-control" @bind-Value="@userInfo.Email" />
-            <ValidationMessage For="@(() => userInfo.Email)" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="font-semibold">Password:</label>
-        <div>
-            <InputPassword class="form-control" @bind-Value="@userInfo.Password" />
-            <ValidationMessage For="@(() => userInfo.Password)" />
-        </div>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Login</button>
-
-</EditForm>
-
-@code {
-    private UserInfoModel userInfo = new UserInfoModel();
-
-    private bool loginFailed = false;
-    private string responseMessage = "";
-
-    private async Task LoginUser()
+    @if (loginFailed)
     {
-        //
-        // TODO loading animation
-        //
+    <h2 class="text-red-600">@responseMessage</h2>
+    }
+    <br />
 
-        loginFailed = false;
-        responseMessage = "";
+    @if (showLoadingAnimation)
+    {
+<LoadingAnimation />
+    }
+    else
+    {
+ <!-- login component -->
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col w-4/12 justify-center">
+        <EditForm Model="userInfo" OnValidSubmit="LoginUser">
+            <DataAnnotationsValidator />
 
-        try
+            <div class="mb-4">
+                <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
+                    Username
+                </label>
+                <InputText @bind-Value="userInfo.Email" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="username" type="text" placeholder="Username" />
+                <ValidationMessage For="@(() => userInfo.Email)" />
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
+                    Password
+                </label>
+                <InputPassword @bind-Value="userInfo.Password" class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" id="password" type="password" placeholder="******************" />
+                <ValidationMessage For="@(() => userInfo.Password)" />
+            </div>
+
+            <div class="flex items-center justify-between">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" ButtonType="ButtonType.Submit">Sign In</MudButton>
+            </div>
+
+        </EditForm>
+    </div>
+    }
+
+
+</div>
+@code {
+
+        private bool showLoadingAnimation = false;
+
+        private UserInfoModel userInfo = new UserInfoModel();
+
+        private bool loginFailed = false;
+        private string responseMessage = "";
+
+        private async Task LoginUser()
         {
-            var response = await accountsRepository.Login(userInfo);
+            showLoadingAnimation = true;
 
-            if (!response.IsSuccessful)
+            loginFailed = false;
+            responseMessage = "";
+
+            try
             {
-                loginFailed = true;
-                responseMessage = response.ResponseMessage;
-                return;
+                var response = await accountsRepository.Login(userInfo);
+
+                if (!response.IsSuccessful)
+                {
+                    loginFailed = true;
+                    responseMessage = response.ResponseMessage;
+                    showLoadingAnimation = false;
+                    return;
+                }
+
+                await loginService.Login(response.Token);
+                navigationManager.NavigateTo("");
+            }
+            catch (Exception ex)
+            {
+                responseMessage = "Something went wrong. Please try again.";
+                // TODO log err
             }
 
-            await loginService.Login(response.Token);
-            navigationManager.NavigateTo("");
         }
-        catch (Exception ex)
-        {
-            responseMessage = "Something went wrong. Please try again.";
-            // TODO log err
-        }
-
-    }
 }

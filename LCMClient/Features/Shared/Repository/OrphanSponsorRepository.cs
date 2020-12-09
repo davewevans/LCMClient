@@ -20,7 +20,7 @@ namespace LCMClient.Repository
         
         public async Task AddAssignment(OrphanSponsorModel orphanSponsor)
         {
-            string url = $"{ httpService.BaseUrl }/{ Controller }/assignSponsor";
+            string url = $"{ httpService.BaseUrl }{ Controller }/assignSponsor";
             var response = await httpService.Post(url, orphanSponsor);
             if (!response.Success)
             {
@@ -30,7 +30,7 @@ namespace LCMClient.Repository
 
         public async Task RemoveAssignment(OrphanSponsorModel orphanSponsor)
         {
-            string url = $"{ httpService.BaseUrl }/{ Controller }/removeSponsor";
+            string url = $"{ httpService.BaseUrl }{ Controller }/removeSponsor";
             var response = await httpService.Post(url, orphanSponsor);
             if (!response.Success)
             {

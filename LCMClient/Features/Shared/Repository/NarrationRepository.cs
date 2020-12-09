@@ -21,7 +21,7 @@ namespace LCMClient.Repository
 
         public async Task AddNarrationAsync(NarrationCreationModel newNarration)
         {
-            string url = $"{ httpService.BaseUrl }/{ Controller }";
+            string url = $"{ httpService.BaseUrl }{ Controller }";
             var response = await httpService.Post(url, newNarration);
             if (!response.Success)
             {
@@ -31,7 +31,7 @@ namespace LCMClient.Repository
 
         public async Task UpdateNarrationAsync(int narrationId, NarrationEditModel narrationEdit)
         {
-            string url = $"{ httpService.BaseUrl }/{ Controller }/{ narrationId }";
+            string url = $"{ httpService.BaseUrl }{ Controller }/{ narrationId }";
             var response = await httpService.Put(url, narrationEdit);
             if (!response.Success)
             {
@@ -41,7 +41,7 @@ namespace LCMClient.Repository
 
         public async Task DeleteNarrationAsync(int narrationId)
         {
-            string url = $"{ httpService.BaseUrl }/{ Controller }/{ narrationId }";
+            string url = $"{ httpService.BaseUrl }{ Controller }/{ narrationId }";
             var response = await httpService.Delete(url);
             if (!response.Success)
             {
@@ -51,7 +51,7 @@ namespace LCMClient.Repository
 
         public async Task<List<NarrationModel>> GetOrphanNarrations(int orphanId)
         {
-            string url = $"{ httpService.BaseUrl }/{ Controller }/{ "orphan" }/{ orphanId }";
+            string url = $"{ httpService.BaseUrl }{ Controller }/{ "orphan" }/{ orphanId }";
             var response = await httpService.Get<List<NarrationModel>>(url);
             if (!response.Success)
             {
@@ -62,7 +62,7 @@ namespace LCMClient.Repository
 
         public async Task<List<NarrationModel>> GetGuardianNarrations(int guradianId)
         {
-            string url = $"{ httpService.BaseUrl }/{ Controller }/{ "guardian" }/{ guradianId }";
+            string url = $"{ httpService.BaseUrl }{ Controller }/{ "guardian" }/{ guradianId }";
             var response = await httpService.Get<List<NarrationModel>>(url);
             if (!response.Success)
             {

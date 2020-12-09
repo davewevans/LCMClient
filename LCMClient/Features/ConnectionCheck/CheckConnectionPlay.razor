@@ -1,0 +1,40 @@
+﻿@page "/checkconnection"
+ 
+
+@inject IHttpService httpService
+
+<div class="ml-8 mt-8">
+    <h3 class="text-3xl text-indigo-700 mb-4">Check Internet Connection</h3>
+
+    <h4 class="text-2xl">
+        Connection status:
+        @if (isLoading)
+        {
+            <LoadingAnimation />
+        }
+        else
+        {
+            <span class="@statusMsgColor">@onlineStatusMsg <i class="@statusIcon"></i></span>
+
+        }
+    </h4>
+  
+</div>
+
+
+@code { 
+
+    bool isLoading = true;
+    string onlineStatusMsg = "";
+    string statusIcon = "";
+    string statusMsgColor = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        bool hasConnection = await httpService.HasInternetConnection();
+        statusIcon = hasConnection ? "fa fa-smile" : "fa fa-sad-cry";
+        statusMsgColor = hasConnection ? "text-green-700" : "text-red-700";
+        onlineStatusMsg = hasConnection ? "Online" : "Offline";
+        isLoading = false;
+    }
+}

@@ -1,5 +1,10 @@
 ﻿@using LCMClient.Features.Shared.Models
+@using LCMClient.Services 
 
+@inject IHttpService httpService
+
+@if(readyForGrid)
+{
 <SfGrid @ref="GuardianDataGrid"
         TValue="GuardianModel"
         AllowPaging="true"
@@ -29,7 +34,7 @@
                 OnActionBegin="ActionBeginHandler">
     </GridEvents>
 
-    <SfDataManager Url="https://localhost:44352/api/guardians/guardiansSFDataGrid"
+    <SfDataManager Url="@apiUrl"
                    CrossDomain="true"
                    Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
 
@@ -59,9 +64,18 @@
 
     </GridColumns>
 </SfGrid>
+}
+else
+{
+    <p>Loading...</p>
+}
 
 
 @code {
+
+    private bool readyForGrid = false;
+
+    private string apiUrl = "";
 
     private SfGrid<GuardianModel> GuardianDataGrid = new SfGrid<GuardianModel>();
 
@@ -75,6 +89,13 @@
 
     public int[] PageSizes = { 5, 10, 20, 50, 100 };
     private int pageSize = 20;
+
+    protected override void OnInitialized()
+    {
+        readyForGrid = false;
+        apiUrl = $"{ httpService.BaseUrl }guardians/guardiansSFDataGrid";
+        readyForGrid = true;
+    }
 
     public async Task ActionBeginHandler(ActionEventArgs<GuardianModel> args)
     {
@@ -103,7 +124,7 @@
 
     public void RecordClickHandler(RecordClickEventArgs<GuardianModel> args)
     {
-        // nav to details view 
+        // nav to details view
     }
 
     public void Load(object args)
