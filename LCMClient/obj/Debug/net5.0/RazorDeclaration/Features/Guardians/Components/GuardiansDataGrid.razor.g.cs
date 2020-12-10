@@ -174,7 +174,7 @@ using LCMClient.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 74 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardiansDataGrid.razor"
+#line 84 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardiansDataGrid.razor"
        
 
     private bool readyForGrid = false;
@@ -226,9 +226,14 @@ using LCMClient.Services;
         }
     }
 
+    private void NavigateToDetails(int id)
+    {
+        navigationManager.NavigateTo($"/GuardianDetails/{ id }");
+    }
+
     public void RecordClickHandler(RecordClickEventArgs<GuardianModel> args)
     {
-        // nav to details view
+        navigationManager.NavigateTo($"/GuardianDetails/{ args.RowData.GuardianID }");
     }
 
     public void Load(object args)
@@ -239,6 +244,7 @@ using LCMClient.Services;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IHttpService httpService { get; set; }
     }
 }

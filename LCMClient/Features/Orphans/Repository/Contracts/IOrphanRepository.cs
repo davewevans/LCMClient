@@ -7,7 +7,7 @@ namespace LCMClient.Features.Orphans.Repository.Contracts
 {
     public interface IOrphanRepository
     {
-        Task<List<OrphanModel>> GetAllOrphansAsync();
+        Task<List<Models.OrphanModel>> GetAllOrphansAsync();
 
         // Task<OrphansResponse> GetOrphansAsync(OrphanParameters parameters);
 

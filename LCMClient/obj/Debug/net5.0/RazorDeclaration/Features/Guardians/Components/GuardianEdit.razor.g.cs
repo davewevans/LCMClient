@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace LCMClient.Features.Orphans.Components
+namespace LCMClient.Features.Guardians.Components
 {
     #line hidden
     using System;
@@ -159,67 +159,13 @@ using Syncfusion.Blazor.Navigations;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 3 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\SfConfirmDeleteDialog.razor"
-using Syncfusion.Blazor.Popups;
-
-#line default
-#line hidden
-#nullable disable
-    public partial class SfConfirmDeleteDialog : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class GuardianEdit : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 92 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\SfConfirmDeleteDialog.razor"
-       
-
-    [Parameter]
-    public string ConfirmationTitle { get; set; } = "Confirm Delete";
-
-    [Parameter]
-    public string ConfirmationMessage { get; set; } = "Are you sure you want to delete?";
-
-    [Parameter]
-    public EventCallback<bool> ConfirmationChanged { get; set; }
-
-    private bool ShowButtons { get; set; } = true;
-    private bool ConfirmDlgVisible { get; set; } = false;
-
-
-    public void ShowDialog()
-    {
-        this.ConfirmDlgVisible = true;
-    }
-
-    private async Task OnConfirm()
-    {
-        this.ConfirmDlgVisible = false;
-        await ConfirmationChanged.InvokeAsync(true);
-    }
-
-    private async Task OnCancel()
-    {
-        this.ConfirmDlgVisible = false;
-        await ConfirmationChanged.InvokeAsync(false);
-    }
-
-    private void BeforeDialogOpen(Syncfusion.Blazor.Popups.BeforeOpenEventArgs args)
-    {
-        this.ShowButtons = false;
-    }
-
-    private void DialogClose(CloseEventArgs args)
-    {
-        this.ShowButtons = true;
-    }
-
-#line default
-#line hidden
-#nullable disable
     }
 }
 #pragma warning restore 1591

@@ -261,7 +261,6 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Ra
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Orphans\Components\OrphansDataGrid.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Orphans\Components\OrphansList.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Orphans\Components\OrphanSponsors.razor.g.cs
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Orphans\Components\SfConfirmDeleteDialog.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Orphans\Components\SponsorAssignmentDialog.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Playground\Radzenplay1.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Shared\ConfirmDeleteDialog.razor.g.cs
@@ -332,7 +331,6 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Ra
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Orphans\Components\OrphansDataGrid.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Orphans\Components\OrphansList.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Orphans\Components\OrphanSponsors.razor.g.cs
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Orphans\Components\SfConfirmDeleteDialog.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Orphans\Components\SponsorAssignmentDialog.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Playground\Radzenplay1.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Shared\ConfirmDeleteDialog.razor.g.cs
@@ -816,3 +814,16 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Ra
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Sponsors\Components\SponsorDetails.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Guardians\Components\GuardianDetails.razor.g.cs
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Sponsors\Components\SponsorDetails.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Shared\SfConfirmDeleteDialog.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Shared\SfConfirmDeleteDialog.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\scopedcss\Features\Orphans\Components\OrphanDetails.razor.rz.scp.css
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Guardians\Components\GuardianEdit.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Guardians\Components\GuardianNarrations.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Guardians\Components\GuardianOrphans.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Guardians\Components\GuardianEdit.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Guardians\Components\GuardianNarrations.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Guardians\Components\GuardianOrphans.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Shared\OrphanCards.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Shared\OrphanCards.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Shared\OrphanCard.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Shared\OrphanCard.razor.g.cs

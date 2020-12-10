@@ -132,7 +132,6 @@
                 @{
                     var _orphan = (context as OrphanModel);
                     <SfButton Content="@ProfileBtnContent" CssClass="e-link" @onclick="@(() => NavigateToDetails(_orphan.OrphanID))"> </SfButton>
-
                 }
             </Template>
         </GridColumn>
@@ -196,7 +195,7 @@ else
 
     private void NavigateToDetails(int id)
     {
-        navigationManager.NavigateTo($"/orphandetails/{ id }");
+        navigationManager.NavigateTo($"/OrphanDetails/{ id }");
     }
 
     public class StatusOption

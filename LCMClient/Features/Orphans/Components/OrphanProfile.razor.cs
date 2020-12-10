@@ -12,17 +12,28 @@ namespace LCMClient.Features.Orphans.Components
         [Parameter]
         public EventCallback HandleOrphanEdited { get; set; }
 
-        private bool editMode = false;
+        [Parameter]
+        public bool EditMode { get; set; }
 
         private string editViewIcon = "fa fa-edit";
 
         private string editViewText = "Edit";
 
+        protected override void OnParametersSet()
+        {
+            UpdateBtnIconAndText();
+        }
+
         public void ToggleEditMode()
         {
-            editMode = !editMode;
-            editViewIcon = editMode ? "fa fa-times" : "fa fa-edit";
-            editViewText = editMode ? "Close" : "Edit";
+            EditMode = !EditMode;
+            UpdateBtnIconAndText();
+        }
+
+        private void UpdateBtnIconAndText()
+        {
+            editViewIcon = EditMode ? "fa fa-times" : "fa fa-edit";
+            editViewText = EditMode ? "Close" : "Edit";
         }
 
         public async Task HandleOrphanEditedByChild(OrphanDetailsModel orphan)

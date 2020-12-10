@@ -1,6 +1,7 @@
 ﻿@using LCMClient.Features.Orphans.Enums
+@using LCMClient.Features.Shared
 
-<SfConfirmDeleteDialog @ref="DeleteConfirmationDialog"
+<SfConfirmDeleteDialog IsVisible="@showDelConfirmDialog"
                        ConfirmationChanged="OnConfirmDelete"
                        ConfirmationMessage=@($"Are you sure you want remove this sponsor as { Orphan?.FirstName }'s sponsor?")>
 

@@ -12,12 +12,10 @@ namespace LCMClient.Repository
     {
         private readonly IHttpService httpService;
         private const string Controller = "guardians";
-        private readonly string url = "";
 
         public GuardianRepository(IHttpService httpService)
         {
             this.httpService = httpService;
-            this.url = $"{ httpService.BaseUrl }{ Controller }";
         }
         
         public async Task<List<GuardianModel>> GetGuardiansAsync()
@@ -31,10 +29,21 @@ namespace LCMClient.Repository
             return response.Response;
         }
         
-        public async Task<GuardianModel> GetGuardianAsync(int guardianId)
+        public async Task<GuardianDetailsModel> GetGuardianAsync(int guardianId)
         {
             string url = $"{ httpService.BaseUrl }{ Controller }/{ guardianId }";
-            var response = await httpService.Get<GuardianModel>(url);
+            var response = await httpService.Get<GuardianDetailsModel>(url);
+            if (!response.Success)
+            {
+                throw new ApplicationException(await response.GetBody());
+            }
+            return response.Response;
+        }
+
+        public async Task<List<OrphanModel>> GetGuardianOrphansAsync(int guardianId)
+        {
+            string url = $"{ httpService.BaseUrl }{ Controller }/guardianOrphans/{ guardianId }";
+            var response = await httpService.Get<List<OrphanModel>>(url);
             if (!response.Success)
             {
                 throw new ApplicationException(await response.GetBody());

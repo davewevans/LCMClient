@@ -1,0 +1,96 @@
+﻿@using LCMClient.Features.Shared.Models
+@using LCMClient.Features.Shared.Repository.Contracts
+
+@inject IGuardianRepository guardianRepository
+
+
+@if (isLoading)
+{
+    <LoadingAnimation />
+}
+
+<LCMClient.Features.Shared.OrphanCards Orphans="@orphans" />
+
+<div class="m-6">
+    @if (orphans is not null)
+    {
+        if (orphans.Count == 0)
+        {
+            <p class="text-lg font-semibold">This guardian has no assigned orphans.</p>
+            <p class="text-lg">To assign an orphan to this guardian, select the orphan from the orphan's list, click on "View/Edit," and then click on the "Guardian" tab. From there, you can assign this guardian to the selected orphan.</p>
+        }
+
+        foreach (var orphan in orphans)
+        {
+            <p>@orphan.FullName</p>
+        }
+    }
+    else
+    {
+        <p class="text-lg font-semibold">This guardian has no assigned orphans.</p>
+        <p class="text-lg">To assign an orphan to this guardian, select the orphan from the orphan's list, click on "Edit," and then click on the "Guardian" tab. From there, you can assign this guardian to the selected orphan.</p>
+    }
+</div>
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    private List<OrphanModel> orphans;
+
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // orphans = await guardianRepository.GetGuardianOrphansAsync(Id);
+        isLoading = false;
+
+
+        orphans = new List<OrphanModel>
+{
+            new OrphanModel
+            {
+                FirstName = "Dave",
+                LastName = "Foo",
+            },
+              new OrphanModel
+            {
+                FirstName = "John",
+                LastName = "Foo",
+            },
+                new OrphanModel
+            {
+                FirstName = "Bob",
+                LastName = "Foo",
+            },
+                  new OrphanModel
+            {
+                FirstName = "Sandy",
+                LastName = "Foo",
+            },
+                    new OrphanModel
+            {
+                FirstName = "Mandy",
+                LastName = "Foo",
+            },
+                      new OrphanModel
+            {
+                FirstName = "Cindy",
+                LastName = "Foo",
+            },
+                        new OrphanModel
+            {
+                FirstName = "George",
+                LastName = "Foo",
+            },
+                          new OrphanModel
+            {
+                FirstName = "Martin",
+                LastName = "Foo",
+            },
+        };
+
+
+    }
+}

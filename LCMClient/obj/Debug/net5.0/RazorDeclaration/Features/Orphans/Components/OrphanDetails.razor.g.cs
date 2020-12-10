@@ -160,13 +160,20 @@ using Syncfusion.Blazor.Navigations;
 #line hidden
 #nullable disable
 #nullable restore
+#line 5 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanDetails.razor"
+using LCMClient.Features.Shared;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanDetails.razor"
            [Authorize]
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/orphanDetails/{id:int}")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/OrphanDetails/{id:int}")]
     public partial class OrphanDetails : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

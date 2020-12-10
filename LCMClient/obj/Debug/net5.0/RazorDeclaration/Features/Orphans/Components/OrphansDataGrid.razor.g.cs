@@ -181,7 +181,7 @@ using LCMClient.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 169 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphansDataGrid.razor"
+#line 168 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphansDataGrid.razor"
        
 
     private bool readyForGrid = false;
@@ -212,7 +212,7 @@ using LCMClient.Services;
 
     private void NavigateToDetails(int id)
     {
-        navigationManager.NavigateTo($"/orphandetails/{ id }");
+        navigationManager.NavigateTo($"/OrphanDetails/{ id }");
     }
 
     public class StatusOption

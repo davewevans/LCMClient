@@ -1,6 +1,8 @@
 ﻿using LCMClient.Features.Orphans.Enums;
 using LCMClient.Features.Orphans.Models;
 using LCMClient.Features.Orphans.Repository.Contracts;
+using LCMClient.Features.Shared;
+using MatBlazor;
 using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
 
@@ -15,7 +17,12 @@ namespace LCMClient.Features.Orphans.Components
         public EventCallback HandleOrphanEdited { get; set; }
 
         [Inject]
-        public IOrphanRepository OrphanRepository { get; set; }       
+        public IOrphanRepository OrphanRepository { get; set; }
+
+        [Inject]
+        protected IMatToaster Toaster { get; set; }
+
+        private bool showDelConfirmDialog = false;
 
         private object TextModel = new
         {
@@ -51,16 +58,18 @@ namespace LCMClient.Features.Orphans.Components
         }
         private void OnRemoveClick()
         {
-            DeleteConfirmationDialog.ShowDialog();
+            showDelConfirmDialog = true;
         }
 
         protected async Task OnConfirmDelete(bool deleteConfirmed)
         {
+            showDelConfirmDialog = false;
             if (deleteConfirmed)
             {
                 await OrphanRepository.PatchOrphanAsync(Orphan.OrphanID, "guardianID");
                 await OrphanRepository.PatchOrphanAsync(Orphan.OrphanID, "relationshipToGuardian");
                 Orphan.Guardian = await OrphanRepository.GetOrphanGuardianAsync(Orphan.OrphanID);
+                Toaster.Add("Record deleted.", MatToastType.Success);
                 StateHasChanged();
 
                 await HandleOrphanEdited.InvokeAsync("");

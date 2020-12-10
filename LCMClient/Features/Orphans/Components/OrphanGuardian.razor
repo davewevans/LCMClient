@@ -1,7 +1,8 @@
 ﻿@using LCMClient.Features.Orphans.Enums;
 @using Syncfusion.Blazor.InPlaceEditor
+@using LCMClient.Features.Shared 
 
-<SfConfirmDeleteDialog @ref="DeleteConfirmationDialog"
+<SfConfirmDeleteDialog IsVisible="@showDelConfirmDialog"
                        ConfirmationChanged="OnConfirmDelete"
                        ConfirmationMessage=@($"Are you sure you want remove {Orphan?.Guardian?.FullName} as {Orphan?.FirstName}'s guardian?")>
 

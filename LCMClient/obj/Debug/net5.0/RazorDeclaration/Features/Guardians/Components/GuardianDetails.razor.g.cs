@@ -153,12 +153,27 @@ using Syncfusion.Blazor.DropDowns;
 #line hidden
 #nullable disable
 #nullable restore
-#line 21 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+#line 4 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianDetails.razor"
 using Syncfusion.Blazor.Navigations;
 
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianDetails.razor"
+using LCMClient.Features.Shared;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianDetails.razor"
+           [Authorize]
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/GuardianDetails/{id:int}")]
     public partial class GuardianDetails : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

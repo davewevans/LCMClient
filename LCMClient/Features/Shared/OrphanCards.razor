@@ -1,0 +1,46 @@
+﻿@using LCMClient.Features.Shared.Models
+
+
+<h3>Orphan Cards</h3>
+
+@if (Orphans is not null)
+{
+    <div class="grid grid-cols-3 gap-2">
+        @foreach (var orphan in Orphans)
+        {
+            <OrphanCard Orphan="orphan" />
+        }
+    </div>
+}
+
+
+@code {
+
+    public class Person
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+    }
+
+    [Parameter]
+    public RenderFragment Card { get; set; }
+
+    [Parameter]
+    public List<OrphanModel> Orphans { get; set; }
+
+    public List<Person> People { get; set; }
+
+    private int numberOfRows = 0;
+
+    private int counter = 0;
+
+    protected override void OnInitialized()
+    {
+
+    }
+
+    private void IncrementCounter()
+    {
+        counter++;
+    }
+}

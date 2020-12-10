@@ -22,9 +22,9 @@ namespace LCMClient.Features.Orphans.Repository
             this.url = $"{ httpService.BaseUrl }{ Controller }";
         }
 
-        public async Task<List<OrphanModel>> GetAllOrphansAsync()
+        public async Task<List<Models.OrphanModel>> GetAllOrphansAsync()
         {
-            var response = await httpService.Get<List<OrphanModel>>($"{ url }/allOrphans");
+            var response = await httpService.Get<List<Models.OrphanModel>>($"{ url }/allOrphans");
             if (!response.Success)
             {
                 throw new ApplicationException(await response.GetBody());

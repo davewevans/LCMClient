@@ -1,11 +1,10 @@
 ﻿using LCMClient.Features.Orphans.Enums;
 using LCMClient.Features.Orphans.Models;
+using LCMClient.Features.Shared;
 using LCMClient.Features.Shared.Models;
 using LCMClient.Features.Shared.Repository.Contracts;
+using MatBlazor;
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace LCMClient.Features.Orphans.Components
@@ -18,7 +17,10 @@ namespace LCMClient.Features.Orphans.Components
         [Inject]
         public INarrationRepository NarrationRepository { get; set; }
 
-        protected SfConfirmDeleteDialog DeleteConfirmationDialog { get; set; }
+        [Inject]
+        protected IMatToaster Toaster { get; set; }
+
+        private bool showDelConfirmDialog = false;
 
         private ViewMode viewMode = ViewMode.List;
 
@@ -69,15 +71,17 @@ namespace LCMClient.Features.Orphans.Components
         private void OnDeleteClick(int narrationId)
         {
             narrationIdToDelete = narrationId;
-            DeleteConfirmationDialog.ShowDialog();
+            showDelConfirmDialog = true;
         }
 
         protected async Task OnConfirmDelete(bool deleteConfirmed)
         {
+            showDelConfirmDialog = false;
             if (deleteConfirmed && narrationIdToDelete != 0)
             {
                 await NarrationRepository.DeleteNarrationAsync(narrationIdToDelete);
                 Orphan.Narrations = await NarrationRepository.GetOrphanNarrations(Orphan.OrphanID);
+                Toaster.Add("Narration deleted.", MatToastType.Success);
                 StateHasChanged();
             }
             narrationIdToDelete = 0;

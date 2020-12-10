@@ -1,10 +1,10 @@
 ﻿using LCMClient.Features.Orphans.Enums;
 using LCMClient.Features.Orphans.Models;
 using LCMClient.Features.Orphans.Repository.Contracts;
+using LCMClient.Features.Shared;
+using MatBlazor;
 using Microsoft.AspNetCore.Components;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace LCMClient.Features.Orphans.Components
@@ -17,7 +17,10 @@ namespace LCMClient.Features.Orphans.Components
         [Inject]
         public IAcademicRepository AcademicRepository { get; set; }
 
-        protected SfConfirmDeleteDialog DeleteConfirmationDialog { get; set; }
+        [Inject]
+        protected IMatToaster Toaster { get; set; }
+
+        private bool showDelConfirmDialog = false;
 
         private ViewMode viewMode = ViewMode.List;
 
@@ -72,15 +75,17 @@ namespace LCMClient.Features.Orphans.Components
         private void OnDeleteClick(int academicId)
         {
             academicIdToDelete = academicId;
-            DeleteConfirmationDialog.ShowDialog();
-        }
+            showDelConfirmDialog = true;
+    }
 
         protected async Task OnConfirmDelete(bool deleteConfirmed)
         {
+            showDelConfirmDialog = false;
             if (deleteConfirmed && academicIdToDelete != 0)
             {
                 await AcademicRepository.DeleteAcademicAsync(academicIdToDelete);
                 Orphan.Academics = await AcademicRepository.GetOrphanAcademics(Orphan.OrphanID);
+                Toaster.Add("Record deleted.", MatToastType.Success);
                 StateHasChanged();
             }
             academicIdToDelete = 0;

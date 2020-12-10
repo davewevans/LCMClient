@@ -174,7 +174,7 @@ using LCMClient.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 99 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Sponsors\Components\SponsorsDataGrid.razor"
+#line 107 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Sponsors\Components\SponsorsDataGrid.razor"
        
 
     private bool readyForGrid = false;
@@ -226,9 +226,14 @@ using LCMClient.Services;
         }
     }
 
+    private void NavigateToDetails(int id)
+    {
+        navigationManager.NavigateTo($"/SponsorDetails/{ id }");
+    }
+
     public void RecordClickHandler(RecordClickEventArgs<SponsorModel> args)
     {
-        // nav to details view
+        navigationManager.NavigateTo($"/SponsorDetails/{ args.RowData.SponsorID }");
     }
 
     public void Load(object args)
@@ -239,6 +244,7 @@ using LCMClient.Services;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IHttpService httpService { get; set; }
     }
 }

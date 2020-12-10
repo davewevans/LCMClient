@@ -4,7 +4,7 @@
 
 
 
-<SfDialog @bind-Visible="@ConfirmDlgVisible" Width="400px" Target="#target" ShowCloseIcon="true">
+<SfDialog @bind-Visible="@IsVisible" Width="400px" Target="#target" ShowCloseIcon="true">
     <DialogTemplates>
         <Header>
             @ConfirmationTitle
@@ -20,6 +20,52 @@
     </DialogButtons>
 </SfDialog>
 
+
+@code {
+
+    [Parameter]
+    public string ConfirmationTitle { get; set; } = "Confirm Delete";
+
+    [Parameter]
+    public string ConfirmationMessage { get; set; } = "Are you sure you want to delete?";
+
+    [Parameter]
+    public EventCallback<bool> ConfirmationChanged { get; set; }
+
+    [Parameter]
+    public bool IsVisible { get; set; } = false;
+
+
+    private bool ShowButtons { get; set; } = true;
+
+
+    public void ShowDialog()
+    {
+        this.IsVisible = true;
+    }
+
+    private async Task OnConfirm()
+    {
+        this.IsVisible = false;
+        await ConfirmationChanged.InvokeAsync(true);
+    }
+
+    private async Task OnCancel()
+    {
+        this.IsVisible = false;
+        await ConfirmationChanged.InvokeAsync(false);
+    }
+
+    private void BeforeDialogOpen(Syncfusion.Blazor.Popups.BeforeOpenEventArgs args)
+    {
+        this.ShowButtons = false;
+    }
+
+    private void DialogClose(CloseEventArgs args)
+    {
+        this.ShowButtons = true;
+    }
+}
 
 
 <style>
@@ -88,46 +134,3 @@
         height: 285px;
     }
 </style>
-
-@code {
-
-    [Parameter]
-    public string ConfirmationTitle { get; set; } = "Confirm Delete";
-
-    [Parameter]
-    public string ConfirmationMessage { get; set; } = "Are you sure you want to delete?";
-
-    [Parameter]
-    public EventCallback<bool> ConfirmationChanged { get; set; }
-
-    private bool ShowButtons { get; set; } = true;
-    private bool ConfirmDlgVisible { get; set; } = false;
-
-
-    public void ShowDialog()
-    {
-        this.ConfirmDlgVisible = true;
-    }
-
-    private async Task OnConfirm()
-    {
-        this.ConfirmDlgVisible = false;
-        await ConfirmationChanged.InvokeAsync(true);
-    }
-
-    private async Task OnCancel()
-    {
-        this.ConfirmDlgVisible = false;
-        await ConfirmationChanged.InvokeAsync(false);
-    }
-
-    private void BeforeDialogOpen(Syncfusion.Blazor.Popups.BeforeOpenEventArgs args)
-    {
-        this.ShowButtons = false;
-    }
-
-    private void DialogClose(CloseEventArgs args)
-    {
-        this.ShowButtons = true;
-    }
-}

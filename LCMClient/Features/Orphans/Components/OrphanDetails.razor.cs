@@ -1,7 +1,9 @@
 ﻿using LCMClient.Features.Orphans.Models;
 using LCMClient.Features.Orphans.Repository.Contracts;
+using MatBlazor;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using Syncfusion.Blazor.Navigations;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,9 +14,7 @@ namespace LCMClient.Features.Orphans.Components
     {
         string fullNameStyle = "bg-gray-200 p-2";
         static Random randomizer = new Random();
-        string profileBgClass = "bg-gradient-to-r from-orange-400 via-red-500 to-blue-500";
-        string[] gradientColors = { "orange", "pink", "red", "green", "yellow", "purple", "blue", "teal", "indigo", "gray" };
-        bool backgroundIsReady = false;
+        string profileBgClass = "bg-gradient-1";
 
         [Inject]
         public IJSRuntime Js { get; set; }
@@ -22,32 +22,37 @@ namespace LCMClient.Features.Orphans.Components
         [Inject]
         public IOrphanRepository OrphanRepo { get; set; }
 
+        [Inject]
+        protected IMatToaster Toaster { get; set; }
+
         [Parameter]
         public int Id { get; set; }
 
         [Inject]
         public NavigationManager NavigationManager { get; set; }
 
+        public SfTab sfTabs;
+
+        private bool isEditMode = false;
+
         public OrphanDetailsModel Orphan { get; set; }
 
-        protected ConfirmDelete DeleteConfirmation { get; set; }
-
-        protected SfConfirmDeleteDialog DeleteConfirmationDialog { get; set; }
+        private bool showDelConfirmDialog = false;
 
         public OrphanSummary Summary { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            GenerateProfileBackground();
-
             Orphan = await OrphanRepo.GetOrphanDetailsAsync(Id);
             if (Orphan == null) return;
 
-            PopulateSummary();            
+            GenerateProfileBackground(); 
+            PopulateSummary();
             SetNameBgColorBasedOnGender();
-            backgroundIsReady = true;
-            StateHasChanged(); // Trying to fix bg color gradient not showing intermittently
+
+            
         }
+       
 
         private void PopulateSummary()
         {
@@ -67,8 +72,8 @@ namespace LCMClient.Features.Orphans.Components
 
         private void GenerateProfileBackground()
         {
-            profileBgClass = $"bg-gradient-to-r from-{gradientColors[randomizer.Next(gradientColors.Length)]}-400 via-{gradientColors[randomizer.Next(gradientColors.Length)]}-500 to-{gradientColors[randomizer.Next(gradientColors.Length)]}-500";
-            // Console.WriteLine($"gradient bg: {profileBgClass}");
+            int numberOfGradients = 40;
+            profileBgClass = $"bg-gradient-{randomizer.Next(1, numberOfGradients + 1)}";
         }
 
         private void SetNameBgColorBasedOnGender()
@@ -79,23 +84,24 @@ namespace LCMClient.Features.Orphans.Components
             }
         }
 
-        protected override async Task OnParametersSetAsync()
+        protected void OnEditClick()
         {
-            await base.OnParametersSetAsync();
-
+            isEditMode = true;
+            sfTabs.Select(0);
         }
 
         protected void OnDeleteClick()
         {
-
-            DeleteConfirmationDialog.ShowDialog();
+            showDelConfirmDialog = true;
         }
 
         protected async Task OnConfirmDelete(bool deleteConfirmed)
         {
+            showDelConfirmDialog = false;
             if (deleteConfirmed)
             {
                 await OrphanRepo.DeleteOrphanAsync(Orphan.OrphanID);
+                Toaster.Add("Orphan deleted.", MatToastType.Success);
                 NavigationManager.NavigateTo("/orphans");
             }
         }
@@ -107,6 +113,7 @@ namespace LCMClient.Features.Orphans.Components
             PopulateSummary();
             GenerateProfileBackground();
             SetNameBgColorBasedOnGender();
+            isEditMode = false;
             StateHasChanged();
         }
     }

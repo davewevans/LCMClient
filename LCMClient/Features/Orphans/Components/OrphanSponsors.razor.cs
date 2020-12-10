@@ -1,8 +1,10 @@
 ﻿using LCMClient.Features.Orphans.Enums;
 using LCMClient.Features.Orphans.Models;
 using LCMClient.Features.Orphans.Repository.Contracts;
+using LCMClient.Features.Shared;
 using LCMClient.Features.Shared.Models;
 using LCMClient.Features.Shared.Repository.Contracts;
+using MatBlazor;
 using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
 
@@ -22,7 +24,10 @@ namespace LCMClient.Features.Orphans.Components
         [Inject]
         public IOrphanSponsorRepository OrphanSponsorRepository { get; set; }
 
-        protected SfConfirmDeleteDialog DeleteConfirmationDialog { get; set; }
+        [Inject]
+        protected IMatToaster Toaster { get; set; }
+
+        private bool showDelConfirmDialog = false;
 
         private ViewMode viewMode = ViewMode.List;
 
@@ -44,13 +49,14 @@ namespace LCMClient.Features.Orphans.Components
             }
         }
         private void OnRemoveClick(int id)
-        {
-            DeleteConfirmationDialog.ShowDialog();
+        {            
             sponsorToRemoveId = id;
+            showDelConfirmDialog = true;
         }
 
         protected async Task OnConfirmDelete(bool deleteConfirmed)
         {
+            showDelConfirmDialog = false;
             if (deleteConfirmed)
             {
                 if (Orphan == null || sponsorToRemoveId == 0) return;
@@ -62,6 +68,7 @@ namespace LCMClient.Features.Orphans.Components
                 await OrphanSponsorRepository.RemoveAssignment(recordToRemove);
                 Orphan.Sponsors = await OrphanRepository.GetOrphanSponsorsAsync(Orphan.OrphanID);
                 await HandleOrphanEdited.InvokeAsync("");
+                Toaster.Add("Record deleted.", MatToastType.Success);
                 StateHasChanged();
             }
             sponsorToRemoveId = 0;
