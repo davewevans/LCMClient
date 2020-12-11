@@ -1,0 +1,33 @@
+﻿<div class="md:flex mb-8 bg-blue-100 p-4 items-center justify-between">
+    <div class="">
+        @HeaderIcon
+        <h3 class="text-blue-600 text-2xl font-bold">@HeaderText</h3>
+    </div>
+    <div class="">
+        <button @onclick="ButtonOnclickHandler" class="bg-blue-600 hover:bg-blue-800 text-white font-semibold hover:text-white py-2 px-4 rounded">
+            <div class="flex items-center">
+                <i class="@ButtonIcon mr-2"></i> @ButtonText
+            </div>
+        </button>
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public string HeaderText { get; set; }
+
+    [Parameter]
+    public string HeaderIcon { get; set; }
+
+    [Parameter]
+    public EventCallback ButtonOnclickHandler { get; set; }
+
+    [Parameter]
+    public string ButtonIcon { get; set; }
+
+    [Parameter]
+    public string ButtonText { get; set; }
+
+
+}

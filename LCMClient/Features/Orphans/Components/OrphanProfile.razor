@@ -1,16 +1,10 @@
-﻿<div class="md:flex mb-8 bg-blue-100 p-4 items-center justify-between">
-    <div class="">
-        <h3 class="text-blue-600 text-2xl font-bold">@Orphan.FirstName's Profile</h3>
-    </div>
-    <div class="">
-        <button @onclick="ToggleEditMode" class="bg-blue-600 hover:bg-blue-800 text-white font-semibold hover:text-white py-2 px-4 rounded">
-            <div class="flex items-center">
-                <i class="@editViewIcon mr-2"></i> @editViewText
-            </div>
-        </button>
-    </div>
-</div>
+﻿@using LCMClient.Features.Shared
 
+<TabContentHeader 
+                HeaderText="@headerText"
+                ButtonOnclickHandler="ToggleEditMode"
+                ButtonIcon="@editViewIcon"
+                ButtonText="@editViewText"/>
 
 @if (EditMode)
 {
@@ -24,3 +18,4 @@ else
         <OrphanProfileView Orphan="@Orphan" HandleToggleEditView="@ToggleEditMode" />
     </div>
 }
+

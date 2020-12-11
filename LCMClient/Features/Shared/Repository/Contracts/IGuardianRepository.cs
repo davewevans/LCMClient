@@ -11,7 +11,7 @@ namespace LCMClient.Features.Shared.Repository.Contracts
     {
         Task<List<GuardianModel>> GetGuardiansAsync();
 
-        Task<GuardianDetailsModel> GetGuardianAsync(int guradianId);
+        Task<GuardianDetailsModel> GetGuardianDetailsAsync(int guradianId);
 
         Task<List<OrphanModel>> GetGuardianOrphansAsync(int guardianId);
 

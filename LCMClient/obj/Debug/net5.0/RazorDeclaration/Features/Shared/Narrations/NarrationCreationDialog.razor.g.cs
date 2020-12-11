@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace LCMClient.Features.Shared
+namespace LCMClient.Features.Shared.Narrations
 {
     #line hidden
     using System;
@@ -153,41 +153,55 @@ using Syncfusion.Blazor.Navigations;
 #line hidden
 #nullable disable
 #nullable restore
-#line 1 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\NarrationEditDialog.razor"
+#line 1 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\Narrations\NarrationCreationDialog.razor"
 using Syncfusion.Blazor.Popups;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\NarrationEditDialog.razor"
+#line 2 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\Narrations\NarrationCreationDialog.razor"
 using Syncfusion.Blazor.Buttons;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\NarrationEditDialog.razor"
+#line 3 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\Narrations\NarrationCreationDialog.razor"
+using LCMClient.Features.Orphans.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\Narrations\NarrationCreationDialog.razor"
 using LCMClient.Features.Shared.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\NarrationEditDialog.razor"
+#line 5 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\Narrations\NarrationCreationDialog.razor"
 using LCMClient.Features.Shared.Repository.Contracts;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\NarrationEditDialog.razor"
+#line 6 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\Narrations\NarrationCreationDialog.razor"
 using LCMClient.Helpers;
 
 #line default
 #line hidden
 #nullable disable
-    public partial class NarrationEditDialog : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 7 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\Narrations\NarrationCreationDialog.razor"
+using LCMClient.Features.Guardians.Models;
+
+#line default
+#line hidden
+#nullable disable
+    public partial class NarrationCreationDialog : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -195,20 +209,20 @@ using LCMClient.Helpers;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 67 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\NarrationEditDialog.razor"
+#line 79 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\Narrations\NarrationCreationDialog.razor"
        
 
     [Parameter]
     public bool IsVisible { get; set; }
 
     [Parameter]
-    public NarrationEditModel NarrationRecord { get; set; }
+    public OrphanDetailsModel Orphan { get; set; }
 
     [Parameter]
-    public int NarrationId { get; set; }
+    public GuardianDetailsModel Guardian { get; set; }
 
     [Parameter]
-    public EventCallback<bool> OnEditComplete { get; set; }
+    public EventCallback<bool> OnAddNewComplete { get; set; }
 
     [Inject]
     public INarrationRepository NarrationRepository { get; set; }
@@ -216,38 +230,57 @@ using LCMClient.Helpers;
     [Inject]
     public IJSRuntime JSRuntime { get; set; }
 
+    private NarrationCreationModel narrationCreation = new NarrationCreationModel();
+
     [Inject]
     protected IMatToaster Toaster { get; set; }
 
+    private ElementReference subjectInput;
+
+    private string fullName = "";
+
+    protected override void OnParametersSet()
+    {
+        fullName = Orphan is not null ? Orphan.FirstName : Guardian?.FullName;
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            // Focus the element
+            // Focus the input element
             await JSRuntime.FocusInput("subject");
         }
     }
 
     private async Task HandleValidSubmit()
     {
-        if (NarrationRecord == null)
+        if (Orphan is null && Guardian is null)
         {
-            Toaster.Add($" No Narration record found.", MatToastType.Danger);
+            Toaster.Add($" No record found.", MatToastType.Danger);
             return;
         }
 
-        await NarrationRepository.UpdateNarrationAsync(NarrationId, NarrationRecord);
+        if (Orphan is not null)
+        {
+            narrationCreation.OrphanID = Orphan.OrphanID;
+        }
+        else if (Guardian is not null)
+        {
+            narrationCreation.GuardianID = Guardian.GuardianID;
+        }
+
+        await NarrationRepository.AddNarrationAsync(narrationCreation);
         IsVisible = false;
-        await OnEditComplete.InvokeAsync(true);
+        await OnAddNewComplete.InvokeAsync(true);
         StateHasChanged();
-        Toaster.Add($" Record updated successfully!", MatToastType.Success);
+        Toaster.Add($" Narration record added.", MatToastType.Success);
     }
 
     private async Task OnCancelBtnClick()
     {
         IsVisible = false;
-        await OnEditComplete.InvokeAsync(false);
+        await OnAddNewComplete.InvokeAsync(false);
     }
 
 

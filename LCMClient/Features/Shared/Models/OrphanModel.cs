@@ -14,31 +14,31 @@ namespace LCMClient.Features.Shared.Models
 
         public string FullName => $"{FirstName} {MiddleName} {LastName}";
 
-        //public string Gender { get; set; }
+        public string Gender { get; set; }
 
-        //public DateTime? DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
-        //public string LCMStatus { get; set; }
+        public string LCMStatus { get; set; }
 
-        //public string Location { get; set; }
+        public string Location { get; set; }
 
-        //public string ProfileNumber { get; set; }
+        public string ProfileNumber { get; set; }
 
-        //public string RelationshipToGuardian { get; set; }
+        public string RelationshipToGuardian { get; set; }
 
-        //public int? GuardianID { get; set; }
+        public int? GuardianID { get; set; }
 
-        //public string ProfilePicFileName { get; set; }
+        public string ProfilePicFileName { get; set; }
 
-        //public string ProfilePicUrl { get; set; }
+        public string ProfilePicUrl { get; set; }
 
-        //public DateTime? YearOfAdmission { get; set; }
+        public DateTime? YearOfAdmission { get; set; }
 
-        //public string Condition { get; set; }       
+        public string Condition { get; set; }
 
-        //public override string ToString()
-        //{
-        //    return $"{ FirstName } { MiddleName } { LastName } { Gender } { DateOfBirth:d} { LCMStatus } { ProfileNumber }";
-        //}
+        public override string ToString()
+        {
+            return $"{ FirstName } { MiddleName } { LastName } { Gender } { DateOfBirth:d} { LCMStatus } { ProfileNumber }";
+        }
     }
 }

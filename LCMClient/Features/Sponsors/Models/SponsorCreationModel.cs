@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace LCMClient.Features.Sponsors.Models
 {
@@ -36,5 +37,9 @@ namespace LCMClient.Features.Sponsors.Models
         [StringLength(128)]
         [Phone(ErrorMessage = "Invalid phone number.")]
         public string MainPhone { get; set; }
+
+        public string Status { get; set; }
+
+        public DateTime? LastDonationDate { get; set; }
     }
 }

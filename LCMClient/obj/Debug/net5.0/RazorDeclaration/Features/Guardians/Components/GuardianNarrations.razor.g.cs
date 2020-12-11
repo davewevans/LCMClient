@@ -159,6 +159,27 @@ using Syncfusion.Blazor.Navigations;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 1 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianNarrations.razor"
+using LCMClient.Features.Shared;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianNarrations.razor"
+using LCMClient.Features.Shared.Narrations;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianNarrations.razor"
+using LCMClient.Features.Shared.Enums;
+
+#line default
+#line hidden
+#nullable disable
     public partial class GuardianNarrations : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

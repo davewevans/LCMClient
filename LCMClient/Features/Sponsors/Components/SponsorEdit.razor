@@ -1,0 +1,187 @@
+﻿
+@using LCMClient.Features.Sponsors.Models
+@using LCMClient.Features.Shared.Repository.Contracts
+@using MatBlazor;
+
+@inject NavigationManager navigationManager
+@inject ISponsorRepository sponsorRepository
+@inject IMatToaster toaster
+
+@attribute [Authorize]
+
+@if (sponsorToEdit is not null)
+{
+    <div class="mt-8 mb-8 ml-32 mr-32">
+        <EditForm Model="@sponsorToEdit" OnValidSubmit="@HandleValidSubmit">
+            <DataAnnotationsValidator />
+
+            <!-- First Name -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="firstName">
+                    First Name
+                </label>
+                <InputText id="firstName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="sponsorToEdit.FirstName" />
+                <ValidationMessage For="@(() => sponsorToEdit.FirstName)" />
+            </div>
+
+            <!-- Last Name -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="lastName">
+                    Last Name
+                </label>
+                <InputText id="lastName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="sponsorToEdit.LastName" />
+                <ValidationMessage For="@(() => sponsorToEdit.LastName)" />
+            </div>
+
+            <!-- Address -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="address">
+                    Address
+                </label>
+                <InputText id="address" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="sponsorToEdit.Address" />
+                <ValidationMessage For="@(() => sponsorToEdit.Address)" />
+            </div>
+
+            <!-- City -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="city">
+                    City
+                </label>
+                <InputText id="city" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="sponsorToEdit.City" />
+                <ValidationMessage For="@(() => sponsorToEdit.City)" />
+            </div>
+
+            <!-- State -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="state">
+                    State/Provice
+                </label>
+                <InputText id="state" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="sponsorToEdit.State" />
+                <ValidationMessage For="@(() => sponsorToEdit.State)" />
+            </div>
+
+            <!-- ZipCode -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="zipcode">
+                    Postal Code
+                </label>
+                <InputText id="zipcode" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="sponsorToEdit.ZipCode" />
+                <ValidationMessage For="@(() => sponsorToEdit.ZipCode)" />
+            </div>
+
+            <!-- Email -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">
+                    Email
+                </label>
+                <InputText id="email" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="sponsorToEdit.Email" />
+                <ValidationMessage For="@(() => sponsorToEdit.Email)" />
+            </div>
+
+            <!-- Phone -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="phone">
+                    Main Phone
+                </label>
+                <InputText id="phone" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="sponsorToEdit.MainPhone" />
+                <ValidationMessage For="@(() => sponsorToEdit.MainPhone)" />
+            </div>
+
+            <!-- Status -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="status">
+                    Status
+                </label>
+                <div class="relative">
+                    <InputSelect id="status" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                 @bind-Value="sponsorToEdit.Status">
+                        <option value="">Select Status</option>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </InputSelect>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                    </div>
+                    <ValidationMessage For="@(() => sponsorToEdit.Status)" />
+                </div>
+            </div>
+
+            <!-- LastDonationDate -->
+            <div class="w-full md:w-48 px-3 mb-6 md:mb-0 mr-8">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="lastdonationdate">
+                    Last Donation Date
+                </label>
+                <InputDate id="lastdonationdate" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="sponsorToEdit.LastDonationDate" />
+                <ValidationMessage For="@(() => sponsorToEdit.LastDonationDate)" />
+            </div>
+
+            <ValidationSummary />
+
+            <div class="d-flex justify-center">
+                <MudButton Variant="Variant.Filled"
+                           Color="Color.Primary"
+                           Size="Size.Large"
+                           StartIcon="@Icons.Material.Save"
+                           ButtonType="ButtonType.Submit">
+                    Save
+                </MudButton>
+            </div>
+        </EditForm>
+    </div>
+
+
+}
+else
+{
+    <LoadingAnimation />
+}
+
+
+@code {
+
+    [Parameter]
+    public SponsorDetailsModel SponsorDetails { get; set; }
+
+    [Parameter]
+    public EventCallback HandleSponsorEdited { get; set; }
+
+    private SponsorEditModel sponsorToEdit;
+
+    protected override void OnParametersSet()
+    {
+        // Map SponsorDetails obj to new instance of SponsorEditModel
+        if (SponsorDetails is null) return;
+        sponsorToEdit = new SponsorEditModel
+        {
+            FirstName = SponsorDetails.FirstName,
+            LastName = SponsorDetails.LastName,
+            Address = SponsorDetails.Address,
+            City = SponsorDetails.City,
+            State = SponsorDetails.State,
+            ZipCode = SponsorDetails.ZipCode,
+            Email = SponsorDetails.Email,
+            MainPhone = SponsorDetails.MainPhone,
+            Status = SponsorDetails.Status,
+            LastDonationDate = SponsorDetails.LastDonationDate
+
+        };
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await sponsorRepository.UpdateSponsorAsync(SponsorDetails.SponsorID, sponsorToEdit);
+        await HandleSponsorEdited.InvokeAsync();
+        toaster.Add("Sponsor updated.", MatToastType.Success);
+    }
+}

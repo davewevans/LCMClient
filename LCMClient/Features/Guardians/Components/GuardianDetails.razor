@@ -52,7 +52,7 @@
                         <TabHeader Text="Narrations"></TabHeader>
                     </ChildContent>
                     <ContentTemplate>
-                        <GuardianNarrations />
+                        <GuardianNarrations Guardian="@guardianDetails" HandleNarrationsUpdated="@HandleNarrationsUpdatedCallback" />
                     </ContentTemplate>
                 </TabItem>
                 <TabItem>
@@ -60,7 +60,7 @@
                         <TabHeader Text="Edit"></TabHeader>
                     </ChildContent>
                     <ContentTemplate>
-                        <GuardianEdit />
+                        <GuardianEdit GuardianDetails="@guardianDetails" HandleGuardianEdited="@HandleGuardianEditedCallback" />
                     </ContentTemplate>
                 </TabItem>
             </TabItems>

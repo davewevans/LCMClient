@@ -6,12 +6,23 @@
     <div class="bg-white px-6 py-8 rounded-lg shadow-lg text-center">
         <div class="mb-3">
             <img class="w-auto mx-auto rounded-full"
-                 src="https://i.pravatar.cc/150?img=31"
-                 alt="" />
+                 src="@Orphan.ProfilePicUrl"
+                 alt="@Orphan.FullName" />
         </div>
-        <h2 class="text-xl font-medium text-gray-700">Pande Muliada</h2>
-        <span class="text-blue-500 block mb-5">Front End Developer</span>
-        <a href="#" class="px-4 py-2 bg-blue-500 text-white rounded-full">Hire</a>
+        <h2 class="text-xl font-medium text-gray-700">@Orphan.FullName</h2>
+        <span class="text-blue-900 font-semibold block mb-5">@Orphan.ProfileNumber</span>
+        <div class="font-medium text-lg text-blue-900">@Orphan.Gender</div>
+        <div class="font-medium text-lg text-gray-600">DOB: <span class="text-blue-900">@($"{Orphan.DateOfBirth:d}")</span></div>
+        <div class="font-medium text-lg text-blue-900">@Orphan.LCMStatus</div>
+        <div class="font-medium text-lg text-blue-900">@Orphan.Condition</div>
+        <div class="font-medium text-lg text-blue-900">@Orphan.RelationshipToGuardian</div>
+        <div class="font-medium text-lg text-gray-600">Year of Admission: <span class="text-blue-900">@($"{Orphan.YearOfAdmission:d}")</span></div>
+        <div class="mt-6">
+            <a href="/OrphanDetails/@Orphan.OrphanID"
+               target="_blank"
+               class="px-4 py-2 bg-blue-500 text-white rounded-full">Details</a>
+        </div>
+       
     </div>
 </div>
 

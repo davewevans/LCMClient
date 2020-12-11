@@ -48,11 +48,8 @@ namespace LCMClient.Features.Orphans.Components
 
             GenerateProfileBackground(); 
             PopulateSummary();
-            SetNameBgColorBasedOnGender();
-
-            
+            SetNameBgColorBasedOnGender();            
         }
-       
 
         private void PopulateSummary()
         {

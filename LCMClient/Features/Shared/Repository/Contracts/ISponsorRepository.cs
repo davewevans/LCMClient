@@ -11,7 +11,9 @@ namespace LCMClient.Features.Shared.Repository.Contracts
     {
         Task<List<SponsorModel>> GetSponsorsAsync();
 
-        Task<SponsorModel> GetSponsorAsync(int sponsorId);
+        Task<SponsorDetailsModel> GetSponsorDetailsAsync(int sponsorId);
+
+        Task<List<OrphanModel>> GetSponsorOrphansAsync(int sponsorId);
 
         Task AddSponsorAsync(SponsorCreationModel newSponsor);
 

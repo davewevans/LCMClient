@@ -58,4 +58,13 @@
     <Folder Include="wwwroot\svg\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Features\Shared\Narrations\NarrationCreationDialog.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Update="Features\Shared\Narrations\NarrationEditDialog.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
 </Project>

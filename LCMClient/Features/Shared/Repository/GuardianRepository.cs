@@ -29,9 +29,9 @@ namespace LCMClient.Repository
             return response.Response;
         }
         
-        public async Task<GuardianDetailsModel> GetGuardianAsync(int guardianId)
+        public async Task<GuardianDetailsModel> GetGuardianDetailsAsync(int guardianId)
         {
-            string url = $"{ httpService.BaseUrl }{ Controller }/{ guardianId }";
+            string url = $"{ httpService.BaseUrl }{ Controller }/guardianDetails/{ guardianId }";
             var response = await httpService.Get<GuardianDetailsModel>(url);
             if (!response.Success)
             {

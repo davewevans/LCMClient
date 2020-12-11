@@ -4,5 +4,154 @@
 @using Syncfusion.Blazor.Navigations
 @using LCMClient.Features.Shared
 
-<h3>Sponsor Details</h3>
+<SfConfirmDeleteDialog IsVisible="@showDelConfirmDialog"
+                       ConfirmationChanged="OnConfirmDelete"
+                       ConfirmationMessage=@($"Are you sure you want to delete \"{sponsorDetails?.FullName}\"")>
+</SfConfirmDeleteDialog>
 
+
+@if (sponsorDetails is not null)
+{
+    <div class="ml-32 mr-32 shadow-2xl">
+
+        <!--Sponsor Summary-->
+        <div class="flex justify-between items-end p-4 bg-yellow-200">
+            <div class="w-1/3">
+                <div>
+                    <span class="font-semibold text-xl">@sponsorDetails?.FullName</span>
+                </div>
+                <div class="font-medium">
+                    <div>
+                        @sponsorDetails?.Address
+                    </div>                    
+                    <div class="flex space-x-2">
+                        <div>@sponsorDetails?.City,</div>
+                        <div>@sponsorDetails?.State</div>
+                        <div>@sponsorDetails?.ZipCode</div>
+                    </div>
+                </div>
+            </div>
+        <div class="w-1/3 space-y-3">
+            <div class="flex space-x-2">
+                <MudIcon Size="Size.Small" Icon="@Icons.Material.Phone" Color="Color.Primary"></MudIcon>
+                <span style="font-size:medium;font-weight:600">@(sponsorDetails?.MainPhone)</span>
+            </div>
+            <div class="flex space-x-2">
+                <MudIcon Size="Size.Small" Icon="@Icons.Material.Email" Color="Color.Primary"></MudIcon>
+                <span style="font-size:medium;font-weight:600">@(sponsorDetails?.Email)</span> 
+            </div>
+        </div>
+        <div class="w-1/3 space-y-2">
+            @if (!string.IsNullOrWhiteSpace(sponsorDetails?.Status))
+            {
+                string bgColor = sponsorDetails.Status.ToLower().Equals("active") ? "bg-blue-100" : "bg-red-100";
+                <div>
+
+                    <span class="font-semibold @bgColor" style="padding:2px;font-size:medium;">@(sponsorDetails?.Status)</span>
+                </div>
+            }
+            <div>
+                <span style="font-size:medium;font-weight:600">Orphans Sponsored:</span>
+                <span class="font-semibold bg-blue-100" style="padding:2px;font-size:medium;">@(sponsorDetails?.OrphanCount)</span>
+            </div>
+            @if (sponsorDetails?.LastDonationDate != null)
+            {
+                <div>
+                    <span style="font-size:medium;font-weight:600">Last Donation:</span>
+                    <span class="font-semibold bg-blue-100" style="padding:2px;font-size:medium;">@($"{sponsorDetails?.LastDonationDate:d}")</span>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="bg-white mb-10">
+        <SfTab @ref="sfTabs"
+               CssClass="tab-adaptive"
+               OverflowMode="@OverflowMode.Scrollable"
+               HeaderPlacement="@HeaderPosition.Top">
+            <TabItems>
+                <TabItem>
+                    <ChildContent>
+                        <TabHeader Text="Orphans"></TabHeader>
+                    </ChildContent>
+                    <ContentTemplate>
+                        <SponsorOrphans Id="sponsorDetails.SponsorID" />
+                    </ContentTemplate>
+                </TabItem>
+                <TabItem>
+                    <ChildContent>
+                        <TabHeader Text="Edit"></TabHeader>
+                    </ChildContent>
+                    <ContentTemplate>
+                        <SponsorEdit SponsorDetails="@sponsorDetails" HandleSponsorEdited="@HandleSponsorEditedCallBack" />
+                    </ContentTemplate>
+                </TabItem>
+            </TabItems>
+        </SfTab>
+    </div>
+</div>
+}
+else
+{
+<LoadingAnimation />
+}
+
+
+<MatFAB Class="delete-fab-absolute" Icon="@MatIconNames.Delete" Label="Delete" OnClick="@OnDeleteClick"></MatFAB>
+<MatFAB Class="edit-fab-absolute" Icon="@MatIconNames.Edit" Label="Edit" OnClick="@OnEditClick"></MatFAB>
+
+<style>
+
+    /* MatBlazor FAB */
+    .delete-fab-absolute {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        background-color: crimson;
+    }
+
+    /* MatBlazor FAB */
+    .edit-fab-absolute {
+        position: fixed;
+        bottom: 1rem;
+        right: 9.5rem;
+        background-color: #00529B;
+    }
+
+    /* Syncfusion classes for the tabs.
+        Doesn't work in isolated css file.*/
+
+    .e-tab .e-tab-header .e-toolbar-item .e-tab-text,
+    .e-tab .e-tab-header .e-toolbar-item .e-tab-wrap .e-tab-icon {
+        font-size: 18px;
+    }
+
+    .e-tab .e-tab-header .e-toolbar-item .e-tab-wrap,
+    .e-tab .e-tab-header .e-toolbar-item .e-tab-wrap .e-tab-icon {
+        color: #2a4365;
+    }
+
+    .e-content .e-item {
+        padding: 10px;
+        text-align: justify;
+    }
+
+    @@media screen and (max-width: 425px) {
+        .e-tab .e-tab-header .e-toolbar-item .e-tab-text,
+        .e-tab .e-tab-header .e-toolbar-item .e-tab-wrap .e-tab-icon {
+            font-size: 14px;
+        }
+
+        .tab-adaptive {
+            overflow: hidden;
+        }
+
+            .tab-adaptive .e-content {
+                height: inherit !important;
+            }
+
+            .tab-adaptive .e-item.e-active {
+                overflow: scroll;
+            }
+    }
+</style>

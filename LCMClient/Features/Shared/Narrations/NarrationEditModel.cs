@@ -1,11 +1,9 @@
 ﻿using System;
 
-namespace LCMClient.Features.Shared.Models
+namespace LCMClient.Features.Shared.Narrations
 {
-    public class NarrationModel
+    public class NarrationEditModel
     {
-        public int NarrationID { get; set; }
-
         public string Subject { get; set; }
 
         public string Note { get; set; }

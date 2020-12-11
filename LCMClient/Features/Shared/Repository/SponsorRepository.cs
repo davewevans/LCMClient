@@ -31,15 +31,26 @@ namespace LCMClient.Repository
             return response.Response;
         }
 
-        public async Task<SponsorModel> GetSponsorAsync(int sponsorId)
+        public async Task<SponsorDetailsModel> GetSponsorDetailsAsync(int sponsorId)
         {
-            string url = $"{ httpService.BaseUrl }{ Controller }/{ sponsorId }";
-            var response = await httpService.Get<SponsorModel>(url);
+            string url = $"{ httpService.BaseUrl }{ Controller }/sponsorDetails/{ sponsorId }";
+            var response = await httpService.Get<SponsorDetailsModel>(url);
             if (!response.Success)
             {
                 throw new ApplicationException(await response.GetBody());
             }
             return response.Response;;
+        }
+
+        public async Task<List<OrphanModel>> GetSponsorOrphansAsync(int sponsorId)
+        {
+            string url = $"{ httpService.BaseUrl }{ Controller }/sponsorOrphans/{ sponsorId }";
+            var response = await httpService.Get<List<OrphanModel>>(url);
+            if (!response.Success)
+            {
+                throw new ApplicationException(await response.GetBody());
+            }
+            return response.Response;
         }
 
         public async Task AddSponsorAsync(SponsorCreationModel newSponsor)

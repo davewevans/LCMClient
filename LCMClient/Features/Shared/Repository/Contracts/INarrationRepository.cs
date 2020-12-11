@@ -1,4 +1,5 @@
 using LCMClient.Features.Shared.Models;
+using LCMClient.Features.Shared.Narrations;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

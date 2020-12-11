@@ -1,4 +1,4 @@
-using LCMClient.Features.Shared.Models;
+using LCMClient.Features.Shared.Narrations;
 using LCMClient.Features.Shared.Repository.Contracts;
 using LCMClient.Services;
 using System;
@@ -51,7 +51,7 @@ namespace LCMClient.Repository
 
         public async Task<List<NarrationModel>> GetOrphanNarrations(int orphanId)
         {
-            string url = $"{ httpService.BaseUrl }{ Controller }/{ "orphan" }/{ orphanId }";
+            string url = $"{ httpService.BaseUrl }{ Controller }/{ "orphanNarrations" }/{ orphanId }";
             var response = await httpService.Get<List<NarrationModel>>(url);
             if (!response.Success)
             {
@@ -62,7 +62,7 @@ namespace LCMClient.Repository
 
         public async Task<List<NarrationModel>> GetGuardianNarrations(int guradianId)
         {
-            string url = $"{ httpService.BaseUrl }{ Controller }/{ "guardian" }/{ guradianId }";
+            string url = $"{ httpService.BaseUrl }{ Controller }/{ "guardianNarrations" }/{ guradianId }";
             var response = await httpService.Get<List<NarrationModel>>(url);
             if (!response.Success)
             {

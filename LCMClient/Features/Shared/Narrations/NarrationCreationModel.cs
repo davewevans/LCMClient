@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace LCMClient.Features.Shared.Models
+namespace LCMClient.Features.Shared.Narrations
 {
-    public class NarrationEditModel
+    public class NarrationCreationModel
     {
         public string Subject { get; set; }
 

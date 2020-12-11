@@ -139,6 +139,13 @@ using Syncfusion.Blazor.Grids;
 #line hidden
 #nullable disable
 #nullable restore
+#line 19 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+using Syncfusion.Blazor.Buttons;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 20 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using Syncfusion.Blazor.DropDowns;
 
@@ -152,49 +159,7 @@ using Syncfusion.Blazor.Navigations;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 1 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\NarrationCreationDialog.razor"
-using Syncfusion.Blazor.Popups;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 2 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\NarrationCreationDialog.razor"
-using Syncfusion.Blazor.Buttons;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 3 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\NarrationCreationDialog.razor"
-using LCMClient.Features.Orphans.Models;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 4 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\NarrationCreationDialog.razor"
-using LCMClient.Features.Shared.Models;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 5 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\NarrationCreationDialog.razor"
-using LCMClient.Features.Shared.Repository.Contracts;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 6 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\NarrationCreationDialog.razor"
-using LCMClient.Helpers;
-
-#line default
-#line hidden
-#nullable disable
-    public partial class NarrationCreationDialog : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class TabContentHeader : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -202,61 +167,24 @@ using LCMClient.Helpers;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 71 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\NarrationCreationDialog.razor"
+#line 15 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\TabContentHeader.razor"
        
 
     [Parameter]
-    public bool IsVisible { get; set; }
+    public string HeaderText { get; set; }
 
     [Parameter]
-    public OrphanDetailsModel Orphan { get; set; }
+    public string HeaderIcon { get; set; }
 
     [Parameter]
-    public EventCallback<bool> OnAddNewComplete { get; set; }
+    public EventCallback ButtonOnclickHandler { get; set; }
 
-    [Inject]
-    public INarrationRepository NarrationRepository { get; set; }
+    [Parameter]
+    public string ButtonIcon { get; set; }
 
-    [Inject]
-    public IJSRuntime JSRuntime { get; set; }
+    [Parameter]
+    public string ButtonText { get; set; }
 
-    private NarrationCreationModel narrationCreation = new NarrationCreationModel();
-
-    [Inject]
-    protected IMatToaster Toaster { get; set; }
-
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            // Focus the element
-            await JSRuntime.FocusInput("subject");
-        }
-    }
-
-    private async Task HandleValidSubmit()
-    {
-        if (Orphan == null)
-        {
-            Toaster.Add($" No Orphan record found.", MatToastType.Danger);
-            return;
-        }
-        narrationCreation.OrphanID = Orphan.OrphanID;
-        narrationCreation.EntryDate = DateTime.Now;
-
-        await NarrationRepository.AddNarrationAsync(narrationCreation);
-        IsVisible = false;
-        await OnAddNewComplete.InvokeAsync(true);
-        StateHasChanged();
-        Toaster.Add($" Narration record added.", MatToastType.Success);
-    }
-
-    private async Task OnCancelBtnClick()
-    {
-        IsVisible = false;
-        await OnAddNewComplete.InvokeAsync(false);
-    }
 
 
 #line default

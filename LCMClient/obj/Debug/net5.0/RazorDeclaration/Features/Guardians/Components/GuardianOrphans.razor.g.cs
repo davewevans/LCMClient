@@ -181,7 +181,7 @@ using LCMClient.Features.Shared.Repository.Contracts;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 35 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianOrphans.razor"
+#line 34 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianOrphans.razor"
        
 
     [Parameter]
@@ -191,57 +191,10 @@ using LCMClient.Features.Shared.Repository.Contracts;
 
     private bool isLoading = true;
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnParametersSetAsync()
     {
-        // orphans = await guardianRepository.GetGuardianOrphansAsync(Id);
+        orphans = await guardianRepository.GetGuardianOrphansAsync(Id);
         isLoading = false;
-
-
-        orphans = new List<OrphanModel>
-{
-            new OrphanModel
-            {
-                FirstName = "Dave",
-                LastName = "Foo",
-            },
-              new OrphanModel
-            {
-                FirstName = "John",
-                LastName = "Foo",
-            },
-                new OrphanModel
-            {
-                FirstName = "Bob",
-                LastName = "Foo",
-            },
-                  new OrphanModel
-            {
-                FirstName = "Sandy",
-                LastName = "Foo",
-            },
-                    new OrphanModel
-            {
-                FirstName = "Mandy",
-                LastName = "Foo",
-            },
-                      new OrphanModel
-            {
-                FirstName = "Cindy",
-                LastName = "Foo",
-            },
-                        new OrphanModel
-            {
-                FirstName = "George",
-                LastName = "Foo",
-            },
-                          new OrphanModel
-            {
-                FirstName = "Martin",
-                LastName = "Foo",
-            },
-        };
-
-
     }
 
 #line default

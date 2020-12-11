@@ -111,13 +111,6 @@ using MudBlazor.Dialog;
 #line hidden
 #nullable disable
 #nullable restore
-#line 15 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
-using MatBlazor;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 16 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
 using Syncfusion.Blazor;
 
@@ -159,6 +152,34 @@ using Syncfusion.Blazor.Navigations;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
+using LCMClient.Features.Guardians.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
+using LCMClient.Features.Shared.Repository.Contracts;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
+using MatBlazor;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 10 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
+           [Authorize]
+
+#line default
+#line hidden
+#nullable disable
     public partial class GuardianEdit : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -166,6 +187,44 @@ using Syncfusion.Blazor.Navigations;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 70 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
+       
+
+    [Parameter]
+    public GuardianDetailsModel GuardianDetails { get; set; }
+
+    [Parameter]
+    public EventCallback HandleGuardianEdited { get; set; }
+
+    private GuardianEditModel guardianToEdit;
+
+    protected override void OnParametersSet()
+    {
+        // Map GuardianDetails obj to new instance of GuardianEditModel
+        if (GuardianDetails is null) return;
+        guardianToEdit = new GuardianEditModel
+        {
+            GuardianID = GuardianDetails.GuardianID,
+            FirstName = GuardianDetails.FirstName,
+            LastName = GuardianDetails.LastName,
+            Location = GuardianDetails.Location
+        };
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await guardianRepository.UpdateGuardianAsync(guardianToEdit.GuardianID, guardianToEdit);
+        await HandleGuardianEdited.InvokeAsync();
+        toaster.Add("Guardian updated.", MatToastType.Success);
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IMatToaster toaster { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IGuardianRepository guardianRepository { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

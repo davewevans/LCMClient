@@ -2,6 +2,7 @@
 using LCMClient.Features.Orphans.Models;
 using LCMClient.Features.Shared;
 using LCMClient.Features.Shared.Models;
+using LCMClient.Features.Shared.Narrations;
 using LCMClient.Features.Shared.Repository.Contracts;
 using MatBlazor;
 using Microsoft.AspNetCore.Components;

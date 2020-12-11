@@ -613,7 +613,7 @@
       "url": "_content\/MatBlazor\/dist\/matBlazor.js"
     },
     {
-      "hash": "sha256-KdZsHR\/WBWI0O98\/zp4jh5qIsbHsYSuO4h6jF+2RoXQ=",
+      "hash": "sha256-MbDPgZz5Y\/\/KI0\/dkbZhOspS8KgV6LSHcC92UbeaA5o=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -1477,11 +1477,11 @@
       "url": "_framework\/dotnet.5.0.1.js"
     },
     {
-      "hash": "sha256-RcFAOGrJvjVlfAloucq9IHcLvByn1BcheRsvWOvv4ZY=",
+      "hash": "sha256-12YlRhG5o2mNFTlaKu5sQsuPzZNiQccBIksY6BjPK+4=",
       "url": "_framework\/LCMClient.dll"
     },
     {
-      "hash": "sha256-tdb59+\/uHgEc1OCMBqbkY+jWeF3QJzSbtXPMadKAIBM=",
+      "hash": "sha256-mXRal0Rm9x1mbYJEnTTpZE\/cxiV8N+\/3epDpXJb\/sJM=",
       "url": "_framework\/LCMClient.pdb"
     },
     {
@@ -2373,7 +2373,7 @@
       "url": "css\/all.min.css"
     },
     {
-      "hash": "sha256-foi7\/T3P+RIt+BDOkSOLCgIgq\/QeblqFNNyjvFXnF8A=",
+      "hash": "sha256-1pu8WAMAUOFP0F0du3\/p4SgpQbYNESfbNZ2iWRNHtVo=",
       "url": "css\/app.css"
     },
     {
@@ -2649,7 +2649,7 @@
       "url": "LICENSE.txt"
     },
     {
-      "hash": "sha256-dGnkBC6wdmA1ATBmn\/7cDqPnFwGqIm0euyxMS1m0uTk=",
+      "hash": "sha256-q\/O\/VPCkY903L94zz6y+RxpEIKpbzZ\/hDefdQ3N9aOg=",
       "url": "manifest.json"
     },
     {
@@ -9301,5 +9301,5 @@
       "url": "LCMClient.bundle.scp.css"
     }
   ],
-  "version": "jrIjTvlg"
+  "version": "z24+KXPO"
 };

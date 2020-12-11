@@ -32,12 +32,7 @@ namespace LCMClient.Features.Guardians.Components
 
         protected override async Task OnInitializedAsync()
         {
-            guardianDetails = await guardianRepository.GetGuardianAsync(Id);
-        }
-
-        private void DeleteGuardianEventHandler()
-        {
-            showDelConfirmDialog = true;
+            guardianDetails = await guardianRepository.GetGuardianDetailsAsync(Id);
         }
 
         protected async Task OnConfirmDelete(bool deleteConfirmed)
@@ -59,6 +54,16 @@ namespace LCMClient.Features.Guardians.Components
         protected void OnDeleteClick()
         {
             showDelConfirmDialog = true;
+        }
+
+        public async Task HandleGuardianEditedCallback()
+        {
+            guardianDetails = await guardianRepository.GetGuardianDetailsAsync(Id);
+        }
+
+        public async Task HandleNarrationsUpdatedCallback()
+        {
+            guardianDetails = await guardianRepository.GetGuardianDetailsAsync(Id);
         }
     }
 }

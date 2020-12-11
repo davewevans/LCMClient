@@ -174,36 +174,11 @@ using LCMClient.Features.Shared.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 17 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\OrphanCards.razor"
+#line 15 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\OrphanCards.razor"
        
-
-    public class Person
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-    }
-
-    [Parameter]
-    public RenderFragment Card { get; set; }
 
     [Parameter]
     public List<OrphanModel> Orphans { get; set; }
-
-    public List<Person> People { get; set; }
-
-    private int numberOfRows = 0;
-
-    private int counter = 0;
-
-    protected override void OnInitialized()
-    {
-
-    }
-
-    private void IncrementCounter()
-    {
-        counter++;
-    }
 
 #line default
 #line hidden

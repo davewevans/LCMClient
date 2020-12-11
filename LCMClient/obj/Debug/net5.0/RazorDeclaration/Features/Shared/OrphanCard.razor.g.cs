@@ -174,7 +174,7 @@ using LCMClient.Features.Shared.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 19 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\OrphanCard.razor"
+#line 30 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\OrphanCard.razor"
        
     [Parameter]
     public OrphanModel Orphan { get; set; }

@@ -19,9 +19,12 @@ namespace LCMClient.Features.Orphans.Components
 
         private string editViewText = "Edit";
 
+        private string headerText = "";
+
         protected override void OnParametersSet()
         {
             UpdateBtnIconAndText();
+            headerText = $"{Orphan.FirstName}'s Profile";
         }
 
         public void ToggleEditMode()

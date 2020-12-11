@@ -1,7 +1,6 @@
 ﻿@using Syncfusion.Blazor.Popups
-@using Syncfusion.Blazor.Buttons
+@*@using Syncfusion.Blazor.Buttons*@
 
-@using LCMClient.Features.Shared.Models
 @using LCMClient.Features.Shared.Repository.Contracts
 @using LCMClient.Helpers
 
@@ -20,7 +19,8 @@
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="subject">
                             Subject
                         </label>
-                        <InputText id="subject" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="NarrationRecord.Subject" />
+                        <InputText id="subject" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                   @bind-Value="NarrationRecord.Subject" />
                         <ValidationMessage For="@(() => NarrationRecord.Subject)" />
                     </div>
 
@@ -30,10 +30,12 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="note">
                                 Note
                             </label>
-                            <InputTextArea id="note" class="appearance-none block w-full h-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="NarrationRecord.Note" />
+                            <InputTextArea id="note" class="appearance-none block w-full h-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                           @bind-Value="NarrationRecord.Note" />
                             <ValidationMessage For="@(() => NarrationRecord.Note)" />
                         </div>
                     </div>
+
 
                 </EditForm>
             </div>
@@ -87,12 +89,13 @@
     [Inject]
     protected IMatToaster Toaster { get; set; }
 
+    private ElementReference subjectInput;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            // Focus the element
+            // Focus the input element
             await JSRuntime.FocusInput("subject");
         }
     }
