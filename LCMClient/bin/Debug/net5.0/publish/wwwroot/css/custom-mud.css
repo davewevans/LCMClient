@@ -1,0 +1,20 @@
+﻿/* Extends existing MudBlazor classes */
+
+.my-mud-card-form {
+    max-width: 600px; 
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 40px;
+    overflow: visible !important;
+}
+
+.mud-card-header {
+    background-color: #fed8b1;
+}
+
+/* Sets the bg color for the main content */
+.mud-main-content {
+    background-color: #d8e5f2;
+}
+
+

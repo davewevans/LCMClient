@@ -195,7 +195,7 @@ using LCMClient.Helpers;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 86 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\AcademicCreationDialog.razor"
+#line 90 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\AcademicCreationDialog.razor"
        
 
     [Parameter]

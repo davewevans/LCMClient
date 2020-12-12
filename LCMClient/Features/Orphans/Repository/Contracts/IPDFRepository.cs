@@ -6,7 +6,7 @@ namespace LCMClient.Features.Orphans.Repository.Contracts
 {
     public interface IPDFRepository
     {
-        Task<string> UploadPDFAsync(PDFCreationModel pdfCreation, byte[] fileBytes);
+        Task<bool> UploadPDFAsync(PDFCreationModel pdfCreation, byte[] fileBytes);
 
         Task<List<PDFModel>> GetOrphanPDFsAsync(int orphanId);
 

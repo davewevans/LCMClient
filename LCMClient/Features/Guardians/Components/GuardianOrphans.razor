@@ -1,14 +1,22 @@
 ﻿@using LCMClient.Features.Shared.Models
 @using LCMClient.Features.Shared.Repository.Contracts
+@using LCMClient.Features.Shared 
 
 @inject IGuardianRepository guardianRepository
+
+
+<TabContentHeader HeaderText="Orphans"
+                  ShowButton="false">
+    <div class="text-white">
+        <OrphanSVG Width="8" Height="8" />
+    </div>
+</TabContentHeader>
 
 
 @if (isLoading)
 {
     <LoadingAnimation />
 }
-
 
 
 <div class="m-6">

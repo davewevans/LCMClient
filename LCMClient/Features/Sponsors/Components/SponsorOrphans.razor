@@ -1,7 +1,17 @@
 ﻿@using LCMClient.Features.Shared.Models
 @using LCMClient.Features.Shared.Repository.Contracts
+@using LCMClient.Features.Shared 
 
 @inject ISponsorRepository sponsorRepository
+
+
+<TabContentHeader HeaderText="Orphans"
+                  ShowButton="false">
+    <div class="text-white">
+        <OrphanSVG Width="8" Height="8" />
+    </div>
+</TabContentHeader>
+
 
 @if (isLoading)
 {

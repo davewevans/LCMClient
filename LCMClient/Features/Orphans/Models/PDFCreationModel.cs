@@ -4,6 +4,8 @@
     {
         public string FileName { get; set; }
 
+        public string OriginalFileName { get; set; }
+
         public string ContentType { get; set; }
 
         public int OrphanID { get; set; }

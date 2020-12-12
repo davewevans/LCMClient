@@ -1,10 +1,12 @@
 ﻿@using LCMClient.Features.Shared
 
-<TabContentHeader 
-                HeaderText="@headerText"
-                ButtonOnclickHandler="ToggleEditMode"
-                ButtonIcon="@editViewIcon"
-                ButtonText="@editViewText"/>
+<TabContentHeader HeaderText="@headerText"
+                  ButtonOnclickHandler="ToggleEditMode"
+                  ButtonIcon="@editViewIcon"
+                  ButtonText="@editViewText"
+                  ShowButton="true">
+    <div style="margin-top:2px;"><i class="fa fa-child text-white text-2xl"></i></div>
+</TabContentHeader>
 
 @if (EditMode)
 {

@@ -27,7 +27,7 @@ namespace LCMClient.Features.Orphans.Repository
             this.url = $"{ httpService.BaseUrl }{ Controller }";
         }
         
-        public async Task<string> UploadPDFAsync(PDFCreationModel pdfCreation, byte[] fileBytes)
+        public async Task<bool> UploadPDFAsync(PDFCreationModel pdfCreation, byte[] fileBytes)
         {
             await using MemoryStream fileStream = new MemoryStream(fileBytes);
 
@@ -47,19 +47,28 @@ namespace LCMClient.Features.Orphans.Repository
             content.Add(new StringContent(pdfCreation.OrphanID.ToString()), "OrphanID");
             content.Add(new StringContent(pdfCreation.SponsorID.ToString()), "SponsorID");
             content.Add(new StringContent(pdfCreation.AllSponsors.ToString()), "AllSponsors");
+            content.Add(new StringContent(pdfCreation.OriginalFileName.ToString()), "OriginalFileName");
 
             content.Add(fileStreamContent, "file", pdfCreation.FileName);
 
             string apiActionUrl =  $"{ url }/uploadPDF";
 
-            var response = await httpService.PostForm(apiActionUrl, content);
-
-            if (!response.Success)
+            try
             {
-                // TODO throws 404 exception in browser
-                //throw new ApplicationException(await response.GetBody());
+                var response = await httpService.PostForm(apiActionUrl, content);
+
+                if (!response.Success)
+                {
+                    return false;
+                }
             }
-            return await response.HttpResponseMessage.Content.ReadAsStringAsync();
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+
+            return true;
 
 
             //

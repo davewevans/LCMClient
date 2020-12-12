@@ -1,13 +1,22 @@
 ﻿
 @using LCMClient.Features.Sponsors.Models
 @using LCMClient.Features.Shared.Repository.Contracts
+@using LCMClient.Features.Shared
 @using MatBlazor;
+
 
 @inject NavigationManager navigationManager
 @inject ISponsorRepository sponsorRepository
 @inject IMatToaster toaster
 
 @attribute [Authorize]
+
+<TabContentHeader HeaderText="Edit"
+                  ShowButton="false">
+    <div class="text-white mt-1">
+        <MudIcon Icon="@Icons.Material.Edit" Size="Size.Medium"></MudIcon>
+    </div>
+</TabContentHeader>
 
 @if (sponsorToEdit is not null)
 {

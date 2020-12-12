@@ -1,12 +1,13 @@
-﻿<div class="m-10">
-    <div class="md:flex mt-4 mb-8 bg-blue-100 p-4 items-center justify-between">
-        <div class="flex items-center text-blue-600">
-            <i class="fa fa-picture text-yellow-600 font-bold text-2xl mr-3"></i>
-            <h3 class="text-2xl font-semibold mt-1">Pictures</h3>
-        </div>
-    </div>
+﻿@using LCMClient.Features.Shared
 
+<TabContentHeader HeaderText="Pictures"
+                  ShowButton="false">
+    <div class="text-white mt-1">
+        <MudIcon Icon="@Icons.Material.PhotoAlbum" Size="Size.Medium"></MudIcon>
+    </div>        
+</TabContentHeader>
 
+<div class="m-10">
     <div class="mb-4">
         <OrphanPhotoUpload Orphan="@Orphan" IsProfilePhoto="@false" HandlePostUpload="@HandlePostUpload" />
     </div>

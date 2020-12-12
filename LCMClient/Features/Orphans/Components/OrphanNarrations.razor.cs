@@ -87,5 +87,10 @@ namespace LCMClient.Features.Orphans.Components
             }
             narrationIdToDelete = 0;
         }
+
+        public void TabHeaderEventCallbackHandler()
+        {
+
+        }
     }
 }

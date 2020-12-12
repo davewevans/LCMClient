@@ -235,7 +235,7 @@ using System.Globalization;
                 Group = "Guradians",
                 Count = narrationStatistics.GuardianNarrationCount
             },
-                        };
+        };
 
         last6MonthsData = new DataItem[]
         {
@@ -249,7 +249,7 @@ using System.Globalization;
             Group = "Guradians",
             Count = narrationStatistics.GuardianLast6MoCount
             }
-                        };
+        };
     }
 
 #line default

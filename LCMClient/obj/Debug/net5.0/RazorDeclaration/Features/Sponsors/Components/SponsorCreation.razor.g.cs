@@ -189,7 +189,7 @@ using MatBlazor;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 123 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Sponsors\Components\SponsorCreation.razor"
+#line 154 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Sponsors\Components\SponsorCreation.razor"
        
 
     private SponsorCreationModel newSponsor = new();

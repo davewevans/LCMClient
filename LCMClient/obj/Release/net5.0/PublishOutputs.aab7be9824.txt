@@ -32,7 +32,6 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\svg-with-js.min.css
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\v4-shims.css
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\v4-shims.min.css
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\debug.log
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\favicon.ico
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\icon-512.png
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\LMCSMS_Icon_60x60_transparent.png
@@ -1741,7 +1740,7 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\icudt_CJK.dat
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\icudt_EFIGS.dat
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\icudt_no_CJK.dat
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\dotnet.5.0.0.js
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\dotnet.5.0.1.js
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\LCMClient.styles.css
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_content\Tewr.Blazor.FileReader\FileReaderComponent.js
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_content\Tewr.Blazor.FileReader\FileReaderComponent.js.map
@@ -2020,7 +2019,6 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\svg-with-js.min.css.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\v4-shims.css.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\v4-shims.min.css.br
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\debug.log.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\favicon.ico.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\icon-512.png.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\LMCSMS_Icon_60x60_transparent.png.br
@@ -3729,7 +3727,7 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\icudt_CJK.dat.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\icudt_EFIGS.dat.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\icudt_no_CJK.dat.br
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\dotnet.5.0.0.js.br
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\dotnet.5.0.1.js.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\LCMClient.styles.css.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_content\Tewr.Blazor.FileReader\FileReaderComponent.js.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_content\Tewr.Blazor.FileReader\FileReaderComponent.js.map.br
@@ -4007,7 +4005,6 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\svg-with-js.min.css.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\v4-shims.css.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\v4-shims.min.css.gz
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\debug.log.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\favicon.ico.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\icon-512.png.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\LMCSMS_Icon_60x60_transparent.png.gz
@@ -5716,7 +5713,7 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\icudt_CJK.dat.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\icudt_EFIGS.dat.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\icudt_no_CJK.dat.gz
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\dotnet.5.0.0.js.gz
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\dotnet.5.0.1.js.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\LCMClient.styles.css.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_content\Tewr.Blazor.FileReader\FileReaderComponent.js.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_content\Tewr.Blazor.FileReader\FileReaderComponent.js.map.gz

@@ -1,6 +1,6 @@
 {
-  "name": "LCMClient",
-  "short_name": "LCMClient",
+  "name": "LCM SMS",
+  "short_name": "LCM SMS",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",

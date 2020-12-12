@@ -1,4 +1,5 @@
-﻿using LCMClient.Features.Orphans.Models;
+﻿using LCMClient.Features.Orphans.Enums;
+using LCMClient.Features.Orphans.Models;
 using LCMClient.Features.Orphans.Repository.Contracts;
 using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
@@ -15,6 +16,9 @@ namespace LCMClient.Features.Orphans.Components
         [Inject] public IOrphanRepository OrphanRepository { get; set; }
 
         [Inject] public IPDFRepository PdfRepository { get; set; }
+
+        public string SelectedLabel { get; set; } = "Send to one sponsor";
+        public string SelectedOption { get; set; } = "1";
 
         protected override async Task OnInitializedAsync()
         {

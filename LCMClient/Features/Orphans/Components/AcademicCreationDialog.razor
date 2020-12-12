@@ -5,7 +5,11 @@
 @using LCMClient.Features.Orphans.Repository.Contracts 
 @using LCMClient.Helpers
 
-<SfDialog Width="400px" @bind-Visible="@IsVisible" IsModal="true" ShowCloseIcon="true">
+<SfDialog Width="400px" 
+          @bind-Visible="@IsVisible" 
+          IsModal="true" 
+          ShowCloseIcon="true" 
+          ZIndex="99999">
     <DialogTemplates>
         <Header>
             <h3 class="text-3xl font-semibold">Add New Academic Record</h3>

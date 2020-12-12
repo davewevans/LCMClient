@@ -2,12 +2,23 @@
 @using LCMClient.Features.Guardians.Models
 @using LCMClient.Features.Shared.Repository.Contracts
 @using MatBlazor;
+@using LCMClient.Features.Shared
 
 @inject NavigationManager navigationManager
 @inject IGuardianRepository guardianRepository
 @inject IMatToaster toaster
 
 @attribute [Authorize]
+
+
+<TabContentHeader HeaderText="Edit"
+                  ShowButton="false">
+    <div class="text-white mt-1">
+        <MudIcon Icon="@Icons.Material.Edit" Size="Size.Medium"></MudIcon>
+    </div>
+</TabContentHeader>
+
+
 
 @if(guardianToEdit is not null)
 {

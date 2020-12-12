@@ -1,37 +1,62 @@
 ﻿@using LCMClient.Features.Shared.Models
+@using LCMClient.Features.Shared
+@using LCMClient.Features.Orphans.Enums
 
-<div class="m-10">
-    <div class="md:flex mt-4 mb-8 bg-blue-100 p-4 items-center justify-between">
-        <div class="flex items-center text-blue-600">
-            <i class="fa fa-picture text-yellow-600 font-bold text-2xl mr-3"></i>
-            <h3 class="text-2xl font-semibold mt-1">PDFs</h3>
-        </div>
+<TabContentHeader HeaderText="PDFs"
+                  ShowButton="false">
+    <div class="text-white mt-1">
+        <MudIcon Icon="@Icons.Material.PictureAsPdf" Size="Size.Medium"></MudIcon>
     </div>
+</TabContentHeader>
 
-
+<div class="mt-12 ml-10 mr-10 mb-28">
     <div>
         <h3 class="text-3xl">
-            Add New PDF
+            Add A New PDF
         </h3>
-        <div>
-            <p class="text-2xl">Select a Sponsor</p>
-        </div>
-        <div class="mt-4">
-            <SfDropDownList TItem="SponsorModel" TValue="string"
-                            DataSource="@Orphan.Sponsors"
-                            @bind-Value="selectedValue"
-                            Placeholder="Select a Sponsor"
-                            Width="400px"
-                            PopupHeight="400px"
-                            PopupWidth="300px">
-                <DropDownListFieldSettings Text="FullName" Value="SponsorID"></DropDownListFieldSettings>
-            </SfDropDownList>
+
+        <div class="mt-6 mb-6">
+            <MudRadioGroup @bind-SelectedLabel="@SelectedLabel"
+                           @bind-SelectedOption="@SelectedOption">
+                <MudRadio Color="Color.Primary" Option="1">Send to one sponsor</MudRadio>
+                <MudRadio Color="Color.Primary" Option="2">Send to all of @Orphan.FirstName's sponsors</MudRadio>
+            </MudRadioGroup>
         </div>
 
-        @if (!string.IsNullOrWhiteSpace(selectedValue))
+        @if (SelectedOption.Equals("1"))
         {
+            <div class="mt-6 mb-6">
+                <MudAlert Severity="Severity.Info" Square="true" Variant="Variant.Filled">
+                    You must select a sponsor before you can upload a PDF.
+                </MudAlert>
+            </div>
+
+            <div>
+                <p class="text-2xl">Select a Sponsor</p>
+            </div>
+            <div class="mt-4">
+                <SfDropDownList TItem="SponsorModel" TValue="string"
+                                DataSource="@Orphan.Sponsors"
+                                @bind-Value="selectedValue"
+                                Placeholder="Select a Sponsor"
+                                Width="400px"
+                                PopupHeight="400px"
+                                PopupWidth="300px">
+                    <DropDownListFieldSettings Text="FullName" Value="SponsorID"></DropDownListFieldSettings>
+                </SfDropDownList>
+            </div>
+        }
+
+
+        @if (!string.IsNullOrWhiteSpace(selectedValue) || SelectedOption.Equals("2"))
+        {
+            int sponsorId;
+            int.TryParse(selectedValue, out sponsorId);           
             <div class="mt-4 mb-4">
-                <OrphanPDFUpload Orphan="@Orphan" SponsorID="@selectedValue" AllSponsors="false" HandlePostUpload="@HandlePostUpload" />
+                <OrphanPDFUpload Orphan="@Orphan"
+                                 SponsorID="@sponsorId"
+                                 AllSponsors="@SelectedOption.Equals("2")"
+                                 HandlePostUpload="@HandlePostUpload" />
             </div>
         }
 
@@ -45,15 +70,33 @@
             {
                 foreach (var pdf in Orphan.PDFs)
                 {
+
                     string picUrl = $"{pdf?.BaseUrl}{pdf?.FileName}";
                     <div class="mb-2 text-lg font-weight-bold">
-                        <p>Sponsor: <span class="font-weight-bold">@pdf.Sponsor?.FullName</span></p>
-                        <div class="flex">
+                        @if (@pdf.AllSponsors)
+                        {
+                            <p class="text-xl">To all of @Orphan.FirstName's Sponsors</p>
+                        }
+                        else
+                        {
+                            <p>Sponsor: <span class="font-weight-bold">@pdf.Sponsor?.FullName</span></p>
+                        }
+
+                        <div class="flex mb-6">
                             <button type="button" class="mr-4" @onclick="() => OnDeletePDF(pdf.DocumentID)">
                                 <i class="fa fa-trash text-xl text-red-700"></i>
                             </button>
                             <span class="underline text-blue-600 mr-6">
-                                <a href="@picUrl" target="_blank">@pdf.FileName</a>
+                                <a href="@picUrl" target="_blank">
+                                    @if (!string.IsNullOrWhiteSpace(pdf.OriginalFileName))
+                                    {
+                                        @pdf.OriginalFileName
+                                    }
+                                    else
+                                    {
+                                        @pdf.FileName
+                                    }
+                                </a>
                             </span>
                         </div>
                     </div>
