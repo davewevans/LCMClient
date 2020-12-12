@@ -12,6 +12,8 @@ namespace LCMClient.Features.Orphans.Models
 
         public string Caption { get; set; }
 
+        public DateTime? TakenDate { get; set; }
+
         public DateTime EntryDate { get; set; }
 
         public int OrphanID { get; set; }

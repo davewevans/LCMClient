@@ -27,7 +27,8 @@
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grade">
                             Grade
                         </label>
-                        <InputText id="grade" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="academicCreation.Grade" />
+                        <InputText id="grade" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                                   @bind-Value="academicCreation.Grade" />
                         <ValidationMessage For="@(() => academicCreation.Grade)" />
                     </div>
 
@@ -36,7 +37,8 @@
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="school">
                             School
                         </label>
-                        <InputText id="school" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="academicCreation.School" />
+                        <InputText id="school" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                                   @bind-Value="academicCreation.School" />
                         <ValidationMessage For="@(() => academicCreation.School)" />
                     </div>
 
@@ -45,7 +47,8 @@
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="KCPE">
                             KCPE
                         </label>
-                        <InputText id="KCPE" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="academicCreation.KCPE" />
+                        <InputText id="KCPE" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                                   @bind-Value="academicCreation.KCPE" />
                         <ValidationMessage For="@(() => academicCreation.KCPE)" />
                     </div>
 
@@ -54,8 +57,19 @@
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="KCSE">
                             KCSE
                         </label>
-                        <InputText id="KCSE" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="academicCreation.KCSE" />
+                        <InputText id="KCSE" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                                   @bind-Value="academicCreation.KCSE" />
                         <ValidationMessage For="@(() => academicCreation.KCSE)" />
+                    </div>
+
+                    <!-- PostKCSENotes -->
+                    <div class="w-full px-3 mb-6">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="postKcseNotes">
+                            Post KCSE Notes
+                        </label>
+                        <InputTextArea id="postKcseNotes" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                                   @bind-Value="academicCreation.PostKCSENotes" />
+                        <ValidationMessage For="@(() => academicCreation.PostKCSENotes)" />
                     </div>
 
                 </EditForm>

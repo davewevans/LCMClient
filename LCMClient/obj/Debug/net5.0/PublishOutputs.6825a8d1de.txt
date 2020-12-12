@@ -32,6 +32,7 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\pu
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\css\svg-with-js.min.css
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\css\v4-shims.css
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\css\v4-shims.min.css
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\debug.log
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\favicon.ico
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\icon-512.png
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\images\LMCSMS_Icon_60x60_transparent.png
@@ -2019,6 +2020,7 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\pu
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\css\svg-with-js.min.css.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\css\v4-shims.css.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\css\v4-shims.min.css.br
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\debug.log.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\favicon.ico.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\icon-512.png.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\images\LMCSMS_Icon_60x60_transparent.png.br
@@ -4005,6 +4007,7 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\pu
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\css\svg-with-js.min.css.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\css\v4-shims.css.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\css\v4-shims.min.css.gz
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\debug.log.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\favicon.ico.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\icon-512.png.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\images\LMCSMS_Icon_60x60_transparent.png.gz

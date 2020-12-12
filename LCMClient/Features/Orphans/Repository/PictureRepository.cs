@@ -1,6 +1,8 @@
 ﻿using LCMClient.Features.Orphans.Models;
 using LCMClient.Features.Orphans.Repository.Contracts;
 using LCMClient.Services;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -40,6 +42,7 @@ namespace LCMClient.Features.Orphans.Repository
             fileStreamContent.Headers.ContentType = headerValueContentType;
 
             content.Add(new StringContent(picCreation.Caption ?? string.Empty), "Caption");
+            content.Add(new StringContent(picCreation.TakenDate.ToString()), "TakenDate");
             content.Add(new StringContent(picCreation.OrphanID.ToString()), "OrphanID");
             content.Add(fileStreamContent, "file", picCreation.PictureFileName);
 
@@ -53,6 +56,15 @@ namespace LCMClient.Features.Orphans.Repository
                 //throw new ApplicationException(await response.GetBody());
             }
             return await response.HttpResponseMessage.Content.ReadAsStringAsync();
+        }
+
+        public async Task DeletePictureAsync(int pictureId)
+        {
+            var response = await httpService.Delete($"{ url }/{ pictureId }");
+            if (!response.Success)
+            {
+                // throw new ApplicationException(await response.GetBody());
+            }
         }
     }
 }

@@ -2,43 +2,85 @@
 @using Tewr.Blazor.FileReader
 @using LCMClient.Features.Orphans.Repository.Contracts
 @using LCMClient.Features.Orphans.Models
+@using Syncfusion.Blazor.ProgressBar
 
 @inject IFileReaderService FileReader
 @inject IPictureRepository PicRepository
+@inject IMatToaster toaster
 
-
-<div class="border border-dashed border-gray-500 relative">
-    <input type="file"
-           @ref="inputReference"
-           @onchange="@HandleFileUpload"
-           class="cursor-pointer relative block opacity-0 w-full h-full p-20 z-50">
-    <div class="text-center p-10 absolute top-0 right-0 left-0 m-auto">
-        <h4>
-            Drop an image file in this box to upload
-            <br />or
-        </h4>
-        <p class="text-xl">Click to Select a Photo</p>
-    </div>
-</div>
-
-
-@if (progress.HasValue)
+@if (!IsProfilePhoto)
 {
-    @if (progress < 100)
-    {
-        <div class="shadow w-full bg-grey-light">
-            <div class="bg-blue text-xs leading-none py-1 text-center text-white" style="width: @progress%">@progress%</div>
-        </div>
-    }
-    else
-    {
-        <p class="@statusClass">@status</p>
-    }
+<div class="flex items-center space-x-2 mr-10 ml-10 mb-8">
+    <SfSwitch @bind-Checked="@uploadNewPic"></SfSwitch>
+    <label class="uppercase tracking-wide text-gray-700 text-xs font-bold">Upload A New Photo</label>
+</div>
 }
 
-@if (uploadFailed)
+
+@if (uploadNewPic || IsProfilePhoto)
 {
-    <p class="@statusClass">@status</p>
+    <div class="mr-16 ml-16">
+        <EditForm Model="@picCreation">
+
+            @if (!IsProfilePhoto)
+            {
+                <!-- TakenDate -->
+                <div class="mb-8 w-64">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="takenDate">
+                        Date Picture was Taken (optional)
+                    </label>
+                    <div class="w-48">
+                        <InputDate id="takenDate" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                   @bind-Value="picCreation.TakenDate" />
+                        <ValidationMessage For="@(() => picCreation.TakenDate)" />
+                    </div>
+
+                </div>
+
+                <!-- Caption -->
+                <div class="mb-8">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="caption">
+                        Caption (optional)
+                    </label>
+                    <InputText id="caption" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                               @bind-Value="picCreation.Caption" />
+                    <ValidationMessage For="@(() => picCreation.Caption)" />
+                </div>
+            }
+
+            <!-- Upload picture zone -->
+            <div class="border border-dashed border-gray-500 relative">
+                <input type="file"
+                       @ref="inputReference"
+                       @onchange="@HandleFileUpload"
+                       class="cursor-pointer relative block opacity-0 w-full h-full p-20 z-50">
+                <div class="text-center p-10 absolute top-0 right-0 left-0 m-auto">
+                    <h4>
+                        Drop an image file in this box to upload
+                        <br />or
+                    </h4>
+                    <p class="text-xl">Click to Select a Photo</p>
+                </div>
+            </div>
+
+        </EditForm>
+
+        @if (progress < 100)
+        {
+            <SfProgressBar Value="@progress" Minimum="0" Maximum="100" TrackThickness="12" ProgressThickness="12">
+            </SfProgressBar>
+        }
+        else
+        {
+            <p class="@statusClass">@status</p>
+        }
+
+
+        @if (uploadFailed)
+        {
+            <p class="@statusClass">@status</p>
+        }
+    </div>
 }
 
 
@@ -53,16 +95,18 @@
     [Parameter]
     public EventCallback<OrphanDetailsModel> HandlePostUpload { get; set; }
 
+    private PictureCreationModel picCreation = new PictureCreationModel();
+
     string status = "";
     string statusClass = "";
     bool uploadFailed = false;
-    int maxFileSizeMb = 10;
+    int maxFileSizeMb = 10 * 1024 * 1024;
+    double progress = 0;
+    bool uploadNewPic = false;
 
     readonly string[] allowedContentTypes = { "image/jpeg", "image/png", "image/gif" };
 
     ElementReference inputReference;
-
-    private int? progress;
 
     private async Task HandleFileUpload()
     {
@@ -91,7 +135,7 @@
                     {
                         ms.Write(buffer, 0, count);
                         countSize += count;
-                        progress = (int)(((decimal)countSize / fileInfo.Size) * 97);
+                        progress = (((double)countSize / fileInfo.Size) * 97);
                         StateHasChanged();
                     }
 
@@ -99,13 +143,11 @@
                 }
             }
 
-            var picCreation = new PictureCreationModel
-            {
-                PictureFileName = fileInfo.Name,
-                IsProfilePic = IsProfilePhoto,
-                ContentType = fileInfo.Type,
-                OrphanID = Orphan.OrphanID
-            };
+            picCreation.IsProfilePic = IsProfilePhoto;
+            picCreation.PictureFileName = fileInfo.Name;
+            picCreation.ContentType = fileInfo.Type;
+            picCreation.OrphanID = Orphan.OrphanID;
+
 
             string result = await PicRepository.UploadImageAsync(picCreation, fileBytes);
 
@@ -124,6 +166,7 @@
         {
             status = "Something went wrong :(";
             statusClass = "text-red-600 text-2xl";
+            toaster.Add("Upload failed.", MatToastType.Danger);
             uploadFailed = true;
         }
         else
@@ -131,6 +174,7 @@
             progress = 100;
             status = "Upload Success!";
             statusClass = "text-green-600 text-2xl";
+            toaster.Add("Successfully uploaded!.", MatToastType.Success);
         }
     }
 
@@ -144,7 +188,7 @@
             return false;
         }
 
-        if (size > maxFileSizeMb * 1024 * 1024)
+        if (size > maxFileSizeMb)
         {
             uploadFailed = true;
             status = $"Max file size: {maxFileSizeMb}MB";

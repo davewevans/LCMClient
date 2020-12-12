@@ -1,6 +1,7 @@
 ﻿using LCMClient.Features.Orphans.Enums;
 using LCMClient.Features.Orphans.Models;
 using LCMClient.Features.Orphans.Repository.Contracts;
+using MatBlazor;
 using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
 
@@ -17,8 +18,14 @@ namespace LCMClient.Features.Orphans.Components
 
         [Inject] public IPDFRepository PdfRepository { get; set; }
 
+        [Inject] public IMatToaster Toaster { get; set; }
+
         public string SelectedLabel { get; set; } = "Send to one sponsor";
         public string SelectedOption { get; set; } = "1";
+
+        private bool showDelConfirmDialog = false;
+
+        private int pdfIdToEdit = 0;
 
         protected override async Task OnInitializedAsync()
         {
@@ -38,11 +45,23 @@ namespace LCMClient.Features.Orphans.Components
             StateHasChanged();
         }
 
-        private async Task OnDeletePDF(int id)
+        private void OnDeletePDF(int id)
         {
-            await PdfRepository.DeletePDFAsync(id);
-            Orphan.PDFs = await PdfRepository.GetOrphanPDFsAsync(Orphan.OrphanID);
-            StateHasChanged();
+            pdfIdToEdit = id;
+            showDelConfirmDialog = true;
+        }
+
+        protected async Task OnConfirmDelete(bool deleteConfirmed)
+        {
+            showDelConfirmDialog = false;
+            if (deleteConfirmed && pdfIdToEdit != 0)
+            {
+                await PdfRepository.DeletePDFAsync(pdfIdToEdit);
+                Orphan.PDFs = await PdfRepository.GetOrphanPDFsAsync(Orphan.OrphanID);             
+                Toaster.Add("PDF Deleted.", MatToastType.Success);
+                StateHasChanged();
+            }
+            pdfIdToEdit = 0;
         }
     }
 }

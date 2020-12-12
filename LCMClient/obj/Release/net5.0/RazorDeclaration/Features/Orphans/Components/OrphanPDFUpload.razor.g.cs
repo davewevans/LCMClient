@@ -187,6 +187,13 @@ using LCMClient.Features.Orphans.Repository.Contracts;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanPDFUpload.razor"
+using Syncfusion.Blazor.ProgressBar;
+
+#line default
+#line hidden
+#nullable disable
     public partial class OrphanPDFUpload : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -195,14 +202,14 @@ using LCMClient.Features.Orphans.Repository.Contracts;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 45 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanPDFUpload.razor"
+#line 43 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanPDFUpload.razor"
        
 
     [Parameter]
     public OrphanDetailsModel Orphan { get; set; }
 
     [Parameter]
-    public string SponsorID { get; set; }
+    public int? SponsorID { get; set; }
 
     [Parameter]
     public bool AllSponsors { get; set; }
@@ -213,23 +220,23 @@ using LCMClient.Features.Orphans.Repository.Contracts;
     string status = "";
     string statusClass = "";
     bool uploadFailed = false;
-    int maxFileSizeMb = 20;
+    int maxFileSizeMb = 50 * 1024 * 1024;
+    private double progress = 0;
+    private string progressWidth => $"{progress}%";
 
     readonly string[] allowedContentTypes = { "application/pdf", "application/x-pdf" };
 
     ElementReference inputReference;
 
-    private int? progress;
-
     private async Task HandleFileUpload()
     {
+        progress = 0;
         int countSize = 0;
         uploadFailed = false;
         status = "";
 
         // Read the file
         var file = (await FileReader.CreateReference(inputReference).EnumerateFilesAsync()).FirstOrDefault();
-
         if (file != null)
         {
             var fileInfo = await file.ReadFileInfoAsync();
@@ -248,51 +255,57 @@ using LCMClient.Features.Orphans.Repository.Contracts;
                     {
                         ms.Write(buffer, 0, count);
                         countSize += count;
-                        progress = (int)(((decimal)countSize / fileInfo.Size) * 97);
+                        progress = (((double)countSize / fileInfo.Size) * 97);
                         StateHasChanged();
                     }
 
                     fileBytes = ms.ToArray();
                 }
             }
-            int id;
-            if (int.TryParse(SponsorID, out id))
-            {
-                var pdfCreation = new PDFCreationModel
-                {
-                    FileName = fileInfo.Name,
-                    ContentType = fileInfo.Type,
-                    OrphanID = Orphan.OrphanID,
-                    SponsorID = id,
-                    AllSponsors = AllSponsors
-                };
 
-                string result = await PdfRepository.UploadPDFAsync(pdfCreation, fileBytes);
 
-                await HandlePostUpload.InvokeAsync(Orphan);
-                ShowStatus(result);
-            }
-            else
+            if (SponsorID is null && !AllSponsors)
             {
-                ShowStatus("No sponsor selected.");
+                status = "No sponsor selected.";
+                statusClass = "text-red-600 text-2xl";
+                return;
             }
+
+
+            var pdfCreation = new PDFCreationModel
+            {
+                FileName = fileInfo.Name,
+                ContentType = fileInfo.Type,
+                OrphanID = Orphan.OrphanID,
+                AllSponsors = AllSponsors,
+                OriginalFileName = fileInfo.Name,
+                SponsorID = SponsorID == 0 ? null : SponsorID
+            };
+
+
+            bool result = await PdfRepository.UploadPDFAsync(pdfCreation, fileBytes);
+
+            await HandlePostUpload.InvokeAsync(Orphan);
+            ShowResult(result);
 
         }
     }
 
-    private void ShowStatus(string result)
+    private void ShowResult(bool isSuccess)
     {
-        if (string.IsNullOrWhiteSpace(result))
-        {
-            status = "Something went wrong :(";
-            statusClass = "text-red-600 text-2xl";
-            uploadFailed = true;
-        }
-        else
+        if (isSuccess)
         {
             progress = 100;
             status = "Upload Success!";
             statusClass = "text-green-600 text-2xl";
+            toaster.Add("Successfully uploaded!.", MatToastType.Success);
+        }
+        else
+        {
+            status = "Something went wrong :(";
+            statusClass = "text-red-600 text-2xl";
+            uploadFailed = true;
+            toaster.Add("Upload failed.", MatToastType.Danger);
         }
     }
 
@@ -306,7 +319,7 @@ using LCMClient.Features.Orphans.Repository.Contracts;
             return false;
         }
 
-        if (size > maxFileSizeMb * 1024 * 1024)
+        if (size > maxFileSizeMb)
         {
             uploadFailed = true;
             status = $"Max file size: {maxFileSizeMb}MB";
@@ -320,6 +333,7 @@ using LCMClient.Features.Orphans.Repository.Contracts;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IMatToaster toaster { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IPDFRepository PdfRepository { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IFileReaderService FileReader { get; set; }
     }

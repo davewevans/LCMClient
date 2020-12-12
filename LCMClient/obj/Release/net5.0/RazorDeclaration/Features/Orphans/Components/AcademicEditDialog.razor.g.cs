@@ -195,7 +195,7 @@ using LCMClient.Helpers;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 87 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\AcademicEditDialog.razor"
+#line 97 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\AcademicEditDialog.razor"
        
 
     protected override void OnInitialized()

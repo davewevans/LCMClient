@@ -6,5 +6,7 @@ namespace LCMClient.Features.Orphans.Repository.Contracts
     public interface IPictureRepository
     {
         Task<string> UploadImageAsync(PictureCreationModel picCreation, byte[] fileBytes);
+
+        Task DeletePictureAsync(int pictureId);
     }
 }

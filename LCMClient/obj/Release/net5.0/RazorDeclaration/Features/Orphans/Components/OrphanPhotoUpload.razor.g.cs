@@ -187,6 +187,13 @@ using LCMClient.Features.Orphans.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanPhotoUpload.razor"
+using Syncfusion.Blazor.ProgressBar;
+
+#line default
+#line hidden
+#nullable disable
     public partial class OrphanPhotoUpload : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -195,7 +202,7 @@ using LCMClient.Features.Orphans.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 45 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanPhotoUpload.razor"
+#line 87 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanPhotoUpload.razor"
        
 
     [Parameter]
@@ -207,16 +214,18 @@ using LCMClient.Features.Orphans.Models;
     [Parameter]
     public EventCallback<OrphanDetailsModel> HandlePostUpload { get; set; }
 
+    private PictureCreationModel picCreation = new PictureCreationModel();
+
     string status = "";
     string statusClass = "";
     bool uploadFailed = false;
-    int maxFileSizeMb = 10;
+    int maxFileSizeMb = 10 * 1024 * 1024;
+    double progress = 0;
+    bool uploadNewPic = false;
 
     readonly string[] allowedContentTypes = { "image/jpeg", "image/png", "image/gif" };
 
     ElementReference inputReference;
-
-    private int? progress;
 
     private async Task HandleFileUpload()
     {
@@ -245,7 +254,7 @@ using LCMClient.Features.Orphans.Models;
                     {
                         ms.Write(buffer, 0, count);
                         countSize += count;
-                        progress = (int)(((decimal)countSize / fileInfo.Size) * 97);
+                        progress = (((double)countSize / fileInfo.Size) * 97);
                         StateHasChanged();
                     }
 
@@ -253,13 +262,11 @@ using LCMClient.Features.Orphans.Models;
                 }
             }
 
-            var picCreation = new PictureCreationModel
-            {
-                PictureFileName = fileInfo.Name,
-                IsProfilePic = IsProfilePhoto,
-                ContentType = fileInfo.Type,
-                OrphanID = Orphan.OrphanID
-            };
+            picCreation.IsProfilePic = IsProfilePhoto;
+            picCreation.PictureFileName = fileInfo.Name;
+            picCreation.ContentType = fileInfo.Type;
+            picCreation.OrphanID = Orphan.OrphanID;
+
 
             string result = await PicRepository.UploadImageAsync(picCreation, fileBytes);
 
@@ -278,6 +285,7 @@ using LCMClient.Features.Orphans.Models;
         {
             status = "Something went wrong :(";
             statusClass = "text-red-600 text-2xl";
+            toaster.Add("Upload failed.", MatToastType.Danger);
             uploadFailed = true;
         }
         else
@@ -285,6 +293,7 @@ using LCMClient.Features.Orphans.Models;
             progress = 100;
             status = "Upload Success!";
             statusClass = "text-green-600 text-2xl";
+            toaster.Add("Successfully uploaded!.", MatToastType.Success);
         }
     }
 
@@ -298,7 +307,7 @@ using LCMClient.Features.Orphans.Models;
             return false;
         }
 
-        if (size > maxFileSizeMb * 1024 * 1024)
+        if (size > maxFileSizeMb)
         {
             uploadFailed = true;
             status = $"Max file size: {maxFileSizeMb}MB";
@@ -312,6 +321,7 @@ using LCMClient.Features.Orphans.Models;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IMatToaster toaster { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IPictureRepository PicRepository { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IFileReaderService FileReader { get; set; }
     }
