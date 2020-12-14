@@ -7,59 +7,62 @@
 @using LCMClient.Features.Guardians.Models 
 
 
-    <SfDialog Width="400px" 
-              @bind-Visible="@IsVisible" 
-              IsModal="true" 
-              ShowCloseIcon="true" 
-              ZIndex="99999">
-        <DialogTemplates>
-            <Header>
-                <h3 class="text-2xl font-bold">Add New Narration Record</h3>
-            </Header>
-            <Content>
-                <div class="w-full m-6 font-semibold">
-                    New narration record for @fullName
-                </div>
-                <div class="w-full m-6">
-                    <EditForm Model="narrationCreation" OnValidSubmit="HandleValidSubmit" class="w-full max-w-lg">
-                        <DataAnnotationsValidator />
+<SfDialog Width="400px"
+          @bind-Visible="@IsVisible"
+          IsModal="true"
+          ShowCloseIcon="true"
+          ZIndex="999999">
+    <DialogEvents Closed="@OnCancelBtnClick">
 
-                        <!-- Subject -->
-                        <div class="w-11/12 px-3 mb-6">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="subject">
-                                Subject
+    </DialogEvents>
+    <DialogTemplates>
+        <Header>
+            <h3 class="text-2xl font-bold">Add New Narration Record</h3>
+        </Header>
+        <Content>
+            <div class="w-full m-6 font-semibold">
+                New narration record for @fullName
+            </div>
+            <div class="w-full m-6">
+                <EditForm Model="narrationCreation" OnValidSubmit="HandleValidSubmit" class="w-full max-w-lg">
+                    <DataAnnotationsValidator />
+
+                    <!-- Subject -->
+                    <div class="w-11/12 px-3 mb-6">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="subject">
+                            Subject
+                        </label>
+                        <InputText id="subject" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                   @bind-Value="narrationCreation.Subject" />
+                        <ValidationMessage For="@(() => narrationCreation.Subject)" />
+                    </div>
+
+                    <!-- Note -->
+                    <div style="height:250px;">
+                        <div class="w-11/12 h-full px-3 mb-6">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="note">
+                                Note
                             </label>
-                            <InputText id="subject" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                       @bind-Value="narrationCreation.Subject" />
-                            <ValidationMessage For="@(() => narrationCreation.Subject)" />
+                            <InputTextArea id="note" class="appearance-none block w-full h-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                           @bind-Value="narrationCreation.Note" />
+                            <ValidationMessage For="@(() => narrationCreation.Note)" />
                         </div>
-
-                        <!-- Note -->
-                        <div style="height:250px;">
-                            <div class="w-11/12 h-full px-3 mb-6">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="note">
-                                    Note
-                                </label>
-                                <InputTextArea id="note" class="appearance-none block w-full h-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                               @bind-Value="narrationCreation.Note" />
-                                <ValidationMessage For="@(() => narrationCreation.Note)" />
-                            </div>
-                        </div>
+                    </div>
 
 
-                    </EditForm>
-                </div>
-            </Content>
-        </DialogTemplates>
-        <DialogButtons>
-            <DialogButton OnClick="@HandleValidSubmit">
-                <DialogButtonModel Content="Save" IsPrimary="true"></DialogButtonModel>
-            </DialogButton>
-            <DialogButton OnClick="@OnCancelBtnClick">
-                <DialogButtonModel Content="Cancel"></DialogButtonModel>
-            </DialogButton>
-        </DialogButtons>
-    </SfDialog>
+                </EditForm>
+            </div>
+        </Content>
+    </DialogTemplates>
+    <DialogButtons>
+        <DialogButton OnClick="@HandleValidSubmit">
+            <DialogButtonModel Content="Save" IsPrimary="true"></DialogButtonModel>
+        </DialogButton>
+        <DialogButton OnClick="@OnCancelBtnClick">
+            <DialogButtonModel Content="Cancel"></DialogButtonModel>
+        </DialogButton>
+    </DialogButtons>
+</SfDialog>
 
 
 <style>

@@ -63,6 +63,7 @@ namespace LCMClient.Features.Orphans.Components
 
         private async Task OnEditComplete(bool recordEdited)
         {
+            showDelConfirmDialog = false;
             narrationIdToEdit = 0;
             viewMode = ViewMode.List;
             Orphan.Narrations = await NarrationRepository.GetOrphanNarrations(Orphan.OrphanID);
@@ -71,12 +72,14 @@ namespace LCMClient.Features.Orphans.Components
 
         private void OnDeleteClick(int narrationId)
         {
+            showDelConfirmDialog = false;
             narrationIdToDelete = narrationId;
             showDelConfirmDialog = true;
         }
 
         protected async Task OnConfirmDelete(bool deleteConfirmed)
         {
+            viewMode = ViewMode.List;
             showDelConfirmDialog = false;
             if (deleteConfirmed && narrationIdToDelete != 0)
             {

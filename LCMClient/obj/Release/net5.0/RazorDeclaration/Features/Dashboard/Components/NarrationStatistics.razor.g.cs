@@ -214,6 +214,11 @@ using System.Globalization;
     {
         narrationStatistics = await dashboardRepository.GetNarrationStatistics();
 
+        //narrationStatistics.OrphanNarrationCount = 10;
+        //narrationStatistics.GuardianNarrationCount = 10;
+        //narrationStatistics.OrphanLast6MoCount = 10;
+        //narrationStatistics.GuardianLast6MoCount = 10;
+
         if (narrationStatistics != null)
         {
             SetDataItems();

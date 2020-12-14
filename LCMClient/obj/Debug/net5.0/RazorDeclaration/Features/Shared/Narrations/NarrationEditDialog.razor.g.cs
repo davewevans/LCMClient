@@ -188,7 +188,7 @@ using LCMClient.Helpers;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 69 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\Narrations\NarrationEditDialog.razor"
+#line 72 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\Narrations\NarrationEditDialog.razor"
        
 
     [Parameter]

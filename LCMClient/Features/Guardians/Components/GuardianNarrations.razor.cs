@@ -63,6 +63,7 @@ namespace LCMClient.Features.Guardians.Components
 
         private void OnEditClick(NarrationModel narrationRecord)
         {
+            showDelConfirmDialog = false;
             narrationEdit = new NarrationEditModel
             {
                 Subject = narrationRecord.Subject,
@@ -77,6 +78,7 @@ namespace LCMClient.Features.Guardians.Components
         private async Task OnEditComplete(bool recordEdited)
         {
             narrationIdToEdit = 0;
+            showDelConfirmDialog = false;
             viewMode = ViewMode.List;
             Guardian.Narrations = await NarrationRepository.GetGuardianNarrations(Guardian.GuardianID);
             StateHasChanged();
@@ -90,6 +92,7 @@ namespace LCMClient.Features.Guardians.Components
 
         protected async Task OnConfirmDelete(bool deleteConfirmed)
         {
+            viewMode = ViewMode.List;
             showDelConfirmDialog = false;
             if (deleteConfirmed && narrationIdToDelete != 0)
             {

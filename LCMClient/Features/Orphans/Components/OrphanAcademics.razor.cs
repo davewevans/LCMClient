@@ -29,9 +29,6 @@ namespace LCMClient.Features.Orphans.Components
         private AcademicEditModel academicEdit;
 
         private int academicIdToEdit = 0;
-
-        private int counter = 0;
-
         private void OnAddClick()
         {
             viewMode = ViewMode.AddNew;
@@ -49,8 +46,7 @@ namespace LCMClient.Features.Orphans.Components
 
         private void OnEditClick(AcademicModel academicRecord)
         {
-            Console.WriteLine($"oneditclick: {academicRecord.AcademicID}");
-
+            showDelConfirmDialog = false;
             academicEdit = new AcademicEditModel
             {
                 Grade = academicRecord.Grade,
@@ -58,7 +54,8 @@ namespace LCMClient.Features.Orphans.Components
                 KCSE = academicRecord.KCSE,
                 School = academicRecord.School,
                 EntryDate = academicRecord.EntryDate,
-                OrphanID = academicRecord.OrphanID
+                OrphanID = academicRecord.OrphanID,
+                PostKCSENotes = academicRecord.PostKCSENotes
             };
             academicIdToEdit = academicRecord.AcademicID;
             viewMode = ViewMode.Edit;
@@ -66,6 +63,7 @@ namespace LCMClient.Features.Orphans.Components
 
         private async Task OnEditComplete(bool recordEdited)
         {
+            showDelConfirmDialog = false;
             academicIdToEdit = 0;
             viewMode = ViewMode.List;
             Orphan.Academics = await AcademicRepository.GetOrphanAcademics(Orphan.OrphanID);
@@ -80,6 +78,7 @@ namespace LCMClient.Features.Orphans.Components
 
         protected async Task OnConfirmDelete(bool deleteConfirmed)
         {
+            viewMode = ViewMode.List;
             showDelConfirmDialog = false;
             if (deleteConfirmed && academicIdToDelete != 0)
             {

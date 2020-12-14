@@ -1,0 +1,12 @@
+﻿Gulp insructions for installing TailwindCss
+
+First run this command:
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+ref: https://caiomsouza.medium.com/fix-for-powershell-script-not-digitally-signed-69f0ed518715
+
+Then:
+gulp css
+
+
+https://chrissainty.com/integrating-tailwind-css-with-blazor-using-gulp-part-1/
+https://chrissainty.com/integrating-tailwind-css-with-blazor-using-gulp-part-2/

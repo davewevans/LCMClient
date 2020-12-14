@@ -5,14 +5,20 @@
 @using LCMClient.Features.Orphans.Repository.Contracts
 @using LCMClient.Helpers
 
-<SfDialog Width="400px" 
-          @bind-Visible="@IsVisible" 
-          IsModal="true" 
-          ShowCloseIcon="true" 
+
+
+
+<SfDialog Width="400px"
+          @bind-Visible="@IsVisible"
+          IsModal="true"
+          ShowCloseIcon="true"
           ZIndex="99999">
+    <DialogEvents Closed="@OnCancelBtnClick">
+
+    </DialogEvents>
     <DialogTemplates>
         <Header>
-            <h3 class="text-3xl font-semibold">Edit Academic Record</h3>
+            <h3 class="text-2xl font-semibold">Edit Academic Record</h3>
         </Header>
         <Content>
             <div class="w-full m-6">
@@ -20,7 +26,7 @@
                     <DataAnnotationsValidator />
 
                     <!-- Grade -->
-                    <div class="w-1/2 px-3 mb-6">
+                    <div class="w-1/2 px-3 mb-4">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grade">
                             Grade
                         </label>
@@ -29,7 +35,7 @@
                     </div>
 
                     <!-- School -->
-                    <div class="w-3/4 px-3 mb-6">
+                    <div class="w-3/4 px-3 mb-4">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="school">
                             School
                         </label>
@@ -38,7 +44,7 @@
                     </div>
 
                     <!-- KCPE -->
-                    <div class="w-1/2 px-3 mb-6">
+                    <div class="w-1/2 px-3 mb-4">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="KCPE">
                             KCPE
                         </label>
@@ -47,7 +53,7 @@
                     </div>
 
                     <!-- KCSE -->
-                    <div class="w-1/2 px-3 mb-6">
+                    <div class="w-1/2 px-3 mb-4">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="KCSE">
                             KCSE
                         </label>
