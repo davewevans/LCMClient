@@ -6,8 +6,12 @@
 @using LCMClient.Features.Orphans.Models
 @using LCMClient.Features.Orphans.Repository.Contracts
 @using LCMClient.Features.Shared.Repository.Contracts
+@using LCMClient.Helpers
+
+@inject IJSRuntime JS
 
 <SfDialog Width="500px" @bind-Visible="@IsVisible" IsModal="true" ShowCloseIcon="true">
+    <DialogEvents Opened="Opened" />
     <DialogTemplates>
         <Header>
             <h3 class="text-3xl font-semibold">Assign Guardian to Orphan</h3>
@@ -19,7 +23,8 @@
             <div class="w-11/12 m-6 mr-6">
                 @if (gotData)
                 {
-                    <SfAutoComplete TValue="string"
+                    <SfAutoComplete @ref="sfAutoComplete"
+                                    TValue="string"
                                     TItem="GuardianModel"
                                     @bind-Value="@selectedValue"
                                     Placeholder="Select Guardian (start typing guardian's name)"
@@ -29,15 +34,34 @@
 
                         <AutoCompleteFieldSettings Value="NameAndLocation">
                         </AutoCompleteFieldSettings>
-                    </SfAutoComplete>  
-                    
+                    </SfAutoComplete>
+
+
                     <div class="mt-6">
-                        <SfTextBox CssClass="e-outline"
-                                   Placeholder="Relationship to Orphan"
-                                   FloatLabelType="@FloatLabelType.Auto"
-                                   @bind-Value="relationship">
-                        </SfTextBox>
-                    </div>                   
+                        <SfDropDownList TValue="string"
+                                        TItem="string"
+                                        Placeholder="Relationship to Orphan"
+                                        DataSource="@relationships"
+                                        @bind-Value="@relationshipSelected">
+                            <DropDownListEvents TItem="string" TValue="string"
+                                                ValueChange="OnDropdownValueChanged">
+                            </DropDownListEvents>
+                        </SfDropDownList>
+                    </div>
+
+                    if (otherSelected)
+                    {
+                        <div class="mt-6">
+                            <SfTextBox ID="sfTextBox"
+                                       @ref="sfTextBox"
+                                       CssClass="e-outline"
+                                       Placeholder="Relationship to Orphan"
+                                       FloatLabelType="@FloatLabelType.Auto"
+                                       @bind-Value="relationship"
+                                       Created="OnCreated">
+                            </SfTextBox>
+                        </div>
+                    }
                 }
                 else
                 {
@@ -78,9 +102,19 @@
 
 @code {
 
+    private string[] relationships = { "Mother", "Father", "Sister", "Brother", "Aunt", "Uncle", "Cousin (female)", "Cousin (male)", "Grandmother", "Grandfather", "Stepsister", "Stepbrother", "Stepmother", "Stepfather", "Sister-in-law", "Brother-in-law", "Friend", "Other" };
+
     private bool gotData = false;
 
+    private string relationshipSelected = "";
+
     private string relationship = "";
+
+    private bool otherSelected = false;
+
+    private SfAutoComplete<string, GuardianModel> sfAutoComplete;
+
+    private SfTextBox sfTextBox;
 
     protected override async Task OnInitializedAsync()
     {
@@ -134,12 +168,38 @@
         }
 
         await OrphanRepository.PatchOrphanAsync(Orphan.OrphanID, "guardianID", selectedGuardian.GuardianID.ToString());
+
+        // User can select "Other" from dropdown then type more specific relationship in text box
+        if (!"Other".Equals(relationshipSelected))
+        {
+            relationship = relationshipSelected;
+        }
+
         if (!string.IsNullOrWhiteSpace(relationship))
             await OrphanRepository.PatchOrphanAsync(Orphan.OrphanID, "relationshipToGuardian", relationship);
+
+
         IsVisible = false;
         await OnAddNewComplete.InvokeAsync(true);
         StateHasChanged();
         Toaster.Add($" Successful assignment.", MatToastType.Success);
+    }
+
+    private void OnDropdownValueChanged()
+    {
+        // relationship.Equals(...) locked up the UI
+        otherSelected = "Other".Equals(relationshipSelected);
+        relationship = relationshipSelected;
+    }
+
+    private void OnCreated()
+    {
+        sfTextBox.FocusIn();
+    }
+
+    async Task Opened(Syncfusion.Blazor.Popups.OpenEventArgs args)
+    {
+        await sfAutoComplete.FocusIn();
     }
 
     private async Task OnCancelBtnClick()

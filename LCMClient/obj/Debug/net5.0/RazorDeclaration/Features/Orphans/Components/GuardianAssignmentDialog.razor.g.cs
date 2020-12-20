@@ -208,6 +208,13 @@ using LCMClient.Features.Shared.Repository.Contracts;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 9 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\GuardianAssignmentDialog.razor"
+using LCMClient.Helpers;
+
+#line default
+#line hidden
+#nullable disable
     public partial class GuardianAssignmentDialog : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -216,12 +223,22 @@ using LCMClient.Features.Shared.Repository.Contracts;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 79 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\GuardianAssignmentDialog.razor"
+#line 103 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\GuardianAssignmentDialog.razor"
        
+
+    private string[] relationships = { "Mother", "Father", "Sister", "Brother", "Aunt", "Uncle", "Cousin (female)", "Cousin (male)", "Grandmother", "Grandfather", "Stepsister", "Stepbrother", "Stepmother", "Stepfather", "Sister-in-law", "Brother-in-law", "Friend", "Other" };
 
     private bool gotData = false;
 
+    private string relationshipSelected = "";
+
     private string relationship = "";
+
+    private bool otherSelected = false;
+
+    private SfAutoComplete<string, GuardianModel> sfAutoComplete;
+
+    private SfTextBox sfTextBox;
 
     protected override async Task OnInitializedAsync()
     {
@@ -275,12 +292,38 @@ using LCMClient.Features.Shared.Repository.Contracts;
         }
 
         await OrphanRepository.PatchOrphanAsync(Orphan.OrphanID, "guardianID", selectedGuardian.GuardianID.ToString());
+
+        // User can select "Other" from dropdown then type more specific relationship in text box
+        if (!"Other".Equals(relationshipSelected))
+        {
+            relationship = relationshipSelected;
+        }
+
         if (!string.IsNullOrWhiteSpace(relationship))
             await OrphanRepository.PatchOrphanAsync(Orphan.OrphanID, "relationshipToGuardian", relationship);
+
+
         IsVisible = false;
         await OnAddNewComplete.InvokeAsync(true);
         StateHasChanged();
         Toaster.Add($" Successful assignment.", MatToastType.Success);
+    }
+
+    private void OnDropdownValueChanged()
+    {
+        // relationship.Equals(...) locked up the UI
+        otherSelected = "Other".Equals(relationshipSelected);
+        relationship = relationshipSelected;
+    }
+
+    private void OnCreated()
+    {
+        sfTextBox.FocusIn();
+    }
+
+    async Task Opened(Syncfusion.Blazor.Popups.OpenEventArgs args)
+    {
+        await sfAutoComplete.FocusIn();
     }
 
     private async Task OnCancelBtnClick()
@@ -293,6 +336,7 @@ using LCMClient.Features.Shared.Repository.Contracts;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JS { get; set; }
     }
 }
 #pragma warning restore 1591

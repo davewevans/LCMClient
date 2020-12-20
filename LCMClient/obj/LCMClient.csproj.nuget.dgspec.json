@@ -54,24 +54,24 @@
             },
             "Microsoft.AspNetCore.Components.WebAssembly": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.AspNetCore.Components.WebAssembly.Authentication": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             },
             "MudBlazor": {
               "target": "Package",
-              "version": "[1.1.5, )"
+              "version": "[1.2.1, )"
             },
             "Radzen.Blazor": {
               "target": "Package",
-              "version": "[2.18.2, )"
+              "version": "[2.18.6, )"
             },
             "Syncfusion.Blazor": {
               "target": "Package",
@@ -83,7 +83,7 @@
             },
             "Tewr.Blazor.FileReader": {
               "target": "Package",
-              "version": "[2.1.0.20274, )"
+              "version": "[3.0.0.20340, )"
             }
           },
           "imports": [
