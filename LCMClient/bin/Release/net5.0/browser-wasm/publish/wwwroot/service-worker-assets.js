@@ -145,8 +145,8 @@
       "url": "favicon.ico"
     },
     {
-      "hash": "sha256-15kJvUZtA94P+pFxjnEdxLWeNISJigd9NDYWg2\/Y1+c=",
-      "url": "icon-512.jpg"
+      "hash": "sha256-X9EXdw3Qq9obMQz5hWVhAfGru9g6WAwRLt7eFje+83M=",
+      "url": "icon-512.png"
     },
     {
       "hash": "sha256-sZOMl7OY6+5I+2lYHVKNPsnr2Hvr7KQkhit7yyvSp00=",
@@ -7941,5 +7941,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "bP4LgD6y"
+  "version": "EKYLYPkV"
 };

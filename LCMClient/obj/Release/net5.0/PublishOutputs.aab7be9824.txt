@@ -34,7 +34,7 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\v4-shims.min.css
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\debug.log
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\favicon.ico
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\icon-512.jpg
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\icon-512.png
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\LMCSMS_Icon_60x60_transparent.png
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\LMCSMS_Icon_88x88.png
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\LMCSMS_Icon_88x88_transparent.png
@@ -2022,7 +2022,7 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\v4-shims.min.css.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\debug.log.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\favicon.ico.br
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\icon-512.jpg.br
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\icon-512.png.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\LMCSMS_Icon_60x60_transparent.png.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\LMCSMS_Icon_88x88.png.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\LMCSMS_Icon_88x88_transparent.png.br
@@ -4009,7 +4009,7 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\v4-shims.min.css.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\debug.log.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\favicon.ico.gz
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\icon-512.jpg.gz
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\icon-512.png.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\LMCSMS_Icon_60x60_transparent.png.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\LMCSMS_Icon_88x88.png.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\LMCSMS_Icon_88x88_transparent.png.gz
