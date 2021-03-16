@@ -13,8 +13,7 @@
 
 <div class="mb-16 m-8">
     <EditForm Model="userInfo" OnValidSubmit="EditUserHandler">
-        <DataAnnotationsValidator />
-
+        <DataAnnotationsValidator/>
 
         <MudCard Class="my-mud-card-form">
             <MudCardHeader Class="my-mud-card-header">
@@ -22,37 +21,65 @@
                     <MudText Typo="Typo.h6">Edit User</MudText>
                 </CardHeaderContent>
                 <CardHeaderActions>
-                    <MudIconButton Icon="@Icons.Material.Cancel" Color="Color.Default" OnClick="@OnCancel" />
+                    <MudIconButton Icon="@Icons.Material.Cancel" Color="Color.Default" OnClick="@OnCancel"/>
                 </CardHeaderActions>
             </MudCardHeader>
 
             <MudCardContent>
                 <MudGrid>
                     <MudItem xs="12">
-                        <MudTextField @bind-Value="userInfo.FirstName" Label="First Name" Variant="Variant.Text" />
-                        <ValidationMessage For="@(() => userInfo.FirstName)" />
+                        <MudTextField @bind-Value="userInfo.FirstName" Label="First Name" Variant="Variant.Text"/>
+                        <ValidationMessage For="@(() => userInfo.FirstName)"/>
                     </MudItem>
 
                     <MudItem xs="12">
-                        <MudTextField @bind-Value="userInfo.LastName" Label="Last Name" Variant="Variant.Text" />
-                        <ValidationMessage For="@(() => userInfo.LastName)" />
+                        <MudTextField @bind-Value="userInfo.LastName" Label="Last Name" Variant="Variant.Text"/>
+                        <ValidationMessage For="@(() => userInfo.LastName)"/>
                     </MudItem>
 
                     <MudItem xs="12">
-                        <MudTextField @bind-Value="userInfo.Email" Label="Email" Variant="Variant.Text" />
-                        <ValidationMessage For="@(() => userInfo.Email)" />
+                        <MudTextField @bind-Value="userInfo.Email" Label="Email" Variant="Variant.Text"/>
+                        <ValidationMessage For="@(() => userInfo.Email)"/>
                     </MudItem>
 
                     <MudItem xs="12">
-                        <MudSelect T="string" Label="Assign Role" @bind-Value="@userInfo.Role">
+                        <h3>Assign Role(s)</h3>
+                        <MudCheckBox @bind-Checked="isInAdminRole">@adminRole.DisplayName</MudCheckBox>
+                        <div class="mb-6 bg-blue-100 p-2">
+                            @adminRole.RoleDescription
+                        </div>
+                        <MudCheckBox @bind-Checked="isInStaffRole">@staffRole.DisplayName</MudCheckBox>
+                        <div class="mb-6 bg-blue-100 p-2">
+                            @staffRole.RoleDescription
+                        </div>
+                        <MudCheckBox @bind-Checked="isInGuestRole">@guestRole.DisplayName</MudCheckBox>
+                        <div class="mb-6 bg-blue-100 p-2">
+                            @guestRole.RoleDescription
+                        </div>
+                        <MudCheckBox @bind-Checked="isInNarrationApproverRole">@narrationApproverRole.DisplayName</MudCheckBox>
+                        <div class="mb-6 bg-blue-100 p-2">
+                            @narrationApproverRole.RoleDescription
+                        </div>
+                        <MudCheckBox @bind-Checked="isInOrphanReadWriteRole">@orphanReadWriteRole.DisplayName</MudCheckBox>
+                        <div class="mb-6 bg-blue-100 p-2">
+                            @orphanReadWriteRole.RoleDescription
+                        </div>
+                        <MudCheckBox @bind-Checked="isInGuardianReadWriteRole">@guardianReadWriteRole.DisplayName</MudCheckBox>
+                        <div class="mb-6 bg-blue-100 p-2">
+                            @guardianReadWriteRole.RoleDescription
+                        </div>
+                        <MudCheckBox @bind-Checked="isInSponsorReadWriteRole">@sponsorReadWriteRole.DisplayName</MudCheckBox>
+                        <div class="mb-6 bg-blue-100 p-2">
+                            @sponsorReadWriteRole.RoleDescription
+                        </div>
 
-                            @foreach (var role in roles)
-                            {
-                                <MudSelectItem Value="@role">@role</MudSelectItem>
-                            }
+                        @if (noRoleSelected)
+                        {
+                            <div class="text-red-800 mt-4">
+                                @roleValidationMessage
+                            </div>
+                        }
 
-                        </MudSelect>
-                        <ValidationMessage For="@(() => userInfo.Role)" />
                     </MudItem>
                 </MudGrid>
             </MudCardContent>
@@ -72,12 +99,34 @@
     </EditForm>
 </div>
 
+
 @code {
-    [Parameter] public string UserId { get; set; }
+
+    [Parameter]
+    public string UserId { get; set; }
+
+    bool noRoleSelected = false;
+    string roleValidationMessage = "Please assign at least one role.";
+
+    private bool isInAdminRole = false;
+    private bool isInStaffRole = false;
+    private bool isInGuestRole = false;
+    private bool isInNarrationApproverRole = false;
+    private bool isInOrphanReadWriteRole = false;
+    private bool isInGuardianReadWriteRole = false;
+    private bool isInSponsorReadWriteRole = false;
+
+    private RoleModel adminRole = new();
+    private RoleModel staffRole = new();
+    private RoleModel guestRole = new();
+    private RoleModel narrationApproverRole = new();
+    private RoleModel orphanReadWriteRole = new();
+    private RoleModel guardianReadWriteRole = new();
+    private RoleModel sponsorReadWriteRole = new();
 
     private UserEditModel userInfo = new UserEditModel();
     private UserModel user = new UserModel();
-    private List<string> roles = new List<string>();
+    private List<RoleModel> roles = new();
 
     protected override async Task OnInitializedAsync()
     {
@@ -86,14 +135,73 @@
         userInfo.FirstName = user.FirstName;
         userInfo.LastName = user.LastName;
         userInfo.Email = user.Email;
-        userInfo.Role = user.Role;
+        userInfo.Roles = user.Roles;
 
-        var payload = await userRepository.GetRoles();
-        this.roles = payload.Select(x => x.RoleName).ToList();
+        roles = await userRepository.GetRoles();
+        SetUserRoleBools();
+        SetRoleFields();
+    }
+
+    private void SetUserRoleBools()
+    {
+        foreach (var role in userInfo.Roles)
+        {
+            switch (role.RoleName)
+            {
+                case "Admin":
+                    isInAdminRole = true;
+                    break;
+                case "Staff":
+                    isInStaffRole = true;
+                    break;
+                case "Guest":
+                    isInGuestRole = true;
+                    break;
+                case "NarrationApprover":
+                    isInNarrationApproverRole = true;
+                    break;
+                case "OrphanReadWrite":
+                    isInOrphanReadWriteRole = true;
+                    break;
+                case "GuardianReadWrite":
+                    isInGuardianReadWriteRole = true;
+                    break;
+                case "SponsorReadWrite":
+                    isInSponsorReadWriteRole = true;
+                    break;              
+            }
+        }
+    }
+
+    private void SetRoleFields()
+    {
+        if (roles == null) return;
+        adminRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.AdminRole));
+        staffRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.StaffRole));
+        guestRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.GuestRole));
+        narrationApproverRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.NarrationApproverRole));
+        orphanReadWriteRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.OrphanReadWriteRole));
+        guardianReadWriteRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.GuardianReadWriteRole));
+        sponsorReadWriteRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.SponsorReadWriteRole));
     }
 
     private async Task EditUserHandler()
     {
+        userInfo.Roles.Clear();
+        if (isInAdminRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.AdminRole});
+        if (isInStaffRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.StaffRole});
+        if (isInGuestRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.GuestRole});
+        if (isInNarrationApproverRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.NarrationApproverRole});
+        if (isInOrphanReadWriteRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.OrphanReadWriteRole});
+        if (isInGuardianReadWriteRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.GuardianReadWriteRole});
+        if (isInSponsorReadWriteRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.SponsorReadWriteRole});
+
+        if (userInfo.Roles.Count < 1)
+        {
+            noRoleSelected = true;
+            return;
+        }
+
         await userRepository.EditUser(UserId, userInfo);
         navigationManager.NavigateTo("/admin");
     }
@@ -102,4 +210,5 @@
     {
         navigationManager.NavigateTo("/admin");
     }
+
 }

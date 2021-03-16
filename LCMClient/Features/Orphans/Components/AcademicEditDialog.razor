@@ -5,7 +5,7 @@
 @using LCMClient.Features.Orphans.Repository.Contracts
 @using LCMClient.Helpers
 
-
+@attribute [Authorize(Roles = "Admin,Staff,OrphanReadWrite")]
 
 
 <SfDialog Width="400px"

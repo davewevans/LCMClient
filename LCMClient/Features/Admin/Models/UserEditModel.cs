@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LCMClient.Features.Admin.Models
 {
@@ -13,7 +14,6 @@ namespace LCMClient.Features.Admin.Models
         [Required(ErrorMessage = "Please enter a valid email.")]
         public string Email { get; set; }    
 
-        [Required]
-        public string Role { get; set; }
+        public List<RoleModel> Roles { get; set; }
     }
 }

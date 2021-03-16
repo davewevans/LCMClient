@@ -9,7 +9,7 @@
 @inject ISponsorRepository sponsorRepository
 @inject IMatToaster toaster
 
-@attribute [Authorize]
+@attribute [Authorize(Roles = "Admin,Staff,SponsorReadWrite")]
 
 <TabContentHeader HeaderText="Edit"
                   ShowButton="false">

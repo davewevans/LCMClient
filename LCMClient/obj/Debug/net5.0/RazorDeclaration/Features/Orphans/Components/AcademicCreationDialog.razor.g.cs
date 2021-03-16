@@ -187,6 +187,13 @@ using LCMClient.Helpers;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 8 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\AcademicCreationDialog.razor"
+           [Authorize(Roles = "Admin,Staff,OrphanReadWrite")]
+
+#line default
+#line hidden
+#nullable disable
     public partial class AcademicCreationDialog : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -195,7 +202,7 @@ using LCMClient.Helpers;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 104 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\AcademicCreationDialog.razor"
+#line 106 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\AcademicCreationDialog.razor"
        
 
     [Parameter]

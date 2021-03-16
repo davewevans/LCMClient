@@ -8,6 +8,8 @@
 @inject IPDFRepository PdfRepository
 @inject IMatToaster toaster
 
+@attribute [Authorize(Roles = "Admin,Staff,OrphanReadWrite,Guest")]
+
 <div class="border border-dashed border-gray-500 relative">
     <input type="file"
            @ref="inputReference"

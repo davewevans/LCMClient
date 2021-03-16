@@ -1,5 +1,4 @@
-﻿
-@using LCMClient.Features.Guardians.Models
+﻿@using LCMClient.Features.Guardians.Models
 @using LCMClient.Features.Shared.Repository.Contracts
 @using MatBlazor;
 @using LCMClient.Features.Shared
@@ -8,7 +7,7 @@
 @inject IGuardianRepository guardianRepository
 @inject IMatToaster toaster
 
-@attribute [Authorize]
+@attribute [Authorize(Roles = "Admin,Staff,GuardianReadWrite")]
 
 
 <TabContentHeader HeaderText="Edit"
@@ -19,12 +18,11 @@
 </TabContentHeader>
 
 
-
-@if(guardianToEdit is not null)
+@if (guardianToEdit is not null)
 {
     <div class="mt-8 mb-8 ml-32 mr-32">
         <EditForm Model="@guardianToEdit" OnValidSubmit="@HandleValidSubmit">
-            <DataAnnotationsValidator />
+            <DataAnnotationsValidator/>
 
             <!-- First Name -->
             <div class="w-full px-3 mb-6">
@@ -32,8 +30,8 @@
                     First Name
                 </label>
                 <InputText id="firstName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                           @bind-Value="guardianToEdit.FirstName" />
-                <ValidationMessage For="@(() => guardianToEdit.FirstName)" />
+                           @bind-Value="guardianToEdit.FirstName"/>
+                <ValidationMessage For="@(() => guardianToEdit.FirstName)"/>
             </div>
 
             <!-- Last Name -->
@@ -42,8 +40,8 @@
                     Last Name
                 </label>
                 <InputText id="lastName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                           @bind-Value="guardianToEdit.LastName" />
-                <ValidationMessage For="@(() => guardianToEdit.LastName)" />
+                           @bind-Value="guardianToEdit.LastName"/>
+                <ValidationMessage For="@(() => guardianToEdit.LastName)"/>
             </div>
 
             <!-- Location -->
@@ -52,11 +50,47 @@
                     Location
                 </label>
                 <InputText id="middleName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                           @bind-Value="guardianToEdit.Location" />
-                <ValidationMessage For="@(() => guardianToEdit.Location)" />
+                           @bind-Value="guardianToEdit.Location"/>
+                <ValidationMessage For="@(() => guardianToEdit.Location)"/>
             </div>
 
-            <ValidationSummary />
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="mainphone">
+                    Main Phone Number
+                </label>
+                <InputText id="mainphone" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="guardianToEdit.MainPhone"/>
+                <ValidationMessage For="@(() => guardianToEdit.MainPhone)"/>
+            </div>
+
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="altphone1">
+                    Alternative Phone Number 1
+                </label>
+                <InputText id="altphone1" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="guardianToEdit.AltPhone1"/>
+                <ValidationMessage For="@(() => guardianToEdit.AltPhone1)"/>
+            </div>
+
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="altphone2">
+                    Alternative Phone Number 2
+                </label>
+                <InputText id="altphone2" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="guardianToEdit.AltPhone2"/>
+                <ValidationMessage For="@(() => guardianToEdit.AltPhone2)"/>
+            </div>
+
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="altphone3">
+                    Alternative Phone Number 3
+                </label>
+                <InputText id="altphone3" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="guardianToEdit.AltPhone3"/>
+                <ValidationMessage For="@(() => guardianToEdit.AltPhone3)"/>
+            </div>
+
+            <ValidationSummary/>
 
             <div class="d-flex justify-center">
                 <MudButton Variant="Variant.Filled"
@@ -69,12 +103,10 @@
             </div>
         </EditForm>
     </div>
-
-
 }
 else
 {
-    <LoadingAnimation />
+    <LoadingAnimation/>
 }
 
 
@@ -97,7 +129,11 @@ else
             GuardianID = GuardianDetails.GuardianID,
             FirstName = GuardianDetails.FirstName,
             LastName = GuardianDetails.LastName,
-            Location = GuardianDetails.Location
+            Location = GuardianDetails.Location,
+            MainPhone = GuardianDetails.MainPhone,
+            AltPhone1 =  GuardianDetails.AltPhone1,
+            AltPhone2 =  GuardianDetails.AltPhone2,
+            AltPhone3 =  GuardianDetails.AltPhone3,
         };
     }
 
@@ -107,4 +143,5 @@ else
         await HandleGuardianEdited.InvokeAsync();
         toaster.Add("Guardian updated.", MatToastType.Success);
     }
+
 }

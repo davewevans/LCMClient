@@ -8,6 +8,8 @@
 @using LCMClient.Features.Shared.Repository.Contracts
 @using LCMClient.Helpers
 
+@attribute [Authorize(Roles = "Admin,Staff,OrphanReadWrite")]
+
 @inject IJSRuntime JS
 
 <SfDialog Width="500px" @bind-Visible="@IsVisible" IsModal="true" ShowCloseIcon="true">

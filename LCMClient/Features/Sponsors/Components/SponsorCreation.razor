@@ -8,7 +8,7 @@
 @inject ISponsorRepository sponsorRepository
 @inject IMatToaster toaster
 
-@attribute [Authorize]
+@attribute [Authorize(Roles = "Admin,Staff,SponsorReadWrite")]
 
 <EditForm Model="@newSponsor" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />

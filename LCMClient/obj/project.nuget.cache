@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "WzKnBpGfW95WC4OgilAZ3Czz1L805viSsbFcO+kFuXigk+78oeN7HhaqK3u0/XVJbO1OUSUF1OSe5mGgJ29v3g==",
+  "dgSpecHash": "tx1Y3AfpY2pN4Z55lT6FMUKXkhITtk7oA33GBsWT1iKjjc5b62d6eR9d+I4j5W7yT8QCEg4DO236LZnteJQj2w==",
   "success": true,
   "projectFilePath": "C:\\Users\\davew\\OneDrive\\Documents\\GitHub\\LCMClient\\LCMClient\\LCMClient.csproj",
   "expectedPackageFiles": [
@@ -55,7 +55,7 @@
     "C:\\Users\\davew\\.nuget\\packages\\system.net.http.json\\5.0.0\\system.net.http.json.5.0.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
     "C:\\Users\\davew\\.nuget\\packages\\tewr.blazor.filereader\\3.0.0.20340\\tewr.blazor.filereader.3.0.0.20340.nupkg.sha512",
-    "C:\\Users\\davew\\.nuget\\packages\\microsoft.netcore.app.runtime.browser-wasm\\5.0.1\\microsoft.netcore.app.runtime.browser-wasm.5.0.1.nupkg.sha512"
+    "C:\\Users\\davew\\.nuget\\packages\\microsoft.netcore.app.runtime.browser-wasm\\5.0.3\\microsoft.netcore.app.runtime.browser-wasm.5.0.3.nupkg.sha512"
   ],
   "logs": []
 }

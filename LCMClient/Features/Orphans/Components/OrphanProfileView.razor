@@ -1,15 +1,22 @@
-﻿
-@using LCMClient.Features.Orphans.Models 
+﻿@using LCMClient.Features.Orphans.Models
 
 <div class="md:flex width-full items-start mb-8">
     <div class="w-1/2">
-        <OrphanProfilePhoto Orphan="@Orphan" />
+        <OrphanProfilePhoto Orphan="@Orphan"/>
         <div class="mt-10 flex w-full justify-center">
-            <button @onclick="SwitchToEditViewHandler" class="bg-blue-600 hover:bg-blue-800 text-white font-semibold hover:text-white py-2 px-4 rounded mr-12">
-                <div class="flex items-center">
-                    <i class="fa fa-edit mr-2"></i> Edit Profile Picture
-                </div>
-            </button>
+            <AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+                <Authorized>
+                    <button @onclick="SwitchToEditViewHandler" class="bg-blue-600 hover:bg-blue-800 text-white font-semibold hover:text-white py-2 px-4 rounded mr-12">
+                        <div class="flex items-center">
+                            <i class="fa fa-edit mr-2"></i> Edit Profile Picture
+                        </div>
+                    </button>
+                </Authorized>
+                <NotAuthorized>
+
+                </NotAuthorized>
+            </AuthorizeView>
+
         </div>
     </div>
     <div class="w-1/2 text-2xl">
@@ -54,8 +61,8 @@
 </div>
 
 
-
 @code {
+
     [Parameter]
     public OrphanDetailsModel Orphan { get; set; }
 
@@ -66,4 +73,5 @@
     {
         await HandleToggleEditView.InvokeAsync();
     }
-} 
+
+}

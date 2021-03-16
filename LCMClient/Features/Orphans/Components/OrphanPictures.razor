@@ -10,12 +10,20 @@
                   ShowButton="false">
     <div class="text-white mt-1">
         <MudIcon Icon="@Icons.Material.PhotoAlbum" Size="Size.Medium"></MudIcon>
-    </div>        
+    </div>
 </TabContentHeader>
 
 <div class="m-10">
     <div class="mb-6">
-        <OrphanPhotoUpload Orphan="@Orphan" IsProfilePhoto="@false" HandlePostUpload="@HandlePostUpload" />
+        <AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+            <Authorized>
+                <OrphanPhotoUpload Orphan="@Orphan" IsProfilePhoto="@false" HandlePostUpload="@HandlePostUpload"/>
+            </Authorized>
+            <NotAuthorized>
+               
+            </NotAuthorized>
+        </AuthorizeView>
+
     </div>
     <div class="grid grid-cols-3 gap-4">
         @{
@@ -26,31 +34,37 @@
                     string picUrl = $"{picture.BaseUrl}{picture.PictureFileName}";
                     string takenDate = picture.TakenDate is null ? $"{picture.EntryDate:d}" : $"{picture.TakenDate:d}";
 
-                <div class="flex flex-col justify-between border-2 border-blue-900 border-solid rounded bg-blue-100">
-                    <div>
+                    <div class="flex flex-col justify-between border-2 border-blue-900 border-solid rounded bg-blue-100">
                         <div>
-                            <img src="@picUrl" alt="@Orphan.FullName" />
-                        </div>
-                        <div class="font-semibold m-2 text-center">
-                            @picture.Caption
-                        </div>
-                    </div>   
-                    <div>
-                        <div class="flex justify-between items-center bg-yellow-200">
-                            <div class="font-mono font-semibold text-blue-600 pl-2">
-                                @takenDate
+                            <div>
+                                <img src="@picUrl" alt="@Orphan.FullName"/>
                             </div>
-                            <div class="pr-2">
-                                <MudIconButton Icon="@Icons.Material.Delete"
-                                               Size="Size.Medium"
-                                               Color="Color.Error"
-                                               OnClick="@(e => OnDeleteHandler(e, picture.PictureID))">
-                                </MudIconButton>
+                            <div class="font-semibold m-2 text-center">
+                                @picture.Caption
                             </div>
                         </div>
-                    </div>                   
-                </div>
-                   
+                        <div>
+                            <div class="flex justify-between items-center bg-yellow-200">
+                                <div class="font-mono font-semibold text-blue-600 pl-2">
+                                    @takenDate
+                                </div>
+                                <div class="pr-2">
+                                    <AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+                                        <Authorized>
+                                            <MudIconButton Icon="@Icons.Material.Delete"
+                                                           Size="Size.Medium"
+                                                           Color="Color.Error"
+                                                           OnClick="@(e => OnDeleteHandler(e, picture.PictureID))">
+                                            </MudIconButton>
+                                        </Authorized>
+                                        <NotAuthorized>
+
+                                        </NotAuthorized>
+                                    </AuthorizeView>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 }
             }
         }

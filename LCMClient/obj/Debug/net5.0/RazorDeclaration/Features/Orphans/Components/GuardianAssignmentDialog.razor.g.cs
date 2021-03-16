@@ -215,6 +215,13 @@ using LCMClient.Helpers;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\GuardianAssignmentDialog.razor"
+           [Authorize(Roles = "Admin,Staff,OrphanReadWrite")]
+
+#line default
+#line hidden
+#nullable disable
     public partial class GuardianAssignmentDialog : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -223,7 +230,7 @@ using LCMClient.Helpers;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 103 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\GuardianAssignmentDialog.razor"
+#line 105 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\GuardianAssignmentDialog.razor"
        
 
     private string[] relationships = { "Mother", "Father", "Sister", "Brother", "Aunt", "Uncle", "Cousin (female)", "Cousin (male)", "Grandmother", "Grandfather", "Stepsister", "Stepbrother", "Stepmother", "Stepfather", "Sister-in-law", "Brother-in-law", "Friend", "Other" };

@@ -1,22 +1,39 @@
 ﻿@using LCMClient.Features.Orphans.Enums
 @using LCMClient.Features.Shared
-@using LCMClient.Features.Orphans.Components 
+@using LCMClient.Features.Orphans.Components
+
+@attribute [Authorize(Roles = "Admin,Staff,OrphanReadWrite,Guest")]
 
 <SfConfirmDeleteDialog IsVisible="@showDelConfirmDialog"
                        ConfirmationChanged="OnConfirmDelete"
-                       ConfirmationMessage=@($"Are you sure you want remove this sponsor as { Orphan?.FirstName }'s sponsor?")>
+                       ConfirmationMessage=@($"Are you sure you want remove this sponsor as {Orphan?.FirstName}'s sponsor?")>
 
 </SfConfirmDeleteDialog>
 
-<TabContentHeader HeaderText="Sponsors"
-                  ButtonOnclickHandler="OnAddClick"
-                  ButtonIcon="fa fa-plus"
-                  ButtonText="Add"
-                  ShowButton="true">
-    <div class="text-white">
-      <SponsorSVG Width="8" Height="8" />
-    </div>
-</TabContentHeader>
+<AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+    <Authorized>
+        <TabContentHeader HeaderText="Sponsors"
+                          ButtonOnclickHandler="OnAddClick"
+                          ButtonIcon="fa fa-plus"
+                          ButtonText="Add"
+                          ShowButton="true">
+            <div class="text-white">
+                <SponsorSVG Width="8" Height="8"/>
+            </div>
+        </TabContentHeader>
+    </Authorized>
+    <NotAuthorized>
+        <TabContentHeader HeaderText="Sponsors"
+                          ButtonOnclickHandler="OnAddClick"
+                          ButtonIcon="fa fa-plus"
+                          ButtonText="Add"
+                          ShowButton="false">
+            <div class="text-white">
+                <SponsorSVG Width="8" Height="8"/>
+            </div>
+        </TabContentHeader>
+    </NotAuthorized>
+</AuthorizeView>
 
 
 <div class="m-10">
@@ -24,9 +41,17 @@
         switch (viewMode)
         {
             case ViewMode.AddNew:
-                <SponsorAssignmentDialog IsVisible="true"
-                                         Orphan="@Orphan"
-                                         OnAddNewComplete="OnAddNewComplete" />
+                <AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+                    <Authorized>
+                        <SponsorAssignmentDialog IsVisible="true"
+                                                 Orphan="@Orphan"
+                                                 OnAddNewComplete="OnAddNewComplete"/>
+                    </Authorized>
+                    <NotAuthorized>
+
+                    </NotAuthorized>
+                </AuthorizeView>
+
                 break;
             case ViewMode.List:
                 break;
@@ -74,10 +99,22 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-end mt-4 bg-gray-800 p-6">
-                        <button type="button" class="mr-4" @onclick="() => OnRemoveClick(sponsor.SponsorID)">
-                            <h3 class="text-2xl text-red-400">Remove</h3>
-                        </button>
+                    <div class="flex items-center justify-between mt-4 bg-gray-800 p-6">
+                        <AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+                            <Authorized>
+                                <div class="text-2xl">
+                                    <a href="/SponsorDetails/@sponsor.SponsorID" target="_blank">
+                                        <span class="text-blue-500 hover:underline">Edit Sponsor</span>
+                                    </a>
+                                </div>
+                                <button type="button" class="mr-4" @onclick="() => OnRemoveClick(sponsor.SponsorID)">
+                                    <h3 class="text-2xl text-red-400">Remove</h3>
+                                </button>
+                            </Authorized>
+                            <NotAuthorized>
+
+                            </NotAuthorized>
+                        </AuthorizeView>
                     </div>
                 </div>
             </div>

@@ -8,7 +8,7 @@
 @inject IOrphanRepository orphanRepository
 @inject IMatToaster toaster
 
-@attribute [Authorize]
+@attribute [Authorize(Roles = "Admin,Staff,OrphanReadWrite")]
 
 
 <EditForm Model="@newOrphan" OnValidSubmit="@HandleValidSubmit">

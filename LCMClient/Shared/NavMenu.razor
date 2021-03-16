@@ -27,36 +27,62 @@
         </Authorized>
     </AuthorizeView>
 
-    <MudNavLink Match="NavLinkMatch.Prefix" Href="@navigationManager.ToAbsoluteUri("orphans").AbsoluteUri">
-        <div class="d-flex">
-            <div class="mr-2">
-                <OrphanSVG Width="6" Height="6" />
-            </div>
-            <div>
-                <span class="">Orphans</span>
-            </div>
-        </div>
-    </MudNavLink>
-    <MudNavLink Match="NavLinkMatch.Prefix" Href="@navigationManager.ToAbsoluteUri("guardians").AbsoluteUri">
-        <div class="d-flex">
-            <div class="mr-2">
-                <GuardianSVG Width="6" Height="6" />
-            </div>
-            <div>
-                <span class="">Guardians</span>
-            </div>
-        </div>
-    </MudNavLink>
-    <MudNavLink Match="NavLinkMatch.Prefix" Href="@navigationManager.ToAbsoluteUri("sponsors").AbsoluteUri">
-        <div class="d-flex">
-            <div class="mr-2">
-                <SponsorSVG Width="6" Height="6" />
-            </div>
-            <div>
-                <span class="">Sponsors</span>
-            </div>
-        </div>
-    </MudNavLink>
+    <AuthorizeView Roles="Admin,Staff,OrphanReadWrite,Guest">
+        <Authorized>
+            <MudNavLink Match="NavLinkMatch.Prefix" Href="@navigationManager.ToAbsoluteUri("orphans").AbsoluteUri">
+                <div class="d-flex">
+                    <div class="mr-2">
+                        <OrphanSVG Width="6" Height="6" />
+                    </div>
+                    <div>
+                        <span class="">Orphans</span>
+                    </div>
+                </div>
+            </MudNavLink>
+        </Authorized>
+        <NotAuthorized>
+            
+        </NotAuthorized>
+    </AuthorizeView>
+    
+    <AuthorizeView Roles="Admin,Staff,GuardianReadWrite,Guest">
+        <Authorized>
+    	  <MudNavLink Match="NavLinkMatch.Prefix" Href="@navigationManager.ToAbsoluteUri("guardians").AbsoluteUri">
+                <div class="d-flex">
+                    <div class="mr-2">
+                        <GuardianSVG Width="6" Height="6" />
+                    </div>
+                    <div>
+                        <span class="">Guardians</span>
+                    </div>
+                </div>
+            </MudNavLink>
+        </Authorized>
+        <NotAuthorized>
+            
+        </NotAuthorized>
+    </AuthorizeView>
+ 
+  
+    <AuthorizeView Roles="Admin,Staff,SponsorReadWrite">
+        <Authorized>
+    	   <MudNavLink Match="NavLinkMatch.Prefix" Href="@navigationManager.ToAbsoluteUri("sponsors").AbsoluteUri">
+                <div class="d-flex">
+                    <div class="mr-2">
+                        <SponsorSVG Width="6" Height="6" />
+                    </div>
+                    <div>
+                        <span class="">Sponsors</span>
+                    </div>
+                </div>
+            </MudNavLink>
+        </Authorized>
+        <NotAuthorized>
+            
+        </NotAuthorized>
+    </AuthorizeView>
+ 
+    
     <MudNavLink Match="NavLinkMatch.Prefix" Href="@navigationManager.ToAbsoluteUri("checkconnection").AbsoluteUri">
         <div class="d-flex">
             <div class="mr-2">

@@ -175,7 +175,7 @@ using MatBlazor;
 #nullable disable
 #nullable restore
 #line 11 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Sponsors\Components\SponsorCreation.razor"
-           [Authorize]
+           [Authorize(Roles = "Admin,Staff,SponsorReadWrite")]
 
 #line default
 #line hidden

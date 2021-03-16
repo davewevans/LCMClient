@@ -1,6 +1,6 @@
 ﻿@page "/sponsors"
 
-@attribute [Authorize]
+@attribute [Authorize(Roles = "Admin,Staff,SponsorReadWrite,Guest")]
 
 @inject NavigationManager navigationManager
 @inject IJSRuntime jsRuntime
@@ -11,7 +11,7 @@
     <div class="flex justify-between mb-4">
         <div class="flex items-center mb-4">
             <div class="mr-5 text-blue-800">
-                <OrphanSVG Width="10" Height="10" />
+                <OrphanSVG Width="10" Height="10"/>
             </div>
             <div>
                 <h3 class="text-blue-800 font-semibold text-4xl">Sponsors</h3>
@@ -19,25 +19,34 @@
 
         </div>
         <div class="mr-10">
-            <MudButton Variant="Variant.Filled"
-                       Color="Color.Primary"
-                       StartIcon="@Icons.Material.Add"
-                       @onclick="CreateNewSponsorEventHandler">
-                Create New Sponsor
-            </MudButton>
+            <AuthorizeView Roles="Admin,Staff,SponsorReadWrite">
+                <Authorized>
+                    <MudButton Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               StartIcon="@Icons.Material.Add"
+                               @onclick="CreateNewSponsorEventHandler">
+                        Create New Sponsor
+                    </MudButton>
+                </Authorized>
+                <NotAuthorized>
+
+                </NotAuthorized>
+            </AuthorizeView>
+
         </div>
     </div>
-    <SponsorsDataGrid />
+    <SponsorsDataGrid/>
 </div>
 
 @code {
+
     protected override async Task OnInitializedAsync()
     {
-
     }
 
     private void CreateNewSponsorEventHandler()
     {
         navigationManager.NavigateTo("/sponsorCreation");
     }
+
 }

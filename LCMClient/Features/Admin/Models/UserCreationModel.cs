@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LCMClient.Features.Admin.Models
 {
@@ -21,7 +22,6 @@ namespace LCMClient.Features.Admin.Models
         [Compare(nameof(Password), ErrorMessage = "Make sure both passwords are the same.")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
-        public string Role { get; set; }
+        public List<RoleModel> Roles { get; set; }
     }
 }

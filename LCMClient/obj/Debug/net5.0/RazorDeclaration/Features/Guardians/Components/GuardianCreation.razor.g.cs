@@ -175,7 +175,7 @@ using MatBlazor;
 #nullable disable
 #nullable restore
 #line 11 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianCreation.razor"
-           [Authorize]
+           [Authorize(Roles = "Admin,Staff,GuardianReadWrite")]
 
 #line default
 #line hidden
@@ -189,10 +189,19 @@ using MatBlazor;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 75 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianCreation.razor"
+#line 112 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianCreation.razor"
        
 
     private GuardianCreationModel newGuardian = new();
+    
+    // private RenderFragment DynamicRender { get; set; }
+    //
+    // private RenderFragment CreateComponent() => builder =>
+    // {
+    //     builder.OpenComponent(0, typeof(TextBox));
+    //     builder.AddAttribute(1, "Title", "Enter your text");
+    //     builder.CloseComponent();
+    // };
 
     private async Task HandleValidSubmit()
     {
@@ -205,6 +214,7 @@ using MatBlazor;
     {
         navigationManager.NavigateTo("/guardians");
     }
+
 
 #line default
 #line hidden

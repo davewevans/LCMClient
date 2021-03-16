@@ -15,6 +15,14 @@ namespace LCMClient.Features.Guardians.Models
         public string FullName => $"{FirstName} {LastName}";
 
         public string Location { get; set; } = string.Empty;
+        
+        public string MainPhone { get; set; }
+        
+        public string AltPhone1 { get; set; }
+
+        public string AltPhone2 { get; set; }
+
+        public string AltPhone3 { get; set; }
 
         public int OrphanCount => Orphans is not null ? Orphans.Count : 0;
 
@@ -23,5 +31,6 @@ namespace LCMClient.Features.Guardians.Models
         public List<OrphanModel> Orphans { get; set; }
 
         public List<NarrationModel> Narrations { get; set; }
+        
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace LCMClient.Features.Admin.Models
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace LCMClient.Features.Admin.Models
 {
     public class UserModel
     {
@@ -10,6 +13,14 @@
 
         public string Email { get; set; }
 
-        public string Role { get; set; }
+        public List<RoleModel> Roles { get; set; }
+
+        public string RolesForDisplay
+        {
+            get
+            {
+                return string.Join(", ", Roles.Select(x => x.DisplayName));
+            }
+        }
     }
 }

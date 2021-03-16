@@ -89,7 +89,7 @@ namespace LCMClient
             services.AddMatBlazor();
             services.AddMatToaster(config =>
             {
-                config.Position = MatToastPosition.BottomFullWidth;
+                config.Position = MatToastPosition.TopCenter;
                 config.PreventDuplicates = true;
                 config.NewestOnTop = true;
                 config.ShowCloseButton = true;

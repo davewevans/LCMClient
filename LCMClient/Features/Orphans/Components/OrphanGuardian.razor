@@ -2,22 +2,39 @@
 @using Syncfusion.Blazor.InPlaceEditor
 @using LCMClient.Features.Shared
 
+@attribute [Authorize(Roles = "Admin,Staff,OrphanReadWrite,Guest")]
+
 <SfConfirmDeleteDialog IsVisible="@showDelConfirmDialog"
                        ConfirmationChanged="OnConfirmDelete"
                        ConfirmationMessage=@($"Are you sure you want remove {Orphan?.Guardian?.FullName} as {Orphan?.FirstName}'s guardian?")>
 
 </SfConfirmDeleteDialog>
 
+<AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+    <Authorized>
+        <TabContentHeader HeaderText="Guardian"
+                          ButtonOnclickHandler="OnAddClick"
+                          ButtonIcon="fa fa-plus"
+                          ButtonText="Add"
+                          ShowButton="@(Orphan?.Guardian == null)">
+            <div class="text-white">
+                <GuardianSVG Width="8" Height="8"/>
+            </div>
+        </TabContentHeader>
+    </Authorized>
+    <NotAuthorized>
+        <TabContentHeader HeaderText="Guardian"
+                          ButtonOnclickHandler="OnAddClick"
+                          ButtonIcon="fa fa-plus"
+                          ButtonText="Add"
+                          ShowButton="false">
+            <div class="text-white">
+                <GuardianSVG Width="8" Height="8"/>
+            </div>
+        </TabContentHeader>
+    </NotAuthorized>
+</AuthorizeView>
 
-<TabContentHeader HeaderText="Guardian"
-                  ButtonOnclickHandler="OnAddClick"
-                  ButtonIcon="fa fa-plus"
-                  ButtonText="Add"
-                  ShowButton="@(Orphan?.Guardian == null)">
-    <div class="text-white">
-       <GuardianSVG Width="8" Height="8" />
-    </div>
-</TabContentHeader>
 
 <div class="m-10">
 
@@ -25,9 +42,17 @@
         switch (viewMode)
         {
             case ViewMode.AddNew:
-                <GuardianAssignmentDialog IsVisible="true"
-                                          Orphan="@Orphan"
-                                          OnAddNewComplete="OnAddNewComplete" />
+                <AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+                    <Authorized>
+                        <GuardianAssignmentDialog IsVisible="true"
+                                                  Orphan="@Orphan"
+                                                  OnAddNewComplete="OnAddNewComplete"/>
+                    </Authorized>
+                    <NotAuthorized>
+
+                    </NotAuthorized>
+                </AuthorizeView>
+
                 break;
             case ViewMode.List:
                 break;
@@ -55,21 +80,41 @@
                         <label class="md:text-2xl font-semibold mr-6">Relationship</label>
                         <p class="md:text-2xl text-blue-900 font-semibold">@Orphan.RelationshipToGuardian</p>
                         <div class="ml-2">
-                            <SfInPlaceEditor Mode="RenderMode.Inline"
-                                             EditableOn="EditableType.Click"
-                                             Type="Syncfusion.Blazor.InPlaceEditor.InputType.Text"
-                                             @bind-Value="@Orphan.RelationshipToGuardian">
-                                <InPlaceEditorEvents SubmitClick="RelationshipEditHandler" TValue="string"></InPlaceEditorEvents>
-                            </SfInPlaceEditor>
+                            <AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+                                <Authorized>
+                                    <SfInPlaceEditor Mode="RenderMode.Inline"
+                                                     EditableOn="EditableType.Click"
+                                                     Type="Syncfusion.Blazor.InPlaceEditor.InputType.Text"
+                                                     @bind-Value="@Orphan.RelationshipToGuardian">
+                                        <InPlaceEditorEvents SubmitClick="RelationshipEditHandler" TValue="string"></InPlaceEditorEvents>
+                                    </SfInPlaceEditor>
+                                </Authorized>
+                                <NotAuthorized>
+
+                                </NotAuthorized>
+                            </AuthorizeView>
+
                         </div>
 
                     </div>
                 </div>
 
-                <div class="flex items-center justify-end mt-4 bg-gray-800 p-6">
-                    <button type="button" class="mr-4" @onclick="OnRemoveClick">
-                        <h3 class="text-2xl text-red-400">Remove</h3>
-                    </button>
+                <div class="flex items-center justify-between mt-4 bg-gray-800 p-6">
+                    <AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+                        <Authorized>
+                            <div class="text-2xl">
+                                <a href="/GuardianDetails/@Orphan.Guardian.GuardianID" target="_blank">
+                                    <span class="text-blue-500 hover:underline">Edit Guardian</span>
+                                </a>
+                            </div>
+                            <button type="button" class="mr-4" @onclick="OnRemoveClick">
+                                <h3 class="text-2xl text-red-400">Remove</h3>
+                            </button>
+                        </Authorized>
+                        <NotAuthorized>
+
+                        </NotAuthorized>
+                    </AuthorizeView>
                 </div>
             </div>
         </div>

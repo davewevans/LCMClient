@@ -1,17 +1,43 @@
 ﻿@using LCMClient.Features.Shared
 
-<TabContentHeader HeaderText="@headerText"
-                  ButtonOnclickHandler="ToggleEditMode"
-                  ButtonIcon="@editViewIcon"
-                  ButtonText="@editViewText"
-                  ShowButton="true">
-    <div style="margin-top:2px;"><i class="fa fa-child text-white text-2xl"></i></div>
-</TabContentHeader>
+
+<AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+    <Authorized>
+	<TabContentHeader HeaderText="@headerText"
+                      ButtonOnclickHandler="ToggleEditMode"
+                      ButtonIcon="@editViewIcon"
+                      ButtonText="@editViewText"
+                      ShowButton="true">
+        
+        <div style="margin-top:2px;"><i class="fa fa-child text-white text-2xl"></i></div>
+    </TabContentHeader>
+    </Authorized>
+    <NotAuthorized>
+        <TabContentHeader HeaderText="@headerText"
+                          ButtonOnclickHandler="ToggleEditMode"
+                          ButtonIcon="@editViewIcon"
+                          ButtonText="@editViewText"
+                          ShowButton="false">
+            
+            <div style="margin-top:2px;"><i class="fa fa-child text-white text-2xl"></i></div>
+        </TabContentHeader>
+    </NotAuthorized>
+</AuthorizeView>
+
+
 
 @if (EditMode)
 {
     <div class="mb-20">
-        <OrphanProfileEdit Orphan="@Orphan" HandleOrphanEdited="@HandleOrphanEditedByChild" />
+        <AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+            <Authorized>
+        	<OrphanProfileEdit Orphan="@Orphan" HandleOrphanEdited="@HandleOrphanEditedByChild"/>
+            </Authorized>
+            <NotAuthorized>
+                <p>Sorry, you don't have permission to edit this data.</p>
+            </NotAuthorized>
+        </AuthorizeView>
+        
     </div>
 }
 else

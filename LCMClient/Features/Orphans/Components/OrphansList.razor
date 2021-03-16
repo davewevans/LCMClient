@@ -1,6 +1,6 @@
 ﻿@page "/orphans"
 
-@attribute [Authorize]
+@attribute [Authorize(Roles = "Admin,Staff,OrphanReadWrite,Guest")]
 
 @inject NavigationManager navigationManager
 @inject IJSRuntime jsRuntime
@@ -20,12 +20,21 @@
 
         </div>
         <div class="mr-10">
-            <MudButton Variant="Variant.Filled"
-                       Color="Color.Primary"
-                       StartIcon="@Icons.Material.Add"
-                       @onclick="CreateNewOrphanEventHandler">
-                Create New Orphan
-            </MudButton>
+            
+            <AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+                <Authorized>
+            	      <MudButton Variant="Variant.Filled"
+                                       Color="Color.Primary"
+                                       StartIcon="@Icons.Material.Add"
+                                       @onclick="CreateNewOrphanEventHandler">
+                                Create New Orphan
+                            </MudButton>
+                </Authorized>
+                <NotAuthorized>
+                    
+                </NotAuthorized>
+            </AuthorizeView>
+      
         </div>
     </div>
     <OrphansDataGrid />

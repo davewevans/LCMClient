@@ -5,6 +5,8 @@
 @using LCMClient.Features.Shared.Models
 @using LCMClient.Features.Shared.Repository.Contracts
 
+@attribute [Authorize(Roles = "Admin,Staff,OrphanReadWrite")]
+
 <SfDialog Width="500px" @bind-Visible="@IsVisible" IsModal="true" ShowCloseIcon="true">
     <DialogTemplates>
         <Header>

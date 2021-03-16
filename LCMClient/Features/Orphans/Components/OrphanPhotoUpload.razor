@@ -8,6 +8,8 @@
 @inject IPictureRepository PicRepository
 @inject IMatToaster toaster
 
+@attribute [Authorize(Roles = "Admin,Staff,OrphanReadWrite,Guest")]
+
 @if (!IsProfilePhoto)
 {
 <div class="flex items-center space-x-2 mr-10 ml-10 mb-8">

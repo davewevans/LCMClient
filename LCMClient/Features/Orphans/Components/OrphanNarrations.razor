@@ -1,7 +1,8 @@
 ﻿@using LCMClient.Features.Orphans.Enums
 @using LCMClient.Features.Shared
-@using LCMClient.Features.Shared.Narrations 
+@using LCMClient.Features.Shared.Narrations
 
+@attribute [Authorize(Roles = "Admin,Staff,OrphanReadWrite,Guest")]
 
 <SfConfirmDeleteDialog IsVisible="@showDelConfirmDialog"
                        ConfirmationChanged="OnConfirmDelete"
@@ -9,69 +10,111 @@
 
 </SfConfirmDeleteDialog>
 
+<AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+    <Authorized>
+        <TabContentHeader HeaderText="Narrations"
+                          ButtonOnclickHandler="OnAddClick"
+                          ButtonIcon="fa fa-plus"
+                          ButtonText="Add"
+                          ShowButton="true">
+            <div style="margin-top:2px;">
+                <i class="fa fa-sticky-note text-white text-2xl"></i>
+            </div>
+        </TabContentHeader>
+    </Authorized>
+    <NotAuthorized>
+        <TabContentHeader HeaderText="Narrations"
+                          ButtonOnclickHandler="OnAddClick"
+                          ButtonIcon="fa fa-plus"
+                          ButtonText="Add"
+                          ShowButton="false">
+            <div style="margin-top:2px;">
+                <i class="fa fa-sticky-note text-white text-2xl"></i>
+            </div>
+        </TabContentHeader>
+    </NotAuthorized>
+</AuthorizeView>
 
-    <TabContentHeader HeaderText="Narrations"
-                      ButtonOnclickHandler="OnAddClick"
-                      ButtonIcon="fa fa-plus"
-                      ButtonText="Add"
-                      ShowButton="true">
-        <div style="margin-top:2px;"><i class="fa fa-sticky-note text-white text-2xl"></i></div>        
-    </TabContentHeader>
 
-    <div class="m-10">
-        @{
-            switch (viewMode)
-            {
-                case ViewMode.AddNew:
-                    <NarrationCreationDialog IsVisible="true"
-                                             Orphan="@Orphan"
-                                             Guardian="null"
-                                             OnAddNewComplete="OnAddNewComplete" />
-                    break;
-                case ViewMode.Edit:
-                    <NarrationEditDialog IsVisible="true"
-                                         NarrationRecord="@narrationEdit"
-                                         NarrationId="@narrationIdToEdit"
-                                         OnEditComplete="OnEditComplete" />
-                    break;
-                case ViewMode.List:
-                    break;
-            }
-        }
-
-        @if (Orphan is not null && Orphan.Narrations is not null)
+<div class="m-10">
+    @{
+        switch (viewMode)
         {
-            <div class="w-full">
+            case ViewMode.AddNew:
+                <AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+                    <Authorized>
+                        <NarrationCreationDialog IsVisible="true"
+                                                 Orphan="@Orphan"
+                                                 Guardian="null"
+                                                 OnAddNewComplete="OnAddNewComplete"/>
+                    </Authorized>
+                    <NotAuthorized>
 
-                @foreach (var narration in Orphan.Narrations)
-                {
-                    <div class="w-3/4 border-2 border-gray-600 bg-blue-100 rounded mb-6">
-                        <div class="flex justify-end text-lg font-semibold mr-10" style="margin-top:4px;">
-                            Entry Date: @($"{narration.EntryDate:d}")
-                        </div>
-                        <div class="p-8">
-                            <div class="flex items-center border-bottom border-b-2 border-gray-900 mb-6">
-                                <p class="md:text-2xl text-blue-900 font-semibold">@narration.Subject</p>
-                            </div>
-                            <div class="flex items-center mb-6">
-                                <p class="md:text-xl text-blue-900 font-semibold">@narration.Note</p>
-                            </div>
-                        </div>
+                    </NotAuthorized>
+                </AuthorizeView>
 
-                        <div class="flex items-center justify-end mt-4 bg-gray-800 p-6">
-                            <button type="button" class="mr-4" @onclick="() => OnEditClick(narration)">
-                                <i class="fa fa-edit text-2xl text-blue-400"></i>
-                            </button>
-                            <button type="button" class="mr-4" @onclick="() => OnDeleteClick(narration.NarrationID)">
-                                <i class="fa fa-trash text-2xl text-red-400"></i>
-                            </button>
+                break;
+            case ViewMode.Edit:
+                <AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+                    <Authorized>
+                        <NarrationEditDialog IsVisible="true"
+                                             NarrationRecord="@narrationEdit"
+                                             NarrationId="@narrationIdToEdit"
+                                             OnEditComplete="OnEditComplete"/>
+                    </Authorized>
+                    <NotAuthorized>
+
+                    </NotAuthorized>
+                </AuthorizeView>
+
+                break;
+            case ViewMode.List:
+                break;
+        }
+    }
+
+    @if (Orphan is not null && Orphan.Narrations is not null)
+    {
+        <div class="w-full">
+
+            @foreach (var narration in Orphan.Narrations)
+            {
+                <div class="w-3/4 border-2 border-gray-600 bg-blue-100 rounded mb-6">
+                    <div class="flex justify-end text-lg font-semibold mr-10" style="margin-top:4px;">
+                        Entry Date: @($"{narration.EntryDate:d}")
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center border-bottom border-b-2 border-gray-900 mb-6">
+                            <p class="md:text-2xl text-blue-900 font-semibold">@narration.Subject</p>
+                        </div>
+                        <div class="flex items-center mb-6">
+                            <p class="md:text-xl text-blue-900 font-semibold">@narration.Note</p>
                         </div>
                     </div>
-                }
-            </div>
-        }
-        else
-        {
-            <p>No narration records found for @Orphan.FullName</p>
-        }
-    </div>
+
+                    <AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+                        <Authorized>
+                            <div class="flex items-center justify-end mt-4 bg-gray-800 p-6">
+                                <button type="button" class="mr-4" @onclick="() => OnEditClick(narration)">
+                                    <i class="fa fa-edit text-2xl text-blue-400"></i>
+                                </button>
+                                <button type="button" class="mr-4" @onclick="() => OnDeleteClick(narration.NarrationID)">
+                                    <i class="fa fa-trash text-2xl text-red-400"></i>
+                                </button>
+                            </div>
+                        </Authorized>
+                        <NotAuthorized>
+
+                        </NotAuthorized>
+                    </AuthorizeView>
+
+
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>No narration records found for @Orphan.FullName</p>
+    }
+</div>
