@@ -180,6 +180,13 @@ using LCMClient.Features.Orphans.Enums;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanPDFs.razor"
+           [Authorize(Roles = "Admin,Staff,OrphanReadWrite,Guest")]
+
+#line default
+#line hidden
+#nullable disable
     public partial class OrphanPDFs : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

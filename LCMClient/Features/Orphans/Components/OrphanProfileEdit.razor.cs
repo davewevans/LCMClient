@@ -17,8 +17,8 @@ namespace LCMClient.Features.Orphans.Components
         [Inject]
         protected IMatToaster Toaster { get; set; }
 
-        [Inject]
-        public IOrphanRepository OrphanRepo { get; set; }
+        [Inject] public IOrphanRepository OrphanRepo { get; set; }
+
 
         private async Task HandleValidSubmit()
         {
@@ -30,6 +30,7 @@ namespace LCMClient.Features.Orphans.Components
                 DateOfBirth = Orphan.DateOfBirth,
                 Gender = Orphan.Gender,
                 LCMStatus = Orphan.LCMStatus,
+                ExitStatus =  Orphan.ExitStatus,
                 ProfileNumber = Orphan.ProfileNumber,
                 GuardianID = Orphan.GuardianID,
                 Location = Orphan.Location,
@@ -43,6 +44,11 @@ namespace LCMClient.Features.Orphans.Components
 
 
             await HandleOrphanEdited.InvokeAsync(Orphan);
+        }
+
+        protected override void OnParametersSet()
+        {
+            base.OnParametersSet();
         }
 
         private async Task HandleProfileChanged(OrphanDetailsModel orphan)

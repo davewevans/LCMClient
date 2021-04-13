@@ -13,6 +13,8 @@ namespace LCMClient.Features.Guardians.Models
         public string LastName { get; set; } = string.Empty;
 
         public string FullName => $"{FirstName} {LastName}";
+        
+        public bool IsDeceased { get; set; }
 
         public string Location { get; set; } = string.Empty;
         

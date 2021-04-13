@@ -23,12 +23,12 @@
             
             <AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
                 <Authorized>
-            	      <MudButton Variant="Variant.Filled"
-                                       Color="Color.Primary"
-                                       StartIcon="@Icons.Material.Add"
-                                       @onclick="CreateNewOrphanEventHandler">
-                                Create New Orphan
-                            </MudButton>
+                    <MudButton Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               StartIcon="@Icons.Material.Add"
+                               @onclick="CreateNewOrphanEventHandler">
+                        Create New Orphan
+                    </MudButton>
                 </Authorized>
                 <NotAuthorized>
                     
@@ -36,6 +36,10 @@
             </AuthorizeView>
       
         </div>
+    </div>
+
+    <div class="text-right text-sm mb-2">
+        Enter "deceased" in the search box for a list of deceased orphans
     </div>
     <OrphansDataGrid />
 </div>

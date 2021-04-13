@@ -15,7 +15,7 @@
 
         <!--Guardian Summary-->
         <div class="md:flex p-4 w-auto bg-yellow-200">
-            <div class="w-1/3 space-y-2">
+            <div class="w-2/5 space-y-2">
                 <div>
                     <span class="text-left font-semibold">Guardian's Name:</span> <span class="font-semibold bg-blue-100" style="padding:2px;">@guardianDetails?.FullName</span>
                 </div>
@@ -23,17 +23,17 @@
                     <span class="text-left font-semibold">Location:</span> <span class="font-semibold bg-blue-100" style="padding:2px;">@guardianDetails?.Location</span>
                 </div>
             </div>
-            <div class="w-1/3 space-y-2">
+            <div class="w-1/5 space-y-2">
                 <div>
-                    <span class="text-left font-semibold">Orphans #:</span> <span class="font-semibold bg-blue-100" style="padding:2px;">@(guardianDetails?.OrphanCount)</span>
+                    <span class="text-left font-semibold">Orphans:</span> <span class="font-semibold bg-blue-100" style="padding:2px;">@(guardianDetails?.OrphanCount)</span>
                 </div>
                 <div>
-                    <span class="text-left font-semibold">Narrations #:</span> <span class="font-semibold bg-blue-100" style="padding:2px;"> @(guardianDetails?.NarrationsCount)</span>
+                    <span class="text-left font-semibold">Narrations:</span> <span class="font-semibold bg-blue-100" style="padding:2px;"> @(guardianDetails?.NarrationsCount)</span>
                 </div>
             </div>
-            <div class="w-1/3 space-y-2">
+            <div class="w-1/5 space-y-2">
                 <div>
-                    <span class="text-left font-semibold">Main Phone #:</span>
+                    <span class="text-left font-semibold">Main Phone:</span>
                     @if (!string.IsNullOrWhiteSpace(guardianDetails?.MainPhone))
                     {
                         <span class="font-semibold bg-blue-100" style="padding:2px;">@(guardianDetails?.MainPhone)</span>
@@ -53,6 +53,22 @@
                     {
                         <span class="font-semibold bg-blue-100" style="padding:2px;"> @(guardianDetails?.AltPhone3)</span>
                     }
+                </div>
+            </div>
+
+            <div class="w-1/5 space-y-2">
+                <div>
+                    <span class="text-left font-semibold">Deceased:</span> <span class="font-semibold bg-blue-100" style="padding:2px;">
+                        @if (guardianDetails.IsDeceased)
+                        {
+                            <span>Yes</span>
+                        }
+                        else
+                        {
+                            <span>No</span>
+                        }
+                       
+                    </span>
                 </div>
             </div>
         </div>

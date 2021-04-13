@@ -17,6 +17,8 @@ namespace LCMClient.Features.Shared.Narrations
         public DateTime? SubmittedAt { get; set; }
 
         public string SubmittedByID { get; set; }
+        
+        public string SubmittedByEmail { get; set; }
 
         public DateTime? ApprovedAt { get; set; }
 

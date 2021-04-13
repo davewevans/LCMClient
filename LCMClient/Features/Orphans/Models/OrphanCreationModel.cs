@@ -19,6 +19,9 @@ namespace LCMClient.Features.Orphans.Models
 
         [Required]
         public string LCMStatus { get; set; }
+        
+        
+        public string ExitStatus { get; set; }
 
         [Required]
         public string ProfileNumber { get; set; }

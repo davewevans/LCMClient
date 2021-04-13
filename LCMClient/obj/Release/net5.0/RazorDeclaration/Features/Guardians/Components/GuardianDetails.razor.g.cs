@@ -168,7 +168,7 @@ using LCMClient.Features.Shared;
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianDetails.razor"
-           [Authorize]
+           [Authorize(Roles = "Admin,Staff,GuardianReadWrite,Guest")]
 
 #line default
 #line hidden

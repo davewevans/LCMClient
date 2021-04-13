@@ -161,7 +161,7 @@ using Syncfusion.Blazor.Navigations;
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Sponsors\Components\SponsorsList.razor"
-           [Authorize]
+           [Authorize(Roles = "Admin,Staff,SponsorReadWrite,Guest")]
 
 #line default
 #line hidden
@@ -175,17 +175,18 @@ using Syncfusion.Blazor.Navigations;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Sponsors\Components\SponsorsList.razor"
+#line 41 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Sponsors\Components\SponsorsList.razor"
        
+
     protected override async Task OnInitializedAsync()
     {
-
     }
 
     private void CreateNewSponsorEventHandler()
     {
         navigationManager.NavigateTo("/sponsorCreation");
     }
+
 
 #line default
 #line hidden

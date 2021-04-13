@@ -58,6 +58,20 @@
                 break;
         }
     }
+    
+       <div class="mt-2 mb-4 flex flex-row justify-center">
+            <button @onclick="ShowHideHistoryHandler" class="bg-yellow-200 hover:bg-yellow-500 text-blue-900 font-semibold hover:text-white py-2 px-4 rounded">
+                <div class="flex items-center">
+                    <i class="@showHideHistoryButtonIcon mr-2"></i> @showHideHistoryButtonText
+                </div>
+            </button>
+        </div>
+    
+    @if (showHistory)
+    {
+        <OrphanGuardianHistory OrphanHistory="orphanHistory" />
+    }
+    
 
     @if (Orphan?.Guardian != null)
     {

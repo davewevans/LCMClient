@@ -196,21 +196,62 @@ using LCMClient.Features.Shared.Repository.Contracts;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 89 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\CreateUser.razor"
+#line 118 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\CreateUser.razor"
        
-    private UserCreationModel userInfo = new UserCreationModel();
-    private List<string> roles = new List<string>();
+
+    bool noRoleSelected = false;
+    string roleValidationMessage = "Please assign at least one role.";
+    
+    public bool isInAdminRole { get; set; } = false;
+    private bool isInStaffRole = false;
+    private bool isInGuestRole = false;
+    private bool isInNarrationApproverRole = false;
+    private bool isInOrphanReadWriteRole = false;
+    private bool isInGuardianReadWriteRole = false;
+    private bool isInSponsorReadWriteRole = false;
+    private bool isInOrphanReadOnlyRole = false;
+    private bool isInGuardianReadOnlyRole = false;
+    private bool isInSponsorReadOnlyRole = false;
+
+    private RoleModel adminRole = new();
+    private RoleModel staffRole = new();
+    private RoleModel guestRole = new();
+    private RoleModel narrationApproverRole = new();
+    private RoleModel orphanReadWriteRole = new();
+    private RoleModel guardianReadWriteRole = new();
+    private RoleModel sponsorReadWriteRole = new();
+
+    private UserCreationModel userInfo = new();
+    private List<RoleModel> roles = new();
 
     private string response = "";
 
     protected override async Task OnInitializedAsync()
     {
-        var payload = await userRepository.GetRoles();
-        this.roles = payload.Select(x => x.RoleName).ToList();
+        roles = await userRepository.GetRoles();
+        SetRoleFields();
     }
 
     private async Task CreateNewUserHandler()
     {
+        userInfo.Roles = new List<RoleModel>();
+        if (isInAdminRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.AdminRole});
+        if (isInStaffRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.StaffRole});
+        if (isInGuestRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.GuestRole});
+        if (isInNarrationApproverRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.NarrationApproverRole});
+        if (isInOrphanReadWriteRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.OrphanReadWriteRole});
+        if (isInGuardianReadWriteRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.GuardianReadWriteRole});
+        if (isInSponsorReadWriteRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.SponsorReadWriteRole});
+        if (isInOrphanReadOnlyRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.OrphanReadOnlyRole});
+        if (isInGuardianReadOnlyRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.GuardianReadOnlyRole});
+        if (isInSponsorReadOnlyRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.SponsorReadOnlyRole});
+
+        if (userInfo.Roles.Count < 1)
+        {
+            noRoleSelected = true;
+            return;
+        }
+
         var response = await accountsRepository.Register(userInfo);
 
         if (response.IsSuccessful)
@@ -222,7 +263,18 @@ using LCMClient.Features.Shared.Repository.Contracts;
         {
             ShowToast(MatToastType.Danger, message: "User was not created. Something went wrong.");
         }
+    }
 
+    private void SetRoleFields()
+    {
+        if (roles == null) return;
+        adminRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.AdminRole));
+        staffRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.StaffRole));
+        guestRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.GuestRole));
+        narrationApproverRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.NarrationApproverRole));
+        orphanReadWriteRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.OrphanReadWriteRole));
+        guardianReadWriteRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.GuardianReadWriteRole));
+        sponsorReadWriteRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.SponsorReadWriteRole));
     }
 
     private void OnCancel()
@@ -244,6 +296,7 @@ using LCMClient.Features.Shared.Repository.Contracts;
     {
         ShowToast(MatToastType.Success, message: "New user created!");
     }
+
 
 #line default
 #line hidden

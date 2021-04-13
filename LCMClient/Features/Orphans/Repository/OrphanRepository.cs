@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using OrphanModel = LCMClient.Features.Shared.Models.OrphanModel;
 
 namespace LCMClient.Features.Orphans.Repository
 {
@@ -74,7 +75,17 @@ namespace LCMClient.Features.Orphans.Repository
                 throw new ApplicationException(await response.GetBody());
             }
             return response.Response;
-        }  
+        } 
+        
+        public async Task<List<OrphanHistoryDTO>> GetOrphanHistoryAsync(int orphanId)
+        {            
+            var response = await httpService.Get<List<OrphanHistoryDTO>>($"{ url }/orphanHistory/{ orphanId }");
+            if (!response.Success)
+            {
+                //throw new ApplicationException(await response.GetBody());
+            }
+            return response.Response;
+        }
 
         public async Task AddOrphanAsync(OrphanCreationModel newOrphan)
         {
@@ -82,6 +93,15 @@ namespace LCMClient.Features.Orphans.Repository
             if (!response.Success)
             {
                 throw new ApplicationException(await response.GetBody());
+            }
+        }
+        
+        public async Task AddOrphanHistoryAsync(OrphanHistoryDTO history)
+        {
+            var response = await httpService.Post($"{ url }/newOrphanHistory", history);
+            if (!response.Success)
+            {
+                //throw new ApplicationException(await response.GetBody());
             }
         }
 

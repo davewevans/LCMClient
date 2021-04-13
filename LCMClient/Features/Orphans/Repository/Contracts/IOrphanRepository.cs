@@ -17,7 +17,11 @@ namespace LCMClient.Features.Orphans.Repository.Contracts
 
         Task<List<SponsorModel>> GetOrphanSponsorsAsync(int orphanId);
 
-        Task<List<PictureModel>> GetOrphanPicturesAsync(int orphanId);        
+        Task<List<PictureModel>> GetOrphanPicturesAsync(int orphanId);
+
+        Task<List<OrphanHistoryDTO>> GetOrphanHistoryAsync(int orphanId);
+
+        Task AddOrphanHistoryAsync(OrphanHistoryDTO history);
         
         Task AddOrphanAsync(OrphanCreationModel newOrphan);
 

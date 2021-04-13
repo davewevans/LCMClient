@@ -1,4 +1,5 @@
-﻿using LCMClient.Features.Orphans.Enums;
+﻿using System.Collections.Generic;
+using LCMClient.Features.Orphans.Enums;
 using LCMClient.Features.Orphans.Models;
 using LCMClient.Features.Orphans.Repository.Contracts;
 using LCMClient.Features.Shared;
@@ -32,6 +33,20 @@ namespace LCMClient.Features.Orphans.Components
         private ViewMode viewMode = ViewMode.List;
 
         private int sponsorToRemoveId = 0;
+        
+        private List<OrphanHistoryDTO> orphanHistory;
+        
+        private string showHideHistoryButtonText = "Show History";
+
+        private string showHideHistoryButtonIcon = "fa fa-history";
+
+        private bool showHistory = false;
+
+        protected override async Task OnInitializedAsync()
+        {
+            // update history for display
+            orphanHistory = await OrphanRepository.GetOrphanHistoryAsync(Orphan.OrphanID);
+        }
 
         private void OnAddClick()
         {
@@ -67,11 +82,31 @@ namespace LCMClient.Features.Orphans.Components
                 };
                 await OrphanSponsorRepository.RemoveAssignment(recordToRemove);
                 Orphan.Sponsors = await OrphanRepository.GetOrphanSponsorsAsync(Orphan.OrphanID);
+                
+                // add new orphan history
+                var newOrphanHistory = new OrphanHistoryDTO
+                {
+                    OrphanID = Orphan.OrphanID,
+                    SponsorID = sponsorToRemoveId
+                };
+                await OrphanRepository.AddOrphanHistoryAsync(newOrphanHistory);
+                
+                // update history for display
+                orphanHistory = await OrphanRepository.GetOrphanHistoryAsync(Orphan.OrphanID);
+                
+                
                 await HandleOrphanEdited.InvokeAsync("");
                 Toaster.Add("Record deleted.", MatToastType.Success);
                 StateHasChanged();
             }
             sponsorToRemoveId = 0;
+        }
+        
+        private void ShowHideHistoryHandler()
+        {
+            showHideHistoryButtonText = showHistory ? "Show History" : "Hide History";
+            showHideHistoryButtonIcon = showHistory ? "fa fa-history" : "fa fa-eye-slash";
+            showHistory = !showHistory;
         }
     }
 }

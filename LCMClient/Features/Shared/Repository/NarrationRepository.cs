@@ -4,6 +4,8 @@ using LCMClient.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using LCMClient.Features.Shared.Models;
+using LCMClient.Helpers;
 
 namespace LCMClient.Repository
 {
@@ -17,6 +19,27 @@ namespace LCMClient.Repository
         {
             this.httpService = httpService;
             this.url = $"{ httpService.BaseUrl }{ Controller }";
+        }
+        
+        public async Task<NarrationModel> GetNarrationById(int id)
+        {
+            var response = await httpService.Get<NarrationModel>($"{url}/{id}");
+            if (!response.Success)
+            {
+                throw new ApplicationException(await response.GetBody());
+            }
+            return response.Response;
+        }
+        
+        public async Task<int> GetPendingNarrationsCount()
+        {
+            var response = await httpService.Get<int>($"{url}/pendingNarrationsCount");
+            if (!response.Success)
+            {
+                throw new ApplicationException(await response.GetBody());
+            }
+
+            return response.Response;
         }
 
         public async Task AddNarrationAsync(NarrationCreationModel newNarration)
@@ -37,6 +60,13 @@ namespace LCMClient.Repository
             {
                 throw new ApplicationException(await response.GetBody());
             }
+        }
+        
+        public async Task<bool> ApproveNarrationAsync(int narrationId, NarrationModel narrationEdit)
+        {
+            string url = $"{ httpService.BaseUrl }{ Controller }/ApprovedNarration/{ narrationId }";
+            var response = await httpService.Put(url, narrationEdit);
+            return response.Success;
         }
 
         public async Task DeleteNarrationAsync(int narrationId)
@@ -69,6 +99,19 @@ namespace LCMClient.Repository
                 throw new ApplicationException(await response.GetBody());
             }
             return response.Response;
+        }
+        
+        public async Task<PaginatedResponse<List<NarrationModel>>> GetPendingApprovalNarrations(PaginationModel pagination)
+        {
+            string url = $"{ httpService.BaseUrl }{ Controller }/{ "pendingApprovalNarrations" }";
+            return await httpService.GetHelper<List<NarrationModel>>(url, pagination);
+            
+            // var response = await httpService.Get<List<NarrationModel>>(url);
+            // if (!response.Success)
+            // {
+            //     throw new ApplicationException(await response.GetBody());
+            // }
+            // return response.Response;
         }
     }
 }

@@ -160,7 +160,7 @@ using Syncfusion.Blazor.Navigations;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanProfileView.razor"
+#line 1 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanProfileView.razor"
 using LCMClient.Features.Orphans.Models;
 
 #line default
@@ -174,8 +174,9 @@ using LCMClient.Features.Orphans.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 58 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanProfileView.razor"
+#line 64 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanProfileView.razor"
        
+
     [Parameter]
     public OrphanDetailsModel Orphan { get; set; }
 
@@ -186,6 +187,7 @@ using LCMClient.Features.Orphans.Models;
     {
         await HandleToggleEditView.InvokeAsync();
     }
+
 
 #line default
 #line hidden

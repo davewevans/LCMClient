@@ -65,9 +65,25 @@
             @foreach (var narration in Guardian.Narrations)
             {
                 <div class="w-3/4 border-2 border-gray-600 bg-blue-100 rounded mb-6">
-                    <div class="text-lg text-blue-900 font-semibold mt-6 ml-10">
-                        Entry Date: @($"{narration.EntryDate:d}")
+                    <div class="flex flex-row ml-4">
+                        <div class="flex justify-left text-lg font-semibold w-1/3" style="margin-top:4px;">
+                            Submitted On: @($"{narration.SubmittedAt:d}")
+                        </div>
+                        <div class="flex justify-left text-lg font-semibold w-2/3" style="margin-top:4px;">
+                            Submitted By: @($"{narration.SubmittedByName}")
+                        </div>
                     </div>
+
+                    <div class="flex flex-row ml-4">
+                        <div class="flex justify-left text-lg font-semibold w-1/3" style="margin-top:4px;">
+                            Approved On: @($"{narration.ApprovedAt:d}")
+                        </div>
+                        <div class="flex justify-left text-lg font-semibold w-2/3" style="margin-top:4px;">
+                            Approved By: @($"{narration.ApprovedByName}")
+                        </div>
+                    </div>
+
+
                     <div class="p-8">
                         <div class="flex items-center border-bottom border-b-2 border-gray-900 mb-6">
                             <p class="md:text-2xl text-blue-900 font-semibold">@narration.Subject</p>

@@ -60,6 +60,7 @@ namespace LCMClient.Features.Orphans.Components
                 NumOfSponsors = Orphan.Sponsors.Count(),
                 Birthdate = Orphan.DateOfBirth,
                 LCMStatus = Orphan.LCMStatus,
+                ExitStatus = Orphan.ExitStatus,
                 LCMStatusStyle = Orphan.LCMStatus.ToLower().Equals("active") ? "px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800" : "px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-red-100 text-red-800",
                 ProfileNumber = Orphan.ProfileNumber,
                 Condition = Orphan.Condition,

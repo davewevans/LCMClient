@@ -211,6 +211,9 @@ using LCMClient.Features.Guardians.Models;
 #nullable restore
 #line 82 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Shared\Narrations\NarrationCreationDialog.razor"
        
+    
+    [CascadingParameter]
+    public Task<AuthenticationState> AuthState { get; set; }
 
     [Parameter]
     public bool IsVisible { get; set; }
@@ -269,6 +272,22 @@ using LCMClient.Features.Guardians.Models;
         {
             narrationCreation.GuardianID = Guardian.GuardianID;
         }
+        
+        // get user email to send to API
+        var authState = await AuthState;
+        var user = authState.User;
+        string userEmail = "";
+        string emailClaimTypeKey = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress";
+        foreach (var claim in authState.User.Claims)
+        {
+            await JSRuntime.ConsoleLog(claim.Type + " : " + claim.Value);
+            if (claim.Type.Equals(emailClaimTypeKey))
+            {
+                userEmail = claim.Value;
+            }
+        }
+
+        narrationCreation.SubmittedByEmail = userEmail;
 
         await NarrationRepository.AddNarrationAsync(narrationCreation);
         IsVisible = false;

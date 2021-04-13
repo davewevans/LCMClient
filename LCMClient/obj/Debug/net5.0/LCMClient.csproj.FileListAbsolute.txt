@@ -834,3 +834,15 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\bu
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\build-gz\33UCUAsB.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\build-gz\Vvrxdt6F.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\build-gz\2vhsFsOA.gz
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Shared\NarrationSVG.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Shared\NarrationSVG.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\NarrationsApproval\PendingNarrations.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\NarrationsApproval\PendingNarrations.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\NarrationsApproval\IndexNarrations.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\NarrationsApproval\IndexNarrations.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\NarrationsApproval\NarrationDetails.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\NarrationsApproval\NarrationDetails.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Orphans\Components\OrphanGuardianHistory.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Orphans\Components\OrphanGuardianHistory.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\RazorDeclaration\Features\Orphans\Components\OrphanSponsorsHistory.razor.g.cs
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\obj\Debug\net5.0\Razor\Features\Orphans\Components\OrphanSponsorsHistory.razor.g.cs

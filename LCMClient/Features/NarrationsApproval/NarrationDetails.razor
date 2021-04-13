@@ -1,0 +1,203 @@
+﻿@page "/NarrationDetails/{narrationId:int}"
+
+
+@using LCMClient.Features.Auth
+@using LCMClient.Features.Shared
+@using LCMClient.Helpers
+@using LCMClient.Features.Shared.Repository.Contracts
+@using LCMClient.Features.Shared.Models
+@using LCMClient.Features.Admin.Models
+@using LCMClient.Features.Shared.Narrations
+
+@inject IAccountsRepository accountsRepository
+@inject INarrationRepository narrationRepository
+
+@inject NavigationManager navigationManager
+@inject ILoginService loginService
+@inject IJSRuntime jsRuntime
+@inject IDialogService Dialog
+@inject IMatToaster Toaster
+
+@attribute [Authorize(Roles = "Admin, NarrationApprover")]
+
+<div class="mb-16 m-8">
+    <EditForm Model="narrationDetails" OnValidSubmit="() => ApproveNarrationHandler(narrationDetails.NarrationID)">
+        <DataAnnotationsValidator />
+
+        <MudCard Class="my-mud-card-form pb-8">
+            <MudCardHeader Class="my-mud-card-header">
+                <CardHeaderContent>
+                    <MudText Typo="Typo.h3">Narration Details</MudText>
+                </CardHeaderContent>
+                <CardHeaderActions>
+                    <MudIconButton Icon="@Icons.Material.Cancel" Color="Color.Default" OnClick="@OnCancel" />
+                </CardHeaderActions>
+            </MudCardHeader>
+
+            <MudCardContent>
+
+                @if (narrationDetails != null)
+                {
+                    <div class="text-lg mb-4">
+                       Submitted On: @narrationDetails.SubmittedAt?.ToShortDateString()
+                    </div>
+
+                    
+                    <div class="text-lg mb-4">
+                        Submitted By: @narrationDetails.SubmittedByName
+                    </div>
+
+                    if (narrationDetails.OrphanID != null)
+                    {
+                        <div class="text-lg mb-4">
+                            Orphan Name: @narrationDetails.OrphanName
+                        </div>
+                    }
+
+                    if (narrationDetails.GuardianID != null)
+                    {
+                        <div class="font-semibold text-lg mb-4">
+                            Guardian Name: @narrationDetails.GuardianName
+                        </div>
+                    }
+
+                    <div class="text-lg mb-4">
+                        Subject: @narrationDetails.Subject
+                    </div>
+                    
+                    <div class="mb-6">
+                        Narration: @narrationDetails.Note
+                    </div>
+                }
+
+            </MudCardContent>
+
+            <MudCardActions>
+                <MudButton Variant="Variant.Filled"
+                           StartIcon="@Icons.Material.ThumbUpAlt"
+                           ButtonType="ButtonType.Submit"
+                           Size="Size.Large"
+                           Color="Color.Primary"
+                           Style="margin-left:auto;margin-right:auto;"
+                           Class="mt-6">
+                    Approved
+                </MudButton>
+                <MudButton Variant="Variant.Filled"
+                           StartIcon="@Icons.Material.ThumbDownAlt"
+                           ButtonType="ButtonType.Button"
+                           Size="Size.Large"
+                           Color="Color.Error"
+                           Style="margin-left:auto;margin-right:auto;"
+                           @onclick="() => OnRejectNarrationHandler(narrationDetails.NarrationID)"
+                           Class="mt-6">
+                        Reject
+                    </MudButton>
+            </MudCardActions>
+        </MudCard>
+    </EditForm>
+</div>
+
+
+
+@code {
+    [Parameter]
+    public int narrationId { get; set; }
+    
+    [CascadingParameter]
+    public Task<AuthenticationState> AuthState { get; set; }
+    
+    private NarrationModel narrationDetails = new();
+    
+    protected override async Task OnInitializedAsync()
+    {
+        narrationDetails = await narrationRepository.GetNarrationById(narrationId);
+        
+        await jsRuntime.ConsoleLog($"submitted by: {narrationDetails.SubmittedByName}");
+    }
+    
+    private async Task ApproveNarrationHandler(int narrationId)
+    {
+        await jsRuntime.ConsoleLog($"ApproveNarrationHandler");
+        await jsRuntime.ConsoleLog($"narration id: {narrationId}");
+        
+        // get user email to send to API
+        var authState = await AuthState;
+        var user = authState.User;
+        string userEmail = "";
+        string emailClaimTypeKey = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress";
+        foreach (var claim in authState.User.Claims)
+        {
+            await jsRuntime.ConsoleLog(claim.Type + " : " + claim.Value);
+            if (claim.Type.Equals(emailClaimTypeKey))
+            {
+                userEmail = claim.Value;
+            }
+        }
+
+        narrationDetails.ApprovedByEmail = userEmail;
+        
+        
+        var result = await narrationRepository.ApproveNarrationAsync(narrationId, narrationDetails);
+         if (result)
+         {
+             ShowSnackbar("Narration has been approved.", MatToastType.Success);
+             navigationManager.NavigateTo("/pendingnarrations");
+             return;
+         }
+         ShowSnackbar("Narration approval failed.", MatToastType.Danger);
+
+    }
+
+    private async Task OnRejectNarrationHandler(int narrationId)
+    {
+        await jsRuntime.ConsoleLog($"OnRejectNarrationHandler");
+        await jsRuntime.ConsoleLog($"narration id: {narrationId}");
+        
+        if (await ShowConfirmDeleteDialog())
+        {
+            await narrationRepository.DeleteNarrationAsync(narrationId);
+            ShowDeleteSuccessSnackbar();
+            navigationManager.NavigateTo("/pendingnarrations");
+        }
+    }
+
+    private void ShowSnackbar(string message, MatToastType type)
+    {
+        Toaster.Add(message, type, "", "", config =>
+        {
+            config.ShowProgressBar = false;
+            config.RequireInteraction = false;
+        });
+    }
+
+    private void OnCancel()
+    {
+        navigationManager.NavigateTo("/pendingnarrations");
+    }
+
+
+    private async Task<bool> ShowConfirmDeleteDialog()
+    {
+        var Options = new MudBlazor.Dialog.DialogOptions() { CloseButton = true };
+        var Parameters = new DialogParameters();
+        Parameters.Add("Message", "Are you sure you want to reject this narration?");
+        var userSelect = Dialog.Show<ConfirmDeleteDialog>("Confirm Delete", Parameters, Options);
+        var result = await userSelect.Result;
+
+        if (result.Cancelled)
+        {
+            return false;
+        }
+        return true;
+    }
+    
+    private void ShowDeleteSuccessSnackbar()
+    {
+        Toaster.Add("Narration successfully rejected.", MatToastType.Success, "", "", config =>
+        {
+            config.ShowProgressBar = false;
+            config.RequireInteraction = false;
+        });
+    }
+
+}

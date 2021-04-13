@@ -613,7 +613,7 @@
       "url": "_content\/MatBlazor\/dist\/matBlazor.js"
     },
     {
-      "hash": "sha256-DIZt55i7uxZ5X7x6RPRev62U1KXTdgB63WRx+A4wT1o=",
+      "hash": "sha256-U5tU7WaFySgMOp9iSqt33IKiOQprksV1ZsDDh7VIezo=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -1477,11 +1477,11 @@
       "url": "_framework\/dotnet.5.0.3.js"
     },
     {
-      "hash": "sha256-3QhodisDpYbDjDYNqlqqNiRcNbkeI7BPi9fez1W3liM=",
+      "hash": "sha256-nCn5rd1Vy7XEuqQWilkA2MGKevDdhXyl7EbjFJ7c9HM=",
       "url": "_framework\/LCMClient.dll"
     },
     {
-      "hash": "sha256-PvxOSmCjf9gLWtgZSyEvnLv\/dEFmizkLPLloaQQ+2cs=",
+      "hash": "sha256-dGXuUlQOEUpU+EahMdejzHPp\/lIGSDRnmQ4s5DJdnhc=",
       "url": "_framework\/LCMClient.pdb"
     },
     {
@@ -9305,5 +9305,5 @@
       "url": "LCMClient.bundle.scp.css"
     }
   ],
-  "version": "QuVygs4v"
+  "version": "r4E0KhIK"
 };

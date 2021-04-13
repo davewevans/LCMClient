@@ -1,9 +1,11 @@
 ﻿
 @using LCMClient.Helpers
+@using LCMClient.Features.Shared.Repository.Contracts
 
 @inherits LayoutComponentBase
 @inject NavigationManager navigationManager
 @inject IJSRuntime jsRuntime
+
 
 <MudThemeProvider Theme="CustomMudTheme" />
 <MudDialogProvider />
@@ -26,7 +28,11 @@
             </div>
             <!-- / -->
         </MudDrawerHeader>
-        <NavMenu />
+        
+        <CascadingValue Name="PendingNarrationsCount" Value="@_pendingNarrationsCount">
+            <NavMenu />
+        </CascadingValue>
+        
     </MudDrawer>
     <MudMainContent>
         <MudContainer Class="pl-0 pr-0">
@@ -36,7 +42,10 @@
 </MudLayout>
 
 
+
 @code {
+
+    string _pendingNarrationsCount = "";
 
     bool open = true;
     bool clipped = false;

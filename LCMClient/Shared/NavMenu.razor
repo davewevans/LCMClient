@@ -1,8 +1,10 @@
 ﻿@inject NavigationManager navigationManager
+@inject PendingNarrationsService PendingNarrationsService
+@implements IDisposable
 
 <MudNavMenu>
     <MudNavLink Match="NavLinkMatch.All" Href="@navigationManager.ToAbsoluteUri("dashboard").AbsoluteUri">
-        <div class="d-flex">
+        <div class="d-flex pt-2">
             <div class="mr-2">
                 <DashboardSVG Width="6" Height="6" />
             </div>
@@ -15,7 +17,7 @@
     <AuthorizeView Roles="Admin">
         <Authorized>
             <MudNavLink Match="NavLinkMatch.Prefix" Href="@navigationManager.ToAbsoluteUri("admin").AbsoluteUri">
-                <div class="d-flex">
+                <div class="d-flex pt-2">
                     <div class="mr-2">
                         <AdminSVG Width="6" Height="6" />
                     </div>
@@ -26,11 +28,35 @@
             </MudNavLink>
         </Authorized>
     </AuthorizeView>
+    
+    <AuthorizeView Roles="Admin,NarrationApprover">
+        <Authorized>
+            <MudNavLink Match="NavLinkMatch.Prefix" Href="@navigationManager.ToAbsoluteUri("pendingnarrations").AbsoluteUri">
+                <div class="d-flex pt-2">
+                    <div class="mr-2">
+                        <NarrationSVG Width="6" Height="6" />
+                    </div>
+                    <div>
+                        
+                        <MudBadge Content="@PendingNarrationsService.PendingNarrationsCount"
+                                  Color="Color.Primary"
+                                  Overlap="false"
+                                  Class="mr-2">
+                            <span class="">Pending Narrations</span>
+                        </MudBadge>
+                    </div>
+                </div>
+            </MudNavLink>
+        </Authorized>
+        <NotAuthorized>
+                
+        </NotAuthorized>
+    </AuthorizeView>
 
     <AuthorizeView Roles="Admin,Staff,OrphanReadWrite,Guest">
         <Authorized>
             <MudNavLink Match="NavLinkMatch.Prefix" Href="@navigationManager.ToAbsoluteUri("orphans").AbsoluteUri">
-                <div class="d-flex">
+                <div class="d-flex pt-2">
                     <div class="mr-2">
                         <OrphanSVG Width="6" Height="6" />
                     </div>
@@ -47,8 +73,8 @@
     
     <AuthorizeView Roles="Admin,Staff,GuardianReadWrite,Guest">
         <Authorized>
-    	  <MudNavLink Match="NavLinkMatch.Prefix" Href="@navigationManager.ToAbsoluteUri("guardians").AbsoluteUri">
-                <div class="d-flex">
+            <MudNavLink Match="NavLinkMatch.Prefix" Href="@navigationManager.ToAbsoluteUri("guardians").AbsoluteUri">
+                <div class="d-flex pt-2">
                     <div class="mr-2">
                         <GuardianSVG Width="6" Height="6" />
                     </div>
@@ -66,8 +92,8 @@
   
     <AuthorizeView Roles="Admin,Staff,SponsorReadWrite">
         <Authorized>
-    	   <MudNavLink Match="NavLinkMatch.Prefix" Href="@navigationManager.ToAbsoluteUri("sponsors").AbsoluteUri">
-                <div class="d-flex">
+            <MudNavLink Match="NavLinkMatch.Prefix" Href="@navigationManager.ToAbsoluteUri("sponsors").AbsoluteUri">
+                <div class="d-flex pt-2">
                     <div class="mr-2">
                         <SponsorSVG Width="6" Height="6" />
                     </div>
@@ -84,7 +110,7 @@
  
     
     <MudNavLink Match="NavLinkMatch.Prefix" Href="@navigationManager.ToAbsoluteUri("checkconnection").AbsoluteUri">
-        <div class="d-flex">
+        <div class="d-flex pt-2">
             <div class="mr-2">
                 <MudIcon Icon="@Icons.Material.NetworkCheck"></MudIcon>
             </div>
@@ -94,3 +120,19 @@
         </div>
     </MudNavLink>
 </MudNavMenu>
+
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        await PendingNarrationsService.SetPendingNarrationsCount();
+        PendingNarrationsService.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        PendingNarrationsService.OnChange -= StateHasChanged;
+    }
+
+}

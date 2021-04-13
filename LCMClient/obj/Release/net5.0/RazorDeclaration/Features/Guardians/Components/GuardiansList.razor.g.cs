@@ -161,7 +161,7 @@ using Syncfusion.Blazor.Navigations;
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardiansList.razor"
-           [Authorize]
+           [Authorize(Roles = "Admin,Staff,GuardianReadWrite,Guest")]
 
 #line default
 #line hidden
@@ -175,18 +175,19 @@ using Syncfusion.Blazor.Navigations;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardiansList.razor"
+#line 41 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardiansList.razor"
        
+
     protected override async Task OnInitializedAsync()
     {
-
     }
-   
+
 
     private void CreateNewGuardianEventHandler()
     {
         navigationManager.NavigateTo("/guardianCreation");
     }
+
 
 #line default
 #line hidden

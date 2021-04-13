@@ -153,36 +153,36 @@ using Syncfusion.Blazor.Navigations;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
+#line 1 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
 using LCMClient.Features.Guardians.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
+#line 2 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
 using LCMClient.Features.Shared.Repository.Contracts;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
+#line 3 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
 using MatBlazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
+#line 4 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
 using LCMClient.Features.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
-           [Authorize]
+#line 10 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
+           [Authorize(Roles = "Admin,Staff,GuardianReadWrite")]
 
 #line default
 #line hidden
@@ -195,7 +195,7 @@ using LCMClient.Features.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 81 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
+#line 123 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
        
 
     [Parameter]
@@ -208,14 +208,18 @@ using LCMClient.Features.Shared;
 
     protected override void OnParametersSet()
     {
-        // Map GuardianDetails obj to new instance of GuardianEditModel
+    // Map GuardianDetails obj to new instance of GuardianEditModel
         if (GuardianDetails is null) return;
         guardianToEdit = new GuardianEditModel
         {
             GuardianID = GuardianDetails.GuardianID,
             FirstName = GuardianDetails.FirstName,
             LastName = GuardianDetails.LastName,
-            Location = GuardianDetails.Location
+            Location = GuardianDetails.Location,
+            MainPhone = GuardianDetails.MainPhone,
+            AltPhone1 = GuardianDetails.AltPhone1,
+            AltPhone2 = GuardianDetails.AltPhone2,
+            AltPhone3 = GuardianDetails.AltPhone3,
         };
     }
 
@@ -225,6 +229,7 @@ using LCMClient.Features.Shared;
         await HandleGuardianEdited.InvokeAsync();
         toaster.Add("Guardian updated.", MatToastType.Success);
     }
+
 
 #line default
 #line hidden

@@ -1741,7 +1741,7 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\pu
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_framework\icudt_CJK.dat
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_framework\icudt_EFIGS.dat
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_framework\icudt_no_CJK.dat
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_framework\dotnet.5.0.1.js
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_framework\dotnet.5.0.3.js
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\LCMClient.styles.css
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_content\Tewr.Blazor.FileReader\FileReaderComponent.js
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_content\Tewr.Blazor.FileReader\FileReaderComponent.js.map
@@ -3729,7 +3729,7 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\pu
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_framework\icudt_CJK.dat.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_framework\icudt_EFIGS.dat.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_framework\icudt_no_CJK.dat.br
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_framework\dotnet.5.0.1.js.br
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_framework\dotnet.5.0.3.js.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\LCMClient.styles.css.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_content\Tewr.Blazor.FileReader\FileReaderComponent.js.br
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_content\Tewr.Blazor.FileReader\FileReaderComponent.js.map.br
@@ -5716,7 +5716,7 @@ C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\pu
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_framework\icudt_CJK.dat.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_framework\icudt_EFIGS.dat.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_framework\icudt_no_CJK.dat.gz
-C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_framework\dotnet.5.0.1.js.gz
+C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_framework\dotnet.5.0.3.js.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\LCMClient.styles.css.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_content\Tewr.Blazor.FileReader\FileReaderComponent.js.gz
 C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\bin\Debug\net5.0\publish\wwwroot\_content\Tewr.Blazor.FileReader\FileReaderComponent.js.map.gz

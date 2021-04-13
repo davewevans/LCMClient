@@ -195,7 +195,7 @@ using LCMClient.Features.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 113 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
+#line 123 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianEdit.razor"
        
 
     [Parameter]
@@ -208,18 +208,19 @@ using LCMClient.Features.Shared;
 
     protected override void OnParametersSet()
     {
-        // Map GuardianDetails obj to new instance of GuardianEditModel
+    // Map GuardianDetails obj to new instance of GuardianEditModel
         if (GuardianDetails is null) return;
         guardianToEdit = new GuardianEditModel
         {
             GuardianID = GuardianDetails.GuardianID,
             FirstName = GuardianDetails.FirstName,
             LastName = GuardianDetails.LastName,
+            IsDeceased = GuardianDetails.IsDeceased,
             Location = GuardianDetails.Location,
             MainPhone = GuardianDetails.MainPhone,
-            AltPhone1 =  GuardianDetails.AltPhone1,
-            AltPhone2 =  GuardianDetails.AltPhone2,
-            AltPhone3 =  GuardianDetails.AltPhone3,
+            AltPhone1 = GuardianDetails.AltPhone1,
+            AltPhone2 = GuardianDetails.AltPhone2,
+            AltPhone3 = GuardianDetails.AltPhone3,
         };
     }
 

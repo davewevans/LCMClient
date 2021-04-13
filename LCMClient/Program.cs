@@ -49,6 +49,8 @@ namespace LCMClient
                 builder.Configuration.Bind("Local", options.ProviderOptions);
             });
 
+            
+
             ConfigureServices(builder.Services);
 
             await builder.Build().RunAsync();
@@ -68,6 +70,8 @@ namespace LCMClient
             services.AddScoped<ISponsorRepository, SponsorRepository>();
             services.AddScoped<IOrphanSponsorRepository, OrphanSponsorRepository>();
             services.AddScoped<INarrationRepository, NarrationRepository>();
+            
+            services.AddScoped<PendingNarrationsService>();
 
 
             services.AddScoped<JWTAuthenticationStateProvider>();

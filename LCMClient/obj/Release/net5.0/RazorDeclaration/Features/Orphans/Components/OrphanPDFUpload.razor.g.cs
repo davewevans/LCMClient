@@ -194,6 +194,13 @@ using Syncfusion.Blazor.ProgressBar;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanPDFUpload.razor"
+           [Authorize(Roles = "Admin,Staff,OrphanReadWrite,Guest")]
+
+#line default
+#line hidden
+#nullable disable
     public partial class OrphanPDFUpload : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -202,7 +209,7 @@ using Syncfusion.Blazor.ProgressBar;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 43 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanPDFUpload.razor"
+#line 45 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanPDFUpload.razor"
        
 
     [Parameter]

@@ -24,6 +24,16 @@
         <EditForm Model="@guardianToEdit" OnValidSubmit="@HandleValidSubmit">
             <DataAnnotationsValidator/>
 
+            <!-- Is Deceased -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="guardianDeceased">
+                    Guardian Deceased
+                </label>
+                <InputCheckbox id="guardianDeceased" class="w-6 h-6"
+                           @bind-Value="guardianToEdit.IsDeceased"/>
+                <ValidationMessage For="@(() => guardianToEdit.IsDeceased)"/>
+            </div>
+
             <!-- First Name -->
             <div class="w-full px-3 mb-6">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="firstName">
@@ -122,18 +132,19 @@ else
 
     protected override void OnParametersSet()
     {
-        // Map GuardianDetails obj to new instance of GuardianEditModel
+    // Map GuardianDetails obj to new instance of GuardianEditModel
         if (GuardianDetails is null) return;
         guardianToEdit = new GuardianEditModel
         {
             GuardianID = GuardianDetails.GuardianID,
             FirstName = GuardianDetails.FirstName,
             LastName = GuardianDetails.LastName,
+            IsDeceased = GuardianDetails.IsDeceased,
             Location = GuardianDetails.Location,
             MainPhone = GuardianDetails.MainPhone,
-            AltPhone1 =  GuardianDetails.AltPhone1,
-            AltPhone2 =  GuardianDetails.AltPhone2,
-            AltPhone3 =  GuardianDetails.AltPhone3,
+            AltPhone1 = GuardianDetails.AltPhone1,
+            AltPhone2 = GuardianDetails.AltPhone2,
+            AltPhone3 = GuardianDetails.AltPhone3,
         };
     }
 

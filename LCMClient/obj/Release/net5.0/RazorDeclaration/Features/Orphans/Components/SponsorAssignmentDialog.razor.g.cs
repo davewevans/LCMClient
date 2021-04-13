@@ -201,6 +201,13 @@ using LCMClient.Features.Shared.Repository.Contracts;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 8 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\SponsorAssignmentDialog.razor"
+           [Authorize(Roles = "Admin,Staff,OrphanReadWrite")]
+
+#line default
+#line hidden
+#nullable disable
     public partial class SponsorAssignmentDialog : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -209,7 +216,7 @@ using LCMClient.Features.Shared.Repository.Contracts;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 94 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\SponsorAssignmentDialog.razor"
+#line 96 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\SponsorAssignmentDialog.razor"
        
 
     public SfAutoComplete<string, SponsorModel> autoCompleteObj;

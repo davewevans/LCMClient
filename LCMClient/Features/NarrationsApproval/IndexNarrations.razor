@@ -1,0 +1,117 @@
+﻿
+@using LCMClient.Features.Auth
+@using LCMClient.Features.Shared
+@using LCMClient.Helpers
+@using LCMClient.Features.Shared.Repository.Contracts
+@using LCMClient.Features.Shared.Models
+@using LCMClient.Features.Admin.Models
+@using LCMClient.Features.Shared.Narrations
+
+@inject IAccountsRepository accountsRepository
+@inject INarrationRepository narrationRepository
+
+@inject NavigationManager navigationManager
+@inject ILoginService loginService
+@inject IJSRuntime jsRuntime
+@inject IDialogService Dialog
+@inject IMatToaster Toaster
+
+@attribute [Authorize(Roles = "Admin, NarrationApprover")]
+
+
+
+@if (isLoading)
+{
+   <LoadingAnimation />
+}
+
+
+@if (pendingNarrations != null && pendingNarrations.Response != null && pendingNarrations?.Response?.Count != 0 && !isLoading)
+{
+    <MudSimpleTable>
+        <thead>
+            <tr>
+                <th><span class="font-semibold">Submitted On</span></th>
+                <th><span class="font-semibold">Submitted By</span></th>
+                <th><span class="font-semibold">Orphan</span></th>
+                <th><span class="font-semibold">Guardian</span></th>
+                <th>
+                    <div class="flex justify-center">
+                        <span class="font-semibold">
+                            View Narration
+                        </span>
+                    </div>
+                </th>
+              
+              
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var narration in pendingNarrations.Response)
+            {
+                <tr>
+                    <td>
+                        <span class="font-normal"> @(narration.SubmittedAt?.ToShortDateString() ?? "")</span>
+                    </td>
+                    <td>
+                        <span class="font-normal">@narration.SubmittedByName</span>
+                    </td>
+                    <td>
+                        <span class="font-normal">@narration.OrphanName</span>
+                    </td>
+                    <td>
+                        <span class="font-normal">@narration.GuardianName</span>
+                    </td>
+                    <td>
+                        <div class="flex justify-center">
+                            <MudButton Class="mt-2" Color="Color.Primary"  @onclick="() => ViewNarrationHandler(narration.NarrationID)">
+                                View Narration
+                            </MudButton>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </MudSimpleTable>
+}
+else if (pendingNarrations?.Response?.Count == 0)
+{
+    <p>No pending approval narrations found</p>
+}
+
+@code {
+    // private PaginatedResponse<List<UserModel>> users = new ();
+    private PaginatedResponse<List<NarrationModel>> pendingNarrations = new ();
+
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var pagination = new PaginationModel { Page = 1, RecordsPerPage = 50 };
+        // users = await userRepository.GetUsers(pagination);
+
+        pendingNarrations = await narrationRepository.GetPendingApprovalNarrations(pagination);
+
+        // foreach (var narration in pendingNarrations.Response)
+        // {
+        //     string orphanName = narration.OrphanName ?? "";
+        //     string guardianName = narration.GuardianName ?? "";
+        //     string submittedByName = narration.SubmittedByName ?? "";
+        //     string line = $"Date Sumbittted: {narration.SubmittedAt?.ToShortDateString()} | Submitted By: {submittedByName} | Orphan Name:  {orphanName} | Guardian Name: {guardianName}";
+        //     await jsRuntime.ConsoleLog(line);
+        // }
+        
+
+        // await Task.Delay(3000);
+        isLoading = false;
+    }
+
+    private async Task ViewNarrationHandler(int narrationId)
+    {
+        await jsRuntime.ConsoleLog("narration id: " + narrationId);
+        navigationManager.NavigateTo($"/NarrationDetails/{narrationId}");
+    }
+    
+  
+}

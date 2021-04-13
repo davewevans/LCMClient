@@ -975,8 +975,13 @@ window.Radzen = {
             }
           }
         }
-        xhr.open('POST', uploadUrl, true);
-        xhr.send(data);
+        instance.invokeMethodAsync('GetHeaders').then(function (headers) {
+            xhr.open('POST', uploadUrl, true);
+            for (var name in headers) {
+              xhr.setRequestHeader(name, headers[name]);
+            }
+            xhr.send(data);
+          });
       } else if (paste) {
         e.preventDefault();
 

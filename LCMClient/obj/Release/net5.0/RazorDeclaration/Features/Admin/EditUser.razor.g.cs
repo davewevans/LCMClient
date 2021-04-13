@@ -196,13 +196,34 @@ using LCMClient.Features.Shared.Repository.Contracts;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 75 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\EditUser.razor"
+#line 103 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Admin\EditUser.razor"
        
-    [Parameter] public string UserId { get; set; }
+
+    [Parameter]
+    public string UserId { get; set; }
+
+    bool noRoleSelected = false;
+    string roleValidationMessage = "Please assign at least one role.";
+
+    private bool isInAdminRole = false;
+    private bool isInStaffRole = false;
+    private bool isInGuestRole = false;
+    private bool isInNarrationApproverRole = false;
+    private bool isInOrphanReadWriteRole = false;
+    private bool isInGuardianReadWriteRole = false;
+    private bool isInSponsorReadWriteRole = false;
+
+    private RoleModel adminRole = new();
+    private RoleModel staffRole = new();
+    private RoleModel guestRole = new();
+    private RoleModel narrationApproverRole = new();
+    private RoleModel orphanReadWriteRole = new();
+    private RoleModel guardianReadWriteRole = new();
+    private RoleModel sponsorReadWriteRole = new();
 
     private UserEditModel userInfo = new UserEditModel();
     private UserModel user = new UserModel();
-    private List<string> roles = new List<string>();
+    private List<RoleModel> roles = new();
 
     protected override async Task OnInitializedAsync()
     {
@@ -211,14 +232,73 @@ using LCMClient.Features.Shared.Repository.Contracts;
         userInfo.FirstName = user.FirstName;
         userInfo.LastName = user.LastName;
         userInfo.Email = user.Email;
-        userInfo.Role = user.Role;
+        userInfo.Roles = user.Roles;
 
-        var payload = await userRepository.GetRoles();
-        this.roles = payload.Select(x => x.RoleName).ToList();
+        roles = await userRepository.GetRoles();
+        SetUserRoleBools();
+        SetRoleFields();
+    }
+
+    private void SetUserRoleBools()
+    {
+        foreach (var role in userInfo.Roles)
+        {
+            switch (role.RoleName)
+            {
+                case "Admin":
+                    isInAdminRole = true;
+                    break;
+                case "Staff":
+                    isInStaffRole = true;
+                    break;
+                case "Guest":
+                    isInGuestRole = true;
+                    break;
+                case "NarrationApprover":
+                    isInNarrationApproverRole = true;
+                    break;
+                case "OrphanReadWrite":
+                    isInOrphanReadWriteRole = true;
+                    break;
+                case "GuardianReadWrite":
+                    isInGuardianReadWriteRole = true;
+                    break;
+                case "SponsorReadWrite":
+                    isInSponsorReadWriteRole = true;
+                    break;              
+            }
+        }
+    }
+
+    private void SetRoleFields()
+    {
+        if (roles == null) return;
+        adminRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.AdminRole));
+        staffRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.StaffRole));
+        guestRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.GuestRole));
+        narrationApproverRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.NarrationApproverRole));
+        orphanReadWriteRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.OrphanReadWriteRole));
+        guardianReadWriteRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.GuardianReadWriteRole));
+        sponsorReadWriteRole = roles.FirstOrDefault(x => x.RoleName.Equals(RoleModel.SponsorReadWriteRole));
     }
 
     private async Task EditUserHandler()
     {
+        userInfo.Roles.Clear();
+        if (isInAdminRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.AdminRole});
+        if (isInStaffRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.StaffRole});
+        if (isInGuestRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.GuestRole});
+        if (isInNarrationApproverRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.NarrationApproverRole});
+        if (isInOrphanReadWriteRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.OrphanReadWriteRole});
+        if (isInGuardianReadWriteRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.GuardianReadWriteRole});
+        if (isInSponsorReadWriteRole) userInfo.Roles.Add(new RoleModel {RoleName = RoleModel.SponsorReadWriteRole});
+
+        if (userInfo.Roles.Count < 1)
+        {
+            noRoleSelected = true;
+            return;
+        }
+
         await userRepository.EditUser(UserId, userInfo);
         navigationManager.NavigateTo("/admin");
     }
@@ -227,6 +307,7 @@ using LCMClient.Features.Shared.Repository.Contracts;
     {
         navigationManager.NavigateTo("/admin");
     }
+
 
 #line default
 #line hidden

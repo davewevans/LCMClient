@@ -189,7 +189,7 @@ using MatBlazor;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 201 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanCreation.razor"
+#line 205 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphanCreation.razor"
        
 
     private OrphanCreationModel newOrphan = new();
@@ -205,6 +205,7 @@ using MatBlazor;
     {
         navigationManager.NavigateTo("/orphans");
     }
+
 
 #line default
 #line hidden

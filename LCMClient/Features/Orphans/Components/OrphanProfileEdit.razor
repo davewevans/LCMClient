@@ -1,15 +1,13 @@
-﻿
-
-@if (Orphan != null)
+﻿@if (Orphan != null)
 {
     <div class="md:flex w-auto ml-8 mr-8 mb-32">
         <div class="w-1/2">
             <!--profile pic edit -->
             <div class="mb-6">
-                <OrphanProfilePhoto Orphan="@Orphan" />
+                <OrphanProfilePhoto Orphan="@Orphan"/>
             </div>
             <div>
-                <OrphanPhotoUpload Orphan="@Orphan" IsProfilePhoto="true" HandlePostUpload="@HandleProfileChanged" />
+                <OrphanPhotoUpload Orphan="@Orphan" IsProfilePhoto="true" HandlePostUpload="@HandleProfileChanged"/>
             </div>
 
 
@@ -17,15 +15,15 @@
         <div class="w-1/2">
             <EditForm Model="Orphan" OnValidSubmit="HandleValidSubmit" class="w-full max-w-lg">
 
-                <DataAnnotationsValidator />
+                <DataAnnotationsValidator/>
 
                 <!-- First Name -->
                 <div class="w-full px-3 mb-6">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="firstName">
                         First Name
                     </label>
-                    <InputText id="firstName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="Orphan.FirstName" />
-                    <ValidationMessage For="@(() => Orphan.FirstName)" />
+                    <InputText id="firstName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="Orphan.FirstName"/>
+                    <ValidationMessage For="@(() => Orphan.FirstName)"/>
                 </div>
 
                 <!-- Middle Name -->
@@ -33,8 +31,8 @@
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="middleName">
                         Middle Name
                     </label>
-                    <InputText id="middleName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="Orphan.MiddleName" />
-                    <ValidationMessage For="@(() => Orphan.MiddleName)" />
+                    <InputText id="middleName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="Orphan.MiddleName"/>
+                    <ValidationMessage For="@(() => Orphan.MiddleName)"/>
                 </div>
 
                 <!-- Last Name -->
@@ -42,8 +40,8 @@
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="lastName">
                         Last Name
                     </label>
-                    <InputText id="lastName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="Orphan.LastName" />
-                    <ValidationMessage For="@(() => Orphan.LastName)" />
+                    <InputText id="lastName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="Orphan.LastName"/>
+                    <ValidationMessage For="@(() => Orphan.LastName)"/>
                 </div>
 
                 <div class="flex flex-wrap mb-6">
@@ -60,20 +58,23 @@
                             </InputSelect>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
                                 </svg>
                             </div>
-                            <ValidationMessage For="@(() => Orphan.Gender)" />
+                            <ValidationMessage For="@(() => Orphan.Gender)"/>
                         </div>
                     </div>
+                </div>
 
+                <div class="flex flex-wrap mb-6">
                     <!-- LCM Status -->
-                    <div class="w-full md:w-48 px-3 mb-6 md:mb-0">
+                    <div class="w-full md:w-72 px-3 mb-6 md:mb-0 mr-8">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="lcmStatus">
-                            Status
+                            LCM Status
                         </label>
                         <div class="relative">
-                            <InputSelect id="lcmStatus" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="Orphan.LCMStatus">
+                            <InputSelect id="lcmStatus" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                                         @bind-Value="Orphan.LCMStatus">
                                 <option value="">Select LCM Status</option>
                                 <option value="Active">Active</option>
                                 <option value="Inactive">Inactive</option>
@@ -81,14 +82,40 @@
                                 <option value="Active-Not In School">Active-Not In School</option>
                                 <option value="Inactive- Married">Inactive-Married</option>
                                 <option value="Inactive-Working">Inactive-Working</option>
-                                <option value="Inactive-Deceased">Inactive-Deceased</option>                               
+                                <option value="Inactive-Deceased">Inactive-Deceased</option>
                             </InputSelect>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
                                 </svg>
                             </div>
-                            <ValidationMessage For="@(() => Orphan.LCMStatus)" />
+                            <ValidationMessage For="@(() => Orphan.LCMStatus)"/>
+                        </div>
+                    </div>
+
+                    <!-- Exit Status -->
+                    <div class="w-full md:w-72 px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="exitStatus">
+                            Exit Status
+                        </label>
+                        <div class="relative">
+                            <InputSelect id="exitStatus" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                         @bind-Value="Orphan.ExitStatus">
+                                <option value="">Select Exit Status</option>
+                                <option value="Graduated - Exit Program">Graduated - Exit Program</option>
+                                <option value="Married - Exit Program">Married - Exit Program</option>
+                                <option value="Working - Exit Program">Working - Exit Program</option>
+                                <option value="Deceased - Exit Program">Deceased - Exit Program</option>
+                                <option value="Dropped Out of School - Exit Program">Dropped Out of School - Exit Program</option>
+                                <option value="Untraceable - Exit Program">Untraceable - Exit Program</option>
+                                <option value="Disciplined - Exit Program">Disciplined - Exit Program</option>
+                            </InputSelect>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                                </svg>
+                            </div>
+                            <ValidationMessage For="@(() => Orphan.ExitStatus)"/>
                         </div>
                     </div>
                 </div>
@@ -99,8 +126,8 @@
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="dateOfBirth">
                             Date Of Birth
                         </label>
-                        <InputDate id="dateOfBirth" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="Orphan.DateOfBirth" />
-                        <ValidationMessage For="@(() => Orphan.DateOfBirth)" />
+                        <InputDate id="dateOfBirth" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="Orphan.DateOfBirth"/>
+                        <ValidationMessage For="@(() => Orphan.DateOfBirth)"/>
                     </div>
 
                     <!-- Profile Number -->
@@ -108,8 +135,8 @@
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="profileNumber">
                             Profile Number
                         </label>
-                        <InputText id="profileNumber" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="Orphan.ProfileNumber" />
-                        <ValidationMessage For="@(() => Orphan.ProfileNumber)" />
+                        <InputText id="profileNumber" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="Orphan.ProfileNumber"/>
+                        <ValidationMessage For="@(() => Orphan.ProfileNumber)"/>
                     </div>
                 </div>
 
@@ -119,8 +146,8 @@
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="yearOfAdmission">
                             Year of Admission
                         </label>
-                        <InputDate id="yearOfAdmission" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="Orphan.YearOfAdmission" />
-                        <ValidationMessage For="@(() => Orphan.YearOfAdmission)" />
+                        <InputDate id="yearOfAdmission" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" @bind-Value="Orphan.YearOfAdmission"/>
+                        <ValidationMessage For="@(() => Orphan.YearOfAdmission)"/>
                     </div>
 
                     <!-- Condition -->
@@ -137,10 +164,10 @@
                             </InputSelect>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
                                 </svg>
                             </div>
-                            <ValidationMessage For="@(() => Orphan.Condition)" />
+                            <ValidationMessage For="@(() => Orphan.Condition)"/>
                         </div>
                     </div>
 
@@ -157,10 +184,10 @@
                             </InputSelect>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
                                 </svg>
                             </div>
-                            <ValidationMessage For="@(() => Orphan.Location)" />
+                            <ValidationMessage For="@(() => Orphan.Location)"/>
                         </div>
                     </div>
                 </div>
@@ -177,6 +204,3 @@ else
 {
     <p>No record found.</p>
 }
-
-
-

@@ -1,0 +1,53 @@
+﻿@using LCMClient.Features.Orphans.Models
+
+@inject NavigationManager navigationManager
+
+
+@if (OrphanHistory != null && OrphanHistory?.Count() > 0)
+{
+    <div class="mt-6 mb-6">
+
+        @foreach (var history in OrphanHistory)
+        {
+            if (history.GuardianID == null) continue;
+            
+            historyRowBgColor = useHistoryBgColor ? "bg-blue-100" : "bg-yellow-100";
+            useHistoryBgColor = !useHistoryBgColor;
+            
+            <div class="flex flex-row space-x-6 mt-2 @historyRowBgColor">
+                <div>
+                    <MudButton Class="" @onclick="() => NavToDetailsHandler(history.GuardianID)">
+                        <div class="text-xl">@history.GuardianName</div>
+                    </MudButton>
+                </div>
+                <div class="text-lg pt-1">@history.RelationshipToGuardian</div>
+                <div class="text-sm pt-3">@($"Unassigned on: {history.UnassignedAt:d}")</div>
+
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p class="text-center mt-6 mb-6">No history found</p>
+}
+
+
+@code {
+
+    [Parameter]
+    public List<OrphanHistoryDTO> OrphanHistory { get; set; }
+
+    bool useHistoryBgColor = false;
+    string historyRowBgColor = "bg-yellow-100";
+    
+    private void NavToDetailsHandler(int? guardianId)
+    {
+        if (guardianId != null)
+        {
+            navigationManager.NavigateTo($"/guardianDetails/{guardianId}");
+        }
+        
+    }
+
+}

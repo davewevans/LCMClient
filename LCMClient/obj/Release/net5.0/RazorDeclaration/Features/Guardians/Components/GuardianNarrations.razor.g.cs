@@ -180,6 +180,13 @@ using LCMClient.Features.Shared.Enums;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Guardians\Components\GuardianNarrations.razor"
+           [Authorize(Roles = "Admin,Staff,GuardianReadWrite,Guest")]
+
+#line default
+#line hidden
+#nullable disable
     public partial class GuardianNarrations : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
