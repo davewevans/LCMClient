@@ -208,7 +208,7 @@ using LCMClient.Features.Shared;
 
     protected override void OnParametersSet()
     {
-    // Map GuardianDetails obj to new instance of GuardianEditModel
+        // Map GuardianDetails obj to new instance of GuardianEditModel
         if (GuardianDetails is null) return;
         guardianToEdit = new GuardianEditModel
         {
@@ -221,6 +221,7 @@ using LCMClient.Features.Shared;
             AltPhone1 = GuardianDetails.AltPhone1,
             AltPhone2 = GuardianDetails.AltPhone2,
             AltPhone3 = GuardianDetails.AltPhone3,
+            NumberOfDependents = GuardianDetails.NumberOfDependents,
         };
     }
 
