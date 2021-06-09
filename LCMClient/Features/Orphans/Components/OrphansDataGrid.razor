@@ -24,6 +24,7 @@
         AllowPdfExport="true">
 
     <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
+    @* <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.CheckBox"></GridFilterSettings> *@
 
     <GridPageSettings PageSize="@pageSize"
                       PageSizes="@PageSizes">
@@ -126,6 +127,12 @@
                     Width="60"
                     HideAtMedia="(min-width: 768px)"
                     ValidationRules="@(new ValidationRules{ MaxLength=30 })" />
+        
+          <GridColumn Field="@nameof(OrphanModel.Condition)"
+                            HeaderText="Condition"
+                            Width="60"
+                            HideAtMedia="(min-width: 768px)"
+                            ValidationRules="@(new ValidationRules{ MaxLength=30 })" />
 
         <GridColumn HeaderText="" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center" Width="80" AllowEditing="false">
             <Template>

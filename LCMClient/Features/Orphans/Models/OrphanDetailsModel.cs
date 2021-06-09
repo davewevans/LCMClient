@@ -2,11 +2,16 @@
 using LCMClient.Features.Shared.Narrations;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using LCMClient.Annotations;
 
 namespace LCMClient.Features.Orphans.Models
 {
-    public class OrphanDetailsModel
+    public class OrphanDetailsModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        
         public int OrphanID { get; set; }
 
         public string FirstName { get; set; } = string.Empty;
@@ -21,7 +26,17 @@ namespace LCMClient.Features.Orphans.Models
 
         public DateTime? DateOfBirth { get; set; }
 
-        public string LCMStatus { get; set; }
+        public string _lcmStatus { get; set; }
+        
+        public string LCMStatus
+        {
+            get => _lcmStatus;
+            set
+            {
+                _lcmStatus = value;
+                OnPropertyChanged();
+            }
+        }
         
         public string ExitStatus { get; set; }
       
@@ -54,5 +69,12 @@ namespace LCMClient.Features.Orphans.Models
         public List<NarrationModel> Narrations { get; set; }
 
         public List<AcademicModel> Academics { get; set; }
+        
+        
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

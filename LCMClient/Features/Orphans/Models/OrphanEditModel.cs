@@ -1,8 +1,11 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using LCMClient.Annotations;
 
 namespace LCMClient.Features.Orphans.Models
 {
-    public class OrphanEditModel
+    public class OrphanEditModel 
     {
         public string FirstName { get; set; } = string.Empty;
 
@@ -15,7 +18,7 @@ namespace LCMClient.Features.Orphans.Models
         public DateTime? DateOfBirth { get; set; }
 
         public string LCMStatus { get; set; }
-        
+
         public string ExitStatus { get; set; }
 
         public string ProfileNumber { get; set; }
@@ -29,5 +32,7 @@ namespace LCMClient.Features.Orphans.Models
         public DateTime? YearOfAdmission { get; set; }
 
         public string Condition { get; set; }
+
+
     }
 }

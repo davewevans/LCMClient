@@ -3,9 +3,9 @@
     public class TotalCountsModel
     {
         public int TotalOrphans { get; set; }
-
         public int TotalGuardians { get; set; }
-
         public int TotalSponsors { get; set; }
+        
+        public int TotalVulnerables { get; set; }
     }
 }

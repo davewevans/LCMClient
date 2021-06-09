@@ -1,12 +1,17 @@
-﻿using LCMClient.Features.Orphans.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using LCMClient.Features.Orphans.Models;
 using LCMClient.Features.Orphans.Repository.Contracts;
 using MatBlazor;
 using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
+using LCMClient.Annotations;
 
 namespace LCMClient.Features.Orphans.Components
 {
-    public partial class OrphanProfileEdit
+    public partial class OrphanProfileEdit : IDisposable
     {
         [Parameter]
         public OrphanDetailsModel Orphan { get; set; }
@@ -18,7 +23,28 @@ namespace LCMClient.Features.Orphans.Components
         protected IMatToaster Toaster { get; set; }
 
         [Inject] public IOrphanRepository OrphanRepo { get; set; }
+        
+        //public INotifyPropertyChanged LCMStatusPropertyChanged;
 
+        private Dictionary<string, object> additionalAttributes = new () { { "disabled", true } };
+
+        protected override void OnInitialized()
+        {
+            Orphan.PropertyChanged += async (sender, e) => { 
+                await InvokeAsync(() =>
+                {
+                    additionalAttributes["disabled"] = !Orphan.LCMStatus.ToLower().Contains("inactive");
+                    StateHasChanged();
+                });
+            };
+            base.OnInitialized();
+        }
+
+        protected override Task OnParametersSetAsync()
+        {
+            additionalAttributes["disabled"] = !Orphan.LCMStatus.ToLower().Contains("inactive");
+            return base.OnParametersSetAsync();
+        }
 
         private async Task HandleValidSubmit()
         {
@@ -46,15 +72,29 @@ namespace LCMClient.Features.Orphans.Components
             await HandleOrphanEdited.InvokeAsync(Orphan);
         }
 
-        protected override void OnParametersSet()
-        {
-            base.OnParametersSet();
-        }
 
         private async Task HandleProfileChanged(OrphanDetailsModel orphan)
         {
             // StateHasChanged(); invoked auto
             await HandleOrphanEdited.InvokeAsync(Orphan);
+        }
+
+        private void OnLCMStatusChangedHandler()
+        {
+            if (Orphan.LCMStatus.ToLower().Contains("inactive"))
+            {
+                Toaster.Add("containts inactive.", MatToastType.Success);
+            }
+            else
+            {
+                Toaster.Add("no inactive.", MatToastType.Warning);
+            }
+        }
+        
+        public void Dispose()
+        {
+            Toaster?.Dispose();
+            // Orphan.PropertyChanged -= OnPropertyChangedHandler;
         }
     }
 }
