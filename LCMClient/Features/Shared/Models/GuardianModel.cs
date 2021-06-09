@@ -18,5 +18,7 @@ namespace LCMClient.Features.Shared.Models
         public DateTime EntryDate { get; set; }
 
         public string Location { get; set; } = string.Empty;
+        
+        public int NumberOfDependents { get; set; }
     }
 }

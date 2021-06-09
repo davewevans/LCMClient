@@ -25,6 +25,8 @@ namespace LCMClient.Features.Guardians.Models
         public string AltPhone2 { get; set; }
 
         public string AltPhone3 { get; set; }
+        
+        public int DependentsCount { get; set; }
 
         public int OrphanCount => Orphans is not null ? Orphans.Count : 0;
 

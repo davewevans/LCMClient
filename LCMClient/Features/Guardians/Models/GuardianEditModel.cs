@@ -23,5 +23,7 @@ namespace LCMClient.Features.Guardians.Models
         public string AltPhone2 { get; set; }
 
         public string AltPhone3 { get; set; }
+        
+        public int NumberOfDependents { get; set; }
     }
 }

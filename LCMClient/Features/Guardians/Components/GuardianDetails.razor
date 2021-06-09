@@ -30,6 +30,9 @@
                 <div>
                     <span class="text-left font-semibold">Narrations:</span> <span class="font-semibold bg-blue-100" style="padding:2px;"> @(guardianDetails?.NarrationsCount)</span>
                 </div>
+                <div>
+                    <span class="text-left font-semibold">Dependents:</span> <span class="font-semibold bg-blue-100" style="padding:2px;"> @(guardianDetails?.DependentsCount)</span>
+                </div>
             </div>
             <div class="w-1/5 space-y-2">
                 <div>
@@ -58,7 +61,8 @@
 
             <div class="w-1/5 space-y-2">
                 <div>
-                    <span class="text-left font-semibold">Deceased:</span> <span class="font-semibold bg-blue-100" style="padding:2px;">
+                    <span class="text-left font-semibold">Deceased:</span>
+                    <span class="font-semibold bg-blue-100" style="padding:2px;">
                         @if (guardianDetails.IsDeceased)
                         {
                             <span>Yes</span>
@@ -67,7 +71,7 @@
                         {
                             <span>No</span>
                         }
-                       
+
                     </span>
                 </div>
             </div>
@@ -75,9 +79,9 @@
 
         <div class="bg-white mb-10">
             <SfTab @ref="sfTabs"
-                    CssClass="tab-adaptive"
-                    OverflowMode="@OverflowMode.Scrollable"
-                    HeaderPlacement="@HeaderPosition.Top">
+                   CssClass="tab-adaptive"
+                   OverflowMode="@OverflowMode.Scrollable"
+                   HeaderPlacement="@HeaderPosition.Top">
                 <TabItems>
                     <TabItem>
                         <ChildContent>

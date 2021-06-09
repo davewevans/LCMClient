@@ -62,6 +62,10 @@
                     HeaderText="Location"
                     Width="160"
                     ValidationRules="@(new ValidationRules {MaxLength = 255})" />
+        <GridColumn Field="@nameof(GuardianModel.NumberOfDependents)"
+                    HeaderText="Dependents"
+                    Width="160"
+                    ValidationRules="@(new ValidationRules {MaxLength = 255})" />
 
         <GridColumn HeaderText="" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center" Width="80" AllowEditing="false">
             <Template>
