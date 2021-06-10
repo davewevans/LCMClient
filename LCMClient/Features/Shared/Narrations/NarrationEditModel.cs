@@ -23,6 +23,10 @@ namespace LCMClient.Features.Shared.Narrations
         public DateTime? ApprovedAt { get; set; }
 
         public string ApprovedByID { get; set; }
+        
+        public DateTime? RejectedAt { get; set; }
+
+        public string RejectedByID { get; set; }
 
         public int? OrphanID { get; set; }
 

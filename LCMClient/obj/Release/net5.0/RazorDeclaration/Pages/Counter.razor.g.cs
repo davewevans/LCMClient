@@ -159,6 +159,13 @@ using Syncfusion.Blazor.Navigations;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 22 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+using Syncfusion.Blazor.SplitButtons;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/counter")]
     public partial class Counter : Microsoft.AspNetCore.Components.ComponentBase
     {

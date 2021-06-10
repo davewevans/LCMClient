@@ -159,13 +159,40 @@ using Syncfusion.Blazor.Navigations;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 22 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+using Syncfusion.Blazor.SplitButtons;
+
+#line default
+#line hidden
+#nullable disable
+    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase, IDisposable
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 143 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Shared\NavMenu.razor"
+       
+
+    protected override async Task OnInitializedAsync()
+    {
+        await PendingNarrationsService.SetPendingNarrationsCount();
+        PendingNarrationsService.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        PendingNarrationsService.OnChange -= StateHasChanged;
+    }
+
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private PendingNarrationsService PendingNarrationsService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }
     }
 }

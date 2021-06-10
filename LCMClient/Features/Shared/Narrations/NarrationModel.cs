@@ -11,6 +11,10 @@ namespace LCMClient.Features.Shared.Narrations
         
         public bool Approved { get; set; }
 
+        public bool Rejected { get; set; }
+        
+        public string Comments { get; set; }
+
         public DateTime? SubmittedAt { get; set; }
 
         public string SubmittedByID { get; set; }
@@ -26,8 +30,15 @@ namespace LCMClient.Features.Shared.Narrations
         public string ApprovedByName { get; set; }
 
         public string ApprovedByEmail { get; set; }
-        public string OrphanName { get; set; }
+        
+        public string RejectedByEmail { get; set; }
 
+        public string RejectedByName { get; set; }
+        
+        public DateTime? RejectedAt { get; set; }
+
+        public string RejectedByID { get; set; }
+        public string OrphanName { get; set; }
         public string GuardianName { get; set; }
         public int? OrphanID { get; set; }
         public int? GuardianID { get; set; }

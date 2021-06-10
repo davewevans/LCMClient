@@ -160,6 +160,13 @@ using Syncfusion.Blazor.Navigations;
 #line hidden
 #nullable disable
 #nullable restore
+#line 22 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+using Syncfusion.Blazor.SplitButtons;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 4 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\NarrationsApproval\NarrationDetails.razor"
 using LCMClient.Features.Auth;
 
@@ -215,7 +222,7 @@ using LCMClient.Features.Shared.Narrations;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/NarrationDetails/{narrationId:int}")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/NarrationApprovalDetails/{narrationId:int}")]
     public partial class NarrationDetails : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -224,29 +231,40 @@ using LCMClient.Features.Shared.Narrations;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 102 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\NarrationsApproval\NarrationDetails.razor"
+#line 112 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\NarrationsApproval\NarrationDetails.razor"
        
+
     [Parameter]
     public int narrationId { get; set; }
-    
+
     [CascadingParameter]
     public Task<AuthenticationState> AuthState { get; set; }
-    
+
     private NarrationModel narrationDetails = new();
-    
+
     protected override async Task OnInitializedAsync()
     {
         narrationDetails = await narrationRepository.GetNarrationById(narrationId);
-        
+
         await jsRuntime.ConsoleLog($"submitted by: {narrationDetails.SubmittedByName}");
     }
-    
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await jsRuntime.FocusInput("comments");
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+    }
+
     private async Task ApproveNarrationHandler(int narrationId)
     {
-        await jsRuntime.ConsoleLog($"ApproveNarrationHandler");
-        await jsRuntime.ConsoleLog($"narration id: {narrationId}");
-        
-        // get user email to send to API
+    //await jsRuntime.ConsoleLog($"ApproveNarrationHandler");
+    //await jsRuntime.ConsoleLog($"narration id: {narrationId}");
+
+    // get user email to send to API
         var authState = await AuthState;
         var user = authState.User;
         string userEmail = "";
@@ -261,31 +279,62 @@ using LCMClient.Features.Shared.Narrations;
         }
 
         narrationDetails.ApprovedByEmail = userEmail;
-        
-        
+
+
         var result = await narrationRepository.ApproveNarrationAsync(narrationId, narrationDetails);
-         if (result)
-         {
-             ShowSnackbar("Narration has been approved.", MatToastType.Success);
-             navigationManager.NavigateTo("/pendingnarrations");
-             return;
-         }
-         ShowSnackbar("Narration approval failed.", MatToastType.Danger);
-
-    }
-
-    private async Task OnRejectNarrationHandler(int narrationId)
-    {
-        await jsRuntime.ConsoleLog($"OnRejectNarrationHandler");
-        await jsRuntime.ConsoleLog($"narration id: {narrationId}");
-        
-        if (await ShowConfirmDeleteDialog())
+        if (result)
         {
-            await narrationRepository.DeleteNarrationAsync(narrationId);
-            ShowDeleteSuccessSnackbar();
+            ShowSnackbar("Narration has been approved.", MatToastType.Success);
             navigationManager.NavigateTo("/pendingnarrations");
+            return;
         }
+        ShowSnackbar("Narration approval failed.", MatToastType.Danger);
     }
+
+    private async Task RejectNarrationHandler(int narrationId)
+    {
+    //await jsRuntime.ConsoleLog($"RejectNarrationHandler");
+    //await jsRuntime.ConsoleLog($"narration id: {narrationId}");
+
+    // get user email to send to API
+        var authState = await AuthState;
+        var user = authState.User;
+        string userEmail = "";
+        string emailClaimTypeKey = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress";
+        foreach (var claim in authState.User.Claims)
+        {
+            await jsRuntime.ConsoleLog(claim.Type + " : " + claim.Value);
+            if (claim.Type.Equals(emailClaimTypeKey))
+            {
+                userEmail = claim.Value;
+            }
+        }
+
+        narrationDetails.RejectedByEmail = userEmail;
+
+
+        var result = await narrationRepository.RejectNarrationAsync(narrationId, narrationDetails);
+        if (result)
+        {
+            ShowSnackbar("Narration has been rejected.", MatToastType.Success);
+            navigationManager.NavigateTo("/pendingnarrations");
+            return;
+        }
+        ShowSnackbar("Narration rejected failed.", MatToastType.Danger);
+    }
+
+    // private async Task OnRejectNarrationHandler(int narrationId)
+    // {
+    //     await jsRuntime.ConsoleLog($"OnRejectNarrationHandler");
+    //     await jsRuntime.ConsoleLog($"narration id: {narrationId}");
+    //     
+    //     if (await ShowConfirmDeleteDialog())
+    //     {
+    //         await narrationRepository.DeleteNarrationAsync(narrationId);
+    //         ShowDeleteSuccessSnackbar();
+    //         navigationManager.NavigateTo("/pendingnarrations");
+    //     }
+    // }
 
     private void ShowSnackbar(string message, MatToastType type)
     {
@@ -304,7 +353,7 @@ using LCMClient.Features.Shared.Narrations;
 
     private async Task<bool> ShowConfirmDeleteDialog()
     {
-        var Options = new MudBlazor.Dialog.DialogOptions() { CloseButton = true };
+        var Options = new MudBlazor.Dialog.DialogOptions() {CloseButton = true};
         var Parameters = new DialogParameters();
         Parameters.Add("Message", "Are you sure you want to reject this narration?");
         var userSelect = Dialog.Show<ConfirmDeleteDialog>("Confirm Delete", Parameters, Options);
@@ -316,7 +365,7 @@ using LCMClient.Features.Shared.Narrations;
         }
         return true;
     }
-    
+
     private void ShowDeleteSuccessSnackbar()
     {
         Toaster.Add("Narration successfully rejected.", MatToastType.Success, "", "", config =>

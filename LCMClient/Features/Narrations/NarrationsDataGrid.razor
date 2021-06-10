@@ -1,0 +1,213 @@
+﻿@using LCMClient.Features.Shared.Models
+@using LCMClient.Features.Shared.Narrations
+@using LCMClient.Helpers
+@using LCMClient.Services
+
+@inject IHttpService httpService
+@inject NavigationManager navigationManager
+@inject IJSRuntime jsRuntime
+
+
+@if (readyForGrid)
+{
+    <div class="flex justify-end mx-auto my-2">
+        <div class="flex justify-center rounded-lg text-lg mb-4" role="group">
+            <button id="all-button"
+                    class="bg-blue-500 text-white hover:bg-blue-400 focus:bg-blue-800 rounded-l-lg px-4 py-2 mx-0 outline-none focus:shadow-outline"
+                    type="button"
+                    @onclick="OnAllButtonClickHandler">
+                All
+            </button>
+            <button class="bg-blue-500 text-white hover:bg-blue-400 focus:bg-blue-800  px-4 py-2 mx-0 outline-none focus:shadow-outline"
+                    type="button"
+                    @onclick="OnApprovedButtonClickHandler">
+                Approved
+            </button>
+            <button class="bg-blue-500 text-white hover:bg-blue-400 focus:bg-blue-800 rounded-r-lg px-4 py-2 mx-0 outline-none focus:shadow-outline"
+                    type="button"
+                    @onclick="OnRejectedButtonClickHandler">
+                Rejected
+            </button>
+        </div>
+    </div>
+
+    <SfGrid @ref="NarrationDataGrid"
+            TValue="NarrationModel"
+            AllowPaging="true"
+            AllowSorting="true"
+            AllowFiltering="false"
+            Query="@Qry"
+            Toolbar="@ToolbarItems"
+            AllowSelection="true"
+            AllowReordering="true"
+            AllowResizing="true"
+            AllowTextWrap="true"
+            AllowExcelExport="true"
+            AllowPdfExport="true">
+
+        <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
+
+        <GridPageSettings PageSize="@pageSize"
+                          PageSizes="@PageSizes">
+        </GridPageSettings>
+
+        <GridSelectionSettings EnableToggle="true" EnableSimpleMultiRowSelection="false"></GridSelectionSettings>
+
+        <GridEvents TValue="NarrationModel"
+                    OnLoad="Load"
+                    OnToolbarClick="ToolbarClick"
+                    OnRecordClick="RecordClickHandler"
+                    OnActionBegin="ActionBeginHandler">
+        </GridEvents>
+
+        <SfDataManager Url="@apiUrl"
+                       CrossDomain="true"
+                       Adaptor="Adaptors.WebApiAdaptor">
+        </SfDataManager>
+
+        <GridEditSettings AllowAdding="false"
+                          AllowEditing="false"
+                          AllowDeleting="false"
+                          Mode="EditMode.Normal"
+                          AllowEditOnDblClick="false"
+                          ShowDeleteConfirmDialog="false">
+        </GridEditSettings>
+
+        <GridColumns>
+            <GridColumn Field="@nameof(NarrationModel.NarrationID)" IsPrimaryKey="true" AllowEditing="false" Visible="false"/>
+
+            <GridColumn Field="@nameof(NarrationModel.SubmittedAt)"
+                        HeaderText="Submitted Date"
+                        Format="d"
+                        Width="30"
+                        Type="ColumnType.Date"/>
+            <GridColumn Field="@nameof(NarrationModel.Subject)"
+                        HeaderText="Subject"
+                        Width="100"
+                        Type="ColumnType.String"
+                        ValidationRules="@(new ValidationRules {Required = true, MaxLength = 255})"/>
+            <GridColumn Field="@nameof(NarrationModel.Approved)"
+                        HeaderText="Approved"
+                        Width="20"
+                        Type="ColumnType.Boolean"/>
+            <GridColumn Field="@nameof(NarrationModel.Rejected)"
+                        HeaderText="Rejected"
+                        Width="20"
+                        Type="ColumnType.Boolean"/>
+
+
+            <GridColumn HeaderText="" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center" Width="80" AllowEditing="false">
+                <Template>
+                    @{
+                        var narration = (context as NarrationModel);
+                            <SfButton Content="@ProfileBtnContent" CssClass="e-link" @onclick="@(() => NavigateToDetails(narration.NarrationID))"> </SfButton>
+                    }
+                </Template>
+            </GridColumn>
+
+        </GridColumns>
+    </SfGrid>
+}
+else
+{
+    <p>Loading...</p>
+}
+
+
+@code {
+
+    private bool readyForGrid = false;
+
+    private string apiUrl = "";
+
+    private SfGrid<NarrationModel> NarrationDataGrid = new SfGrid<NarrationModel>();
+
+    public static string searchTerm = "";
+    public Query Qry = new Query();
+    private string ProfileBtnContent = "View/Edit";
+
+    public List<NarrationModel> Narrations { get; set; }
+
+    public List<string> ToolbarItems = new List<string> {"ExcelExport", "PdfExport", "Search"};
+
+    public int[] PageSizes = {5, 10, 20, 50, 100};
+    private int pageSize = 20;
+
+    protected override async Task OnInitializedAsync()
+    {
+        apiUrl = $"{httpService.BaseUrl}narrations/narrationsSFDataGrid/all";
+        readyForGrid = true;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await jsRuntime.FocusInput("all-button");
+        }
+    }
+
+    private async Task OnAllButtonClickHandler()
+    {
+        apiUrl = $"{httpService.BaseUrl}narrations/narrationsSFDataGrid/all";
+        NarrationDataGrid.DataManager.Url = apiUrl;
+        NarrationDataGrid.Refresh();
+        await jsRuntime.ConsoleLog("OnAllButtonClickHandler");
+    }
+
+    private async Task OnApprovedButtonClickHandler()
+    {
+        apiUrl = $"{httpService.BaseUrl}narrations/narrationsSFDataGrid/approved";
+        NarrationDataGrid.DataManager.Url = apiUrl;
+        NarrationDataGrid.Refresh();
+        await jsRuntime.ConsoleLog("OnApprovedButtonClickHandler");
+    }
+
+    private async Task OnRejectedButtonClickHandler()
+    {
+        apiUrl = $"{httpService.BaseUrl}narrations/narrationsSFDataGrid/rejected";
+        NarrationDataGrid.DataManager.Url = apiUrl;
+        NarrationDataGrid.Refresh();
+        await jsRuntime.ConsoleLog("OnRejectedButtonClickHandler");
+    }
+
+    public async Task ActionBeginHandler(ActionEventArgs<NarrationModel> args)
+    {
+    // Add to query string parameters for search and sorting
+        if (string.IsNullOrWhiteSpace(args.SearchString)) await NarrationDataGrid.Search("");
+        Qry.AddParams("SearchTerm", args.SearchString);
+
+        if (!string.IsNullOrWhiteSpace(args.ColumnName))
+            Qry.AddParams("ColumnName", args.ColumnName);
+
+        Qry.AddParams("SortDirection", args.Direction);
+    }
+
+    public async Task ToolbarClick(Syncfusion.Blazor.Navigations.ClickEventArgs args)
+    {
+        if (args.Item.Id.Contains("excelexport"))
+        {
+            await this.NarrationDataGrid.ExcelExport();
+        }
+
+        if (args.Item.Id.Contains("pdfexport"))
+        {
+            await this.NarrationDataGrid.PdfExport();
+        }
+    }
+
+    private void NavigateToDetails(int id)
+    {
+        navigationManager.NavigateTo($"/NarrationDetails/{id}");
+    }
+
+    public void RecordClickHandler(RecordClickEventArgs<NarrationModel> args)
+    {
+        navigationManager.NavigateTo($"/NarrationDetails/{args.RowData.NarrationID}");
+    }
+
+    public void Load(object args)
+    {
+    }
+
+}

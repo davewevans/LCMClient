@@ -110,7 +110,7 @@ else if (pendingNarrations?.Response?.Count == 0)
     private async Task ViewNarrationHandler(int narrationId)
     {
         await jsRuntime.ConsoleLog("narration id: " + narrationId);
-        navigationManager.NavigateTo($"/NarrationDetails/{narrationId}");
+        navigationManager.NavigateTo($"/NarrationApprovalDetails/{narrationId}");
     }
     
   

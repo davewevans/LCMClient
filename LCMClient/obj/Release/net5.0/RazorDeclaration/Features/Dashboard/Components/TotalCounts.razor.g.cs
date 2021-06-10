@@ -160,6 +160,13 @@ using Syncfusion.Blazor.Navigations;
 #line hidden
 #nullable disable
 #nullable restore
+#line 22 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+using Syncfusion.Blazor.SplitButtons;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Dashboard\Components\TotalCounts.razor"
 using LCMClient.Features.Dashboard.Models;
 
@@ -174,7 +181,7 @@ using LCMClient.Features.Dashboard.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 62 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Dashboard\Components\TotalCounts.razor"
+#line 77 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Dashboard\Components\TotalCounts.razor"
        
 
     private bool isLoading = true;

@@ -159,6 +159,13 @@ using Syncfusion.Blazor.Navigations;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 22 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+using Syncfusion.Blazor.SplitButtons;
+
+#line default
+#line hidden
+#nullable disable
     public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase, IDisposable
     {
         #pragma warning disable 1998
@@ -167,7 +174,7 @@ using Syncfusion.Blazor.Navigations;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 125 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Shared\NavMenu.razor"
+#line 143 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Shared\NavMenu.razor"
        
 
     protected override async Task OnInitializedAsync()

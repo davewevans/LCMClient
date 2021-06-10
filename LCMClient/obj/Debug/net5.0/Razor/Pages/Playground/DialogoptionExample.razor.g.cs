@@ -156,6 +156,13 @@ using Syncfusion.Blazor.Navigations;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 22 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+using Syncfusion.Blazor.SplitButtons;
+
+#line default
+#line hidden
+#nullable disable
     public partial class DialogoptionExample : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

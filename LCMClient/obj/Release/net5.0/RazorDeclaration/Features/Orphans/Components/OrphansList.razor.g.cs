@@ -160,6 +160,13 @@ using Syncfusion.Blazor.Navigations;
 #line hidden
 #nullable disable
 #nullable restore
+#line 22 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+using Syncfusion.Blazor.SplitButtons;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 3 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphansList.razor"
            [Authorize(Roles = "Admin,Staff,OrphanReadWrite,Guest")]
 
@@ -175,7 +182,7 @@ using Syncfusion.Blazor.Navigations;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 46 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphansList.razor"
+#line 50 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\Orphans\Components\OrphansList.razor"
           
 
     protected override async Task OnInitializedAsync()

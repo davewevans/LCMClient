@@ -30,7 +30,9 @@ namespace LCMClient.Repository
             }
             return response.Response;
         }
-        
+
+      
+
         public async Task<int> GetPendingNarrationsCount()
         {
             var response = await httpService.Get<int>($"{url}/pendingNarrationsCount");
@@ -65,6 +67,13 @@ namespace LCMClient.Repository
         public async Task<bool> ApproveNarrationAsync(int narrationId, NarrationModel narrationEdit)
         {
             string url = $"{ httpService.BaseUrl }{ Controller }/ApprovedNarration/{ narrationId }";
+            var response = await httpService.Put(url, narrationEdit);
+            return response.Success;
+        }
+        
+        public async Task<bool> RejectNarrationAsync(int narrationId, NarrationModel narrationEdit)
+        {
+            string url = $"{ httpService.BaseUrl }{ Controller }/RejectedNarration/{ narrationId }";
             var response = await httpService.Put(url, narrationEdit);
             return response.Success;
         }

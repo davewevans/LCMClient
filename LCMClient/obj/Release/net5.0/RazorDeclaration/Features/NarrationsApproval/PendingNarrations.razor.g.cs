@@ -160,6 +160,13 @@ using Syncfusion.Blazor.Navigations;
 #line hidden
 #nullable disable
 #nullable restore
+#line 22 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+using Syncfusion.Blazor.SplitButtons;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 4 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\NarrationsApproval\PendingNarrations.razor"
 using LCMClient.Features.Auth;
 
@@ -202,20 +209,41 @@ using LCMClient.Features.Admin.Models;
 #line hidden
 #nullable disable
 #nullable restore
-#line 19 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\NarrationsApproval\PendingNarrations.razor"
+#line 22 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\NarrationsApproval\PendingNarrations.razor"
            [Authorize(Roles = "Admin, NarrationApprover")]
 
 #line default
 #line hidden
 #nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/pendingnarrations")]
-    public partial class PendingNarrations : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class PendingNarrations : Microsoft.AspNetCore.Components.ComponentBase, IDisposable
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 49 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Features\NarrationsApproval\PendingNarrations.razor"
+       
+    
+    protected override async Task OnInitializedAsync()
+    {
+        await PendingNarrationsService.SetPendingNarrationsCount();
+        PendingNarrationsService.OnChange += StateHasChanged;
+    }
+
+   
+    public void Dispose()
+    {
+        PendingNarrationsService.OnChange -= StateHasChanged;
+    }
+
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private PendingNarrationsService PendingNarrationsService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IMatToaster Toaster { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IDialogService Dialog { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime jsRuntime { get; set; }

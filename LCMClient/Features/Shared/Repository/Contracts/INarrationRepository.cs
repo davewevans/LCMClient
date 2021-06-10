@@ -22,6 +22,8 @@ namespace LCMClient.Features.Shared.Repository.Contracts
         Task<PaginatedResponse<List<NarrationModel>>> GetPendingApprovalNarrations(PaginationModel pagination);
 
         Task<bool> ApproveNarrationAsync(int narrationId, NarrationModel narrationEdit);
+        
+        Task<bool> RejectNarrationAsync(int narrationId, NarrationModel narrationEdit);
 
         Task<int> GetPendingNarrationsCount();
 

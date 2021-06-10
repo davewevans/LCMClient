@@ -160,8 +160,22 @@ using Syncfusion.Blazor.Navigations;
 #line hidden
 #nullable disable
 #nullable restore
+#line 22 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\_Imports.razor"
+using Syncfusion.Blazor.SplitButtons;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Shared\MainLayout.razor"
 using LCMClient.Helpers;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Shared\MainLayout.razor"
+using LCMClient.Features.Shared.Repository.Contracts;
 
 #line default
 #line hidden
@@ -174,8 +188,10 @@ using LCMClient.Helpers;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 39 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Shared\MainLayout.razor"
+#line 46 "C:\Users\davew\OneDrive\Documents\GitHub\LCMClient\LCMClient\Shared\MainLayout.razor"
        
+
+    string _pendingNarrationsCount = "";
 
     bool open = true;
     bool clipped = false;
