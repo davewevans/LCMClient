@@ -1,0 +1,143 @@
+﻿@using LCMClient.Features.Orphans.Enums
+@using LCMClient.Features.Shared
+@using LCMClient.Features.Orphans.Components
+
+@attribute [Authorize(Roles = "Admin,Staff,OrphanReadWrite,Guest")]
+
+<SfConfirmDeleteDialog IsVisible="@showDelConfirmDialog"
+                       ConfirmationChanged="OnConfirmDelete"
+                       ConfirmationMessage=@($"Are you sure you want remove this sponsor as {Orphan?.FirstName}'s sponsor?")>
+
+</SfConfirmDeleteDialog>
+
+<AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+    <Authorized>
+        <TabContentHeader HeaderText="Sponsors"
+                          ButtonOnclickHandler="OnAddClick"
+                          ButtonIcon="fa fa-plus"
+                          ButtonText="Add"
+                          ShowButton="true">
+            <div class="text-white">
+                <SponsorSVG Width="8" Height="8"/>
+            </div>
+        </TabContentHeader>
+    </Authorized>
+    <NotAuthorized>
+        <TabContentHeader HeaderText="Sponsors"
+                          ButtonOnclickHandler="OnAddClick"
+                          ButtonIcon="fa fa-plus"
+                          ButtonText="Add"
+                          ShowButton="false">
+            <div class="text-white">
+                <SponsorSVG Width="8" Height="8"/>
+            </div>
+        </TabContentHeader>
+    </NotAuthorized>
+</AuthorizeView>
+
+
+<div class="m-10">
+    @{
+        switch (viewMode)
+        {
+            case ViewMode.AddNew:
+                <AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+                    <Authorized>
+                        <SponsorAssignmentDialog IsVisible="true"
+                                                 Orphan="@Orphan"
+                                                 OnAddNewComplete="OnAddNewComplete"/>
+                    </Authorized>
+                    <NotAuthorized>
+
+                    </NotAuthorized>
+                </AuthorizeView>
+
+                break;
+            case ViewMode.List:
+                break;
+        }
+    }
+
+
+    <div class="mt-2 mb-6 flex flex-row justify-center">
+        <button @onclick="ShowHideHistoryHandler" class="bg-yellow-200 hover:bg-yellow-500 text-blue-900 font-semibold hover:text-white py-2 px-4 rounded">
+            <div class="flex items-center">
+                <i class="@showHideHistoryButtonIcon mr-2"></i> @showHideHistoryButtonText
+            </div>
+        </button>
+    </div>
+
+    @if (showHistory)
+    {
+        <OrphanSponsorsHistory OrphanHistory="orphanHistory"/>
+    }
+
+
+
+    @if (Orphan?.Sponsors != null && Orphan?.Sponsors.Count() != 0)
+    {
+        foreach (var sponsor in Orphan.Sponsors)
+        {
+            <div class="w-full">
+                <div class="w-3/4 border-2 border-gray-600 bg-blue-100 rounded mb-6">
+                    <div class="p-8">
+                        <div class="flex items-center mb-2">
+                            <label class="md:text-2xl font-semibold mr-6">First Name</label>
+                            <p class="md:text-2xl text-blue-900 font-semibold">@sponsor.FirstName</p>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <label class="md:text-2xl font-semibold mr-6">Last Name</label>
+                            <p class="md:text-2xl text-blue-900 font-semibold">@sponsor.LastName</p>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <label class="md:text-2xl font-semibold mr-6">Location</label>
+                            <p class="md:text-2xl text-blue-900 font-semibold">@sponsor.Address</p>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <label class="md:text-2xl font-semibold mr-6">City</label>
+                            <p class="md:text-2xl text-blue-900 font-semibold">@sponsor.City</p>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <label class="md:text-2xl font-semibold mr-6">State</label>
+                            <p class="md:text-2xl text-blue-900 font-semibold">@sponsor.State</p>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <label class="md:text-2xl font-semibold mr-6">Postal Code</label>
+                            <p class="md:text-2xl text-blue-900 font-semibold">@sponsor.ZipCode</p>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <label class="md:text-2xl font-semibold mr-6">Email</label>
+                            <p class="md:text-2xl text-blue-900 font-semibold">@sponsor.Email</p>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <label class="md:text-2xl font-semibold mr-6">Main Phone</label>
+                            <p class="md:text-2xl text-blue-900 font-semibold">@sponsor.MainPhone</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between mt-4 bg-gray-800 p-6">
+                        <AuthorizeView Roles="Admin,Staff,OrphanReadWrite">
+                            <Authorized>
+                                <div class="text-2xl">
+                                    <a href="/SponsorDetails/@sponsor.SponsorID" target="_blank">
+                                        <span class="text-blue-500 hover:underline">Edit Sponsor</span>
+                                    </a>
+                                </div>
+                                <button type="button" class="mr-4" @onclick="() => OnRemoveClick(sponsor.SponsorID)">
+                                    <h3 class="text-2xl text-red-400">Remove</h3>
+                                </button>
+                            </Authorized>
+                            <NotAuthorized>
+
+                            </NotAuthorized>
+                        </AuthorizeView>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p class="text-2xl">No sponsors found for @Orphan?.FullName</p>
+    }
+</div>

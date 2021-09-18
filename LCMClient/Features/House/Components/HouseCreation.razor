@@ -1,0 +1,148 @@
+﻿@page "/guardianCreation"
+
+@using LCMClient.Features.Guardians.Models
+@using LCMClient.Features.Shared.Repository.Contracts
+@using MatBlazor;
+
+@inject NavigationManager navigationManager
+@inject IGuardianRepository guardianRepository
+@inject IMatToaster toaster
+
+@attribute [Authorize(Roles = "Admin,Staff,GuardianReadWrite")]
+
+
+<EditForm Model="@newGuardian" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator/>
+    <MudCard Class="my-mud-card-form">
+        <MudCardHeader Class="mud-card-header">
+            <CardHeaderContent>
+                <MudText Typo="Typo.h6">Add New Guardian</MudText>
+            </CardHeaderContent>
+            <CardHeaderActions>
+                <MudIconButton Icon="@Icons.Material.Cancel" Color="Color.Default" OnClick="@OnCancel"/>
+            </CardHeaderActions>
+        </MudCardHeader>
+        <MudCardContent>
+
+            <!-- First Name -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="firstName">
+                    First Name
+                </label>
+                <InputText id="firstName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="newGuardian.FirstName"/>
+                <ValidationMessage For="@(() => newGuardian.FirstName)"/>
+            </div>
+
+            <!-- Last Name -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="lastName">
+                    Last Name
+                </label>
+                <InputText id="lastName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="newGuardian.LastName"/>
+                <ValidationMessage For="@(() => newGuardian.LastName)"/>
+            </div>
+
+            <!-- Location -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="location">
+                    Location
+                </label>
+                <InputText id="middleName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="newGuardian.Location"/>
+                <ValidationMessage For="@(() => newGuardian.Location)"/>
+            </div>
+            
+              <!-- Number of Dependents -->
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="dependents">
+                    Number of Dependents
+                </label>
+                <InputNumber id="dependents" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="newGuardian.NumberOfDependents"/>
+                <ValidationMessage For="@(() => newGuardian.NumberOfDependents)"/>
+            </div>
+            
+
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="mainphone">
+                    Main Phone Number
+                </label>
+                <InputText id="mainphone" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="newGuardian.MainPhone"/>
+                <ValidationMessage For="@(() => newGuardian.MainPhone)"/>
+            </div>
+            
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="altphone1">
+                    Alternative Phone Number 1
+                </label>
+                <InputText id="altphone1" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="newGuardian.AltPhone1"/>
+                <ValidationMessage For="@(() => newGuardian.AltPhone1)"/>
+            </div>
+            
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="altphone2">
+                    Alternative Phone Number 2
+                </label>
+                <InputText id="altphone2" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="newGuardian.AltPhone2"/>
+                <ValidationMessage For="@(() => newGuardian.AltPhone2)"/>
+            </div>
+            
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="altphone3">
+                    Alternative Phone Number 3
+                </label>
+                <InputText id="altphone3" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           @bind-Value="newGuardian.AltPhone3"/>
+                <ValidationMessage For="@(() => newGuardian.AltPhone3)"/>
+            </div>
+            
+            
+            <ValidationSummary/>
+
+        </MudCardContent>
+        <MudCardActions>
+            <div class="create-button-container">
+                <MudButton Variant="Variant.Filled"
+                           Color="Color.Primary"
+                           Size="Size.Large"
+                           StartIcon="@Icons.Material.Add"
+                           ButtonType="ButtonType.Submit">
+                    Add New Guardian
+                </MudButton>
+            </div>
+
+        </MudCardActions>
+    </MudCard>
+</EditForm>
+
+@code {
+
+    private GuardianCreationModel newGuardian = new();
+    
+    // private RenderFragment DynamicRender { get; set; }
+    //
+    // private RenderFragment CreateComponent() => builder =>
+    // {
+    //     builder.OpenComponent(0, typeof(TextBox));
+    //     builder.AddAttribute(1, "Title", "Enter your text");
+    //     builder.CloseComponent();
+    // };
+
+    private async Task HandleValidSubmit()
+    {
+        await guardianRepository.AddGuardianAsync(newGuardian);
+        toaster.Add("Guardian added.", MatToastType.Success);
+        navigationManager.NavigateTo("/guardians");
+    }
+
+    private void OnCancel()
+    {
+        navigationManager.NavigateTo("/guardians");
+    }
+
+}
